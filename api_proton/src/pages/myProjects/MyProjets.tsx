@@ -1,5 +1,4 @@
 import { Box, Paper, Typography, Button, Grid,  } from "@mui/material";
-import './styles.css';
 
 export const MyProjects = () => {
   
