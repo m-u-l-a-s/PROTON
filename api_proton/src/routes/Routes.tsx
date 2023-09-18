@@ -1,12 +1,11 @@
 
 import { Routes, Route, Navigate } from "react-router-dom";
-// import { useAppThemeContext } from "../shered/contexts";
 import { Home, NovoProjeto, MyProjects  } from "../pages";
 
 
 
 export  const AppRoutes = () =>{
-    // const {toggleTheme} = useAppThemeContext();
+  
 
     return(
         <Routes>

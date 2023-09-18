@@ -1,11 +1,11 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Button, Paper, Typography } from "@mui/material";
 
 
 
 export const MyProjects = () => {
 
 
-    
+       
 
     return (
         <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
@@ -16,7 +16,7 @@ export const MyProjects = () => {
                 <Typography variant="h4" color="primary">Seus Projetos</Typography>
 
             </Paper>
-
+            
         </Box>
     )
 }

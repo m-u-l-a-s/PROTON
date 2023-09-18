@@ -5,9 +5,12 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
+
+
 export const NovoProjeto = () => {
 
     const theme = useTheme();
+
 
     return (
 
@@ -82,6 +85,7 @@ export const NovoProjeto = () => {
 
             </Paper>
 
+            
             </Box>
 
         // </Grid></>

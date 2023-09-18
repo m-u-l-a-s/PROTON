@@ -22,7 +22,7 @@ export const DarkTheme = createTheme({
         },
 
         background:{
-            default: grey[700],  //usado no fundo do site
+            default: "#292A2D",  //usado no fundo do site
             paper: grey[700],
             
             

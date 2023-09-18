@@ -9,10 +9,10 @@ import  Logo from "../img/Proton.png";
 
 
 
-
 export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>{
     
     const theme = useTheme();
+
 
     return(
 
@@ -46,6 +46,8 @@ export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>
                             </Grid>
 
                             <Grid item>Olá, Marcos</Grid>
+                            
+                           
                         
                         </Grid>
 

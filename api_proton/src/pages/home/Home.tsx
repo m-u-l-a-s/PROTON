@@ -14,6 +14,7 @@ import GraficoGeral from ".././../shered/charts/GraficoGeral";
 
 export const Home = () => {
 
+    
     const theme = useTheme();
 
     return (
@@ -238,7 +239,7 @@ export const Home = () => {
                         </Grid>
 
                  </Paper>
-
+                 
 
             </Box>
 
