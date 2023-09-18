@@ -25,6 +25,7 @@ export const LightTheme = createTheme({
             default: '#D1DaDB',  //usado no fundo do site
             paper:'#ffffff' ,    //usado dentro de card
         }
+
     }
 });
 

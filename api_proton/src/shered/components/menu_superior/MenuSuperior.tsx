@@ -2,11 +2,7 @@
 import { AppBar, Box, Button, Container, Grid, Stack, Toolbar, useTheme} from "@mui/material"
 import { ReactNode } from "react"
 import  Logo from "../img/Proton.png";
-
-
-
-
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,9 +11,6 @@ export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>
     const theme = useTheme();
 
     return(
-
-
-
        <>
     
        <Box width= "100vw" height={theme.spacing(8)}>
@@ -36,8 +29,8 @@ export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>
                             <Grid item>
                             
                                 <Stack  direction= "row" spacing={3}>
-                                    <Button   variant="text">Home</Button>
-                                    <Button   variant="text">Projetos</Button>
+                                    <Button   variant="text" component={Link} to="/Home">Home</Button>
+                                    <Button   variant="text" component={Link} to="/MyProjects">Projetos</Button>
                                     <Button   variant="text">Calendário</Button>
                                     <Button   variant="text">Equipe</Button>
                                     <Button   variant="text">Documentos</Button>
