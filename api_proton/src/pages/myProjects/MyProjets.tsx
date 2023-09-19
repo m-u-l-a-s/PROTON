@@ -1,4 +1,5 @@
 import { Box, Paper, Typography, Button, Grid,  } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 export const MyProjects = () => {
   
@@ -10,7 +11,7 @@ export const MyProjects = () => {
                 <Typography variant="h4" color="primary">Seus Projetos</Typography>
 
                 <Grid item container justifyContent="center" alignItems="center" style={{ height: '60vh' }}>
-                    <Button variant="contained" disableElevation > + Criar Projeto </Button>
+                    <Button component={Link} to="/NovoProjeto" variant="contained" disableElevation > + Criar Projeto </Button>
                 </Grid>
 
             </Paper>
