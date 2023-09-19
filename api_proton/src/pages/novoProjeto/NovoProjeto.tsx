@@ -31,18 +31,18 @@ export const NovoProjeto = () => {
                     <Box  display="flex" alignItems="center"  maxHeight="100vh" flexDirection="column">
 
 
-                        <Box display="flex" flexDirection="column" sx={{gap:3}}>
+                        <Box display="flex" flexDirection="column" sx={{gap:3}} >
 
 
                             <Grid item>
-                                <TextField id="nome-projeto" label="Nome:" variant="standard" sx={{width:"70vw"}} />
+                                <TextField id="nome-projeto" label="Nome:" variant="standard" sx={{width:"50vw"}} />
 
                             </Grid>
 
                             <Grid item>
 
                                 <TextField id="standard-multiline-static" label="Descrição" multiline rows={2}
-                                    variant="standard" sx={{width:"70vw"}} />
+                                    variant="standard" sx={{width:"50vw"}} />
 
                             </Grid>
 
@@ -59,7 +59,7 @@ export const NovoProjeto = () => {
                             </Grid>
 
                             <Grid item>
-                                <Button variant="contained" startIcon={<AddIcon />} sx={{width:"70vw"}}>Adicionar Etapa</Button>
+                                <Button variant="contained" startIcon={<AddIcon />} sx={{width:"50vw"}}>Adicionar Etapa</Button>
 
                             </Grid>
 
