@@ -27,6 +27,6 @@ export const DarkTheme = createTheme({
             
             
         }
-    }
+    },
 });
 
