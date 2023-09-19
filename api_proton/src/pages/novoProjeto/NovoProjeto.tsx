@@ -48,9 +48,9 @@ export const NovoProjeto = () => {
 
                             <Grid item>
 
-                                <Box>
+                                <Box sx={{bgcolor:"pink", height:"16vh"}} >
 
-                                <div>colocar um card ou um paper com scrollbar aqui</div>
+                                <div>colocar um card ou um paper com scrollbar aqui, tentar com uma lista</div>
                                 </Box>
 
 
@@ -69,7 +69,7 @@ export const NovoProjeto = () => {
 
 
 
-                        <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 20}}>
+                        <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 4}}>
 
                             <Button variant="contained" startIcon={<DeleteIcon />} sx={{background:"#292A2D",color:"white"}}>Descartar</Button>
                             <Button variant="contained" startIcon={<AddIcon />}>Criar Projeto</Button>
