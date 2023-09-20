@@ -1,0 +1,18 @@
+.card {
+    width: 12rem;
+    background-color: lightgray;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+h1 {
+    color: #53c4cd;
+}
+
+p {
+    color: #58595b;
+}
+
+h2 {
+    color: #292a2d;
+}
