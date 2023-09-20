@@ -1,0 +1,36 @@
+.cardEtapa {
+    width: 9 rem;
+    background-color: black;
+    border-color: white;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 3px;
+  
+}
+
+ .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ .etapa {
+    font-size: 18px;
+    font-weight: bold;
+    color: #53c4cd;
+} 
+
+.pendente {
+    font-size: 14px;
+    font-weight: bold;
+    color: #53c4cd;
+}
+
+.descricao {
+    margin-top: 16px;
+    font-size: 16px;
+    color: aliceblue;
+} 
+

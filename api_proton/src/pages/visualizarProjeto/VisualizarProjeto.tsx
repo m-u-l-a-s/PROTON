@@ -1,7 +1,7 @@
 import { useTheme } from "@emotion/react";
 import { Box,  Button,  Grid,  Paper,  TextField,  Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import {ProjectSteps} from "../../shared/components/project_steps/ProjectSteps";
+
 import { BarraProjeto } from "../../shared/components";
 
 export const VisualizarProjeto = () => {
@@ -29,9 +29,7 @@ export const VisualizarProjeto = () => {
                               </Grid>
 
                               <Grid >
-                                   {/* <Box sx={{ bgcolor: "pink", height: "16vh"}} > */}
-                                        <ProjectSteps/>  
-                                   {/* </Box> */}
+                                  
                               </Grid>
 
 
