@@ -1,7 +1,8 @@
 import { useTheme } from "@emotion/react";
 import { Box,  Button,  Grid,  Paper,  TextField,  Typography } from "@mui/material";
-
 import AddIcon from '@mui/icons-material/Add';
+import {ProjectSteps} from "../../shered/components/project_steps/ProjectSteps";
+import { BarraProjeto } from "../../shered/components";
 
 export const VisualizarProjeto = () => {
     const theme = useTheme();
@@ -11,8 +12,9 @@ export const VisualizarProjeto = () => {
           <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" flexDirection="column" sx={{gap:3}}>
 
           <Paper sx={{mt:3, padding:3, borderRadius: 5,  width: '1000px', height: '480px', gap: 3}}>
+               <BarraProjeto>
 
-               <Typography variant="h4" color="primary">Puxar nome do Projeto</Typography>
+               </BarraProjeto>
             
                     <Box  display="flex" alignItems="center"  maxHeight="100vh" flexDirection="column">
 
@@ -26,11 +28,12 @@ export const VisualizarProjeto = () => {
                                    <TextField id="standard-multiline-static" label="Puxar descrição" multiline rows={2} variant="standard" sx={{width:"50vw"}} />
                               </Grid>
 
-                              <Grid item>
-                                   <Box sx={{bgcolor:"pink", height:"16vh"}} >
-                                   <div>puxar infos aqui</div>
-                                   </Box>
+                              <Grid >
+                                   {/* <Box sx={{ bgcolor: "pink", height: "16vh"}} > */}
+                                        <ProjectSteps/>  
+                                   {/* </Box> */}
                               </Grid>
+
 
                               <Grid item>
                                    <Button variant="contained" startIcon={<AddIcon />} sx={{width:"50vw"}}>Adicionar Etapa</Button>
