@@ -26,7 +26,7 @@ export const Home = () => {
 
 
                 <Paper sx={{ padding: 2, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary">Estimativa de Projetos</Typography>
+                    <Typography variant="h5" color="primary">Estimativa dos Processos</Typography>
 
                     <Grid container spacing={2} alignItems="center" marginTop={1}>
 

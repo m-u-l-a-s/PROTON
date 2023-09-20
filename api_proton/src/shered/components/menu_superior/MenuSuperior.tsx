@@ -30,7 +30,7 @@ export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>
                             
                                 <Stack  direction= "row" spacing={3}>
                                     <Button   variant="text" component={Link} to="/Home">Home</Button>
-                                    <Button   variant="text" component={Link} to="/MyProjects">Projetos</Button>
+                                    <Button   variant="text" component={Link} to="/MyProjects">Processos</Button>
                                     <Button   variant="text">Calendário</Button>
                                     <Button   variant="text">Equipe</Button>
                                     <Button   variant="text">Documentos</Button>

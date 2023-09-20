@@ -38,7 +38,7 @@ export const NovoProjeto = () => {
 
             <Paper sx={{ mt: 3, padding: 3, borderRadius: 5, width: '1000px', height: '480px', gap: 3 }}>
 
-                <Typography variant="h4" color="primary">Novo Projeto</Typography>
+                <Typography variant="h4" color="primary">Novo Processo</Typography>
 
 
 
@@ -92,7 +92,7 @@ export const NovoProjeto = () => {
                     <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 4 }}>
 
                         <Button variant="contained" startIcon={<DeleteIcon />} sx={{ background: "#292A2D", color: "white" }}>Descartar</Button>
-                        <Button variant="contained" startIcon={<AddIcon />}>Criar Projeto</Button>
+                        <Button variant="contained" startIcon={<AddIcon />}>Criar Processo</Button>
 
 
                     </Box>

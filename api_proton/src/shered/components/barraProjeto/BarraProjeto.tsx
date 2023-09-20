@@ -15,7 +15,7 @@ export const BarraProjeto: React.FC <{ children: ReactNode }> = ({ children}) =>
                     <Toolbar disableGutters>
 
                          <Grid item width={600} fontFamily={'Poppins, sans-serif'} fontSize={'bold'}>
-                                   Puxar nome do Projeto
+                                   Puxar nome do Processo
                          </Grid>
 
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
