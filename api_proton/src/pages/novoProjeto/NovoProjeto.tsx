@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
-import {ProjectSteps} from "../../shared/components/project_steps/ProjectSteps";
+import {Steps} from "./Steps";
 
 
     
@@ -45,7 +45,7 @@ export const NovoProjeto = () => {
                 <Box display="flex" alignItems="center" maxHeight="100vh" flexDirection="column">
 
 
-                    <Box display="flex" flexDirection="column" sx={{ gap: 3 }} >
+                    <Box display="flex" flexDirection="column" sx={{ gap: 2 }} >
 
 
                         <Grid item>
@@ -60,18 +60,26 @@ export const NovoProjeto = () => {
 
                         </Grid>
 
-                        <Grid >
+                        <Grid  >
 
-                            {/* <Box sx={{ bgcolor: "pink", height: "16vh"}} > */}
-
-
-                                   <ProjectSteps/>  
+                              <Box sx={{ height: "26vh", overflowY: 'auto', gap:1}} > 
 
 
+                                
+                                 
+                                    
+                                   <Steps/>  
+                                   <Steps/>  
+                                   <Steps/>  
+                                   <Steps/>  
+                                   <Steps/>  
+                                    
+                                   
 
 
 
-                            {/* </Box> */}
+
+                              </Box>  
 
 
 
