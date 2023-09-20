@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
-import {ProjectSteps} from "../../shered/components/project_steps/ProjectSteps";
+import {ProjectSteps} from "../../shared/components/project_steps/ProjectSteps";
 
 
     

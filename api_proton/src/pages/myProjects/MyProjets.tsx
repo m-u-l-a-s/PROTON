@@ -1,6 +1,6 @@
 import { Box, Paper, Typography, Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { BarraProjeto } from "../../shered/components";
+import { BarraProjeto } from "../../shared/components";
 import { CardProcesso } from "./CardProcesso";
 export const MyProjects = () => {
     return (

@@ -1,8 +1,8 @@
 import { useTheme } from "@emotion/react";
 import { Box,  Button,  Grid,  Paper,  TextField,  Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import {ProjectSteps} from "../../shered/components/project_steps/ProjectSteps";
-import { BarraProjeto } from "../../shered/components";
+import {ProjectSteps} from "../../shared/components/project_steps/ProjectSteps";
+import { BarraProjeto } from "../../shared/components";
 
 export const VisualizarProjeto = () => {
     const theme = useTheme();

@@ -8,7 +8,7 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 
 
-import GraficoGeral from ".././../shered/charts/GraficoGeral";
+import GraficoGeral from ".././../shared/charts/GraficoGeral";
 
 
 

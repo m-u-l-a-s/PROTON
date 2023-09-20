@@ -1,5 +1,5 @@
 import { Box, Paper, Typography, Button, Grid } from "@mui/material";
-import { BarraProjeto } from "../../shered/components";
+import { BarraProjeto } from "../../shared/components";
 
 export const Anexos = () => {
     return (

@@ -1,10 +1,10 @@
 import {BrowserRouter} from "react-router-dom"
 import { AppRoutes } from "./routes/Routes";
-import { MenuSuperior } from "./shered/components";
+import { MenuSuperior } from "./shared/components";
 
-// import { DarkTheme} from "./shered/themes/Dark";
+// import { DarkTheme} from "./shared/themes/Dark";
 // import { ThemeProvider } from "@emotion/react";
-import { AppThemeProvider } from "./shered/contexts/ThemeContexts";
+import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
 
 
 
