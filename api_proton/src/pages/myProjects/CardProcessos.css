@@ -1,8 +1,21 @@
+.cardProcesso{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+
+
+}
+
+
 .card {
     width: 12rem;
     background-color: lightgray;
     border-radius: 1rem;
     padding: 1rem;
+    margin-bottom: 1rem;
+
 }
 
 h1 {
