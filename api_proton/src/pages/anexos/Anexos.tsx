@@ -1,5 +1,9 @@
-import { Box, Paper, Typography, Button, Grid } from "@mui/material";
+import React from "react";
+import { Box, Paper, Typography, Button, Grid, Card, CardContent } from "@mui/material";
 import { BarraProjeto } from "../../shared/components";
+import { Form, Formik } from 'formik';
+import { MultipleFileUpload } from "./MultipleFileUpload";
+import { array, object, string } from 'yup';
 
 export const Anexos = () => {
     return (
@@ -21,6 +25,41 @@ export const Anexos = () => {
                 }}
             >
                 <BarraProjeto children={undefined}></BarraProjeto>
+
+                <Card>
+                    <CardContent>
+                        <Formik initialValues={{ files: [] }}
+                            validationSchema={object({
+                                files: array(
+                                    object({
+                                        url: string().required()
+                                    })
+                                ),
+                            })}
+                            onSubmit={(values) => {
+                                console.log('values', values);
+                                return new Promise((res) => setTimeout(res, 2000));
+                            }}>
+                            {({ values, errors, isValid, isSubmitting }) => (
+                                <Form>
+                                    <Grid container spacing={2} direction="column">
+                                        <MultipleFileUpload name="files" />
+
+                                        <Grid item>
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                disabled={!isValid || isSubmitting}
+                                                type="submit">
+                                                Anexar arquivos
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Form>
+                            )}
+                        </Formik>
+                    </CardContent>
+                </Card>
             </Paper>
         </Box>
     );
