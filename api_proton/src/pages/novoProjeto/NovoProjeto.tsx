@@ -15,17 +15,15 @@ import {Steps} from "./Steps";
 
 
 
-
-
-
-
-
-
-
-
 export const NovoProjeto = () => {
 
-    const theme = useTheme();
+    let etapa =[
+        {nEtapa:"Etapa 1", status: "Pendente", desc: "descrição bla bla bla"},
+        {nEtapa:"Etapa 2", status: "Concluida", desc: "descrição bla bla bla"},
+        {nEtapa:"Etapa 3", status: "Pendente", desc: "descrição bla bla bla"},
+
+
+    ]
 
 
     return (
@@ -64,22 +62,30 @@ export const NovoProjeto = () => {
 
                         <Grid  >
 
-                              <Box sx={{ height: "26vh", overflowY: 'auto', gap:1}} > 
+                              <Box sx={{ height: "18.9vh", overflowY: 'auto', gap:1}} > 
 
 
                                 
                                  
                                     
-                                   <Steps/>  
-                                   <Steps/>  
-                                   <Steps/>  
-                                   <Steps/>  
-                                   <Steps/>  
+                                   {
+                                    etapa.map((etapa) =>(
+
+                                        <Steps
+                                        nEtapa={etapa.nEtapa}
+                                        status={etapa.status}
+                                        desc={etapa.desc}
+                                        
+                                        />
+                                    ) 
                                     
-                                   
 
 
+                                    )
 
+
+                                   } 
+                                    
 
                               </Box>  
 
@@ -99,7 +105,7 @@ export const NovoProjeto = () => {
 
 
 
-                    <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 4 }}>
+                    <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 3 }}>
 
                         <Button variant="contained" startIcon={<DeleteIcon />} sx={{ background: "#292A2D", color: "white" }}>Descartar</Button>
                         <Button variant="contained" startIcon={<AddIcon />}>Criar Processo</Button>

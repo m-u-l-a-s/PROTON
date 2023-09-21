@@ -2,19 +2,17 @@
 import { Grid } from "@mui/material"
 import "./Steps.css"
 
-export const Steps = () => {
+export const Steps = (prop:any) => {
 
 return(
     
     
     <div className="cardEtapa">
         <div className="top-row">
-            <div className="etapa">Etapa 1</div>
-            <div className="pendente">Pendente</div>
+            <div className="etapa">{prop.nEtapa}</div>
+            <div className="pendente">{prop.status}</div>
         </div>
-        <div className="descricao">
-            Descrição do card
-        </div>
+        <div className="descricao"> {prop.desc}</div>
     </div>
 
     
