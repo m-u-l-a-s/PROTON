@@ -3,6 +3,21 @@ import { Link } from "react-router-dom";
 import { BarraProjeto } from "../../shared/components";
 import { CardProcesso } from "./CardProcesso";
 export const MyProjects = () => {
+
+    let processos = [
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+        {name: "Protótipo figma", anexo: "print.png", resp: "Alicea"},
+        {name: "Tela de anexar documentos", anexo: "fodase.png", resp: "Alita"},
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+        {name: "Cards de processos", anexo: "print_github.png", resp: "Joice"},
+
+    ]
+    
+
     return (
         <Box
             display="flex"
@@ -24,13 +39,21 @@ export const MyProjects = () => {
                     gap: 3,
                     display: "flex",
                     flexWrap: "wrap",
+                    overflow: "scroll",
+                    overflowX: "hidden"
                 }}
             >
-                <CardProcesso></CardProcesso>
-                <CardProcesso></CardProcesso>
-                <CardProcesso></CardProcesso>
-                <CardProcesso></CardProcesso>
-                <CardProcesso></CardProcesso>
+
+
+            {
+                processos.map((processo) => (
+                    <CardProcesso 
+                        name={processo.name}
+                        anexo={processo.anexo}
+                        resp={processo.resp}
+                    />
+                ))
+            }
 
                 <Grid
                     item

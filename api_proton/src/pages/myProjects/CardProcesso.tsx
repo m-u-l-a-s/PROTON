@@ -1,11 +1,11 @@
 import "./CardProcessos.css";
 
-export const CardProcesso = () => {
+export const CardProcesso = (prop: any) => {
     return (
         <div className="card">
-            <h1>Nome do Projeto</h1>
-            <p>Anexos</p>
-            <h2>Responsável</h2>
+            <h1>{prop.name}</h1>
+            <p>{prop.anexo}</p>
+            <h2>{prop.resp}</h2>
         </div>
     );
 };
