@@ -1,6 +1,6 @@
 
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Home, NovoProjeto, MyProjects, VisualizarProjeto, Anexos  } from "../pages";
+import { Home, NovoProjeto, MyProjects, VisualizarProjeto, Anexos, NovaEtapa  } from "../pages";
 
 
 
@@ -20,6 +20,8 @@ export  const AppRoutes = () =>{
             <Route path="/Anexos" element={<Anexos/>}/>
 
             <Route path="*" element={<Navigate to="/home"/>}/>
+
+            <Route path="/NovaEtapa" element={<NovaEtapa/>}  />
 
         </Routes>
 

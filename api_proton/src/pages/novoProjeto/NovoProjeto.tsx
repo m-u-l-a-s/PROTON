@@ -4,6 +4,8 @@ import { Box, Button, Divider, Grid, ListItem, ListItemButton, ListItemText, Pap
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import { Link } from 'react-router-dom';
+
 
 
 import {Steps} from "./Steps";
@@ -87,7 +89,7 @@ export const NovoProjeto = () => {
                         </Grid>
 
                         <Grid item>
-                            <Button variant="contained" startIcon={<AddIcon />} sx={{ width: "50vw" }}>Adicionar Etapa</Button>
+                            <Button component={Link} to="/NovaEtapa" variant="contained" disableElevation startIcon={<AddIcon />} sx={{ width: "50vw" }}>Adicionar Etapa</Button>
 
                         </Grid>
 
