@@ -1,7 +1,7 @@
-import { Box, Paper, Typography, Button, Grid } from "@mui/material";
+import { Box, Paper, Typography, Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { BarraProjeto } from "../../shared/components";
 import { CardProcesso } from "./CardProcesso";
+import "./Style.css"
 export const MyProjects = () => {
 
     let processos = [
@@ -26,93 +26,57 @@ export const MyProjects = () => {
             sx={{ gap: 3 }}
             justifyContent="center"
         >
-
             <Paper
                 sx={{
-                    mt: 3,
-                    padding: 3,
-                    borderRadius: 5,
-                    width: 'fit-content',
-                    height: 'fit-content',
-                    gap: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    flexWrap: "wrap",
-                    maxWidth:'70%',
-                    maxHeight: '50%',
-                    marginTop:'5%'
-                    // overflow: "scroll",
-                    // overflowX: "hidden"
-                    
-
+                mt: 3,
+                padding: 3,
+                borderRadius: 5,
+                width: 'fit-content',
+                height: 'fit-content',
+                gap: 2,
+                display: "flex",
+                flexDirection: "column",
+                maxWidth: '70%',
+                maxHeight: '50%',
+                marginTop: '5%',
                 }}
             >
- 
-                        <Box  display="flex" alignItems="flex-start" maxHeight="100vh" flexDirection="row" sx={{gap: 70}}> 
-                
-                            <Grid item>
-                            
+                <Box display="flex" alignItems="flex-start" maxHeight="100vh" flexDirection="row" sx={{ gap: 70 }}>
                     
-                                    <Typography variant="h4" color="primary">
-                                            Seus Processos
-                                    </Typography>
-                            
-                            </Grid>
-
-
-                            
-
-                            
-                                <Grid item>
-
-                                        <Button
-                                            component={Link}
-                                            to="/NovoProjeto"
-                                            variant="contained"
-                                            disableElevation
-                                            >
-                                            {" "}
-                                            + Criar Processo{" "}
-                                        </Button>
-
-                                </Grid>
-
-                          
-
-                        </Box>
-
-                
+                    <div className="divBox">
                         
+                        <Typography variant="h4" color="primary">
+                        Seus Processos
+                        </Typography>
                         
-
+                        <Button 
+                        component={Link}
+                        to="/NovoProjeto"
+                        variant="contained"
+                        disableElevation
+                        sx={{position: 'absolute', left: '68.9%', marginTop:'-2.6%'}}
+                        >
+                        + Criar Processo
+                        </Button>
                         
-                        <Box sx={{ height: '50vh', overflowY: 'auto', display:"flex"}} >
+                    </div>
+                </Box>
+      
+                <Box sx={{ height: '50vh', overflowY: 'auto', display: "flex", flexDirection: "column" }}>
 
+                    <Grid item display="flex" flexDirection={"row"} flexWrap={"wrap"} gap={3} marginLeft={3}>
+                        {processos.map((processo) => (
+                        <CardProcesso
+                            name={processo.name}
+                            anexo={processo.anexo}
+                            resp={processo.resp}
+                        />
+                        ))}
+                    </Grid>
 
-                       
-                               <Grid item display="flex" flexWrap={"wrap"} gap={3} marginLeft={3}>
+                </Box>
 
-                                {
-                                    processos.map((processo) => (
-                                        <CardProcesso
-                                        name={processo.name}
-                                        anexo={processo.anexo}
-                                        resp={processo.resp}
-                                        />
-                                        ))
-                                    }
-                                    
-                                    
-                                 </Grid>
-                               
-
-                        </Box>
-
-                        
-
-                
-
-            </Paper>
+          </Paper>
         </Box>
-    );
-};
+      );
+}

@@ -1,0 +1,10 @@
+.divBox{
+     display: "inline-block";
+     justify-content: center; /* Alinhar horizontalmente ao centro */
+     align-items: center;
+}
+
+.elemento {
+     display: inline-block;
+     margin: 10px; /* Adicione margens para espaçamento entre os elementos */
+ }
