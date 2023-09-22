@@ -5,26 +5,44 @@
 //"nodemon index" para deixar o servidor rodando
 //note que é necessário rodar outro terminal para rodar a aplicação com npm start e deixar os dois rodando ao mesmo tempo
 
-const express = require('express');
-const cors = require('cors');
-const pool = require("./db")
+const express = require("express");
+const cors = require("cors");
+const pool = require("./db");
 const app = express();
 
 //Middleware
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
 //Rotas
 
 //Select All
-app.get("/get_usuario", async (req,res) => {
-    try {
-        const selectAll = await pool.query("select * from usuario")
-        res.json(selectAll.rows)
-    } catch (error) {
-        console.log(error.message)
-    }
-})
+app.get("/get_usuario", async (req, res) => {
+  try {
+    const selectAll = await pool.query("select * from usuario");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/get_processos", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/get_etapa", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.etapa ORDER BY etapa_id ASC ");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 /*
 //Insert dados (Post)
 app.post("/insert", async (req,res) => {
@@ -48,5 +66,5 @@ app.post("/insert", async (req,res) => {
 })
 */
 app.listen(5000, () => {
-    console.log('deu bão');
-})
+  console.log("deu bão");
+});

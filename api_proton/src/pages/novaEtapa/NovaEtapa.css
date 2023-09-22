@@ -1,9 +1,8 @@
 .span {
-  font: '';
-  
+  font: "";
 }
 
-
 .descricao {
-   color: black;
+  color: black !important;
+  font: 1rem normal black Roboto, Helvetica, sans-serif !important;
 }
