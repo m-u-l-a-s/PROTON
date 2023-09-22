@@ -66,14 +66,14 @@ export const NovaEtapa = () => {
       sx={{ gap: 3 }}
     >
       <Paper sx={{ mt: 3, padding: 3, borderRadius: 5, width: "1000px", height: "480px", gap: 1 }}>
-        <Typography variant="h4" color="primary">
+        <Typography variant="h4" color="primary" borderLeft={'10vw'}>
           Nova Etapa
         </Typography>
 
         <Box display="flex" alignItems="center" maxHeight="110vh" flexDirection="column">
           <Box display="flex" flexDirection="column" sx={{ gap: 1 }}>
             <Grid item>
-              <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "69vw" }} 
+              <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "50vw" }} 
               value={Título}
               onChange={(e: { target: { value: SetStateAction<string> } }) => setTítulo(e.target.value)}
               />
@@ -81,13 +81,13 @@ export const NovaEtapa = () => {
             </Grid>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px", gap: 18 }}>
+              <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px", gap: 5}}>
                 <Grid>
                 <TextField
                   id="standard-multiline-static-criador"
                   label="Criador:"
                   variant="standard"
-                  sx={{ width: "21.3vw", borderBottom: "none", marginRight: "16px" }}   
+                  sx={{ width: "19vw", borderBottom: "none", marginRight: "16px" }}   
                   value={Criador}
                   onChange={(e: { target: { value: SetStateAction<string> } }) => setCriador(e.target.value)}
                 />

@@ -83,7 +83,7 @@ export const MyProjects = () => {
                         
 
                         
-                        <Box sx={{ height: "64vh", overflowY: 'auto', display:"flex"}} >
+                        <Box sx={{ height: "50vh", overflowY: 'auto', display:"flex"}} >
 
 
                        
