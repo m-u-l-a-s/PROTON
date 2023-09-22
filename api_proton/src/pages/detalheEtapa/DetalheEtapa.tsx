@@ -1,9 +1,17 @@
+import { Link } from 'react-router-dom';
+
 import { useTheme } from "@emotion/react";
-import { Box,  Button,  Grid,  Paper,  TextField,  Typography } from "@mui/material";
+import { Box,  Button,  Grid, Paper,  TextField,  Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+
+
 import { BarraEtapa} from "../../shared/components";
 import {CalendarioEtapa} from "./Calendario";
+
+
 import "./Style.css"
+
+
 
 export const DetalheEtapa = () => {
     const theme = useTheme();
@@ -29,7 +37,7 @@ export const DetalheEtapa = () => {
                               </Grid>
 
                               <Grid margin={"15px"}>
-                              <TextField
+                                   <TextField
                                    id="standard-multiline-static-criador"
                                    label="Criador:"
                                    variant="standard"
@@ -53,6 +61,10 @@ export const DetalheEtapa = () => {
                               <div className="div2">
                               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
                                    <TextField id="comentario" label="Deixe um comentário" variant="standard" sx={{width:"24vw"}}  />
+                              </Grid>
+
+                              <Grid item sx={{mt:"18em", marginLeft:"22em"}}>
+                                    <Button   variant="contained" component={Link} to="/visualizarProjeto">Voltar</Button>
                               </Grid>
                               </div>
                          </Box>
