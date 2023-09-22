@@ -49,20 +49,20 @@ export const NovoProjeto = () => {
 
 
                         <Grid item>
-                            <TextField id="nome-projeto" label="Nome:" variant="standard" sx={{ width: "50vw" }} />
+                            <TextField id="nome-projeto" label="Nome:" variant="standard" sx={{ width: "65vw" }} />
 
                         </Grid>
 
                         <Grid item>
 
                             <TextField id="standard-multiline-static" label="Descrição" multiline rows={2}
-                                variant="standard" sx={{ width: "50vw" }} />
+                                variant="standard" sx={{ width: "65vw" }} />
 
                         </Grid>
 
                         <Grid  >
 
-                              <Box sx={{ height: "18.9vh", overflowY: 'auto', gap:1}} > 
+                              <Box sx={{ height: "27vh", overflowY: 'auto', gap:1}} > 
 
 
                                 
@@ -95,7 +95,7 @@ export const NovoProjeto = () => {
                         </Grid>
 
                         <Grid item>
-                            <Button component={Link} to="/NovaEtapa" variant="contained" disableElevation startIcon={<AddIcon />} sx={{ width: "50vw" }}>Adicionar Etapa</Button>
+                            <Button component={Link} to="/NovaEtapa" variant="contained" disableElevation startIcon={<AddIcon />} sx={{ width: "65vw" }}>Adicionar Etapa</Button>
 
                         </Grid>
 
@@ -105,7 +105,7 @@ export const NovoProjeto = () => {
 
 
 
-                    <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 3 }}>
+                    <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 72, marginTop: 3 }}>
 
                         <Button variant="contained" startIcon={<DeleteIcon />} sx={{ background: "#292A2D", color: "white" }}>Descartar</Button>
                         <Button variant="contained" startIcon={<AddIcon />}>Criar Processo</Button>

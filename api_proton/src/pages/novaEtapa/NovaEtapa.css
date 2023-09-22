@@ -4,5 +4,5 @@
 
 .descricao {
   color: black !important;
-  font: 1rem normal black Roboto, Helvetica, sans-serif !important;
+  font: 1rem normal black,!important;
 }

@@ -73,7 +73,7 @@ export const NovaEtapa = () => {
         <Box display="flex" alignItems="center" maxHeight="110vh" flexDirection="column">
           <Box display="flex" flexDirection="column" sx={{ gap: 1 }}>
             <Grid item>
-              <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "50vw" }} 
+              <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "69vw" }} 
               value={Título}
               onChange={(e: { target: { value: SetStateAction<string> } }) => setTítulo(e.target.value)}
               />
@@ -81,13 +81,13 @@ export const NovaEtapa = () => {
             </Grid>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px" }}>
+              <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px", gap: 18 }}>
                 <Grid>
                 <TextField
                   id="standard-multiline-static-criador"
                   label="Criador:"
                   variant="standard"
-                  sx={{ width: "20vw", borderBottom: "none", marginRight: "16px" }}   
+                  sx={{ width: "21.3vw", borderBottom: "none", marginRight: "16px" }}   
                   value={Criador}
                   onChange={(e: { target: { value: SetStateAction<string> } }) => setCriador(e.target.value)}
                 />
@@ -98,7 +98,7 @@ export const NovaEtapa = () => {
                   id="standard-multiline-static-responsavel"
                   label="Responsável:*"
                   variant="standard"
-                  sx={{ width: "20vw", borderBottom: "none", marginRight: "16px" }}
+                  sx={{ width: "21.3vw", borderBottom: "none", marginRight: "16px" }}
                   value={Responsável}
                   onChange={(e: { target: { value: SetStateAction<string> } }) => setResponsável(e.target.value)}
                 />
@@ -109,7 +109,7 @@ export const NovaEtapa = () => {
                   id="standard-multiline-static-responsavel"
                   label="Envolvidos:"
                   variant="standard"
-                  sx={{ width: "20vw", borderBottom: "10px" }} 
+                  sx={{ width: "21.3vw", borderBottom: "10px" }} 
                 value={Envolvidos}
                 onChange={(e: { target: { value: SetStateAction<string> } }) => setEnvolvidos(e.target.value)}
                 />
@@ -122,7 +122,7 @@ export const NovaEtapa = () => {
               </div>
 
               <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
-                <span style={{ marginRight: "10px", fontFamily: "Helvetica" }}>Prazo de conclusão:*</span>
+                <span style={{ marginRight: "10px", fontFamily: "Roboto" }}>Prazo de conclusão:*</span>
                 {/* value={Prazo}
                   onChange={(e: { target: { value: SetStateAction<string> } }) => setPrazo(e.target.value)} */}
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -133,7 +133,7 @@ export const NovaEtapa = () => {
 
 
               <div className="descricao">
-                <p style={{ color: "black" }}>Descrição:</p>
+                <p style={{ color: "black", fontFamily:"Roboto" }}>Descrição:</p>
                 
               </div>
 

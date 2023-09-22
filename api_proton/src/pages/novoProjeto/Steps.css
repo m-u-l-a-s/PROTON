@@ -18,13 +18,15 @@
 }
 
  .etapa {
-    font-size: 18px;
+    font-family: "Poppins";
+    font-size: 16px;
     font-weight: bold;
     color: #53c4cd;
 } 
 
 .pendente {
-    font-size: 14px;
+    font-family: "Poppins";
+    font-size: 13px;
     font-weight: bold;
     color: #53c4cd;
 }

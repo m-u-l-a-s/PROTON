@@ -34,7 +34,7 @@ export const MyProjects = () => {
                     borderRadius: 5,
                     width: "1000px",
                     height: "480px",
-                    gap: 3,
+                    gap: 2,
                     display: "flex",
                     flexDirection: "column",
                     flexWrap: "wrap",
@@ -56,20 +56,26 @@ export const MyProjects = () => {
                             
                             </Grid>
 
-                            <Grid item>
 
                             
-                                    <Button
-                                        component={Link}
-                                        to="/NovoProjeto"
-                                        variant="contained"
-                                        disableElevation
-                                        >
-                                        {" "}
-                                        + Criar Processo{" "}
-                                    </Button>
 
-                            </Grid>
+                            
+                                <Grid item>
+
+                                        <Button
+                                            component={Link}
+                                            to="/NovoProjeto"
+                                            variant="contained"
+                                            disableElevation
+                                            >
+                                            {" "}
+                                            + Criar Processo{" "}
+                                        </Button>
+
+                                </Grid>
+
+                          
+
                         </Box>
 
                 
@@ -77,7 +83,7 @@ export const MyProjects = () => {
                         
 
                         
-                        <Box sx={{ height: "40vh", overflowY: 'auto', display:"flex"}}>
+                        <Box sx={{ height: "64vh", overflowY: 'auto', display:"flex"}} >
 
 
                        

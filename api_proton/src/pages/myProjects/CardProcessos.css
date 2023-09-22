@@ -18,14 +18,17 @@
 
 }
 
-h1 {
+h2 {
+    font-family: "Poppins";
     color: #53c4cd;
 }
 
 p {
+    font-family: "Poppins";
     color: #58595b;
 }
 
-h2 {
+h3 {
+    font-family: "Poppins";
     color: #292a2d;
 }

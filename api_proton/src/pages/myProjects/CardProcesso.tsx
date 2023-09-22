@@ -8,9 +8,9 @@ export const CardProcesso = (prop: any) => {
 
             <div className="cardProcesso">
                 <div className="card">
-                    <h1>{prop.name}</h1>
+                    <h2>{prop.name}</h2>
                     <p>{prop.anexo}</p>
-                    <h2>{prop.resp}</h2>
+                    <h3>{prop.resp}</h3>
                 </div>
             </div>
 
