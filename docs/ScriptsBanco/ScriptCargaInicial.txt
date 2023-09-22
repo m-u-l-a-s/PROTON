@@ -1,0 +1,50 @@
+create table usuario (
+	usuario_id serial not null,
+	usuario_nome varchar(50) not null,
+	usuario_senha varchar(50) not null,
+	usuario_data_cadastro date,
+	usuario_nivel varchar(2),			--'CL' = C-Level, 'LE' = Leader, 'CO' = Colaborador
+	usuario_email varchar(50),
+	primary key (usuario_id)
+);
+
+create table processo(
+	processo_id serial not null,
+	processo_nome varchar(50) not null,
+	processo_responsavel_id int not null,
+	processo_data_inicio date,
+	processo_data_final date,
+	processo_status varchar(1),			--'N' = Não iniciado, 'A' = Em Andamento, 'C' = Concluído
+	primary key (processo_id),
+	foreign key (processo_responsavel_id) references usuario(usuario_id)
+);
+
+create table etapa(
+	etapa_id serial not null unique,
+	processo_id int not null,
+	etapa_nome varchar(50) not null,
+	etapa_responsavel_id int,
+	etapa_ordem numeric(2,0),
+	primary key (etapa_id, processo_id),
+	foreign key (processo_id) references processo(processo_id),
+	foreign key (etapa_responsavel_id) references usuario(usuario_id)
+);
+
+create table etapa_anexo(
+	etapa_anexo_id serial not null,
+	etapa_id int not null,
+	etapa_anexo_documento oid,
+	primary key (etapa_anexo_id),
+	foreign key (etapa_id) references etapa(etapa_id)
+);
+
+insert into usuario values (default,'Alexandre Jonas','fatec', '2023-09-07','CL','alexandre.jonas@fatec.com');
+insert into usuario values (default,'Samuel Henrique','fatec123', '2023-09-08','CO','samuel.henrique@fatec.com');
+
+insert into processo values (default, 'Processo Teste', (select usuario_id from usuario where usuario_nome = 'Alexandre Jonas'), '2023-09-07', NULL, 'N');
+
+insert into etapa values (default, (select processo_id from processo where processo_nome = 'Processo Teste'), 'Etapa Teste 1',
+						  (select usuario_id from usuario where usuario_nome = 'Alexandre Jonas'),1);
+						  
+insert into etapa values (default, (select processo_id from processo where processo_nome = 'Processo Teste'), 'Etapa Teste 2',
+						  (select usuario_id from usuario where usuario_nome = 'Samuel Henrique'),2);
