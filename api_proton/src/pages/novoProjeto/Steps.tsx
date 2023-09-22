@@ -1,13 +1,20 @@
 
-import { Grid } from "@mui/material"
 import "./Steps.css"
+import {useNavigate} from 'react-router-dom'
 
 export const Steps = (prop:any) => {
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+                navigate('/DetalheEtapa');
+            }
+    
 
 return(
     
     
-    <div className="cardEtapa">
+    <div  onClick={handleClick} className="cardEtapa">
         <div className="top-row">
             <div className="etapa">{prop.nEtapa}</div>
             <div className="pendente">{prop.status}</div>
