@@ -17,28 +17,7 @@ import React, { useEffect, useState } from 'react';
 
 export const NovoProjeto = () => {
 
-    const [etapa,setEtapa] = useState([
-        {etapa_nome:"Etapa 1", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
-        {etapa_nome:"Etapa 2", etapa_ordem: "Concluida", desc: "descrição bla bla bla"},
-        {etapa_nome:"Etapa 3", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
-    ])
-
-    const get_etapa = async () => {
-        try {
-            const response = await fetch("http://localhost:5000/get_etapa")
-            const jsonData = await response.json()
-
-            setEtapa(jsonData)
-            console.log(etapa)
-        } catch (error:any) {
-            console.log(error.message)
-        }
-    }
-
-    //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
-    useEffect(() => {
-        get_etapa();
-    }, [])
+   
 
     return (
         // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
@@ -70,45 +49,9 @@ export const NovoProjeto = () => {
 
                         </Grid>
 
-                        <Grid  >
+                       
 
-                              <Box sx={{ height: "27vh", overflowY: 'auto', gap:1}} > 
-
-
-                                
-                                 
-                                    
-                                   {
-                                    etapa.map((etapa) =>(
-
-                                        <Steps
-                                        nEtapa={etapa.etapa_nome}
-                                        status={etapa.etapa_ordem}
-                                        desc={etapa.desc}
-                                        
-                                        />
-                                    ) 
-                                    
-
-
-                                    )
-
-
-                                   } 
-                                    
-
-                              </Box>  
-
-
-
-
-                        </Grid>
-
-                        <Grid item>
-                            <Button component={Link} to="/NovaEtapa" variant="contained" disableElevation startIcon={<AddIcon />} sx={{ width: "65vw" }}>Adicionar Etapa</Button>
-
-                        </Grid>
-
+                        
 
                     </Box>
 
@@ -118,7 +61,7 @@ export const NovoProjeto = () => {
                     <Box display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 72, marginTop: 3 }}>
 
                         <Button variant="contained" startIcon={<DeleteIcon />} sx={{ background: "#292A2D", color: "white" }}>Descartar</Button>
-                        <Button variant="contained" startIcon={<AddIcon />}>Criar Processo</Button>
+                        <Button variant="contained" startIcon={<AddIcon />} component={Link} to="/visualizarProjeto">Criar Processo</Button>
 
 
                     </Box>

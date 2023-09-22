@@ -82,16 +82,7 @@ export const NovaEtapa = () => {
 
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px", gap: 5}}>
-                <Grid>
-                <TextField
-                  id="standard-multiline-static-criador"
-                  label="Criador:"
-                  variant="standard"
-                  sx={{ width: "19vw", borderBottom: "none", marginRight: "16px" }}   
-                  value={Criador}
-                  onChange={(e: { target: { value: SetStateAction<string> } }) => setCriador(e.target.value)}
-                />
-                  </Grid>
+                
 
                 <Grid>
                 <TextField
@@ -104,16 +95,7 @@ export const NovaEtapa = () => {
                 />
                 </Grid>
 
-                <Grid>
-                <TextField
-                  id="standard-multiline-static-responsavel"
-                  label="Envolvidos:"
-                  variant="standard"
-                  sx={{ width: "21.3vw", borderBottom: "10px" }} 
-                value={Envolvidos}
-                onChange={(e: { target: { value: SetStateAction<string> } }) => setEnvolvidos(e.target.value)}
-                />
-                </Grid>
+                
                 
               </div>
 
