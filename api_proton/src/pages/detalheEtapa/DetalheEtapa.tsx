@@ -21,7 +21,7 @@ export const DetalheEtapa = () => {
                          <Box display="inline-block" flexDirection="column" sx={{gap:3}} textAlign={"left"}>
                               <div className="div1">
                               <Grid item margin={"15px"} marginBottom={"30px"}>
-                                   <TextField id="standard-multiline-static" label="Puxar descrição" multiline rows={2} variant="standard" sx={{width:"30vw"}} />
+                                   <TextField id="standard-multiline-static" label="Puxar descrição" multiline rows={2} variant="standard" sx={{width:"27vw"}} />
                               </Grid>
 
                               <Grid margin={"15px"} >
@@ -51,8 +51,8 @@ export const DetalheEtapa = () => {
                               </div>
                                    
                               <div className="div2">
-                              <Grid item margin={"15px"} marginLeft={"170px"} marginTop={"40px"}>
-                                   <TextField id="Deixe um comentário" label="Standard" variant="standard" />
+                              <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"40px"}>
+                                   <TextField id="comentario" label="Deixe um comentário" variant="standard" sx={{width:"24vw"}}  />
                               </Grid>
                               </div>
                          </Box>
