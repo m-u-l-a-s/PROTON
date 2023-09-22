@@ -1,12 +1,10 @@
 
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Home, NovoProjeto, MyProjects, VisualizarProjeto, Anexos, NovaEtapa  } from "../pages";
-
+import { Home, NovoProjeto, MyProjects, VisualizarProjeto, Anexos, NovaEtapa, DetalheEtapa  } from "../pages";
 
 
 export  const AppRoutes = () =>{
-  
-
+    
     return(
         <Routes>
             <Route path="/home" element={<Home/>}  />
@@ -22,6 +20,8 @@ export  const AppRoutes = () =>{
             <Route path="*" element={<Navigate to="/home"/>}/>
 
             <Route path="/NovaEtapa" element={<NovaEtapa/>}  />
+            
+            <Route path="/DetalheEtapa" element={<DetalheEtapa/>}/>
 
         </Routes>
 

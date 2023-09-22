@@ -1,0 +1,6 @@
+.div1, .div2 {
+     width: 50%; /* Define a largura desejada para cada div */
+     display: inline-block; /* Define as divs como elementos inline-block */
+     box-sizing: border-box; /* Inclui padding e borda na largura total */
+     vertical-align: top; /* Alinha as divs verticalmente ao topo */
+   }
