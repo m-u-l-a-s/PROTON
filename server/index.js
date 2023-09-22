@@ -43,28 +43,34 @@ app.get("/get_etapa", async (req, res) => {
     console.log(error.message);
   }
 });
-/*
+
 //Insert dados (Post)
-app.post("/insert", async (req,res) => {
+app.post("/insert_etapa", async (req,res) => {
     try {
-        //console.log(req.body)
+        console.log(req.body)
 
-        const {usuario_nome } = req.body
-        const {usuario_senha } = req.body
-        //console.log(usuario_nome)
-        //console.log(usuario_senha)
+        const {processo_id } = req.body
+        const {etapa_nome } = req.body
+        const {etapa_responsavel_id } = req.body
+        const {etapa_ordem } = req.body
 
-        const newUsah = await pool.query(
-            "insert into usuario values (default,$1, $2, '2023-09-13','CL','future_gadget@gmail.com') returning *", [usuario_nome, usuario_senha]
+        console.log(processo_id)
+        console.log(etapa_nome)
+        console.log(etapa_responsavel_id)
+        console.log(etapa_ordem)
+
+        const novaEtapa = await pool.query(
+
+          "insert into etapa values (default,$1, $2, $3,$4) returning *", [processo_id, etapa_nome,etapa_responsavel_id ,etapa_ordem]
         )
 
-        res.json(newUsah.rows[0])
+        res.json(novaEtapa.rows[0])
 
     } catch (error) {
         console.log(error.message)
     }
 })
-*/
+
 app.listen(5000, () => {
-  console.log("deu bão");
+  console.log("Servidor Funcionando");
 });
