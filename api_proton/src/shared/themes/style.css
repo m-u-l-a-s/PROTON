@@ -1,7 +1,6 @@
-.corTexto{
-    font-family: 'Poppins, sans-serif';
-    color: #53C4CD;
-    font-weight: bold;
-    background-color: black;
-    
+.corTexto {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #53c4cd;
+  font-weight: bold;
+  background-color: black;
 }
