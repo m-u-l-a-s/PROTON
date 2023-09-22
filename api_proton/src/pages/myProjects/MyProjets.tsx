@@ -32,12 +32,15 @@ export const MyProjects = () => {
                     mt: 3,
                     padding: 3,
                     borderRadius: 5,
-                    width: "1000px",
-                    height: "480px",
+                    width: 'fit-content',
+                    height: 'fit-content',
                     gap: 2,
                     display: "flex",
                     flexDirection: "column",
                     flexWrap: "wrap",
+                    maxWidth:'70%',
+                    maxHeight: '50%',
+                    marginTop:'5%'
                     // overflow: "scroll",
                     // overflowX: "hidden"
                     
@@ -83,11 +86,11 @@ export const MyProjects = () => {
                         
 
                         
-                        <Box sx={{ height: "50vh", overflowY: 'auto', display:"flex"}} >
+                        <Box sx={{ height: '50vh', overflowY: 'auto', display:"flex"}} >
 
 
                        
-                               <Grid item display="flex" flexWrap={"wrap"} gap={3}>
+                               <Grid item display="flex" flexWrap={"wrap"} gap={3} marginLeft={3}>
 
                                 {
                                     processos.map((processo) => (
