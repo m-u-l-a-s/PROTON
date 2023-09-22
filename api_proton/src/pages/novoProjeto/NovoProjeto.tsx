@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 import {Steps} from "./Steps";
-
+import React, { useEffect, useState } from 'react';
 
     
 
@@ -17,20 +17,30 @@ import {Steps} from "./Steps";
 
 export const NovoProjeto = () => {
 
-    let etapa =[
-        {nEtapa:"Etapa 1", status: "Pendente", desc: "descrição bla bla bla"},
-        {nEtapa:"Etapa 2", status: "Concluida", desc: "descrição bla bla bla"},
-        {nEtapa:"Etapa 3", status: "Pendente", desc: "descrição bla bla bla"},
+    const [etapa,setEtapa] = useState([
+        {etapa_nome:"Etapa 1", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
+        {etapa_nome:"Etapa 2", etapa_ordem: "Concluida", desc: "descrição bla bla bla"},
+        {etapa_nome:"Etapa 3", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
+    ])
 
+    const get_etapa = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/get_etapa")
+            const jsonData = await response.json()
 
-    ]
+            setEtapa(jsonData)
+            console.log(etapa)
+        } catch (error:any) {
+            console.log(error.message)
+        }
+    }
 
+    //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
+    useEffect(() => {
+        get_etapa();
+    }, [])
 
     return (
-
-
-
-
         // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
 
         <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
@@ -72,8 +82,8 @@ export const NovoProjeto = () => {
                                     etapa.map((etapa) =>(
 
                                         <Steps
-                                        nEtapa={etapa.nEtapa}
-                                        status={etapa.status}
+                                        nEtapa={etapa.etapa_nome}
+                                        status={etapa.etapa_ordem}
                                         desc={etapa.desc}
                                         
                                         />
