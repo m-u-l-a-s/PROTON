@@ -53,24 +53,14 @@ export const DetalheEtapa = () => {
                               </Grid>
 
                               <Grid margin={"15px"}>
-                                   <TextField
-                                   id="standard-multiline-static-criador"
-                                   label="Criador:"
-                                   variant="standard"
-                                   sx={{ width: "20vw", borderBottom: "none", marginRight: "16px" }}
-                                   />
+                                   
                                    <TextField
                                    id="standard-multiline-static-responsavel"
                                    label="Responsável:*"
                                    variant="standard"
                                    sx={{ width: "20vw", borderBottom: "none", marginRight: "16px" }}
                                    />
-                                   <TextField
-                                   id="standard-multiline-static-responsavel"
-                                   label="Envolvidos:"
-                                   variant="standard"
-                                   sx={{ width: "20vw", borderBottom: "none" }}
-                                   />
+                                   
                               </Grid>
                               </div>
                                    
