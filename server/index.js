@@ -73,6 +73,32 @@ app.post("/insert_etapa", async (req,res) => {
     }
 })
 
+//Criar processos
+
+app.post("/insert_processo", async (req,res) => {
+  try {
+      console.log(req.body)
+
+      const {processo_nome} = req.body;
+      const {processo_responsavel_id} = req.body;
+      const {processo_descricao} = req.body;
+
+      console.log(processo_nome)
+      console.log(processo_responsavel_id)
+      console.log(processo_descricao)
+
+      const novaEtapa = await pool.query(
+
+        "insert into processo values (default,$1, $2, $3) returning *", [processo_nome, processo_responsavel_id,processo_descricao]
+      )
+
+      res.json(novaEtapa.rows[0])
+
+  } catch (error) {
+      console.log(error.message)
+  }
+});
+
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
