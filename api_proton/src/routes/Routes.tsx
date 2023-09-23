@@ -1,6 +1,8 @@
 
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Home, NovoProjeto, MyProjects, VisualizarProjeto, Anexos, NovaEtapa, DetalheEtapa  } from "../pages";
+import { Home, NovoProjeto, MyProjects, Anexos, NovaEtapa, DetalheEtapa,  } from "../pages";
+import VisualizarProjeto from "../pages/visualizarProjeto/VisualizarProjeto";
+
 
 
 export  const AppRoutes = () =>{
