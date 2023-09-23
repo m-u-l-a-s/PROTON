@@ -99,6 +99,19 @@ app.post("/insert_processo", async (req,res) => {
   }
 });
 
+//selecionar etapa pelo id
+
+app.get("/get_etapa/:id", async(req,res)=>{
+  try {
+    const {id}= req.params;
+    const etapa = await pool.query("select * from etapa where etapa_id=$1",[id])
+    
+    res.json(etapa.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+})
+
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
