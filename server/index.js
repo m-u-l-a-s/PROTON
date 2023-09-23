@@ -112,6 +112,19 @@ app.get("/get_etapa/:id", async(req,res)=>{
   }
 })
 
+//puxar nome e descrição do processo pelo id do mesmo
+
+app.get("/get_processo/:id", async(req,res)=>{
+  try {
+    const {id}= req.params;
+    const etapa = await pool.query("select processo_nome,processo_descricao from processo where processo_id=$1",[id])
+    
+    res.json(etapa.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+})
+
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
