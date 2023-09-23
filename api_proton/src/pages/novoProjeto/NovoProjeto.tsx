@@ -4,9 +4,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import React, { SetStateAction, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const NovoProjeto = () => {
 
+    const navigate = useNavigate();
     const [processo_responsavel_id, setProcesso_responsavel_id] = useState(1)
     const [processo_nome, setProcesso_nome] = useState('')
     const [processo_descricao, setProcesso_descricao] = useState('')
@@ -16,16 +18,17 @@ export const NovoProjeto = () => {
         try {
 
             const body = {processo_responsavel_id, processo_nome, processo_descricao }
-            console.log(body)
-
             const response = await fetch("http://localhost:5000/insert_processo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
 
-            console.log(response)
-
+            if (response.status === 200)
+            {
+                navigate("/MyProjects");
+            }
+            
         } catch (error: any) {
             console.error(error.message)
         }
@@ -93,7 +96,7 @@ export const NovoProjeto = () => {
                             </Grid>
 
                             <Grid item >
-                                <Button variant="contained" startIcon={<AddIcon />} component={Link} to="/visualizarProjeto" onClick={inserirProcesso}>Criar Processo</Button>
+                                <Button variant="contained" startIcon={<AddIcon />} onClick={inserirProcesso}>Criar Processo</Button>
                             </Grid>
                         </Box>
                     </Box>
