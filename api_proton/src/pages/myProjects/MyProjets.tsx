@@ -1,7 +1,6 @@
 import { Box, Paper, Typography, Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CardProcesso } from "./CardProcesso";
-import "./Style.css"
 export const MyProjects = () => {
 
     let processos = [
