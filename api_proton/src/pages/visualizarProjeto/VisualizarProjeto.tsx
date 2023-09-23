@@ -11,15 +11,17 @@ export const VisualizarProjeto = () => {
      const location = useLocation();
 
      const [etapa,setEtapa] = useState([
-          {etapa_nome:"Etapa 1", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
-          {etapa_nome:"Etapa 2", etapa_ordem: "Concluida", desc: "descrição bla bla bla"},
-          {etapa_nome:"Etapa 3", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
+          {etapa_id: 1, etapa_nome:"Etapa 1", etapa_ordem: "Pendente", etapa_descricao: "descrição bla bla bla"},
+          {etapa_id: 2, etapa_nome:"Etapa 2", etapa_ordem: "Concluida", etapa_descricao: "descrição bla bla bla"},
+          {etapa_id: 3, etapa_nome:"Etapa 3", etapa_ordem: "Pendente", etapa_descricao: "descrição bla bla bla"},
       ])
+
+      const [etapa_id, setEtapa_id] = useState(999)
   
       const get_etapa = async () => {
 
           //Puxando ID da tela anterior
-          console.log(location.state.id)
+          //console.log(location.state.id)
           try {
               const response = await fetch("http://localhost:5000/get_etapa")
               const jsonData = await response.json()
@@ -59,36 +61,21 @@ export const VisualizarProjeto = () => {
                               </Grid>
 
                               <Grid >
-
                                    <Box sx={{ height: "27vh", overflowY: 'auto', gap: 1 }} >
-
-
-
-
-
                                         {
                                              etapa.map((etapa) => (
 
                                                   <Steps
                                                        nEtapa={etapa.etapa_nome}
                                                        status={etapa.etapa_ordem}
-                                                       desc={location.state.name}
-
+                                                       desc={etapa.etapa_descricao}
+                                                       etapa_id = {etapa.etapa_id}
                                                   />
                                              )
-
-
-
                                              )
-
-
                                         }
-
-
                                    </Box>
-
                               </Grid>
-
 
                               <Grid item>
                                    <Button variant="contained" startIcon={<AddIcon />} sx={{ width: "50vw" }}>Adicionar Etapa</Button>

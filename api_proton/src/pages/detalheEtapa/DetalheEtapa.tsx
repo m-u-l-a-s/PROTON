@@ -1,20 +1,36 @@
 import { Link } from 'react-router-dom';
-
 import { useTheme } from "@emotion/react";
 import { Box,  Button,  Grid, Paper,  TextField,  Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-
-
 import { BarraEtapa} from "../../shared/components";
 import {CalendarioEtapa} from "./Calendario";
-
-
 import "./Style.css"
-
-
+import {useLocation} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 export const DetalheEtapa = () => {
     const theme = useTheme();
+    const location = useLocation();
+
+    const get_etapa_by_id = async () => {
+
+     //Puxando ID da tela anterior
+     console.log(location.state.id)
+     try {
+         //const response = await fetch("http://localhost:5000/get_etapa")
+         //const jsonData = await response.json()
+
+         //setEtapa(jsonData)
+         //console.log(etapa)
+     } catch (error:any) {
+         console.log(error.message)
+     }
+ }
+
+    //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
+    useEffect(() => {
+     get_etapa_by_id();
+ }, [])
 
     return (
           <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" flexDirection="column" sx={{gap:3}}>
