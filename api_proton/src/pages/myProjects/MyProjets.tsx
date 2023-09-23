@@ -17,24 +17,22 @@ export const MyProjects = () => {
     //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
     //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
     //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-
     // ]
 
         const [processos,setProcesso] = useState([
-            {processo_nome:"Etapa 1", processo_descrição: "Pendente", processo_responsavel_id: "descrição bla bla bla"},
-            {processo_nome:"Etapa 2", processo_descrição: "Concluida", processo_responsavel_id: "descrição bla bla bla"},
-            {processo_nome:"Etapa 3", processo_descrição: "Pendente", processo_responsavel_id: "descrição bla bla bla"},
+            {processo_id: 1 ,processo_nome:"Etapa 1", processo_descricao: "Pendente", processo_responsavel_id: 1},
+            {processo_id: 2, processo_nome:"Etapa 2", processo_descricao: "Concluida", processo_responsavel_id: 1},
+            {processo_id: 3, processo_nome:"Etapa 3", processo_descricao: "Pendente", processo_responsavel_id: 1},
         ])
     
         const get_processos = async () => {
-
-           
             try {
                 const response = await fetch("http://localhost:5000/get_processos")
                 const jsonData = await response.json()
-    
+                
+                //console.log(jsonData)
                 setProcesso(jsonData)
-                console.log(processos)
+                //console.log(processos)
             } catch (error:any) {
                 console.log(error.message)
             }
@@ -95,6 +93,7 @@ export const MyProjects = () => {
                     <Grid item display="flex" flexDirection={"row"} flexWrap={"wrap"} gap={3} marginLeft={3}>
                         {processos.map((processos) => (
                         <CardProcesso
+                            processoID = {processos.processo_id}
                             name={processos.processo_nome}
                             // anexo={processo.anexo}
                             resp={processos.processo_responsavel_id}
