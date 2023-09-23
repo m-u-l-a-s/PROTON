@@ -27,48 +27,41 @@ import VoltarButton from './voltarButton'
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { left } from "@popperjs/core";
 
-
-
-
-
-
-
-
 export const NovaEtapa = () => {
   const theme = useTheme();
 
   const clicou = () => {
-    console.log(Título);
+    console.log(etapa_nome);
   };
 
-  const [Título, setTítulo] = useState("");
+  const InserirEtapa =async (e:any) => {
+    e.preventDefault()
+    try {
 
-  
+      const body = {processo_id, etapa_nome, etapa_responsavel_id, etapa_data_conclusão, etapa_descricao}
+      console.log(body)
+      const response = await fetch("http://localhost:5000/insert_etapa", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            });
+            console.log(response)
+    } catch (error:any) {
+      console.log(error.message)
+    }
+  }
 
-  const [Criador, setCriador] = useState("");
-
-
-  const [Responsável, setResponsável] = useState("");
-
-  
-
-  const [Envolvidos, setEnvolvidos] = useState("");
-
-
-  
-
-  const [Prazo, setPrazo] = useState("");
-
-  
-
-  const [Descricao, setDescricao] = useState("");
-
-  
-
+  //Não haverá mais Criador e Envolvidos
+  //ID Mockado!!!!
+  const [processo_id,setProcessoId] = useState(2)
+  const [etapa_nome, setetapa_nome] = useState("");
+  //const [Criador, setCriador] = useState("");
+  const [etapa_responsavel_id, setetapa_responsavel_id] = useState("");
+  const [etapa_data_conclusão, setetapa_data_conclusão] = useState(new Date());
+  const [etapa_descricao, setetapa_descricao] = useState("");
 
   return (
     // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
-
     <Box
       display="flex"
       alignItems="center"
@@ -90,8 +83,8 @@ export const NovaEtapa = () => {
           <Box display="flex" flexDirection="column" sx={{ gap: 1 }}>
             <Grid item>
               <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "50vw" }} 
-              value={Título}
-              onChange={(e: { target: { value: SetStateAction<string> } }) => setTítulo(e.target.value)}
+              value={etapa_nome}
+              onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_nome(e.target.value)}
               />
               
             </Grid>
@@ -106,38 +99,29 @@ export const NovaEtapa = () => {
                   label="Responsável:*"
                   variant="standard"
                   sx={{ width: "21.3vw" }}
-                  value={Responsável}
-                  onChange={(e: { target: { value: SetStateAction<string> } }) => setResponsável(e.target.value)}
+                  value={etapa_responsavel_id}
+                  onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_responsavel_id(e.target.value)}
                 />
                 </Grid>
-
-                
-                
               </div>
-
-              
-                
               </div>
 
               <div style={{ display: "flex", alignItems: "center"}}>
-                <span style={{fontFamily: "Roboto", marginRight:"10px", }}>Prazo de conclusão: </span>
+                <span style={{fontFamily: "Roboto", marginRight:"10px", }}>Prazo de Conclusão: </span>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker />
-                </LocalizationProvider>
-                
+                  <DatePicker onChange={(date:any) => setetapa_data_conclusão(date)}/>
+                </LocalizationProvider> 
               </div>
-
 
               <div className="descricao">
                 <p style={{ color: "black", fontFamily:"Roboto", marginBottom: "10px" }}>Descrição:</p>
-                
               </div>
 
               <div style={{ display: "flex", flexDirection: "row", borderColor: "white",marginLeft: "-10px", fontFamily:"Roboto", marginBottom:"10px" }}>
                 <Grid>
                 <TextField id="standard-multiline-static-responsavel" label="" sx={{ width: "50vw" }}
-                value={Descricao}
-                onChange={(e: { target: { value: SetStateAction<string> } }) => setDescricao(e.target.value)}
+                value={etapa_descricao}
+                onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_descricao(e.target.value)}
                 />
                 </Grid>
               </div>
@@ -148,7 +132,7 @@ export const NovaEtapa = () => {
                 <Button variant="contained" startIcon={<DeleteIcon />} sx={{ background: "#292A2D", color: "white" }}>
                   Descartar
                 </Button>
-                <Button variant="contained" startIcon={<AddIcon />} onClick={clicou}>
+                <Button variant="contained" startIcon={<AddIcon />} onClick={InserirEtapa}>
                   Criar Etapa
                 </Button>
               </Box>
