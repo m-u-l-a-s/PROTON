@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import {useLocation} from 'react-router-dom';
 
 export const VisualizarProjeto = () => {
-     const theme = useTheme();
+    
      const location = useLocation();
 
      const [etapa,setEtapa] = useState([

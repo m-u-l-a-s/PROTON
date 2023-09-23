@@ -1,20 +1,49 @@
 import { Box, Paper, Typography, Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CardProcesso } from "./CardProcesso";
+import { useEffect, useState } from 'react';
+import {useLocation} from 'react-router-dom';
+
 export const MyProjects = () => {
+  
 
-    let processos = [
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-        { name: "Protótipo figma", anexo: "print.png", resp: "Alicea" },
-        { name: "Tela de anexar documentos", anexo: "fodase.png", resp: "Alita" },
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
-        { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    // let processos = [
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    //     { name: "Protótipo figma", anexo: "print.png", resp: "Alicea" },
+    //     { name: "Tela de anexar documentos", anexo: "fodase.png", resp: "Alita" },
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
+    //     { name: "Cards de processos", anexo: "print_github.png", resp: "Joice" },
 
-    ]
+    // ]
+
+        const [processos,setProcesso] = useState([
+            {processo_nome:"Etapa 1", processo_descrição: "Pendente", processo_responsavel_id: "descrição bla bla bla"},
+            {processo_nome:"Etapa 2", processo_descrição: "Concluida", processo_responsavel_id: "descrição bla bla bla"},
+            {processo_nome:"Etapa 3", processo_descrição: "Pendente", processo_responsavel_id: "descrição bla bla bla"},
+        ])
+    
+        const get_processos = async () => {
+
+           
+            try {
+                const response = await fetch("http://localhost:5000/get_processos")
+                const jsonData = await response.json()
+    
+                setProcesso(jsonData)
+                console.log(processos)
+            } catch (error:any) {
+                console.log(error.message)
+            }
+        }
+    
+        //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
+        useEffect(() => {
+            get_processos();
+        }, [])
 
 
     return (
@@ -64,11 +93,11 @@ export const MyProjects = () => {
                 <Box sx={{ height: '50vh', overflowY: 'auto', display: "flex", flexDirection: "column" }}>
 
                     <Grid item display="flex" flexDirection={"row"} flexWrap={"wrap"} gap={3} marginLeft={3}>
-                        {processos.map((processo) => (
+                        {processos.map((processos) => (
                         <CardProcesso
-                            name={processo.name}
-                            anexo={processo.anexo}
-                            resp={processo.resp}
+                            name={processos.processo_nome}
+                            // anexo={processo.anexo}
+                            resp={processos.processo_responsavel_id}
                         />
                         ))}
                     </Grid>
