@@ -1,18 +1,16 @@
-
 import "./CardProcessos.css";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
-export const CardProcesso = (prop: any) => {
-    
+export const CardProcesso = (prop: any, ) => {
+
+    let  AuxID:number = 2
     const navigate = useNavigate();
 
     const handleClick = () => {
-                navigate('/visualizarProjeto');
+                navigate("/visualizarProjeto", {state:{id:AuxID}});  
             }
     
     return (
-        
-        
 
             <div onClick={handleClick} className="cardProcesso">
                 <div className="card">
@@ -21,7 +19,5 @@ export const CardProcesso = (prop: any) => {
                     <h3>{prop.resp}</h3>
                 </div>
             </div>
-
-    )
-        
+    )     
 };

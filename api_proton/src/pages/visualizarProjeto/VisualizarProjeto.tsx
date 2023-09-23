@@ -1,17 +1,14 @@
 import { useTheme } from "@emotion/react";
 import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-
 import { BarraProjeto } from "../../shared/components";
 import {Steps} from "../novoProjeto/Steps";
-
-
 import React, { useEffect, useState } from 'react';
-
+import {useLocation} from 'react-router-dom';
 
 export const VisualizarProjeto = () => {
      const theme = useTheme();
-
+     const location = useLocation();
 
      const [etapa,setEtapa] = useState([
           {etapa_nome:"Etapa 1", etapa_ordem: "Pendente", desc: "descrição bla bla bla"},
@@ -20,6 +17,9 @@ export const VisualizarProjeto = () => {
       ])
   
       const get_etapa = async () => {
+
+          //Puxando ID da tela anterior
+          console.log(location.state.id)
           try {
               const response = await fetch("http://localhost:5000/get_etapa")
               const jsonData = await response.json()
@@ -36,7 +36,6 @@ export const VisualizarProjeto = () => {
           get_etapa();
       }, [])
   
-
 
      return (
 
@@ -73,7 +72,7 @@ export const VisualizarProjeto = () => {
                                                   <Steps
                                                        nEtapa={etapa.etapa_nome}
                                                        status={etapa.etapa_ordem}
-                                                       desc={etapa.desc}
+                                                       desc={location.state.name}
 
                                                   />
                                              )
