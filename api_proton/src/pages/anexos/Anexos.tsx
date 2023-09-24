@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { Box, Paper, Typography, Grid, Card, CardContent } from "@mui/material";
+import { Box, Paper, Typography, Grid, Card, CardContent, IconButton } from "@mui/material";
 import { BarraProjeto } from "../../shared/components";
 import { Formik, Form } from 'formik';
 import { MultipleFileUpload } from "./MultipleFileUpload";
 import { UploadableFile } from "./SingleFileUploadWithProgress";
 import * as Yup from 'yup';
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import { useNavigate } from "react-router-dom";
 
 export const Anexos = () => {
     const initialValues: { files: UploadableFile[] } = { files: [] };
     const [buttonClicked, setButtonClicked] = useState(false);
 
-    const handleUploadButtonClick = () => {
-        setButtonClicked(true);
+    const navigate = useNavigate();
+
+    const handleNavigateToProcesso = () => {
+        navigate("/DetalheEtapa");
     };
 
     return (
@@ -32,6 +36,15 @@ export const Anexos = () => {
                     gap: 3,
                 }}
             >
+                <Grid item sx={{ mt: "8em", marginLeft: "1em" }}>
+                    <IconButton
+                        className="meuBotao"
+                        onClick={handleNavigateToProcesso}
+                    >
+                        <ArrowBackRoundedIcon />
+                    </IconButton>
+                </Grid>
+
                 <BarraProjeto children={undefined}></BarraProjeto>
 
                 <Card>

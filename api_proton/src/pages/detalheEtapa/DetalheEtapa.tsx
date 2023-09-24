@@ -37,7 +37,7 @@ export const DetalheEtapa = () => {
         etapa_data_conclusão: new Date(),
         etapa_descricao: "descrição mocada",
         etapa_status: "N",
-        etapa_comentario: "comentário mocado",
+        etapa_comentario: "",
     });
 
     //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
@@ -85,10 +85,20 @@ export const DetalheEtapa = () => {
                     height: "480px",
                     gap: 3,
                 }}>
-                    <BarraEtapa etapa_nome = {etapa.etapa_nome}/>
+
+                <Grid item sx={{ mt: "8em", marginLeft: "1em" }}>
+                    <IconButton
+                        className="meuBotao"
+                        onClick={handleNavigateToProcesso}
+                    >
+                        <ArrowBackRoundedIcon />
+                    </IconButton>
+                </Grid>
+
+                <BarraEtapa etapa_nome={etapa.etapa_nome} />
 
 
-                    {/*</BarraEtapa>*/}
+                {/*</BarraEtapa>*/}
 
                 <Box
                     display="inline-block"
@@ -136,14 +146,6 @@ export const DetalheEtapa = () => {
                                 />
                             </Grid>
 
-                            <Grid item sx={{ mt: "8em", marginLeft: "1em" }}>
-                                <IconButton
-                                    className="meuBotao"
-                                    onClick={handleNavigateToProcesso}
-                                >
-                                    <ArrowBackRoundedIcon />
-                                </IconButton>
-                            </Grid>
                         </div>
 
                         <div className="div2">
