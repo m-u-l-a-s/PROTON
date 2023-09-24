@@ -13,16 +13,34 @@ export const DetalheEtapa = () => {
     const theme = useTheme();
     const location = useLocation();
 
+
+   const [etapa, setEtapa] = useState(
+          {
+              etapa_id: 1,
+              processo_id: 1,
+              etapa_nome: "Etapa 1",
+              etapa_responsavel_id: 1,
+              etapa_ordem: 1,
+              etapa_data_conclusão: new Date(),
+              etapa_descricao: "Joselito",
+              etapa_status: "N",
+              etapa_comentario: "joselito"
+          });
+
+
     const get_etapa_by_id = async () => {
 
      //Puxando ID da tela anterior
-     console.log(location.state.id)
+     // console.log(location.state.id)
+     const n = location.state.id
+     const idPag:string = n.toString()
+      console.log(idPag)
      try {
-         //const response = await fetch("http://localhost:5000/get_etapa")
-         //const jsonData = await response.json()
-
-         //setEtapa(jsonData)
-         //console.log(etapa)
+          const response = await fetch("http://localhost:5000/get_etapa/" + idPag)
+          const jsonData = await response.json()
+          console.log(jsonData)
+          setEtapa(jsonData)
+          console.log(etapa)
      } catch (error:any) {
          console.log(error.message)
      }
@@ -46,7 +64,7 @@ export const DetalheEtapa = () => {
                          <Box display="inline-block" flexDirection="column" sx={{gap:3}} textAlign={"left"}>
                               <div className="div1">
                               <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"30px"}>
-                                   <TextField id="descrição" label="Descrição" variant="standard" sx={{width:"24vw"}}  />
+                                   <TextField id="descrição" label="Descrição" variant="standard" sx={{width:"24vw"}} value={etapa.etapa_descricao}  />
                               </Grid>
 
                               <Grid margin={"15px"} >
@@ -59,6 +77,7 @@ export const DetalheEtapa = () => {
                                    id="standard-multiline-static-responsavel"
                                    label="Responsável:*"
                                    variant="standard"
+                                   value={etapa.etapa_responsavel_id}
                                    sx={{ width: "20vw", borderBottom: "none", marginRight: "16px" }}
                                    />
                                    
@@ -73,8 +92,15 @@ export const DetalheEtapa = () => {
                               </div>
                                    
                               <div className="div2">
+                              
+
+                                   
                               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                                   <TextField id="comentario" label="Deixe um comentário" variant="standard" sx={{width:"24vw"}}  />
+                                   <TextField
+                                    id="comentario"
+                                    label="Deixe um comentário"
+                                    variant="standard" sx={{width:"24vw"}}
+                                    value={etapa.etapa_comentario}/>
                               </Grid>
                               </div>
                          </Box>
