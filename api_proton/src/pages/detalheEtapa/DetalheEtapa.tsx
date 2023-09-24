@@ -25,6 +25,8 @@ export const DetalheEtapa = () => {
         navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
     };
 
+   
+
     const theme = useTheme();
     const location = useLocation();
 
@@ -86,7 +88,7 @@ export const DetalheEtapa = () => {
                     gap: 3,
                 }}>
 
-                <Grid item sx={{ mt: "8em", marginLeft: "1em" }}>
+                <Grid item sx={{ mt: "1em", marginLeft: "1em" }}>
                     <IconButton
                         className="meuBotao"
                         onClick={handleNavigateToProcesso}

@@ -43,7 +43,7 @@ const VisualizarProjeto = () => {
     }, [location.state.id]);
 
     const handleNavigateToNovaEtapa = () => {
-        navigate("/NovaEtapa", {state:{id:location.state.id}});
+        navigate("/NovaEtapa", { state: { id: location.state.id } });
     };
 
     return (
@@ -53,15 +53,19 @@ const VisualizarProjeto = () => {
             justifyContent="center"
             maxHeight="100vh"
             flexDirection="column"
+            sx={{ gap: 3,}}
         >
+
+            
+
             <Paper
                 sx={{
-                    mt: 3,
-                    padding: 7,
+                    mt: "-3em",
+                    padding: 3,
                     borderRadius: 5,
                     width: "fit-content",
                     height: "fit-content",
-                    gap: 2,
+                    // gap: ,
                     display: "flex",
                     flexDirection: "column",
                     maxWidth: "70%",
@@ -70,14 +74,8 @@ const VisualizarProjeto = () => {
                 }}
             >
 
-                <Grid item sx={{ mt: "-1em", marginLeft: "-0.75em" }}>
-                    <IconButton component={Link} to="/MyProjects">
-                        <ArrowBackRoundedIcon />
-                    </IconButton>
-                </Grid>
-
-                <BarraProjeto/>
-
+                    <BarraProjeto etapa_nome={processo.processo_nome}  />
+               
                 <Box
                     display="flex"
                     alignItems="center"
@@ -94,7 +92,7 @@ const VisualizarProjeto = () => {
                                 id="nome-projeto"
                                 label="Nome do Projeto"
                                 variant="standard"
-                                sx={{ width: "50vw", marginTop:"5%"}}
+                                sx={{ width: "50vw", marginTop: "5%" }}
                                 value={processo.processo_nome}
                             />
                         </Grid>

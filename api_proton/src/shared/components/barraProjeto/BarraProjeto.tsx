@@ -12,7 +12,7 @@ export const BarraProjeto = (prop:any) => {
                <Container maxWidth="xl">
                     <Toolbar disableGutters>
                          <Grid item width={600} fontFamily={'Poppins, sans-serif'} fontSize={'bold'}>
-                                   Puxar nome do Processo
+                         {prop.processo_nome}
                          </Grid>
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
                               <Stack direction="row" spacing={3}>

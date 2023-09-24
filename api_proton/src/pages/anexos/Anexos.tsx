@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Paper, Typography, Grid, Card, CardContent, IconButton } from "@mui/material";
-import { BarraProjeto } from "../../shared/components";
+import { BarraEtapa } from "../../shared/components";
 import { Formik, Form } from 'formik';
 import { MultipleFileUpload } from "./MultipleFileUpload";
 import { UploadableFile } from "./SingleFileUploadWithProgress";
 import * as Yup from 'yup';
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 export const Anexos = () => {
     const initialValues: { files: UploadableFile[] } = { files: [] };
     const [buttonClicked, setButtonClicked] = useState(false);
 
-    const navigate = useNavigate();
+    const location = useLocation();
 
-    const handleNavigateToProcesso = () => {
-        navigate("/DetalheEtapa");
-    };
+    const handleVoltar = () => {
+        window.history.back();}
+
+    
+
 
     return (
         <Box
@@ -36,16 +39,16 @@ export const Anexos = () => {
                     gap: 3,
                 }}
             >
-                <Grid item sx={{ mt: "8em", marginLeft: "1em" }}>
+                <Grid item sx={{ mt: "1em", marginLeft: "0.5em" }}>
                     <IconButton
                         className="meuBotao"
-                        onClick={handleNavigateToProcesso}
+                        onClick={handleVoltar}
                     >
                         <ArrowBackRoundedIcon />
                     </IconButton>
                 </Grid>
 
-                <BarraProjeto children={undefined}></BarraProjeto>
+                <BarraEtapa etapa_nome={location.state.id} />
 
                 <Card>
                     <CardContent>

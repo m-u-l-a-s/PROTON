@@ -79,25 +79,24 @@ export const NovaEtapa = () => {
         >
             <Paper
                 sx={{
-                    mt: 3,
-                    padding: 7,
+                    mt: "-3em",
+                    padding: 4,
                     borderRadius: 5,
                     width: "fit-content",
                     height: "fit-content",
-                    gap: 2,
+                    // gap: ,
                     display: "flex",
                     flexDirection: "column",
-                    flexWrap: "wrap",
                     maxWidth: "70%",
                     maxHeight: "50%",
-                    marginTop: "3%",
+                    marginTop: "2%",
                 }}
             >
                 <Grid item marginTop={"-1em"}>
                     <VoltarButton />
                 </Grid>
 
-                <Typography variant="h4" color="primary" borderLeft={"10vw"}>
+                <Typography variant="h4" color="primary" borderTop={0}>
                     Nova Etapa
                 </Typography>
 
@@ -210,8 +209,9 @@ export const NovaEtapa = () => {
                         </Grid>
                     </div>
 
-                    <Grid item>
-                        <Box
+                    <Grid container justifyContent="space-between">
+                        
+                        <Grid item
                             display="flex"
                             flexDirection="row"
                             alignItems="flex-end"
@@ -224,6 +224,10 @@ export const NovaEtapa = () => {
                             >
                                 Descartar
                             </Button>
+
+                        </Grid>
+
+                        <Grid item>
                             <Button
                                 variant="contained"
                                 startIcon={<AddIcon />}
@@ -231,8 +235,13 @@ export const NovaEtapa = () => {
                             >
                                 Criar Etapa
                             </Button>
-                        </Box>
+                        </Grid>
+
                     </Grid>
+
+
+
+
                 </Box>
                 {/* </Box> */}
             </Paper>
