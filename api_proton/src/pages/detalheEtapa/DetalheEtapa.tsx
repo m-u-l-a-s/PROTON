@@ -46,7 +46,7 @@ export const DetalheEtapa = () => {
                 );
                 const jsonData = await response.json();
                 setEtapa(jsonData); // Update the state with fetched data
-            } catch (error) {
+            } catch (error: any) {
                 console.log(error.message);
             }
         };
