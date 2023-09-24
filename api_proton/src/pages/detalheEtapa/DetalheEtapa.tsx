@@ -84,9 +84,11 @@ export const DetalheEtapa = () => {
                     width: "1000px",
                     height: "480px",
                     gap: 3,
-                }}
-            >
-                {/* <BarraEtapa ></BarraEtapa> */}
+                }}>
+                    <BarraEtapa etapa_nome = {etapa.etapa_nome}/>
+
+
+                    {/*</BarraEtapa>*/}
 
                 <Box
                     display="inline-block"

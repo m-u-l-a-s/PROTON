@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import {ReactNode} from "react"
 import { useTheme } from "@emotion/react";
 
-export const BarraEtapa: React.FC <{ children: ReactNode }> = ({ children}) =>{
+export const BarraEtapa = (prop:any) =>{
      const theme = useTheme();
 
      return (
@@ -13,7 +13,7 @@ export const BarraEtapa: React.FC <{ children: ReactNode }> = ({ children}) =>{
                     <Toolbar disableGutters>
 
                          <Grid item width={900} fontFamily={'Poppins, sans-serif'} fontSize={'bold'}>
-                                   Puxar nome da Etapa
+                                   {prop.etapa_nome}
                          </Grid>
 
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
