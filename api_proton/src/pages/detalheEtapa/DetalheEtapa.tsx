@@ -24,13 +24,13 @@ export const DetalheEtapa = () => {
     const [etapa, setEtapa] = useState({
         etapa_id: 1,
         processo_id: 1,
-        etapa_nome: "Etapa 1",
+        etapa_nome: "nome mocado",
         etapa_responsavel_id: 1,
         etapa_ordem: 1,
         etapa_data_conclusão: new Date(),
-        etapa_descricao: "Joselito",
+        etapa_descricao: "descrição mocada",
         etapa_status: "N",
-        etapa_comentario: "joselito",
+        etapa_comentario: "comentário mocado",
     });
 
     //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
@@ -46,6 +46,10 @@ export const DetalheEtapa = () => {
                 );
                 const jsonData = await response.json();
                 setEtapa(jsonData); // Update the state with fetched data
+                console.log("JSON: ");
+                console.log(jsonData);
+                console.log("Etapa: ");
+                console.log(etapa);
             } catch (error: any) {
                 console.log(error.message);
             }
