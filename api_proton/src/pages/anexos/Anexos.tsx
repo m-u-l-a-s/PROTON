@@ -1,11 +1,19 @@
-import React from "react";
-import { Box, Paper, Typography, Button, Grid, Card, CardContent } from "@mui/material";
+import React, { useState } from 'react';
+import { Box, Paper, Typography, Grid, Card, CardContent } from "@mui/material";
 import { BarraProjeto } from "../../shared/components";
-import { Form, Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { MultipleFileUpload } from "./MultipleFileUpload";
-import { array, object, string } from 'yup';
+import { UploadableFile } from "./SingleFileUploadWithProgress";
+import * as Yup from 'yup';
 
 export const Anexos = () => {
+    const initialValues: { files: UploadableFile[] } = { files: [] };
+    const [buttonClicked, setButtonClicked] = useState(false);
+
+    const handleUploadButtonClick = () => {
+        setButtonClicked(true);
+    };
+
     return (
         <Box
             display="flex"
@@ -28,35 +36,21 @@ export const Anexos = () => {
 
                 <Card>
                     <CardContent>
-                        <Formik initialValues={{ files: [] }}
-                            validationSchema={object({
-                                files: array(
-                                    object({
-                                        url: string().required()
-                                    })
-                                ),
+                        <Formik
+                            initialValues={initialValues}
+                            validationSchema={Yup.object({
+                                files: Yup.array(),
                             })}
                             onSubmit={(values) => {
                                 console.log('values', values);
                                 return new Promise((res) => setTimeout(res, 2000));
-                            }}>
-                            {({ values, errors, isValid, isSubmitting }) => (
-                                <Form>
-                                    <Grid container spacing={2} direction="column">
-                                        <MultipleFileUpload name="files" />
-
-                                        <Grid item>
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                disabled={!isValid || isSubmitting}
-                                                type="submit">
-                                                Anexar arquivos
-                                            </Button>
-                                        </Grid>
-                                    </Grid>
-                                </Form>
-                            )}
+                            }}
+                        >
+                            <Form>
+                                <Grid container spacing={2} direction="column">
+                                    <MultipleFileUpload name="files" buttonClicked={buttonClicked} />
+                                </Grid>
+                            </Form>
                         </Formik>
                     </CardContent>
                 </Card>

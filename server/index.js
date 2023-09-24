@@ -8,11 +8,16 @@
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db");
+const multer = require('multer');;
 const app = express();
 
 //Middleware
 app.use(cors());
 app.use(express.json());
+
+// Configuração do Multer para upload de arquivos em memória
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 //Rotas
 
@@ -45,78 +50,78 @@ app.get("/get_etapa", async (req, res) => {
 });
 
 //Insert dados (Post)
-app.post("/insert_etapa", async (req,res) => {
-    try {
-        
+app.post("/insert_etapa", async (req, res) => {
+  try {
 
-        const {processo_id } = req.body
-        const {etapa_nome } = req.body
-        const {etapa_responsavel_id } = req.body
-        const {etapa_ordem } = req.body
-        const {etapa_data_conclusao } = req.body
-        const {etapa_descricao } = req.body
-        const {etapa_status } = req.body
-        const {etapa_comentario } = req.body
 
-       
-        
+    const { processo_id } = req.body
+    const { etapa_nome } = req.body
+    const { etapa_responsavel_id } = req.body
+    const { etapa_ordem } = req.body
+    const { etapa_data_conclusao } = req.body
+    const { etapa_descricao } = req.body
+    const { etapa_status } = req.body
+    const { etapa_comentario } = req.body
 
-        const novaEtapa = await pool.query(
 
-          "insert into etapa values (default,$1, $2, $3, $4, $5, $6, $7, $8) returning *", [processo_id, etapa_nome, etapa_responsavel_id , etapa_ordem, etapa_data_conclusao, etapa_descricao, etapa_status, etapa_comentario]
-        )
 
-        res.json(novaEtapa.rows[0])
 
-    } catch (error) {
-        console.log(error.message)
-    }
+    const novaEtapa = await pool.query(
+
+      "insert into etapa values (default,$1, $2, $3, $4, $5, $6, $7, $8) returning *", [processo_id, etapa_nome, etapa_responsavel_id, etapa_ordem, etapa_data_conclusao, etapa_descricao, etapa_status, etapa_comentario]
+    )
+
+    res.json(novaEtapa.rows[0])
+
+  } catch (error) {
+    console.log(error.message)
+  }
 })
 
 //Criar processos
 
-app.post("/insert_processo", async (req,res) => {
+app.post("/insert_processo", async (req, res) => {
   try {
-      console.log(req.body)
+    console.log(req.body)
 
-      const {processo_nome} = req.body;
-      const {processo_responsavel_id} = req.body;
-      const {processo_descricao} = req.body;
+    const { processo_nome } = req.body;
+    const { processo_responsavel_id } = req.body;
+    const { processo_descricao } = req.body;
 
-      console.log(processo_nome)
-      console.log(processo_responsavel_id)
-      console.log(processo_descricao)
+    console.log(processo_nome)
+    console.log(processo_responsavel_id)
+    console.log(processo_descricao)
 
-      const novaEtapa = await pool.query(
+    const novaEtapa = await pool.query(
 
-        "insert into processo values (default,$1, $2, $3) returning *", [processo_nome, processo_responsavel_id,processo_descricao]
-      )
+      "insert into processo values (default,$1, $2, $3) returning *", [processo_nome, processo_responsavel_id, processo_descricao]
+    )
 
-      res.json(novaEtapa.rows[0])
+    res.json(novaEtapa.rows[0])
 
   } catch (error) {
-      console.log(error.message)
+    console.log(error.message)
   }
 });
 
 //selecionar etapa pelo id
 
-app.get("/get_etapa/:id", async(req,res)=>{
+app.get("/get_etapa/:id", async (req, res) => {
   try {
-    const {id}= req.params;
-    const etapa = await pool.query("select * from etapa where etapa_id=$1",[id])
-    
+    const { id } = req.params;
+    const etapa = await pool.query("select * from etapa where etapa_id=$1", [id])
+
     res.json(etapa.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
 })
 
-app.get("/get_etapa_by_processo/:id", async(req,res)=>{
+app.get("/get_etapa_by_processo/:id", async (req, res) => {
   try {
-    const {id}= req.params;
-    const etapa = await pool.query("select * from etapa where processo_id=$1",[id])
-    
+    const { id } = req.params;
+    const etapa = await pool.query("select * from etapa where processo_id=$1", [id])
+
     res.json(etapa.rows);
   } catch (err) {
     console.log(err.message);
@@ -125,17 +130,81 @@ app.get("/get_etapa_by_processo/:id", async(req,res)=>{
 
 //puxar nome e descrição do processo pelo id do mesmo
 
-app.get("/get_processo/:id", async(req,res)=>{
+app.get("/get_processo/:id", async (req, res) => {
   try {
-    const {id}= req.params;
-    const etapa = await pool.query("select processo_nome,processo_descricao from processo where processo_id=$1",[id])
-    
+    const { id } = req.params;
+    const etapa = await pool.query("select processo_nome,processo_descricao from processo where processo_id=$1", [id])
+
     res.json(etapa.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
 })
 
+// ROTAS ANEXOS
+
+app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
+  const files = req.files;
+  const etapa_id = 1; // Dado mockado
+
+  try {
+    // Verifique se req.files contém algum arquivo
+    if (!files || files.length === 0) {
+      return res.status(400).json({ error: "Nenhum arquivo enviado" });
+    }
+
+    // Inicia uma transação para garantir a atomicidade da operação
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+
+      // Inserir cada arquivo na tabela etapa_anexo
+      const insertedIds = [];
+      for (const file of files) {
+        const fileData = file.buffer;
+
+        const query =
+          "INSERT INTO etapa_anexo (etapa_id, etapa_anexo_documento) VALUES ($1, $2) RETURNING etapa_anexo_id";
+        const values = [etapa_id, fileData];
+        const result = await client.query(query, values);
+        insertedIds.push(result.rows[0].etapa_anexo_id);
+        console.log(`Arquivo inserido com sucesso. ID do anexo: ${result.rows[0].etapa_anexo_id}`);
+      }
+
+      // Commit da transação
+      await client.query("COMMIT");
+
+      res.json({ anexoIds: insertedIds });
+    } catch (error) {
+      // Rollback da transação em caso de erro
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      // Libere o cliente da pool após a conclusão
+      client.release();
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Erro no servidor" });
+  }
+});
+
+// Rota GET para obter todos os anexos
+app.get("/get_anexos", async (req, res) => {
+  try {
+    // Consulta o banco de dados para obter todos os anexos
+    const query = "SELECT * FROM etapa_anexo";
+    const result = await pool.query(query);
+
+    // Envia a lista de anexos como resposta
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Erro ao buscar anexos:", error);
+    res.status(500).json({ error: "Erro ao buscar anexos" });
+  }
+});
+
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
+

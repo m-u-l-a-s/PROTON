@@ -1,0 +1,25 @@
+/* CSS externo para estilização do componente */
+.dropzone {
+    border: 2px dashed #cccccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    outline: none;
+}
+
+.dropzone.hovered {
+    background-color: darkgray; /* Cor de fundo ao passar o mouse */
+}
+
+.file-list-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #cccccc #f0f0f0;
+}
