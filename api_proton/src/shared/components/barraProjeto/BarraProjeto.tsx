@@ -1,38 +1,30 @@
-import {AppBar, Box, Button, Container, Grid, Stack, Toolbar} from "@mui/material"
+import React from 'react';
+import { AppBar, Container, Toolbar, Grid, Button, IconButton, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import IconButton from '@mui/material/IconButton';
-import {ReactNode} from "react"
-import { useTheme } from "@emotion/react";
-import {Link} from 'react-router-dom';
 
-
-export const BarraProjeto: React.FC <{ children: ReactNode }> = ({ children}) =>{
+export const BarraProjeto = (prop:any) => {
      const theme = useTheme();
 
      return (
           <AppBar position="static" color="secondary">
                <Container maxWidth="xl">
                     <Toolbar disableGutters>
-
                          <Grid item width={600} fontFamily={'Poppins, sans-serif'} fontSize={'bold'}>
                                    Puxar nome do Processo
                          </Grid>
-
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
-
-                              <Stack  direction= "row" spacing={3}>
-                                   <Button   variant="text" component={Link} to="/Anexos">Anexos</Button>
-                                   <Button   variant="text">Histórico</Button>
-                                   <Button   variant="text">Relatórios</Button>
+                              <Stack direction="row" spacing={3}>
+                                   <Button variant="text">Histórico</Button>
+                                   <Button variant="text">Relatórios</Button>
                               </Stack>
                          </Grid>
-                    
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
                               <IconButton edge="end" color="inherit" aria-label="menu">
                                    <MoreVertIcon />
                               </IconButton>
                          </Grid>
-
                     </Toolbar>
                </Container>
           </AppBar>

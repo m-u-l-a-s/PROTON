@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useNavigate } from "react-router-dom";
 import Etapa from "../novaEtapa/etapaInterface";
+import { BarraProjeto } from "../../shared/components";
 
 const VisualizarProjeto = () => {
     const location = useLocation();
@@ -68,11 +69,14 @@ const VisualizarProjeto = () => {
                     marginTop: "2%",
                 }}
             >
+
                 <Grid item sx={{ mt: "-1em", marginLeft: "-0.75em" }}>
                     <IconButton component={Link} to="/MyProjects">
                         <ArrowBackRoundedIcon />
                     </IconButton>
                 </Grid>
+
+                <BarraProjeto/>
 
                 <Box
                     display="flex"
@@ -90,7 +94,7 @@ const VisualizarProjeto = () => {
                                 id="nome-projeto"
                                 label="Nome do Projeto"
                                 variant="standard"
-                                sx={{ width: "50vw" }}
+                                sx={{ width: "50vw", marginTop:"5%"}}
                                 value={processo.processo_nome}
                             />
                         </Grid>

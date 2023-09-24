@@ -74,6 +74,7 @@ export const MyProjects = () => {
                     flexDirection="row"
                     sx={{ gap: 70 }}
                 >
+
                     <div className="divBox">
                         <Typography variant="h4" color="primary">
                             Seus Processos

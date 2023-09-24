@@ -1,8 +1,9 @@
-import {AppBar, Container, Grid, Stack, Toolbar} from "@mui/material"
+import {AppBar, Button, Container, Grid, Stack, Toolbar} from "@mui/material"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import {ReactNode} from "react"
 import { useTheme } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 export const BarraEtapa = (prop:any) =>{
      const theme = useTheme();
@@ -19,7 +20,7 @@ export const BarraEtapa = (prop:any) =>{
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
 
                               <Stack  direction= "row" spacing={3}>
-                                   
+                                   <Button variant="text" component={Link} to="/Anexos">Anexos</Button>
                               </Stack>
                          </Grid>
                     
