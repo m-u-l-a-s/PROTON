@@ -16,8 +16,15 @@ import "./Style.css";
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import { useNavigate } from "react-router-dom";
 
 export const DetalheEtapa = () => {
+    const navigate = useNavigate();
+
+    const handleNavigateToProcesso = () => {
+        navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
+    };
+
     const theme = useTheme();
     const location = useLocation();
 
@@ -130,8 +137,7 @@ export const DetalheEtapa = () => {
                             <Grid item sx={{ mt: "8em", marginLeft: "1em" }}>
                                 <IconButton
                                     className="meuBotao"
-                                    component={Link}
-                                    to="/VisualizarProjeto"
+                                    onClick={handleNavigateToProcesso}
                                 >
                                     <ArrowBackRoundedIcon />
                                 </IconButton>
