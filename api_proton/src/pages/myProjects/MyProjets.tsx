@@ -23,7 +23,7 @@ export const MyProjects = () => {
             processo_nome: "Etapa 3",
             processo_descricao: "Pendente",
             processo_responsavel_id: 1,
-        },
+        },        
     ]);
 
     const get_processos = async () => {
@@ -78,20 +78,6 @@ export const MyProjects = () => {
                         <Typography variant="h4" color="primary">
                             Seus Processos
                         </Typography>
-
-                        <Button
-                            component={Link}
-                            to="/NovoProjeto"
-                            variant="contained"
-                            disableElevation
-                            sx={{
-                                position: "absolute",
-                                left: "68.9%",
-                                marginTop: "-2.6%",
-                            }}
-                        >
-                            + Criar Processo
-                        </Button>
                     </div>
                 </Box>
 
@@ -121,7 +107,22 @@ export const MyProjects = () => {
                         ))}
                     </Grid>
                 </Box>
+
+                <Box display="flex" alignItems="center" justifyContent="center">
+            <Button
+                component={Link}
+                to="/NovoProjeto"
+                variant="contained"
+                disableElevation
+
+            >
+                + Criar Processo
+            </Button>
+            </Box>
+
             </Paper>
+
+
         </Box>
     );
 };

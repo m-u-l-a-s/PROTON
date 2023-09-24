@@ -11,6 +11,10 @@
   
 }
 
+.cardEtapa:hover{
+    cursor: pointer;
+}
+
  .top-row {
     display: flex;
     justify-content: space-between;

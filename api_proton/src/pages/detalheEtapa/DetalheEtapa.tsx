@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from "@emotion/react";
-import { Box,  Button,  Grid, Paper,  TextField,  Typography } from "@mui/material";
+import { Box,  Button,  Grid, IconButton, Paper,  TextField,  Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { BarraEtapa} from "../../shared/components";
 import {CalendarioEtapa} from "./Calendario";
 import "./Style.css"
 import {useLocation} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 export const DetalheEtapa = () => {
     const theme = useTheme();
@@ -45,7 +46,7 @@ export const DetalheEtapa = () => {
                          <Box display="inline-block" flexDirection="column" sx={{gap:3}} textAlign={"left"}>
                               <div className="div1">
                               <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"30px"}>
-                                   <TextField id="comentario" label="Deixe um comentário" variant="standard" sx={{width:"24vw"}}  />
+                                   <TextField id="descrição" label="Descrição" variant="standard" sx={{width:"24vw"}}  />
                               </Grid>
 
                               <Grid margin={"15px"} >
@@ -62,15 +63,18 @@ export const DetalheEtapa = () => {
                                    />
                                    
                               </Grid>
+
+                              <Grid item sx={{mt:"8em", marginLeft:"1em"}}>
+                                   <IconButton className="meuBotao" component={Link} to="/VisualizarProjeto">
+                                        <ArrowBackRoundedIcon />
+                                   </IconButton>
+                              </Grid>
+
                               </div>
                                    
                               <div className="div2">
                               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
                                    <TextField id="comentario" label="Deixe um comentário" variant="standard" sx={{width:"24vw"}}  />
-                              </Grid>
-
-                              <Grid item sx={{mt:"18em", marginLeft:"22em"}}>
-                                    <Button   variant="contained" component={Link} to="/visualizarProjeto">Voltar</Button>
                               </Grid>
                               </div>
                          </Box>

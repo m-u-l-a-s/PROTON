@@ -62,7 +62,7 @@ export const NovaEtapa = () => {
   const [etapa_ordem, setetapa_ordem] = useState<number>();
 
   return (
-    // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
+    // // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
     <Box
       display="flex"
       alignItems="center"
@@ -71,11 +71,27 @@ export const NovaEtapa = () => {
       flexDirection="column"
       sx={{ gap: 3 }}
     >
-      <Paper sx={{ mt: 3, padding: 3, borderRadius: 5, width: "1000px", height: "480px", gap: 1 }}>
 
-        <Grid item >
+      <Paper
+        sx={{
+          mt: 3,
+          padding: 7,
+          borderRadius: 5,
+          width: 'fit-content',
+          height: 'fit-content',
+          gap: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          flexWrap: 'wrap',
+          maxWidth: '70%',
+          maxHeight: '50%',
+          marginTop: '3%',
+        }}
+      >
+        <Grid item marginTop={'-1em'}>
           <VoltarButton />
         </Grid>
+
         <Typography variant="h4" color="primary" borderLeft={'10vw'}>
           Nova Etapa
         </Typography>
@@ -83,7 +99,7 @@ export const NovaEtapa = () => {
         {/* <Box display="flex" alignItems="center" maxHeight="110vh" flexDirection="column"> */}
         <Box display="flex" flexDirection="column" sx={{ gap: 1 }}>
           <Grid item>
-            <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "50vw" }}
+            <TextField id="nova-etapa" label="Título:*" variant="standard" sx={{ width: "54.5vw" }}
               value={etapa_nome}
               onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_nome(e.target.value)}
             />
@@ -94,24 +110,24 @@ export const NovaEtapa = () => {
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px", gap: 3, }}>
 
 
-              <Grid>
+              <Grid xs={12}>
                 <TextField
                   id="standard-multiline-static-responsavel"
                   label="Responsável:*"
                   variant="standard"
-                  sx={{ width: "21.3vw" }}
+                  sx={{ width: "24.5vw" }}
                   value={etapa_responsavel_id}
                   onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_responsavel_id(e.target.value)}
                 />
               </Grid>
 
-              <Grid item width="8rem">
+              <Grid item width="8rem" marginLeft={'5em'}>
 
                 <TextField
                   id="standard-multiline-static-responsavel"
                   label="Prioridade"
                   variant="standard"
-                  sx={{ width: "21.3vw" }}
+                  sx={{ width: "25vw" }}
                   value={etapa_ordem}
                   // onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_ordem(e.target.value)}
                   onChange={(e) => setetapa_ordem(Number(e.target.value))}
@@ -131,9 +147,9 @@ export const NovaEtapa = () => {
             <p style={{ color: "black", fontFamily: "Roboto", marginBottom: "10px" }}>Descrição:</p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "row", borderColor: "white", marginLeft: "-10px", fontFamily: "Roboto", marginBottom: "10px" }}>
+          <div style={{ display: "flex", flexDirection: "row", borderColor: "white",fontFamily: "Roboto", marginBottom: "10px" }}>
             <Grid>
-              <TextField id="standard-multiline-static-responsavel" label="" sx={{ width: "50vw" }}
+              <TextField id="standard-multiline-static-responsavel" label="" sx={{ width: "54vw" }}
                 value={etapa_descricao}
                 onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_descricao(e.target.value)}
               />
