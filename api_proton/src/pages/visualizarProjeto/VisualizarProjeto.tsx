@@ -22,7 +22,7 @@ const VisualizarProjeto = () => {
         const fetchData = async () => {
             try {
                 const etapaResponse = await fetch(
-                    "http://localhost:5000/get_etapa"
+                    `http://localhost:5000/get_etapa_by_processo/${location.state.id.toString()}`
                 );
                 const etapaData = await etapaResponse.json();
                 setEtapa(etapaData);
@@ -42,7 +42,7 @@ const VisualizarProjeto = () => {
     }, [location.state.id]);
 
     const handleNavigateToNovaEtapa = () => {
-        navigate("/NovaEtapa");
+        navigate("/NovaEtapa", {state:{id:location.state.id}});
     };
 
     return (

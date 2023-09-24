@@ -112,6 +112,17 @@ app.get("/get_etapa/:id", async(req,res)=>{
   }
 })
 
+app.get("/get_etapa_by_processo/:id", async(req,res)=>{
+  try {
+    const {id}= req.params;
+    const etapa = await pool.query("select * from etapa where processo_id=$1",[id])
+    
+    res.json(etapa.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+})
+
 //puxar nome e descrição do processo pelo id do mesmo
 
 app.get("/get_processo/:id", async(req,res)=>{

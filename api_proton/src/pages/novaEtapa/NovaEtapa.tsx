@@ -26,13 +26,11 @@ import VoltarButton from "./voltarButton";
 // import { ProjectSteps } from "../../shered/components/project_steps/ProjectSteps";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { left } from "@popperjs/core";
+import { useLocation } from "react-router-dom";
 
 export const NovaEtapa = () => {
     const theme = useTheme();
-
-    const clicou = () => {
-        console.log(etapa_nome);
-    };
+    const location = useLocation();
 
     const InserirEtapa = async (e: any) => {
         e.preventDefault();
@@ -59,7 +57,7 @@ export const NovaEtapa = () => {
 
     //Não haverá mais Criador e Envolvidos
     //ID Mockado!!!!
-    const [processo_id, setProcessoId] = useState(2);
+    const [processo_id, setProcessoId] = useState(location.state.id);
     const [etapa_nome, setetapa_nome] = useState("");
     //const [Criador, setCriador] = useState("");
     const [etapa_responsavel_id, setetapa_responsavel_id] = useState("");
