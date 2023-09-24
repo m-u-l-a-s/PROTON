@@ -6,6 +6,7 @@ import { Steps } from "../novoProjeto/Steps";
 import { Link } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useNavigate } from "react-router-dom";
+import Etapa from "../novaEtapa/etapaInterface";
 
 const VisualizarProjeto = () => {
     const location = useLocation();
