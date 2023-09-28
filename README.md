@@ -71,3 +71,6 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 ![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
 
 ### Proton - Project Tracker, Organizer and Notifier
+
+### Link - apresentação da 1ª Sprint
+https://www.youtube.com/watch?v=w77srMqJYTw
