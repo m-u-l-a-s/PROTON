@@ -53,7 +53,6 @@ app.get("/get_etapa", async (req, res) => {
 app.post("/insert_etapa", async (req, res) => {
   try {
 
-
     const { processo_id } = req.body
     const { etapa_nome } = req.body
     const { etapa_responsavel_id } = req.body
@@ -62,10 +61,6 @@ app.post("/insert_etapa", async (req, res) => {
     const { etapa_descricao } = req.body
     const { etapa_status } = req.body
     const { etapa_comentario } = req.body
-
-
-
-
     const novaEtapa = await pool.query(
 
       "insert into etapa values (default,$1, $2, $3, $4, $5, $6, $7, $8) returning *", [processo_id, etapa_nome, etapa_responsavel_id, etapa_ordem, etapa_data_conclusao, etapa_descricao, etapa_status, etapa_comentario]
@@ -88,12 +83,7 @@ app.post("/insert_processo", async (req, res) => {
     const { processo_responsavel_id } = req.body;
     const { processo_descricao } = req.body;
 
-    console.log(processo_nome)
-    console.log(processo_responsavel_id)
-    console.log(processo_descricao)
-
     const novaEtapa = await pool.query(
-
       "insert into processo values (default,$1, $2, $3) returning *", [processo_nome, processo_responsavel_id, processo_descricao]
     )
 

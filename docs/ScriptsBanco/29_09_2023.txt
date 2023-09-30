@@ -1,0 +1,5 @@
+ALTER TABLE etapa
+RENAME COLUMN etapa_data_conclusão TO etapa_data_conclusao;
+
+ALTER TABLE etapa_anexo DROP COLUMN etapa_anexo_documento;
+ALTER TABLE etapa_anexo ADD COLUMN etapa_anexo_documento BYTEA;

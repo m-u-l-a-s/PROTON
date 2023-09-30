@@ -36,7 +36,7 @@ export const DetalheEtapa = () => {
         etapa_nome: "nome mocado",
         etapa_responsavel_id: 1,
         etapa_ordem: 1,
-        etapa_data_conclusão: new Date(),
+        etapa_data_conclusao: new Date(),
         etapa_descricao: "descrição mocada",
         etapa_status: "N",
         etapa_comentario: "",
@@ -55,10 +55,6 @@ export const DetalheEtapa = () => {
                 );
                 const jsonData = await response.json();
                 setEtapa(jsonData); // Update the state with fetched data
-                console.log("JSON: ");
-                console.log(jsonData);
-                console.log("Etapa: ");
-                console.log(etapa);
             } catch (error: any) {
                 console.log(error.message);
             }

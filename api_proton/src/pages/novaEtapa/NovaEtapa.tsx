@@ -40,7 +40,7 @@ export const NovaEtapa = () => {
                 etapa_nome,
                 etapa_responsavel_id,
                 etapa_ordem,
-                etapa_data_conclusão,
+                etapa_data_conclusao,
                 etapa_descricao,
             };
             console.log(body);
@@ -55,13 +55,10 @@ export const NovaEtapa = () => {
         }
     };
 
-    //Não haverá mais Criador e Envolvidos
-    //ID Mockado!!!!
     const [processo_id, setProcessoId] = useState(location.state.id);
     const [etapa_nome, setetapa_nome] = useState("");
-    //const [Criador, setCriador] = useState("");
     const [etapa_responsavel_id, setetapa_responsavel_id] = useState("");
-    const [etapa_data_conclusão, setetapa_data_conclusão] = useState(
+    const [etapa_data_conclusao, setetapa_data_conclusao] = useState(
         new Date()
     );
     const [etapa_descricao, setetapa_descricao] = useState("");
@@ -169,7 +166,7 @@ export const NovaEtapa = () => {
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
                                 onChange={(date: any) =>
-                                    setetapa_data_conclusão(date)
+                                    setetapa_data_conclusao(date)
                                 }
                             />
                         </LocalizationProvider>
