@@ -118,7 +118,7 @@ export const NovaEtapa = () => {
                                 display: "flex",
                                 flexDirection: "row",
                                 marginBottom: "20px",
-                                gap: 3,
+                                gap: " 2rem",
                             }}
                         >
                             <Grid xs={12}>
@@ -126,7 +126,7 @@ export const NovaEtapa = () => {
                                     id="standard-multiline-static-responsavel"
                                     label="Responsável:*"
                                     variant="standard"
-                                    sx={{ width: "24.5vw" }}
+                                    sx={{ width: "20vw" }}
                                     value={etapa_responsavel_id}
                                     onChange={(e: {
                                         target: {
@@ -138,10 +138,37 @@ export const NovaEtapa = () => {
                                 />
                             </Grid>
 
-                            <Grid item width="8rem" marginLeft={"5em"}>
+                            <span
+                            style={{
+                                fontFamily: "Roboto",
+                                marginRight: "3 rem ",
+                                marginTop:"2rem",
+                            }}
+                            >
+                            Prazo de Conclusão:{" "}
+                            </span>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker
+                                onChange={(date: any) =>
+                                    setetapa_data_conclusao(date)
+                                }
+                            />
+                        </LocalizationProvider>
+                           
+                        </div>
+                    </div>
+
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+
+                    <Grid item>
+                        <p className="legenda">A prioridade é definida por números, quanto menor o número maior a prioridade, quanto maior o número menor a prioridade.</p>
+
+                    </Grid>
+
+                    <Grid item width="8rem" >
                                 <TextField
                                     id="standard-multiline-static-responsavel"
-                                    label="Prioridade"
+                                    label="Prioridade:*"
                                     variant="standard"
                                     sx={{ width: "25vw" }}
                                     value={etapa_ordem}
@@ -150,26 +177,10 @@ export const NovaEtapa = () => {
                                         setetapa_ordem(Number(e.target.value))
                                     }
                                 />
-                            </Grid>
-                        </div>
-                    </div>
+                    </Grid>
 
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                        <span
-                            style={{
-                                fontFamily: "Roboto",
-                                marginRight: "10px",
-                            }}
-                        >
-                            Prazo de Conclusão:{" "}
-                        </span>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
-                                onChange={(date: any) =>
-                                    setetapa_data_conclusao(date)
-                                }
-                            />
-                        </LocalizationProvider>
+
+                       
                     </div>
 
                     <div className="descricao">
