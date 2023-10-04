@@ -5,7 +5,10 @@ import {
     Button,
     Grid,
     IconButton,
+    InputLabel,
+    MenuItem,
     Paper,
+    Select,
     TextField,
     Typography,
 } from "@mui/material";
@@ -130,8 +133,8 @@ export const DetalheEtapa = () => {
                                 <CalendarioEtapa />
                             </Grid>
 
-                            <Grid margin={"15px"}>
-                                <TextField
+                            <Grid  item margin={"15px"} >
+                                {/* <TextField
                                     id="standard-multiline-static-responsavel"
                                     label="Responsável:*"
                                     variant="standard"
@@ -141,7 +144,20 @@ export const DetalheEtapa = () => {
                                         borderBottom: "none",
                                         marginRight: "16px",
                                     }}
-                                />
+                                /> */}
+
+                                        <InputLabel id="demo-simple-select-label" >Responsável</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            // value={age}
+                                            label="Age"
+                                            // onChange={handleChange}
+                                        >
+                                            <MenuItem value={1}>Joana Maria de Braga Souza</MenuItem>
+                                            <MenuItem value={2}>Ariel</MenuItem>
+                                            <MenuItem value={3}>Carlos</MenuItem>
+                                        </Select>
                             </Grid>
 
                         </div>
