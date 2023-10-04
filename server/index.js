@@ -8,7 +8,7 @@
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db");
-const multer = require('multer');;
+const multer = require("multer");
 const app = express();
 
 //Middleware
@@ -52,45 +52,53 @@ app.get("/get_etapa", async (req, res) => {
 //Insert dados (Post)
 app.post("/insert_etapa", async (req, res) => {
   try {
-
-    const { processo_id } = req.body
-    const { etapa_nome } = req.body
-    const { etapa_responsavel_id } = req.body
-    const { etapa_ordem } = req.body
-    const { etapa_data_conclusao } = req.body
-    const { etapa_descricao } = req.body
-    const { etapa_status } = req.body
-    const { etapa_comentario } = req.body
+    const { processo_id } = req.body;
+    const { etapa_nome } = req.body;
+    const { etapa_responsavel_id } = req.body;
+    const { etapa_ordem } = req.body;
+    const { etapa_data_conclusao } = req.body;
+    const { etapa_descricao } = req.body;
+    const { etapa_status } = req.body;
+    const { etapa_comentario } = req.body;
     const novaEtapa = await pool.query(
+      "insert into etapa values (default,$1, $2, $3, $4, $5, $6, $7, $8) returning *",
+      [
+        processo_id,
+        etapa_nome,
+        etapa_responsavel_id,
+        etapa_ordem,
+        etapa_data_conclusao,
+        etapa_descricao,
+        etapa_status,
+        etapa_comentario,
+      ]
+    );
 
-      "insert into etapa values (default,$1, $2, $3, $4, $5, $6, $7, $8) returning *", [processo_id, etapa_nome, etapa_responsavel_id, etapa_ordem, etapa_data_conclusao, etapa_descricao, etapa_status, etapa_comentario]
-    )
-
-    res.json(novaEtapa.rows[0])
-
+    res.json(novaEtapa.rows[0]);
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
-})
+});
 
 //Criar processos
 
 app.post("/insert_processo", async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
 
     const { processo_nome } = req.body;
     const { processo_responsavel_id } = req.body;
     const { processo_descricao } = req.body;
 
-    const novaEtapa = await pool.query(
-      "insert into processo values (default,$1, $2, $3) returning *", [processo_nome, processo_responsavel_id, processo_descricao]
-    )
+    const novaEtapa = await pool.query("insert into processo values (default,$1, $2, $3) returning *", [
+      processo_nome,
+      processo_responsavel_id,
+      processo_descricao,
+    ]);
 
-    res.json(novaEtapa.rows[0])
-
+    res.json(novaEtapa.rows[0]);
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
 });
 
@@ -99,37 +107,37 @@ app.post("/insert_processo", async (req, res) => {
 app.get("/get_etapa/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const etapa = await pool.query("select * from etapa where etapa_id=$1", [id])
+    const etapa = await pool.query("select * from etapa where etapa_id=$1", [id]);
 
     res.json(etapa.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
-})
+});
 
 app.get("/get_etapa_by_processo/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const etapa = await pool.query("select * from etapa where processo_id=$1", [id])
+    const etapa = await pool.query("select * from etapa where processo_id=$1 order by etapa_ordem", [id]);
 
     res.json(etapa.rows);
   } catch (err) {
     console.log(err.message);
   }
-})
+});
 
 //puxar nome e descrição do processo pelo id do mesmo
 
 app.get("/get_processo/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const etapa = await pool.query("select processo_nome,processo_descricao from processo where processo_id=$1", [id])
+    const etapa = await pool.query("select processo_nome,processo_descricao from processo where processo_id=$1", [id]);
 
     res.json(etapa.rows[0]);
   } catch (err) {
     console.log(err.message);
   }
-})
+});
 
 // ROTAS ANEXOS
 
@@ -197,4 +205,3 @@ app.get("/get_anexos", async (req, res) => {
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
-
