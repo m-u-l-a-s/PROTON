@@ -49,6 +49,15 @@ app.get("/get_etapa", async (req, res) => {
   }
 });
 
+app.get("/get_usuario", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.usuario ORDER BY usuario_nome");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 //Insert dados (Post)
 app.post("/insert_etapa", async (req, res) => {
   try {

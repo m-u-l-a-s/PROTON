@@ -1,18 +1,44 @@
-
-import { AppBar, Box, Button, Container, Grid, Stack, Toolbar, useTheme} from "@mui/material"
+import { AppBar, Box, Button, Container, Grid, Stack, Toolbar, useTheme, InputLabel, MenuItem, Select} from "@mui/material"
 import { ReactNode } from "react"
 import  Logo from "../img/Proton.png";
 import { Link } from 'react-router-dom';
-
+import {useEffect, useState } from "react";
 
 export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>{
-    
     const theme = useTheme();
+    const [usuario, setUsuario] = useState([{
+        usuario_id: 1,
+        usuario_nome : "Betrano",
+        usuario_senha : "senha123",
+        usuario_data_cadastro : new Date(),
+        usuario_nivel : 'CL',
+        usuario_email : "betrano@gmail.com"},
+        {
+            usuario_id: 2,
+            usuario_nome : "Fulano",
+            usuario_senha : "senha456",
+            usuario_data_cadastro : new Date(),
+            usuario_nivel : 'LE',
+            usuario_email : "fulano@gmail.com"   
+        }]);
 
+    const get_usuario = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:5000/get_usuario/"
+            );
+            const jsonData = await response.json();
+            setUsuario(jsonData); // Update the state with fetched data
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    };
 
+    useEffect(() => {
+        get_usuario(); 
+    }, []);
     return(
        <>
-    
        <Box width= "100vw" height={theme.spacing(8)}>
             <AppBar position="fixed" color="secondary">
                 <Toolbar >
@@ -38,16 +64,17 @@ export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>
 
                             </Grid>
 
-                            <Grid item>Olá, Marcos</Grid>
-                            
-                           
-                        
+                            <Grid  item>
+                                        Perfil: 
+                                        <Select>
+                                            {usuario.map((usuarioItem) => (
+                                                <MenuItem value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
+                                            ))}
+                                        </Select>
+                            </Grid>
                         </Grid>
-
                     </Container>
-                   
                 </Toolbar>
-
             </AppBar>
        </Box>
 
