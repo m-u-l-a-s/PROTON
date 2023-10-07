@@ -1,44 +1,48 @@
 import { Box, Card, CardContent, Grid, IconButton, Paper, Stack, Typography, useTheme, } from "@mui/material"
-
-
 import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import RuleIcon from '@mui/icons-material/Rule';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
-
-
 import GraficoGeral from ".././../shared/charts/GraficoGeral";
-
+import { useEffectSession, useSessionStorageOrDefault } from "../../control/useSessionStorage";
+import { useEffect, useState } from "react";
 
 
 export const Home = () => {
-
-    
     const theme = useTheme();
+    const usuario = [{
+        usuario_id: 2,
+        usuario_nome: "Fulano",
+        usuario_senha: "senha456",
+        usuario_data_cadastro: new Date(),
+        usuario_nivel: 'LE',
+        usuario_email: "fulano@gmail.com"
+    }]
+    const [perfil, setPerfil] = useState(useSessionStorageOrDefault('perfil', usuario[0]))
 
+    useEffect(() => {
+        const perfilJSON: any = sessionStorage.getItem('perfil')
+        setPerfil(!perfilJSON ? usuario : JSON.parse(perfilJSON))
+        //console.log(perfil)
+        //console.log(JSON.parse(perfil))
+    }, [])
     return (
 
         <div>
-
             <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
                 flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
-
-
                 <Paper sx={{ padding: 2, borderRadius: 5 }} >
                     <Typography variant="h5" color="primary">Estimativa dos Processos</Typography>
-
                     <Grid container spacing={2} alignItems="center" marginTop={1}>
-
                         <Grid item>
-
-                            <Card sx={{ minWidth: 180, background:"#B5F8FD", borderRadius:3 }}>
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                    
-                                        <IconButton aria-label="atrasados">
-                                        <ReportGmailerrorredIcon sx={{ width: 38, height: 38, alignItems: "center", color:"black" }} />
-                                        </IconButton>
+
+                                    <IconButton aria-label="atrasados">
+                                        <ReportGmailerrorredIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
+                                    </IconButton>
 
                                     <Typography variant="subtitle1" component="div">
                                         Atrasados
@@ -55,67 +59,44 @@ export const Home = () => {
 
                         <Grid item>
 
-                            <Card sx={{ minWidth: 180, background:"#B5F8FD", borderRadius:3 }}>
-                                    <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
+                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        
-                                            <IconButton aria-label="atrasados">
-                                                <RunningWithErrorsIcon sx={{ width: 38, height: 38, alignItems: "center", color:"black"}} />
-                                            </IconButton>
 
-                                            <Typography variant="subtitle1" component="div">
-                                                A vencer
-                                            </Typography>
-                                            <Typography variant="h4" component="div">
-                                                4
-                                            </Typography>
+                                    <IconButton aria-label="atrasados">
+                                        <RunningWithErrorsIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
+                                    </IconButton>
 
-                                    </CardContent>
+                                    <Typography variant="subtitle1" component="div">
+                                        A vencer
+                                    </Typography>
+                                    <Typography variant="h4" component="div">
+                                        4
+                                    </Typography>
 
-                            </Card>
-
-                        </Grid>
-
-                        <Grid item>
-                            <Card sx={{ minWidth: 180, background:"#B5F8FD", borderRadius:3}}>
-                                    <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
-
-                                        
-                                            <IconButton aria-label="atrasados">
-                                                <DriveFileRenameOutlineIcon sx={{ width: 38, height: 38, alignItems: "center", color:"black" }} />
-                                            </IconButton>
-
-                                            <Typography variant="subtitle1" component="div">
-                                                Assinar
-                                            </Typography>
-                                            <Typography variant="h4" component="div">
-                                                4
-                                            </Typography>
-
-                                    </CardContent>
+                                </CardContent>
 
                             </Card>
 
                         </Grid>
 
                         <Grid item>
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
+                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                            <Card sx={{ minWidth: 180, background:"#B5F8FD",borderRadius:3 }}>
-                                    <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        
-                                            <IconButton aria-label="atrasados">
-                                                <RuleIcon sx={{ width: 38, height: 38, alignItems: "center", color:"black" }} />
-                                            </IconButton>
+                                    <IconButton aria-label="atrasados">
+                                        <DriveFileRenameOutlineIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
+                                    </IconButton>
 
-                                            <Typography variant="subtitle1" component="div">
-                                                Incompletos
-                                            </Typography>
-                                            <Typography variant="h4" component="div">
-                                                4
-                                            </Typography>
+                                    <Typography variant="subtitle1" component="div">
+                                        Assinar
+                                    </Typography>
+                                    <Typography variant="h4" component="div">
+                                        4
+                                    </Typography>
 
-                                    </CardContent>
+                                </CardContent>
 
                             </Card>
 
@@ -123,22 +104,45 @@ export const Home = () => {
 
                         <Grid item>
 
-                            <Card sx={{ minWidth: 180, background:"#B5F8FD", borderRadius:3 }}>
-                                    <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
+                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        
-                                            <IconButton aria-label="atrasados">
-                                                <PlaylistAddCheckIcon sx={{ width: 38, height: 38, alignItems: "center", color:"black" }} />
-                                            </IconButton>
 
-                                            <Typography variant="subtitle1" component="div">
-                                                Completo
-                                            </Typography>
-                                            <Typography variant="h4" component="div">
-                                                4
-                                            </Typography>
+                                    <IconButton aria-label="atrasados">
+                                        <RuleIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
+                                    </IconButton>
 
-                                    </CardContent>
+                                    <Typography variant="subtitle1" component="div">
+                                        Incompletos
+                                    </Typography>
+                                    <Typography variant="h4" component="div">
+                                        4
+                                    </Typography>
+
+                                </CardContent>
+
+                            </Card>
+
+                        </Grid>
+
+                        <Grid item>
+
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
+                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+
+
+                                    <IconButton aria-label="atrasados">
+                                        <PlaylistAddCheckIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
+                                    </IconButton>
+
+                                    <Typography variant="subtitle1" component="div">
+                                        Completo
+                                    </Typography>
+                                    <Typography variant="h4" component="div">
+                                        4
+                                    </Typography>
+
+                                </CardContent>
 
                             </Card>
 
@@ -154,92 +158,92 @@ export const Home = () => {
 
 
 
-                 <Paper sx={{ padding: 2, borderRadius: 5, }}>
-                        <Typography variant="h5" color="primary">Visão Geral</Typography>
-                
-
-                        <Grid container spacing={2} alignItems="center" marginTop={1}>
-
-                            <Box display="flex" flexDirection="row" gap={theme.spacing(14)} >
-
-                                <Box display="flex" flexDirection="row" gap={theme.spacing(13)}  padding={1}>
-
-                                    <Grid item>
-
-                                        <Paper sx={{marginBottom:1, background:"#B5F8FD",borderRadius:3 }}>
-                                            {/* <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}> */}
-
-                                            <GraficoGeral/>
-
-                                            {/* </CardContent> */}
-
-                                        </Paper>
-                                    </Grid>
-
-                                    <Grid item>
-
-                                        <Card sx={{ minWidth: 200, background:"#B5F8FD", borderRadius:3 }}>
-                                            <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                <Paper sx={{ padding: 2, borderRadius: 5, }}>
+                    <Typography variant="h5" color="primary">Visão Geral</Typography>
 
 
-                                                <Typography variant="h5" component="div">
-                                                    Média de
-                                                </Typography>
+                    <Grid container spacing={2} alignItems="center" marginTop={1}>
 
-                                                <Typography variant="h2" component="div">
-                                                    44H
-                                                </Typography>
+                        <Box display="flex" flexDirection="row" gap={theme.spacing(14)} >
 
-                                                <Typography variant="h5" component="div">
-                                                    por projeto
-                                                </Typography>
+                            <Box display="flex" flexDirection="row" gap={theme.spacing(13)} padding={1}>
 
-                                            </CardContent>
+                                <Grid item>
 
-                                        </Card>
-                                    </Grid>
+                                    <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3 }}>
+                                        {/* <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}> */}
 
-                                </Box>
+                                        <GraficoGeral />
 
-                                <Box display="flex" flexDirection="column" gap={theme.spacing(2)}  marginTop={theme.spacing(1)}  padding={0}>
+                                        {/* </CardContent> */}
 
-                                    <Grid item>
+                                    </Paper>
+                                </Grid>
 
-                                    
-                                    <Card sx={{ maxWidth: 180, maxHeight:80, background:"#B5F8FD", borderRadius:3 }}>
-                                            <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                                <Grid item>
 
-                                                <Typography variant="subtitle1" component="div"> Mais entregas </Typography>
-                                                <Typography variant="subtitle2" component="div"> Ana </Typography>
+                                    <Card sx={{ minWidth: 200, background: "#B5F8FD", borderRadius: 3 }}>
+                                        <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
 
-                                            </CardContent>
+                                            <Typography variant="h5" component="div">
+                                                Média de
+                                            </Typography>
 
-                                        </Card>
-                                    </Grid>
+                                            <Typography variant="h2" component="div">
+                                                44H
+                                            </Typography>
 
-                                    <Grid item>
+                                            <Typography variant="h5" component="div">
+                                                por projeto
+                                            </Typography>
 
-                                        <Card sx={{ maxWidth: 180, maxHeight:80, background:"#B5F8FD",borderRadius:3 }}>
-                                            <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                                        </CardContent>
 
-                                                <Typography variant="subtitle1" component="div"> Menos entregas </Typography>
-                                                <Typography variant="subtitle2" component="div"> Ana </Typography>
-
-
-                                            </CardContent>
-
-                                        </Card>
-                                    </Grid>
-
-                                </Box>
+                                    </Card>
+                                </Grid>
 
                             </Box>
 
-                        </Grid>
+                            <Box display="flex" flexDirection="column" gap={theme.spacing(2)} marginTop={theme.spacing(1)} padding={0}>
 
-                 </Paper>
-                 
+                                <Grid item>
+
+
+                                    <Card sx={{ maxWidth: 180, maxHeight: 80, background: "#B5F8FD", borderRadius: 3 }}>
+                                        <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+
+                                            <Typography variant="subtitle1" component="div"> Mais entregas </Typography>
+                                            <Typography variant="subtitle2" component="div"> Ana </Typography>
+
+
+                                        </CardContent>
+
+                                    </Card>
+                                </Grid>
+
+                                <Grid item>
+
+                                    <Card sx={{ maxWidth: 180, maxHeight: 80, background: "#B5F8FD", borderRadius: 3 }}>
+                                        <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+
+                                            <Typography variant="subtitle1" component="div"> Menos entregas </Typography>
+                                            <Typography variant="subtitle2" component="div"> Ana </Typography>
+
+
+                                        </CardContent>
+
+                                    </Card>
+                                </Grid>
+
+                            </Box>
+
+                        </Box>
+
+                    </Grid>
+
+                </Paper>
+
 
             </Box>
 

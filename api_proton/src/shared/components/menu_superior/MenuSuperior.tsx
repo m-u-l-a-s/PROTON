@@ -1,26 +1,36 @@
-import { AppBar, Box, Button, Container, Grid, Stack, Toolbar, useTheme, InputLabel, MenuItem, Select} from "@mui/material"
+import { AppBar, Box, Button, Container, Grid, Stack, Toolbar, useTheme, InputLabel, MenuItem, Select } from "@mui/material"
 import { ReactNode } from "react"
-import  Logo from "../img/Proton.png";
+import Logo from "../img/Proton.png";
 import { Link } from 'react-router-dom';
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useEffectSession, useSessionStorageOrDefault } from "../../../control/useSessionStorage";
 
-export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>{
+export const MenuSuperior: React.FC<{ children: ReactNode }> = ({ children }) => {
     const theme = useTheme();
     const [usuario, setUsuario] = useState([{
         usuario_id: 1,
-        usuario_nome : "Betrano",
-        usuario_senha : "senha123",
-        usuario_data_cadastro : new Date(),
-        usuario_nivel : 'CL',
-        usuario_email : "betrano@gmail.com"},
-        {
-            usuario_id: 2,
-            usuario_nome : "Fulano",
-            usuario_senha : "senha456",
-            usuario_data_cadastro : new Date(),
-            usuario_nivel : 'LE',
-            usuario_email : "fulano@gmail.com"   
-        }]);
+        usuario_nome: "Betrano",
+        usuario_senha: "senha123",
+        usuario_data_cadastro: new Date(),
+        usuario_nivel: 'CL',
+        usuario_email: "betrano@gmail.com"
+    },
+    {
+        usuario_id: 2,
+        usuario_nome: "Fulano",
+        usuario_senha: "senha456",
+        usuario_data_cadastro: new Date(),
+        usuario_nivel: 'LE',
+        usuario_email: "fulano@gmail.com"
+    }]);
+
+    const [usuarioAtual, setUsuarioAtual] = useState(useSessionStorageOrDefault('perfil', usuario[0]))
+    useEffectSession('perfil', usuarioAtual)
+
+    const salvaPerfil = (event: { target: { value: any; }; }) => {
+        setUsuarioAtual(event.target.value)
+        window.location.reload()
+    }
 
     const get_usuario = async () => {
         try {
@@ -35,56 +45,56 @@ export const MenuSuperior: React.FC <{ children: ReactNode }> = ({ children}) =>
     };
 
     useEffect(() => {
-        get_usuario(); 
+        get_usuario();
     }, []);
-    return(
-       <>
-       <Box width= "100vw" height={theme.spacing(8)}>
-            <AppBar position="fixed" color="secondary">
-                <Toolbar >
-                    <Container maxWidth= "xl">
+    return (
+        <>
+            <Box width="100vw" height={theme.spacing(8)}>
+                <AppBar position="fixed" color="secondary">
+                    <Toolbar >
+                        <Container maxWidth="xl">
 
-                        <Grid container direction="row" justifyContent="space-between" alignItems="center">
+                            <Grid container direction="row" justifyContent="space-between" alignItems="center">
 
-                            <Grid item>
+                                <Grid item>
 
-                            <img src={Logo} width={120}/>  
+                                    <img src={Logo} width={120} />
 
+                                </Grid>
+
+                                <Grid item>
+
+                                    <Stack direction="row" spacing={3}>
+                                        <Button variant="text" component={Link} to="/Home">Home</Button>
+                                        <Button variant="text" component={Link} to="/MyProjects">Processos</Button>
+                                        <Button variant="text">Calendário</Button>
+                                        <Button variant="text">Equipe</Button>
+                                        <Button variant="text">Documentos</Button>
+                                    </Stack>
+
+                                </Grid>
+
+                                <Grid item>
+                                    Perfil:
+                                    <Select value = {usuarioAtual} onChange={salvaPerfil}>
+                                        {usuario.map((usuarioItem) => (
+                                            <MenuItem  value={JSON.stringify(usuarioItem)}>{usuarioItem.usuario_nome}</MenuItem>
+                                        ))}
+                                    </Select>
+                                </Grid>
                             </Grid>
+                        </Container>
+                    </Toolbar>
+                </AppBar>
+            </Box>
 
-                            <Grid item>
-                            
-                                <Stack  direction= "row" spacing={3}>
-                                    <Button   variant="text" component={Link} to="/Home">Home</Button>
-                                    <Button   variant="text" component={Link} to="/MyProjects">Processos</Button>
-                                    <Button   variant="text">Calendário</Button>
-                                    <Button   variant="text">Equipe</Button>
-                                    <Button   variant="text">Documentos</Button>
-                                </Stack>
+            <Box width="100vw" marginTop={theme.spacing(0)}   >
 
-                            </Grid>
+                {children}
 
-                            <Grid  item>
-                                        Perfil: 
-                                        <Select>
-                                            {usuario.map((usuarioItem) => (
-                                                <MenuItem value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
-                                            ))}
-                                        </Select>
-                            </Grid>
-                        </Grid>
-                    </Container>
-                </Toolbar>
-            </AppBar>
-       </Box>
+            </Box>
+        </>
 
-        <Box width= "100vw" marginTop={theme.spacing(0)}   >
-       
-       {children}
-
-        </Box>
-       </> 
-   
     )
 
 }
