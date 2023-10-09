@@ -28,12 +28,14 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { left } from "@popperjs/core";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
-// import '@sweetalert2/theme-dark/dark.css';
+import  SaveIcon from '@mui/icons-material/Save';
+
 
 export const NovaEtapa = () => {
   const theme = useTheme();
   const location = useLocation();
 
+  //modal de descartar etapa
   const handleDiscard = () => {
     Swal.fire({
       title: "Tem certeza que deseja descartar a etapa?",
@@ -46,8 +48,26 @@ export const NovaEtapa = () => {
     });
   };
 
-  const InserirEtapa = async (e: any) => {
-    e.preventDefault();
+  
+  //modal de salvar etapa
+  const handleAdd = () => {
+    Swal.fire({
+      title: "Tem certeza que deseja salvar etapa?",
+      customClass: "swalFire",
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonColor: "#b6f3f8",
+      cancelButtonText: "Não",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        InserirEtapa(); // Chama a função sem argumentos
+      }
+    });
+  };
+  
+
+  const InserirEtapa = async () => {
     try {
       const body = {
         processo_id,
@@ -227,8 +247,12 @@ export const NovaEtapa = () => {
             </Grid>
 
             <Grid item>
-              <Button variant="contained" startIcon={<AddIcon />} onClick={InserirEtapa}>
-                Criar Etapa
+              <Button 
+              variant="contained" 
+              startIcon={< SaveIcon />}
+              onClick={handleAdd}
+              >
+                Salvar Etapa
               </Button>
             </Grid>
           </Grid>
