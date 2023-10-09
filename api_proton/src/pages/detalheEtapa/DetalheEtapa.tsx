@@ -20,6 +20,7 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useNavigate } from "react-router-dom";
+import { ComboResponsavel } from "../../shared/components/comboResponsavel/ComboResponsavel";
 
 export const DetalheEtapa = () => {
     const navigate = useNavigate();
@@ -146,18 +147,7 @@ export const DetalheEtapa = () => {
                                     }}
                                 /> */}
 
-                                        <InputLabel id="demo-simple-select-label" >Responsável</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            // value={age}
-                                            label="Age"
-                                            // onChange={handleChange}
-                                        >
-                                            <MenuItem value={1}>Joana Maria de Braga Souza</MenuItem>
-                                            <MenuItem value={2}>Ariel</MenuItem>
-                                            <MenuItem value={3}>Carlos</MenuItem>
-                                        </Select>
+                                        <ComboResponsavel/>
                             </Grid>
 
                         </div>
