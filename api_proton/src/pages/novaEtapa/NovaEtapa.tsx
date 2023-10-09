@@ -4,10 +4,13 @@ import {
   Button,
   Divider,
   Grid,
+  InputLabel,
   ListItem,
   ListItemButton,
   ListItemText,
+  MenuItem,
   Paper,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
@@ -19,7 +22,7 @@ import "./NovaEtapa.css";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import FirstComponent from "./calendario";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import VoltarButton from "./voltarButton";
@@ -96,6 +99,46 @@ export const NovaEtapa = () => {
   const [etapa_descricao, setetapa_descricao] = useState("");
   const [etapa_ordem, setetapa_ordem] = useState<number>();
 
+
+
+
+
+  //para o combo de responsável funcionar
+
+  const [usuario, setUsuario] = useState([{
+    usuario_id: 1,
+    usuario_nome: "Betrano",
+    usuario_senha: "senha123",
+    usuario_data_cadastro: new Date(),
+    usuario_nivel: 'CL',
+    usuario_email: "betrano@gmail.com"
+  },
+  {
+    usuario_id: 2,
+    usuario_nome: "Fulano",
+    usuario_senha: "senha456",
+    usuario_data_cadastro: new Date(),
+    usuario_nivel: 'LE',
+    usuario_email: "fulano@gmail.com"
+  }]);
+
+
+  const get_usuario = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/get_usuario/"
+      );
+      const jsonData = await response.json();
+      setUsuario(jsonData); // Update the state with fetched data
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    get_usuario();
+  }, []);
+
   return (
     // // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
     <Box
@@ -152,7 +195,7 @@ export const NovaEtapa = () => {
               }}
             >
               <Grid xs={12}>
-                <TextField
+                {/* <TextField
                   id="standard-multiline-static-responsavel"
                   label="Responsável:*"
                   variant="standard"
@@ -163,7 +206,22 @@ export const NovaEtapa = () => {
                       value: SetStateAction<string>;
                     };
                   }) => setetapa_responsavel_id(e.target.value)}
-                />
+                /> */}
+
+                <InputLabel id="responsavel-label">Responsável:</InputLabel>
+                <Select
+                  labelId="responsavel-label"
+                  id="responsavel"
+                  value={etapa_responsavel_id}
+                  onChange={(e) => setetapa_responsavel_id(e.target.value)}
+                >
+                  {usuario.map((usuarioItem) => (
+                    <MenuItem key={usuarioItem.usuario_id} value={usuarioItem.usuario_id}>
+                      {usuarioItem.usuario_nome}
+                    </MenuItem>
+                  ))}
+                </Select>
+
               </Grid>
 
               <span
@@ -175,9 +233,11 @@ export const NovaEtapa = () => {
               >
                 Prazo de Conclusão:{" "}
               </span>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker onChange={(date: any) => setetapa_data_conclusao(date)} />
-              </LocalizationProvider>
+                <Grid item mt={"1rem"}>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker onChange={(date: any) => setetapa_data_conclusao(date)} />
+                  </LocalizationProvider>
+                </Grid>
             </div>
           </div>
 

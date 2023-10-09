@@ -20,7 +20,7 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useNavigate } from "react-router-dom";
-import { ComboResponsavel } from "../../shared/components/comboResponsavel/ComboResponsavel";
+
 
 export const DetalheEtapa = () => {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export const DetalheEtapa = () => {
         navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
     };
 
-   
+
 
     const theme = useTheme();
     const location = useLocation();
@@ -68,6 +68,44 @@ export const DetalheEtapa = () => {
 
         // You can now safely use the updated 'etapa' state here
     }, []);
+
+
+//para o combo de responsável funcionar
+
+const [usuario, setUsuario] = useState([{
+    usuario_id: 1,
+    usuario_nome: "Betrano",
+    usuario_senha: "senha123",
+    usuario_data_cadastro: new Date(),
+    usuario_nivel: 'CL',
+    usuario_email: "betrano@gmail.com"
+},
+{
+    usuario_id: 2,
+    usuario_nome: "Fulano",
+    usuario_senha: "senha456",
+    usuario_data_cadastro: new Date(),
+    usuario_nivel: 'LE',
+    usuario_email: "fulano@gmail.com"
+}]);
+
+
+const get_usuario = async () => {
+    try {
+        const response = await fetch(
+            "http://localhost:5000/get_usuario/"
+        );
+        const jsonData = await response.json();
+        setUsuario(jsonData); // Update the state with fetched data
+    } catch (error: any) {
+        console.log(error.message);
+    }
+};
+
+useEffect(() => {
+    get_usuario();
+}, []);
+
 
     return (
         <Box
@@ -134,7 +172,7 @@ export const DetalheEtapa = () => {
                                 <CalendarioEtapa />
                             </Grid>
 
-                            <Grid  item margin={"15px"} >
+                            <Grid item margin={"15px"} >
                                 {/* <TextField
                                     id="standard-multiline-static-responsavel"
                                     label="Responsável:*"
@@ -147,7 +185,12 @@ export const DetalheEtapa = () => {
                                     }}
                                 /> */}
 
-                                        <ComboResponsavel/>
+                                <InputLabel id="responsavel-label">Responsável</InputLabel>
+                                <Select labelId="responsavel-label" id="responsavel" value={(etapa.etapa_responsavel_id)} /* Substitua 1 pelo valor adequado */>
+                                    {usuario.map((usuarioItem) => (
+                                        <MenuItem value={(usuarioItem.usuario_id)}>{usuarioItem.usuario_nome}</MenuItem>
+                                    ))}
+                                </Select>
                             </Grid>
 
                         </div>
