@@ -1,5 +1,5 @@
 import { Box, Button, Grid, IconButton, Paper, TextField, Typography } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
+import  SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
@@ -111,10 +111,10 @@ export const NovoProjeto = () => {
               <Grid item>
                 <Button
                   variant="contained"
-                  startIcon={<AddIcon />}
+                  startIcon={< SaveIcon />}
                   onClick={inserirProcesso}
                 >
-                  Criar Processo
+                  Salvar Processo
                 </Button>
               </Grid>
             </Grid>

@@ -214,3 +214,14 @@ app.get("/get_anexos", async (req, res) => {
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
+
+
+// //testando para combo de responsaveis 
+// app.get("/get_responsaveis", async (req, res) => {
+//   try {
+//     const selectResponsaveis = await pool.query("SELECT usuario_id, usuario_nome FROM public.usuario ORDER BY usuario_nome");
+//     res.json(selectResponsaveis.rows);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });

@@ -27,6 +27,7 @@ import VoltarButton from "./voltarButton";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { left } from "@popperjs/core";
 import { useLocation } from "react-router-dom";
+import { ComboResponsavel } from "../../shared/components/comboResponsavel/ComboResponsavel";
 
 export const NovaEtapa = () => {
     const theme = useTheme();
@@ -122,7 +123,7 @@ export const NovaEtapa = () => {
                             }}
                         >
                             <Grid xs={12}>
-                                <TextField
+                                {/* <TextField
                                     id="standard-multiline-static-responsavel"
                                     label="Responsável:*"
                                     variant="standard"
@@ -135,7 +136,8 @@ export const NovaEtapa = () => {
                                     }) =>
                                         setetapa_responsavel_id(e.target.value)
                                     }
-                                />
+                                /> */}
+                                <ComboResponsavel/>
                             </Grid>
 
                             <span
