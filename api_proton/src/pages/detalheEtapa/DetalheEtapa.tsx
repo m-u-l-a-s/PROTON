@@ -20,7 +20,7 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useNavigate } from "react-router-dom";
-import { ComboResponsavel } from "../../shared/components/comboResponsavel/ComboResponsavel";
+
 
 export const DetalheEtapa = () => {
     const navigate = useNavigate();
