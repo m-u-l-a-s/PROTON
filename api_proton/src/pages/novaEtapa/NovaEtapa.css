@@ -4,9 +4,8 @@
 
 .descricao {
   color: black !important;
-  font: 1rem normal black,!important;
+  font: 1rem normal black !important;
 }
-
 
 .meuBotao {
   background-color: #616161;
@@ -16,7 +15,17 @@
   margin-right: 70px;
 }
 
-.legenda{
+.legenda {
   color: #000000;
   font-family: "Roboto";
+}
+
+.swalFire {
+  font-size: 0.85rem;
+}
+
+.swal2-confirm {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
