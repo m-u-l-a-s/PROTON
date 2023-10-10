@@ -30,7 +30,7 @@ import VoltarButton from "./voltarButton";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { left } from "@popperjs/core";
 import { useLocation } from "react-router-dom";
-// import Swal from "sweetalert2";
+import ClearIcon from '@mui/icons-material/Clear';
 
 import SaveIcon from '@mui/icons-material/Save';
 const Swal = require('sweetalert2');
@@ -40,18 +40,43 @@ export const NovaEtapa = () => {
   const theme = useTheme();
   const location = useLocation();
 
-  //modal de descartar etapa
-  const handleDiscard = () => {
+  
+
+  //modal de limpar etapa
+  const handleClean = () => {
     Swal.fire({
-      title: "Tem certeza que deseja descartar a etapa?",
+      title: "Tem certeza que deseja limpar a etapa?",
       customClass: "swalFire",
       showCancelButton: true,
       focusConfirm: false,
       confirmButtonText: '<span style="color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
       cancelButtonText: "Não",
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        LimparEtapas();
+        Swal.fire({
+          title: '<span style="font-size: 20px;">Etapa limpa com sucesso!</span>',
+          customClass: "swalFire",
+          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+          confirmButtonColor: "#b6f3f8",
+        });
+      }
     });
   };
+  
+     
+  
+  //função de limpar etapa
+  const LimparEtapas = () => {
+    setProcessoId("");
+    setetapa_nome("");
+    setetapa_responsavel_id("");
+    setetapa_ordem(1);
+    setetapa_data_conclusao(new Date);
+    setetapa_descricao("");
+  };
+  
 
 
   //modal de salvar etapa
@@ -66,14 +91,20 @@ export const NovaEtapa = () => {
       cancelButtonText: "Não",
     }).then((result:any) => {
       if (result.isConfirmed) {
-        InserirEtapa(); // Chama a função sem argumentos
+        InserirEtapa(); 
       }
     });
   };
 
+  
 
   const InserirEtapa = async () => {
     try {
+
+      if (!processo_id || !etapa_responsavel_id || !etapa_ordem) {
+        throw new Error("Campos obrigatórios não foram preenchidos corretamente.");
+      }
+
       const body = {
         processo_id,
         etapa_nome,
@@ -90,9 +121,29 @@ export const NovaEtapa = () => {
       });
       console.log(response);
       
-    } catch (error: any) {
-      console.log(error.message);
+      if (response.ok) {
+        console.log("Etapa inserida com sucesso!");
+        Swal.fire({
+          title: '<span style="font-size: 15px;" >Etapa inserida com sucesso!</span',
+          customClass: "swalFire",
+          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+          confirmButtonColor: "#b6f3f8",
+        });
+      } else {
+        throw new Error("Erro ao inserir etapa");
+      }
 
+    } catch (error: any) {
+      console.log("Erro ao inserir etapa:",error.message);
+
+      Swal.fire({
+        title: "Erro",
+        html: '<span style="font-size: 20px; color: black;">Ocorreu um erro ao inserir etapa. Tente novamente.</span>',
+        customClass: "swalFire",
+        confirmButtonText: '<span style="color: black;">OK</span>',
+        confirmButtonColor: "#b6f3f8",
+       
+      });
     }
   };
 
@@ -245,7 +296,7 @@ export const NovaEtapa = () => {
             </div>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column", color: "black" }}>
             <Grid item>
               <p className="legenda">
                 A prioridade é definida por números, quanto menor o número maior a prioridade, quanto maior o número
@@ -302,11 +353,11 @@ export const NovaEtapa = () => {
             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
               <Button
                 variant="contained"
-                startIcon={<DeleteIcon />}
+                startIcon={<ClearIcon />}
                 sx={{ background: "#292A2D", color: "white" }}
-                onClick={handleDiscard}
+                onClick={handleClean}
               >
-                Descartar
+                Limpar Etapa
               </Button>
             </Grid>
 
@@ -334,3 +385,7 @@ export const NovaEtapa = () => {
     // </div>
   );
 };
+function setEtapas(arg0: never[]) {
+  throw new Error("Function not implemented.");
+}
+
