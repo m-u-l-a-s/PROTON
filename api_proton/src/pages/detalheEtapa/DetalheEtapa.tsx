@@ -12,14 +12,18 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import SaveIcon from '@mui/icons-material/Save';
+
+
 import { BarraEtapa } from "../../shared/components";
 import { CalendarioEtapa } from "./Calendario";
 import "./Style.css";
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
 
@@ -40,18 +44,40 @@ export const DetalheEtapa = () => {
       confirmButtonText: '<span style="color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
       cancelButtonText: "Não",
-    }).then((result:any) => {
+    }).then((result: any) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Etapa atualizada com sucesso!",
           customClass: "swalFire",
-          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>', 
+          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
           confirmButtonColor: "#b6f3f8",
         });
       }
     });
   };
-  
+
+
+  const deletarModal = () => {
+    Swal.fire({
+      title: "Tem certeza que deseja deletar esta etapa?",
+      customClass: "swalFire",
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonColor: "#b6f3f8",
+      cancelButtonText: "Não",
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Etapa deletada com sucesso!",
+          customClass: "swalFire",
+          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+          confirmButtonColor: "#b6f3f8",
+        });
+      }
+    });
+  };
+
 
   const theme = useTheme();
   const location = useLocation();
@@ -208,12 +234,40 @@ export const DetalheEtapa = () => {
               </Grid>
             </div>
 
-            <Box display="flex" alignItems="center" justifyContent="center" marginLeft={15}>
-              <Button variant="contained" disableElevation 
-               onClick={atualizarModal}>
-                Atualizar Etapa
-              </Button>
-            </Box>
+            <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"1.5rem"}>
+
+
+              <Grid item>
+
+                <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
+                  sx={{ background: "#292A2D", color: "white" }}
+                  onClick={deletarModal}>
+                  Deletar Etapa
+                </Button>
+
+              </Grid>
+
+              <Grid item>
+
+                <Button variant="contained" disableElevation startIcon={<ModeEditOutlineIcon />}
+               /*onClick={}*/ >
+                  Editar
+                </Button>
+
+              </Grid>
+
+              <Grid item>
+
+                <Button variant="contained" disableElevation startIcon={<SaveIcon />}
+                  onClick={atualizarModal}>
+                  Salvar Edição
+                </Button>
+
+              </Grid>
+
+
+
+            </Grid>
           </Box>
         </Box>
       </Paper>
