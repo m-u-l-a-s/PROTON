@@ -135,6 +135,19 @@ app.get("/get_etapa_by_processo/:id", async (req, res) => {
   }
 });
 
+// deletar etapa
+app.delete("/deletarEtapa/:id", async (req, res) => {
+  try {
+    const {id} = req.params;
+    const etapa = await pool.query("delete from etapa where etapa_id =$1", [id]);
+
+    res.json(etapa.rows);
+  } catch (err){
+    console.log(err.message)
+  }
+}
+);
+
 //puxar nome e descrição do processo pelo id do mesmo
 
 app.get("/get_processo/:id", async (req, res) => {

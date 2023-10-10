@@ -4,10 +4,12 @@ import { Box, Button, Grid, IconButton, Paper, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Steps } from "../novoProjeto/Steps";
 import { Link } from "react-router-dom";
-import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import Etapa from "../novaEtapa/etapaInterface";
 import { BarraProjeto } from "../../shared/components";
+import Swal from "sweetalert2";
 
 const VisualizarProjeto = () => {
     const location = useLocation();
@@ -19,6 +21,46 @@ const VisualizarProjeto = () => {
         processo_descricao: "",
     });
 
+    //modal de descartar etapa
+    const handleDiscard = () => {
+    Swal.fire({
+        title: "Tem certeza que deseja descartar todo o processo?",
+        customClass: "swalFire",
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: '<span style="color: black;">Sim</span>',
+        confirmButtonColor: "#b6f3f8",
+        cancelButtonText: "Não",
+    }).then((result:any) => {
+        if (result.isConfirmed) {
+          DeletarEtapa(); // Chama a função sem argumentos
+        }
+    });
+    };
+
+    // Chamando função deletar etapa
+    const DeletarEtapa = async () => {
+        try {
+            const body = {
+              etapa_id,
+            };
+            console.log(body);
+            const response = await fetch("http://localhost:5000/deletarEtapa/:id", {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(body),
+            });
+            console.log(response);
+            
+          } catch (error: any) {
+            console.log(error.message);
+      
+          }
+    }
+
+    const [etapa_id, setEtapaId] = useState(location.state.id);
+
+    //
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -138,6 +180,20 @@ const VisualizarProjeto = () => {
                                 Adicionar Etapa
                             </Button>
                         </Grid>
+
+                        <Grid container justifyContent="space-between">                
+                        <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
+                            <Button startIcon={<DeleteIcon/>} onClick={handleDiscard}>
+                                Deletar Processo
+                            </Button>
+                        </Grid>
+
+                        <Grid item >
+                            <Button startIcon={<EditIcon/>}>
+                                Editar Processo
+                            </Button>
+                        </Grid>
+                        </Grid>                
                     </Box>
                 </Box>
             </Paper>
