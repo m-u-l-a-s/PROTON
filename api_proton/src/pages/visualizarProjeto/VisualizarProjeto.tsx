@@ -32,33 +32,8 @@ const VisualizarProjeto = () => {
         confirmButtonColor: "#b6f3f8",
         cancelButtonText: "Não",
     }).then((result:any) => {
-        if (result.isConfirmed) {
-          DeletarEtapa(); // Chama a função sem argumentos
-        }
     });
     };
-
-    // Chamando função deletar etapa
-    const DeletarEtapa = async () => {
-        try {
-            const body = {
-              etapa_id,
-            };
-            console.log(body);
-            const response = await fetch("http://localhost:5000/deletarEtapa/:id", {
-              method: "DELETE",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(body),
-            });
-            console.log(response);
-            
-          } catch (error: any) {
-            console.log(error.message);
-      
-          }
-    }
-
-    const [etapa_id, setEtapaId] = useState(location.state.id);
 
     //
     useEffect(() => {

@@ -17,7 +17,6 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import SaveIcon from '@mui/icons-material/Save';
 
-
 import { BarraEtapa } from "../../shared/components";
 import { CalendarioEtapa } from "./Calendario";
 import "./Style.css";
@@ -29,6 +28,7 @@ const Swal = require('sweetalert2');
 
 export const DetalheEtapa = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigateToProcesso = () => {
     navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
@@ -68,6 +68,9 @@ export const DetalheEtapa = () => {
       cancelButtonText: "Não",
     }).then((result: any) => {
       if (result.isConfirmed) {
+        DeletarEtapa(); // Chama a função sem argumentos
+      }
+      if (result.isConfirmed) {
         Swal.fire({
           title: "Etapa deletada com sucesso!",
           customClass: "swalFire",
@@ -78,9 +81,29 @@ export const DetalheEtapa = () => {
     });
   };
 
+  // Chamando função deletar etapa
+  const DeletarEtapa = async () => {
+    try {
+      const body = {
+        etapa_id,
+    };
+      console.log(body);
+      const response = await fetch("http://localhost:5000/deletarEtapa/:id", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+    });
+      console.log(response);
+    } catch (error: any) {
+        console.log(error.message);
+    }
+  }
 
+const [etapa_id, setEtapaId] = useState(location.state.id);
+
+// /////////////////////////////////////////////////////////////////
   const theme = useTheme();
-  const location = useLocation();
+
 
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
