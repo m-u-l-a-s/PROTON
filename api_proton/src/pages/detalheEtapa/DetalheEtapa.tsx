@@ -20,7 +20,8 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
+const Swal = require('sweetalert2');
 
 export const DetalheEtapa = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ export const DetalheEtapa = () => {
       confirmButtonText: '<span style="color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
       cancelButtonText: "Não",
-    }).then((result) => {
+    }).then((result:any) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Etapa atualizada com sucesso!",

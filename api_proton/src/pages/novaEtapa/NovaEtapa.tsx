@@ -30,11 +30,13 @@ import VoltarButton from "./voltarButton";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { left } from "@popperjs/core";
 import { useLocation } from "react-router-dom";
-import Swal from "sweetalert2";
-import  SaveIcon from '@mui/icons-material/Save';
+// import Swal from "sweetalert2";
 
+import SaveIcon from '@mui/icons-material/Save';
+const Swal = require('sweetalert2');
 
 export const NovaEtapa = () => {
+  
   const theme = useTheme();
   const location = useLocation();
 
@@ -51,7 +53,7 @@ export const NovaEtapa = () => {
     });
   };
 
-  
+
   //modal de salvar etapa
   const handleAdd = () => {
     Swal.fire({
@@ -62,13 +64,13 @@ export const NovaEtapa = () => {
       confirmButtonText: '<span style="color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
       cancelButtonText: "Não",
-    }).then((result) => {
+    }).then((result:any) => {
       if (result.isConfirmed) {
         InserirEtapa(); // Chama a função sem argumentos
       }
     });
   };
-  
+
 
   const InserirEtapa = async () => {
     try {
@@ -87,8 +89,10 @@ export const NovaEtapa = () => {
         body: JSON.stringify(body),
       });
       console.log(response);
+      
     } catch (error: any) {
       console.log(error.message);
+
     }
   };
 
@@ -233,11 +237,11 @@ export const NovaEtapa = () => {
               >
                 Prazo de Conclusão:{" "}
               </span>
-                <Grid item mt={"1rem"}>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker onChange={(date: any) => setetapa_data_conclusao(date)} />
-                  </LocalizationProvider>
-                </Grid>
+              <Grid item mt={"1rem"}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker onChange={(date: any) => setetapa_data_conclusao(date)} />
+                </LocalizationProvider>
+              </Grid>
             </div>
           </div>
 
@@ -307,10 +311,10 @@ export const NovaEtapa = () => {
             </Grid>
 
             <Grid item>
-              <Button 
-              variant="contained" 
-              startIcon={< SaveIcon />}
-              onClick={handleAdd}
+              <Button
+                variant="contained"
+                startIcon={< SaveIcon />}
+                onClick={handleAdd}
               >
                 Salvar Etapa
               </Button>
