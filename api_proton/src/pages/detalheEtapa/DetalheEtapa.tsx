@@ -76,6 +76,7 @@ export const DetalheEtapa = () => {
           customClass: "swalFire",
           confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
           confirmButtonColor: "#b6f3f8",
+          onclick: {handleNavigateToProcesso}
         });
       }
     });
@@ -85,10 +86,10 @@ export const DetalheEtapa = () => {
   const DeletarEtapa = async () => {
     try {
       const body = {
-        etapa_id,
+        etapa_id, 
     };
       console.log(body);
-      const response = await fetch("http://localhost:5000/deletarEtapa/:id", {
+      const response = await fetch(`http://localhost:5000/deletarEtapa/${etapa_id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -100,6 +101,7 @@ export const DetalheEtapa = () => {
   }
 
 const [etapa_id, setEtapaId] = useState(location.state.id);
+
 
 // /////////////////////////////////////////////////////////////////
   const theme = useTheme();
