@@ -21,19 +21,54 @@ const VisualizarProjeto = () => {
         processo_descricao: "",
     });
 
-    //modal de descartar etapa
+
+    // Modal confirmação de deletar
     const handleDiscard = () => {
-    Swal.fire({
-        title: "Tem certeza que deseja descartar todo o processo?",
-        customClass: "swalFire",
-        showCancelButton: true,
-        focusConfirm: false,
-        confirmButtonText: '<span style="color: black;">Sim</span>',
-        confirmButtonColor: "#b6f3f8",
-        cancelButtonText: "Não",
-    }).then((result:any) => {
-    });
+        Swal.fire({
+            title: "Tem certeza que deseja deletar todo o processo?",
+            customClass: "swalFire",
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonColor: "#b6f3f8",
+            cancelButtonText: "Não",
+        }).then((result: any) => {
+            if (result.isConfirmed) {
+                DeletarProcesso(); // Chama a função deletar processo sem argumentos
+            }
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Processo deletado com sucesso!",
+                    customClass: "swalFire",
+                    confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                    confirmButtonColor: "#b6f3f8",
+                }).then(() => {
+                    // Redirecionar para a página anterior após a confirmação
+                    window.history.back();
+                });
+            }
+        });
     };
+
+    // Estabelecendo a função deletar processo
+    const DeletarProcesso = async () => {
+        try {
+            const body = {
+                processo,
+            };
+            console.log(body);
+            const response = await fetch(`http://localhost:5000/deletarProcesso/${etapa_id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+            console.log(response);
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    }
+
+    const [etapa_id, setProcessoId] = useState(location.state.id);
 
     //
     useEffect(() => {
@@ -70,10 +105,10 @@ const VisualizarProjeto = () => {
             justifyContent="center"
             maxHeight="100vh"
             flexDirection="column"
-            sx={{ gap: 3,}}
+            sx={{ gap: 3, }}
         >
 
-            
+
 
             <Paper
                 sx={{
@@ -91,8 +126,8 @@ const VisualizarProjeto = () => {
                 }}
             >
 
-                    <BarraProjeto etapa_nome={processo.processo_nome}  />
-               
+                <BarraProjeto etapa_nome={processo.processo_nome} />
+
                 <Box
                     display="flex"
                     alignItems="center"
@@ -156,19 +191,19 @@ const VisualizarProjeto = () => {
                             </Button>
                         </Grid>
 
-                        <Grid container justifyContent="space-between">                
-                        <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
-                            <Button startIcon={<DeleteIcon/>} onClick={handleDiscard}>
-                                Deletar Processo
-                            </Button>
-                        </Grid>
+                        <Grid container justifyContent="space-between">
+                            <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
+                                <Button startIcon={<DeleteIcon />} onClick={handleDiscard}>
+                                    Deletar Processo
+                                </Button>
+                            </Grid>
 
-                        <Grid item >
-                            <Button startIcon={<EditIcon/>}>
-                                Editar Processo
-                            </Button>
+                            <Grid item >
+                                <Button startIcon={<EditIcon />}>
+                                    Editar Processo
+                                </Button>
+                            </Grid>
                         </Grid>
-                        </Grid>                
                     </Box>
                 </Box>
             </Paper>

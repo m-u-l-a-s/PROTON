@@ -56,7 +56,7 @@ export const DetalheEtapa = () => {
     });
   };
 
-
+// Modal confirmação de deletar
   const deletarModal = () => {
     Swal.fire({
       title: "Tem certeza que deseja deletar esta etapa?",
@@ -68,7 +68,7 @@ export const DetalheEtapa = () => {
       cancelButtonText: "Não",
     }).then((result: any) => {
       if (result.isConfirmed) {
-        DeletarEtapa(); // Chama a função sem argumentos
+        DeletarEtapa(); // Chama a função deletar etapa sem argumentos
       }
       if (result.isConfirmed) {
         Swal.fire({
@@ -76,13 +76,15 @@ export const DetalheEtapa = () => {
           customClass: "swalFire",
           confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
           confirmButtonColor: "#b6f3f8",
-          onclick: {handleNavigateToProcesso}
+        }).then(() => {
+          // Redirecionar para a página anterior após a confirmação
+          window.history.back();
         });
       }
     });
   };
 
-  // Chamando função deletar etapa
+  // Estabelecendo a função deletar etapa
   const DeletarEtapa = async () => {
     try {
       const body = {

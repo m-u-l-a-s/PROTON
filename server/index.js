@@ -148,6 +148,19 @@ app.delete("/deletarEtapa/:id", async (req, res) => {
 }
 );
 
+// deletar processo 
+app.delete("/deletarProcesso/:id", async (req, res) => {
+  try {
+    const {id} = req.params;
+    const processo = await pool.query("delete from processo where processo_id =$1", [id]);
+
+    res.json(processo.rows);
+  } catch (err){
+    console.log(err.message)
+  }
+}
+);
+
 //puxar nome e descrição do processo pelo id do mesmo
 
 app.get("/get_processo/:id", async (req, res) => {
