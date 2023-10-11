@@ -93,8 +93,20 @@ export const NovaEtapa = () => {
       if (result.isConfirmed) {
         InserirEtapa(); 
       }
-    });
-  };
+    //     if (result.isConfirmed) {
+    //       Swal.fire({
+    //         title: "Etapa criada com sucesso!",
+    //         customClass: "swalFire",
+    //         confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+    //         confirmButtonColor: "#b6f3f8",
+    //       }).then(() => {
+    //         // Redirecionar para a página anterior após a confirmação
+    //         window.history.back();
+    //       });
+    //     }
+      });
+    };
+  
 
   
 
@@ -122,12 +134,15 @@ export const NovaEtapa = () => {
       console.log(response);
       
       if (response.ok) {
-        console.log("Etapa inserida com sucesso!");
+        console.log("Etapa criada com sucesso!");
         Swal.fire({
-          title: '<span style="font-size: 15px;" >Etapa inserida com sucesso!</span',
+          title: '<span style="font-size: 15px;" >Etapa criada com sucesso!</span',
           customClass: "swalFire",
           confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
           confirmButtonColor: "#b6f3f8",
+        }).then(() => {
+          // Redirecionar para a página anterior após a confirmação
+          window.history.back();
         });
       } else {
         throw new Error("Erro ao inserir etapa");
