@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import React, { SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const NovoProjeto = () => {
 
@@ -13,8 +14,7 @@ export const NovoProjeto = () => {
     const [processo_nome, setProcesso_nome] = useState('')
     const [processo_descricao, setProcesso_descricao] = useState('')
 
-    const inserirProcesso = async (e: any) => {
-        e.preventDefault()
+    const inserirProcesso = async () => {
         try {
 
             const body = {processo_responsavel_id, processo_nome, processo_descricao }
@@ -33,6 +33,31 @@ export const NovoProjeto = () => {
             console.error(error.message)
         }
     }
+
+  //modal de salvar projeto
+  const handleAdd = () => {
+    Swal.fire({
+      title: "Tem certeza que deseja criar esse projeto?",
+      customClass: "swalFire",
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonColor: "#b6f3f8",
+      cancelButtonText: "Não",
+    }).then((result:any) => {
+      if (result.isConfirmed) {
+        inserirProcesso(); 
+      }
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Processo criado com sucesso!",
+            customClass: "swalFire",
+            confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+            confirmButtonColor: "#b6f3f8",
+          })
+        }
+      });
+    };
 
     return (
         <Box
@@ -112,7 +137,7 @@ export const NovoProjeto = () => {
                 <Button
                   variant="contained"
                   startIcon={< SaveIcon />}
-                  onClick={inserirProcesso}
+                  onClick={handleAdd}
                 >
                   Salvar Processo
                 </Button>
