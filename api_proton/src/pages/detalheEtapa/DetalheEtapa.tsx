@@ -1,3 +1,4 @@
+import { validarEdicao } from "../../control/validarEdicao";
 import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import {
@@ -16,7 +17,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import SaveIcon from '@mui/icons-material/Save';
-
 import { BarraEtapa } from "../../shared/components";
 import { CalendarioEtapa } from "./Calendario";
 import "./Style.css";
@@ -102,7 +102,7 @@ export const DetalheEtapa = () => {
 
   const [etapa_id, setEtapaId] = useState(location.state.id);
   const theme = useTheme();
-
+  const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa'))
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
     processo_id: 1,
@@ -214,6 +214,9 @@ export const DetalheEtapa = () => {
                   value={etapa.etapa_descricao}
                   name = 'etapa_descricao'
                   onChange = {handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  }
                 />
               </Grid>
 
@@ -241,6 +244,9 @@ export const DetalheEtapa = () => {
                   value={etapa.etapa_responsavel_id}
                   name = 'etapa_responsavel_id'
                   onChange = {handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  }
                 >
                   {usuario.map((usuarioItem) => (
                     <MenuItem value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
@@ -259,6 +265,9 @@ export const DetalheEtapa = () => {
                   value={etapa.etapa_comentario}
                   name = 'etapa_comentario'
                   onChange = {handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  }
                 />
               </Grid>
             </div>
