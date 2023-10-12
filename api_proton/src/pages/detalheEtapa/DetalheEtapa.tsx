@@ -29,11 +29,9 @@ const Swal = require('sweetalert2');
 export const DetalheEtapa = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
   const handleNavigateToProcesso = () => {
     navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
   };
-
 
   const atualizarModal = () => {
     Swal.fire({
@@ -56,7 +54,7 @@ export const DetalheEtapa = () => {
     });
   };
 
-// Modal confirmação de deletar
+  // Modal confirmação de deletar
   const deletarModal = () => {
     Swal.fire({
       title: "Tem certeza que deseja deletar esta etapa?",
@@ -88,26 +86,22 @@ export const DetalheEtapa = () => {
   const DeletarEtapa = async () => {
     try {
       const body = {
-        etapa_id, 
-    };
+        etapa_id,
+      };
       console.log(body);
       const response = await fetch(`http://localhost:5000/deletarEtapa/${etapa_id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-    });
+      });
       console.log(response);
     } catch (error: any) {
-        console.log(error.message);
+      console.log(error.message);
     }
   }
 
-const [etapa_id, setEtapaId] = useState(location.state.id);
-
-
-// /////////////////////////////////////////////////////////////////
+  const [etapa_id, setEtapaId] = useState(location.state.id);
   const theme = useTheme();
-
 
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
@@ -136,13 +130,9 @@ const [etapa_id, setEtapaId] = useState(location.state.id);
         console.log(error.message);
       }
     };
-
     get_etapa_by_id(); // Call the function inside useEffect
-
     // You can now safely use the updated 'etapa' state here
   }, []);
-
-  //para o combo de responsável funcionar
 
   const [usuario, setUsuario] = useState([
     {
@@ -162,7 +152,6 @@ const [etapa_id, setEtapaId] = useState(location.state.id);
       usuario_email: "fulano@gmail.com",
     },
   ]);
-
   const get_usuario = async () => {
     try {
       const response = await fetch("http://localhost:5000/get_usuario/");
@@ -172,10 +161,16 @@ const [etapa_id, setEtapaId] = useState(location.state.id);
       console.log(error.message);
     }
   };
-
   useEffect(() => {
     get_usuario();
   }, []);
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const {name, value} = e.target;
+    setEtapa(prevEtapa => ({
+      ...prevEtapa,
+      [name]: value
+    }));
+  };
 
   return (
     <Box
@@ -211,11 +206,14 @@ const [etapa_id, setEtapaId] = useState(location.state.id);
             <div className="div1">
               <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"30px"}>
                 <TextField
-                  id="descrição"
+                  id="standard-multiline-static-responsavel"
                   label="Descrição"
                   variant="standard"
                   sx={{ width: "24vw" }}
+                  type = 'text'
                   value={etapa.etapa_descricao}
+                  name = 'etapa_descricao'
+                  onChange = {handleChange}
                 />
               </Grid>
 
@@ -240,7 +238,9 @@ const [etapa_id, setEtapaId] = useState(location.state.id);
                 <Select
                   labelId="responsavel-label"
                   id="responsavel"
-                  value={etapa.etapa_responsavel_id} /* Substitua 1 pelo valor adequado */
+                  value={etapa.etapa_responsavel_id}
+                  name = 'etapa_responsavel_id'
+                  onChange = {handleChange}
                 >
                   {usuario.map((usuarioItem) => (
                     <MenuItem value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
@@ -257,6 +257,8 @@ const [etapa_id, setEtapaId] = useState(location.state.id);
                   variant="standard"
                   sx={{ width: "24vw" }}
                   value={etapa.etapa_comentario}
+                  name = 'etapa_comentario'
+                  onChange = {handleChange}
                 />
               </Grid>
             </div>
