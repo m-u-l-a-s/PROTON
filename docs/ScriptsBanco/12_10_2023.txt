@@ -1,0 +1,3 @@
+update usuario set usuario_nome = 'Alexandre Jonas (CL)' where usuario_id = 1;
+update usuario set usuario_nome = 'Samuel Henrique (CO)' where usuario_id = 2;
+insert into usuario values (default,'Renan Henrique (LE)','fatec456', '2023-09-29','LE','renan.henrique@fatec.com');
