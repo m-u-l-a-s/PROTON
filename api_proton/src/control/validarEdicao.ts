@@ -4,6 +4,9 @@ export function validarEdicao (pagina: string)
     switch(pagina) {
         case 'DetalheEtapa':
             return !(perfil === 'CL')
+
+       case 'VisualizarProjeto':
+            return !(perfil === 'CL')
         default:
       }
 }
