@@ -11,18 +11,22 @@ export const MyProjects = () => {
             processo_nome: "Etapa 1",
             processo_descricao: "Pendente",
             processo_responsavel_id: 1,
+            processo_responsavel_nome: "Alexandre Jonas",
         },
         {
             processo_id: 2,
             processo_nome: "Etapa 2",
             processo_descricao: "Concluida",
             processo_responsavel_id: 1,
+            processo_responsavel_nome: "Alexandre Jonas",
+
         },
         {
             processo_id: 3,
             processo_nome: "Etapa 3",
             processo_descricao: "Pendente",
             processo_responsavel_id: 1,
+            processo_responsavel_nome: "Alexandre Jonas",
         },        
     ]);
 
@@ -43,6 +47,29 @@ export const MyProjects = () => {
     useEffect(() => {
         get_processos();
     }, []);
+
+
+
+//Puxando nome do responsavel
+
+    const get_processos_responsavelNome = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/get_processos_responsavelNome");
+            const jsonData = await response.json();
+
+            //console.log(jsonData)
+            setProcesso(jsonData);
+            //console.log(processos)
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    };
+
+    //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
+    useEffect(() => {
+        get_processos_responsavelNome();
+    }, []);
+
 
     return (
         <Box
@@ -103,7 +130,7 @@ export const MyProjects = () => {
                                 processoID={processos.processo_id}
                                 name={processos.processo_nome}
                                 // anexo={processo.anexo}
-                                resp={processos.processo_responsavel_id}
+                                resp={processos.processo_responsavel_nome}
                             />
                         ))}
                     </Grid>

@@ -242,12 +242,37 @@ app.listen(5000, () => {
 });
 
 
-// //testando para combo de responsaveis 
-// app.get("/get_responsaveis", async (req, res) => {
-//   try {
-//     const selectResponsaveis = await pool.query("SELECT usuario_id, usuario_nome FROM public.usuario ORDER BY usuario_nome");
-//     res.json(selectResponsaveis.rows);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
+
+
+
+//Puxando nome do responsável do projeto pelo id
+
+app.get("/get_processos_responsavelNome", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
+    
+   
+    const processosComNomes = await Promise.all(selectAll.rows.map(async (processo) => {
+      const responsavel = await pool.query("SELECT usuario_nome FROM public.usuario WHERE usuario_id = $1", [processo.processo_responsavel_id]);
+      return {
+        ...processo,
+        processo_responsavel_nome: responsavel.rows[0].usuario_nome,
+      };
+    }));
+
+    res.json(processosComNomes);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Erro ao obter processos' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
