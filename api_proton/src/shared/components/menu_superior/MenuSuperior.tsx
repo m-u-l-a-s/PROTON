@@ -78,7 +78,7 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({ children }) =>
                                     Perfil:
                                     <Select value = {usuarioAtual} onChange={salvaPerfil}>
                                         {usuario.map((usuarioItem) => (
-                                            <MenuItem  value={JSON.stringify(usuarioItem)}>{usuarioItem.usuario_nome}</MenuItem>
+                                            <MenuItem value={JSON.stringify(usuarioItem)}>{usuarioItem.usuario_nome}</MenuItem>
                                         ))}
                                     </Select>
                                 </Grid>

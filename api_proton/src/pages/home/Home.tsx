@@ -20,7 +20,13 @@ export const Home = () => {
         usuario_email: "fulano@gmail.com"
     }]
     const [perfil, setPerfil] = useState(useSessionStorageOrDefault('perfil', usuario[0]))
-
+    const nomePerfil = () => {
+        try {
+            return JSON.parse(perfil).usuario_nome
+        } catch (error:any) {
+            console.log(error)
+        }
+    }
     useEffect(() => {
         const perfilJSON: any = sessionStorage.getItem('perfil')
         setPerfil(!perfilJSON ? usuario : JSON.parse(perfilJSON))
@@ -33,7 +39,7 @@ export const Home = () => {
             <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
                 flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
                 <Paper sx={{ padding: 2, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary">Estimativa dos Processos</Typography>
+                    <Typography variant="h5" color="primary">Estimativa dos Processos de {nomePerfil()}</Typography>
                     <Grid container spacing={2} alignItems="center" marginTop={1}>
                         <Grid item>
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
