@@ -23,12 +23,15 @@ import "./Style.css";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import dayjs from "dayjs";
+
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
 
 export const DetalheEtapa = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [dataDoBanco, setDataDoBanco] = useState(""); // Inicia como string vazia
   const handleNavigateToProcesso = () => {
     navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
   };
@@ -126,12 +129,16 @@ export const DetalheEtapa = () => {
         const response = await fetch("http://localhost:5000/get_etapa/" + idPag);
         const jsonData = await response.json();
         setEtapa(jsonData); // Update the state with fetched data
+        //PUXANDO DATA DO BANCO
+        const dataDoBanco = dayjs(jsonData.etapa_data_conclusao, "YYYY-MM-DD").format("DD-MM-YYYY");
+        setDataDoBanco(dataDoBanco);
       } catch (error: any) {
         console.log(error.message);
       }
     };
     get_etapa_by_id(); // Call the function inside useEffect
     // You can now safely use the updated 'etapa' state here
+
   }, []);
 
   const [usuario, setUsuario] = useState([
@@ -221,7 +228,7 @@ export const DetalheEtapa = () => {
               </Grid>
 
               <Grid margin={"15px"}>
-                <CalendarioEtapa />
+                <CalendarioEtapa dataBanco={dataDoBanco}/>
               </Grid>
 
               <Grid item margin={"15px"}>

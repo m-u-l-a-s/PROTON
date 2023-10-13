@@ -23,6 +23,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import FirstComponent from "./calendario";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { SetStateAction, useEffect, useState } from "react";
+import 'dayjs/locale/pt-br'; 
 
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import VoltarButton from "./voltarButton";
@@ -304,7 +305,7 @@ export const NovaEtapa = () => {
                 Prazo de Conclusão:{" "}
               </span>
               <Grid item mt={"1rem"}>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
                   <DatePicker onChange={(date: any) => setetapa_data_conclusao(date)} />
                 </LocalizationProvider>
               </Grid>
