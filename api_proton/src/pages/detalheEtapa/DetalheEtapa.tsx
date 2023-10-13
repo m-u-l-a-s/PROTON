@@ -35,6 +35,9 @@ export const DetalheEtapa = () => {
   const handleNavigateToProcesso = () => {
     navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
   };
+  const handleNavigateToAnexos = () => {
+    navigate('/Anexos', { state: { etapa_id: etapa.etapa_id } });
+  };
 
   const atualizarModal = () => {
     Swal.fire({
@@ -172,7 +175,7 @@ export const DetalheEtapa = () => {
     get_usuario();
   }, []);
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setEtapa(prevEtapa => ({
       ...prevEtapa,
       [name]: value
@@ -204,7 +207,7 @@ export const DetalheEtapa = () => {
           </IconButton>
         </Grid>
 
-        <BarraEtapa etapa_nome={etapa.etapa_nome} />
+        <BarraEtapa etapa_nome={etapa.etapa_nome} etapa_id={etapa.etapa_id} />
 
         {/*</BarraEtapa>*/}
 
@@ -217,10 +220,10 @@ export const DetalheEtapa = () => {
                   label="Descrição"
                   variant="standard"
                   sx={{ width: "24vw" }}
-                  type = 'text'
+                  type='text'
                   value={etapa.etapa_descricao}
-                  name = 'etapa_descricao'
-                  onChange = {handleChange}
+                  name='etapa_descricao'
+                  onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
                   }
@@ -228,7 +231,7 @@ export const DetalheEtapa = () => {
               </Grid>
 
               <Grid margin={"15px"}>
-                <CalendarioEtapa dataBanco={dataDoBanco}/>
+                <CalendarioEtapa dataBanco={dataDoBanco} />
               </Grid>
 
               <Grid item margin={"15px"}>
@@ -249,8 +252,8 @@ export const DetalheEtapa = () => {
                   labelId="responsavel-label"
                   id="responsavel"
                   value={etapa.etapa_responsavel_id}
-                  name = 'etapa_responsavel_id'
-                  onChange = {handleChange}
+                  name='etapa_responsavel_id'
+                  onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
                   }
@@ -270,8 +273,8 @@ export const DetalheEtapa = () => {
                   variant="standard"
                   sx={{ width: "24vw" }}
                   value={etapa.etapa_comentario}
-                  name = 'etapa_comentario'
-                  onChange = {handleChange}
+                  name='etapa_comentario'
+                  onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
                   }

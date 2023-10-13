@@ -14,9 +14,11 @@ import './Anexos.css'
 export function MultipleFileUpload({
     name,
     buttonClicked,
+    etapaId
 }: {
     name: string;
     buttonClicked: boolean;
+    etapaId: number;
 }) {
     const [_, __, helpers] = useField(name);
     const [files, setFiles] = useState<UploadableFile[]>([]);
@@ -77,6 +79,7 @@ export function MultipleFileUpload({
                     // Cria um objeto FormData e adicione o arquivo a ele
                     const formData = new FormData();
                     formData.append("files", fileWrapper.file);
+                    formData.append("etapa_id", etapaId.toString()); // Converte etapaId para string antes de anexá-lo
 
                     // Envia o arquivo para o servidor
                     const response = await axios.post(

@@ -178,7 +178,7 @@ app.get("/get_processo/:id", async (req, res) => {
 
 app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
   const files = req.files;
-  const etapa_id = 1; // Dado mockado
+  const etapa_id = req.body.etapa_id; // Obtém o etapa_id da solicitação POST
 
   try {
     // Verifique se req.files contém algum arquivo

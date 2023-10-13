@@ -11,12 +11,11 @@ import { Navigate } from "react-router-dom";
 
 export const BarraEtapa = (prop: any) => {
  
-
      const navigate = useNavigate();
 
-     const nomeEtapa = () => {
-          navigate("/Anexos", { state: { id: prop.etapa_nome } });
-      };
+     const navigateToAnexos = () => {
+          navigate("/Anexos", { state: { etapa_id: prop.etapa_id } });
+        };
 
      return (
           <AppBar position="static" color="secondary">
@@ -32,7 +31,7 @@ export const BarraEtapa = (prop: any) => {
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
 
                               <Stack direction="row" spacing={3}>
-                                   <Button variant="text" onClick={nomeEtapa}>Anexos</Button>
+                                   <Button variant="text" onClick={navigateToAnexos}>Anexos</Button>
                               </Stack>
                          </Grid>
 
