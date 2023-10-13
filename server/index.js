@@ -138,11 +138,11 @@ app.get("/get_etapa_by_processo/:id", async (req, res) => {
 // deletar etapa
 app.delete("/deletarEtapa/:id", async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const etapa = await pool.query("delete from etapa where etapa_id =$1", [id]);
 
     res.json(etapa.rows);
-  } catch (err){
+  } catch (err) {
     console.log(err.message)
   }
 }
@@ -151,11 +151,11 @@ app.delete("/deletarEtapa/:id", async (req, res) => {
 // deletar processo 
 app.delete("/deletarProcesso/:id", async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const processo = await pool.query("delete from processo where processo_id =$1", [id]);
 
     res.json(processo.rows);
-  } catch (err){
+  } catch (err) {
     console.log(err.message)
   }
 }
@@ -174,8 +174,11 @@ app.get("/get_processo/:id", async (req, res) => {
   }
 });
 
-// ROTAS ANEXOS
+// ------- ROTAS ANEXOS ------- //
 
+// ------- ROTAS POST ------- //
+
+// --- Rota POST para inserir anexos por etapa --- //
 app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
   const files = req.files;
   const etapa_id = req.body.etapa_id; // Obtém o etapa_id da solicitação POST
@@ -222,7 +225,11 @@ app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
   }
 });
 
-// Rota GET para obter todos os anexos
+// -------------------- //
+
+// ------- ROTAS GET ------- //
+
+// --- Rota GET para obter todos os anexos --- //
 app.get("/get_anexos", async (req, res) => {
   try {
     // Consulta o banco de dados para obter todos os anexos
@@ -237,13 +244,33 @@ app.get("/get_anexos", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("Servidor Funcionando");
+// -------------------- //
+
+// --- Rota GET para obter anexos por ID de etapa e o contador de anexos --- //
+app.get("/get_anexos_by_etapa/:etapaId", async (req, res) => {
+  try {
+    const { etapaId } = req.params;
+    
+    // Consulta o banco de dados para obter todos os anexos associados à etapa especificada
+    const queryAnexos = "SELECT * FROM etapa_anexo WHERE etapa_id = $1";
+    const anexosResult = await pool.query(queryAnexos, [etapaId]);
+    
+    // Consulta o banco de dados para obter o contador de anexos
+    const queryContador = "SELECT COUNT(*) FROM etapa_anexo WHERE etapa_id = $1";
+    const contadorResult = await pool.query(queryContador, [etapaId]);
+    
+    const anexos = anexosResult.rows;
+    const contador = contadorResult.rows[0].count;
+
+    // Envia a lista de anexos e o contador como resposta
+    res.json({ anexos, contador });
+  } catch (error) {
+    console.error("Erro ao buscar anexos por etapa:", error);
+    res.status(500).json({ error: "Erro ao buscar anexos por etapa" });
+  }
 });
 
-
-
-
+// -------------------- //
 
 //Puxando nome do responsável do projeto pelo id
 
@@ -251,7 +278,7 @@ app.get("/get_processos_responsavelNome", async (req, res) => {
   try {
     const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
     
-   
+
     const processosComNomes = await Promise.all(selectAll.rows.map(async (processo) => {
       const responsavel = await pool.query("SELECT usuario_nome FROM public.usuario WHERE usuario_id = $1", [processo.processo_responsavel_id]);
       return {
@@ -268,11 +295,6 @@ app.get("/get_processos_responsavelNome", async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
+app.listen(5000, () => {
+  console.log("Servidor Funcionando");
+});

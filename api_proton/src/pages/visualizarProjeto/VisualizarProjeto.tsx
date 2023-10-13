@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import Etapa from "../novaEtapa/etapaInterface";
+import EtapaAnexos from "../anexos/etapaAnexoInterface";
 import { BarraProjeto } from "../../shared/components";
 import Swal from "sweetalert2";
 import { validarEdicao } from "../../control/validarEdicao";
@@ -18,6 +19,7 @@ const VisualizarProjeto = () => {
     const navigate = useNavigate();
 
     const [etapa, setEtapa] = useState<Etapa[]>([]);
+    const [etapaAnexosData, setEtapaAnexosData] = useState<EtapaAnexos[]>([]);
     const [processo, setProcesso] = useState({
         processo_nome: "",
         processo_descricao: "",
@@ -84,12 +86,26 @@ const VisualizarProjeto = () => {
                 const etapaData = await etapaResponse.json();
                 setEtapa(etapaData);
 
+                // Busca os anexos e seus contadores para cada etapa
+                const etapaAnexosData = await Promise.all(etapaData.map(async (etapaItem: EtapaAnexos) => {
+                    const anexosResponse = await fetch(
+                        `http://localhost:5000/get_anexos_by_etapa/${etapaItem.etapa_id}`
+                    );
+                    const anexosData = await anexosResponse.json();
+                    return {
+                        ...etapaItem,
+                        contadorAnexos: anexosData.contador, // Adiciona o contador de anexos
+                    };
+                }));
+                setEtapaAnexosData(etapaAnexosData);
+
                 const idProc = location.state.id.toString();
                 const processoResponse = await fetch(
                     `http://localhost:5000/get_processo/${idProc}`
                 );
                 const processoData = await processoResponse.json();
                 setProcesso(processoData);
+
             } catch (error: any) {
                 console.log(error.message);
             }
@@ -104,12 +120,12 @@ const VisualizarProjeto = () => {
 
     //Função para validar usuário - libera a edição do texto
     const handleChange = (e: { target: { name: any; value: any; }; }) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setProcesso(prevEtapa => ({
-          ...prevEtapa,
-          [name]: value
+            ...prevEtapa,
+            [name]: value
         }));
-      };
+    };
 
     return (
         <Box
@@ -160,10 +176,10 @@ const VisualizarProjeto = () => {
                                 sx={{ width: "50vw", marginTop: "5%" }}
                                 value={processo.processo_nome}
                                 //validação do usuário
-                                name = 'processo_nome'
-                                onChange = {handleChange}
+                                name='processo_nome'
+                                onChange={handleChange}
                                 inputProps={
-                                   { readOnly: validaEdicao, }
+                                    { readOnly: validaEdicao, }
                                 }
                             />
                         </Grid>
@@ -177,10 +193,10 @@ const VisualizarProjeto = () => {
                                 sx={{ width: "50vw" }}
                                 value={processo.processo_descricao}
                                 //validação do usuário
-                                name = 'processo_descricao'
-                                onChange = {handleChange}
+                                name='processo_descricao'
+                                onChange={handleChange}
                                 inputProps={
-                                   { readOnly: validaEdicao, }
+                                    { readOnly: validaEdicao, }
                                 }
                             />
                         </Grid>
@@ -193,15 +209,23 @@ const VisualizarProjeto = () => {
                                     gap: 1,
                                 }}
                             >
-                                {etapa.map((etapaItem) => (
-                                    <Steps
-                                        key={etapaItem.etapa_id}
-                                        nEtapa={etapaItem.etapa_nome}
-                                        status={etapaItem.etapa_ordem}
-                                        desc={etapaItem.etapa_descricao}
-                                        etapa_id={etapaItem.etapa_id}
-                                    />
-                                ))}
+                                {etapa.map((etapaItem) => {
+                                    const anexoData = etapaAnexosData.find(
+                                        (anexo) => anexo.etapa_id === etapaItem.etapa_id
+                                    );
+                                    const contadorAnexos = anexoData?.contadorAnexos || 0;
+
+                                    return (
+                                        <Steps
+                                            key={etapaItem.etapa_id}
+                                            nEtapa={etapaItem.etapa_nome}
+                                            status={etapaItem.etapa_ordem}
+                                            desc={etapaItem.etapa_descricao}
+                                            contadorAnexos={contadorAnexos}
+                                            etapa_id={etapaItem.etapa_id}
+                                        />
+                                    );
+                                })}
                             </Box>
                         </Grid>
 
