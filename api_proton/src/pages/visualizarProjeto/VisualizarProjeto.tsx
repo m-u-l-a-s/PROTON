@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import Etapa from "../novaEtapa/etapaInterface";
 import { BarraProjeto } from "../../shared/components";
 import Swal from "sweetalert2";
+import { validarEdicao } from "../../control/validarEdicao";
+
 
 const VisualizarProjeto = () => {
     const location = useLocation();
@@ -21,6 +23,8 @@ const VisualizarProjeto = () => {
         processo_descricao: "",
     });
 
+    //Função para validar usuário - libera a edição do texto
+    const [validaEdicao, setValidaEdicao] = useState(validarEdicao('VisualizarProjeto'))
 
     // Modal confirmação de deletar
     const handleDiscard = () => {
@@ -98,6 +102,15 @@ const VisualizarProjeto = () => {
         navigate("/NovaEtapa", { state: { id: location.state.id } });
     };
 
+    //Função para validar usuário - libera a edição do texto
+    const handleChange = (e: { target: { name: any; value: any; }; }) => {
+        const {name, value} = e.target;
+        setProcesso(prevEtapa => ({
+          ...prevEtapa,
+          [name]: value
+        }));
+      };
+
     return (
         <Box
             display="flex"
@@ -146,6 +159,12 @@ const VisualizarProjeto = () => {
                                 variant="standard"
                                 sx={{ width: "50vw", marginTop: "5%" }}
                                 value={processo.processo_nome}
+                                //validação do usuário
+                                name = 'processo_nome'
+                                onChange = {handleChange}
+                                inputProps={
+                                   { readOnly: validaEdicao, }
+                                }
                             />
                         </Grid>
                         <Grid item>
@@ -157,6 +176,12 @@ const VisualizarProjeto = () => {
                                 variant="standard"
                                 sx={{ width: "50vw" }}
                                 value={processo.processo_descricao}
+                                //validação do usuário
+                                name = 'processo_descricao'
+                                onChange = {handleChange}
+                                inputProps={
+                                   { readOnly: validaEdicao, }
+                                }
                             />
                         </Grid>
 
