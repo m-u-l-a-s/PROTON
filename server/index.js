@@ -111,6 +111,28 @@ app.post("/insert_processo", async (req, res) => {
   }
 });
 
+//Update processo
+
+app.put("/put_processo/:id", async(req,res)=>{
+  try {
+    const {id} = req.params;
+    const {processo_nome} = req.body;
+    const {processo_descricao} = req.body;
+
+    console.log(processo_descricao)
+
+    const updateProcesso = await pool.query(
+      "UPDATE processo SET processo_nome= $1 , processo_descricao= $2 WHERE processo_id = $3",
+      [processo_nome,processo_descricao,id]
+    );
+
+    res.json("deu bom")
+  } catch (error) {
+    console.error(error.message);
+  }
+})
+
+
 //selecionar etapa pelo id
 
 app.get("/get_etapa/:id", async (req, res) => {
