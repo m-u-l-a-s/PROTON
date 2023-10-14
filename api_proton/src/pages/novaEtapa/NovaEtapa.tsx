@@ -23,7 +23,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import FirstComponent from "./calendario";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { SetStateAction, useEffect, useState } from "react";
-import 'dayjs/locale/pt-br'; 
+import 'dayjs/locale/pt-br';
 
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import VoltarButton from "./voltarButton";
@@ -37,11 +37,11 @@ import SaveIcon from '@mui/icons-material/Save';
 const Swal = require('sweetalert2');
 
 export const NovaEtapa = () => {
-  
+
   const theme = useTheme();
   const location = useLocation();
 
-  
+
 
   //modal de limpar etapa
   const handleClean = () => {
@@ -65,9 +65,9 @@ export const NovaEtapa = () => {
       }
     });
   };
-  
-     
-  
+
+
+
   //função de limpar etapa
   const LimparEtapas = () => {
     setProcessoId("");
@@ -77,7 +77,7 @@ export const NovaEtapa = () => {
     setetapa_data_conclusao(new Date);
     setetapa_descricao("");
   };
-  
+
 
 
   //modal de salvar etapa
@@ -90,26 +90,26 @@ export const NovaEtapa = () => {
       confirmButtonText: '<span style="color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
       cancelButtonText: "Não",
-    }).then((result:any) => {
+    }).then((result: any) => {
       if (result.isConfirmed) {
-        InserirEtapa(); 
+        InserirEtapa();
       }
-    //     if (result.isConfirmed) {
-    //       Swal.fire({
-    //         title: "Etapa criada com sucesso!",
-    //         customClass: "swalFire",
-    //         confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
-    //         confirmButtonColor: "#b6f3f8",
-    //       }).then(() => {
-    //         // Redirecionar para a página anterior após a confirmação
-    //         window.history.back();
-    //       });
-    //     }
-      });
-    };
-  
+      //     if (result.isConfirmed) {
+      //       Swal.fire({
+      //         title: "Etapa criada com sucesso!",
+      //         customClass: "swalFire",
+      //         confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+      //         confirmButtonColor: "#b6f3f8",
+      //       }).then(() => {
+      //         // Redirecionar para a página anterior após a confirmação
+      //         window.history.back();
+      //       });
+      //     }
+    });
+  };
 
-  
+
+
 
   const InserirEtapa = async () => {
     try {
@@ -124,6 +124,7 @@ export const NovaEtapa = () => {
         etapa_responsavel_id,
         etapa_ordem,
         etapa_data_conclusao,
+        etapa_status: "N", // Define o status como "N", pendente, na criação da etapa
         etapa_descricao,
       };
       console.log(body);
@@ -133,7 +134,7 @@ export const NovaEtapa = () => {
         body: JSON.stringify(body),
       });
       console.log(response);
-      
+
       if (response.ok) {
         console.log("Etapa criada com sucesso!");
         Swal.fire({
@@ -150,7 +151,7 @@ export const NovaEtapa = () => {
       }
 
     } catch (error: any) {
-      console.log("Erro ao inserir etapa:",error.message);
+      console.log("Erro ao inserir etapa:", error.message);
 
       Swal.fire({
         title: "Erro",
@@ -158,7 +159,7 @@ export const NovaEtapa = () => {
         customClass: "swalFire",
         confirmButtonText: '<span style="color: black;">OK</span>',
         confirmButtonColor: "#b6f3f8",
-       
+
       });
     }
   };
@@ -305,7 +306,7 @@ export const NovaEtapa = () => {
                 Prazo de Conclusão:{" "}
               </span>
               <Grid item mt={"1rem"}>
-              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+                <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
                   <DatePicker onChange={(date: any) => setetapa_data_conclusao(date)} />
                 </LocalizationProvider>
               </Grid>
