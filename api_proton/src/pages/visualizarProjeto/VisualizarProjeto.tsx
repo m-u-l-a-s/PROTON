@@ -31,7 +31,7 @@ const VisualizarProjeto = () => {
     // Modal confirmação de deletar
     const handleDiscard = () => {
         Swal.fire({
-            title: "Tem certeza que deseja deletar todo o processo?",
+            title: "Tem certeza que deseja deletar todo o processo? isso excluirá todas as etapas e anexos relacionados",
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
@@ -50,7 +50,7 @@ const VisualizarProjeto = () => {
                     confirmButtonColor: "#b6f3f8",
                 }).then(() => {
                     // Redirecionar para a página anterior após a confirmação
-                    window.history.back();
+                    window.location.href = "/MyProjects";
                 });
             }
         });

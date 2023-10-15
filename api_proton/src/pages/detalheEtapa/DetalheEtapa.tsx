@@ -41,7 +41,7 @@ export const DetalheEtapa = () => {
 
   const atualizarModal = () => {
     Swal.fire({
-      title: "Tem certeza que deseja atualizar esta etapa?",
+      title: "Tem certeza que deseja atualizar esta etapa? Isso excluirá todos os anexos relacionados",
       customClass: "swalFire",
       showCancelButton: true,
       focusConfirm: false,
