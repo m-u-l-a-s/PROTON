@@ -122,7 +122,7 @@ app.put("/put_processo/:id", async(req,res)=>{
     console.log(processo_descricao)
 
     const updateProcesso = await pool.query(
-      "UPDATE processo SET processo_nome= $1 , processo_descricao= $2 WHERE processo_id = $3",
+      "UPDATE processo SET processo_nome= $1, processo_descricao= $2 WHERE processo_id = $3",
       [processo_nome,processo_descricao,id]
     );
 

@@ -76,6 +76,64 @@ const VisualizarProjeto = () => {
 
     const [etapa_id, setProcessoId] = useState(location.state.id);
 
+    //atualizar modal processo
+    const atualizarModalUpdate = () => {
+        Swal.fire({
+          title: "Tem certeza que deseja atualizar esse processo?",
+          customClass: "swalFire",
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: '<span style="color: black;">Sim</span>',
+          confirmButtonColor: "#b6f3f8",
+          cancelButtonText: "Não",
+        }).then((result: any) => {
+            if (result.isConfirmed) {
+                editarProcesso(); // Chama a função editar processo
+            }
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Processo editado com sucesso!",
+                    customClass: "swalFire",
+                    confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                    confirmButtonColor: "#b6f3f8",
+                })
+            }
+        });
+      };
+
+
+    //teste etapa id
+    const localizarId = () =>{
+        console.log(etapa_id)
+    }
+
+    //teste conteudo processo
+    const testeProcesso = () =>{
+        console.log(processo)
+    }
+
+    //função para edição
+    const editarProcesso = async () =>{
+        //e.preventDefault();
+        try {
+            const joselito = {processo};
+
+            const processo_nome = joselito.processo.processo_nome
+            const processo_descricao = joselito.processo.processo_descricao
+            const body = {processo_nome, processo_descricao}
+
+            console.log(body);
+            const response = await fetch(`http://localhost:5000/put_processo/${etapa_id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     //
     useEffect(() => {
         const fetchData = async () => {
@@ -248,7 +306,7 @@ const VisualizarProjeto = () => {
                             </Grid>
 
                             <Grid item >
-                                <Button startIcon={<EditIcon />}>
+                                <Button startIcon={<EditIcon />} onClick={atualizarModalUpdate}>
                                     Editar Processo
                                 </Button>
                             </Grid>
