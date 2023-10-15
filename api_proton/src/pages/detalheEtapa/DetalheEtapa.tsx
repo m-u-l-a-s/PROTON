@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
@@ -295,20 +296,12 @@ export const DetalheEtapa = () => {
 
               </Grid>
 
-              <Grid item>
-
-                <Button variant="contained" disableElevation startIcon={<ModeEditOutlineIcon />}
-               /*onClick={}*/ >
-                  Editar
-                </Button>
-
-              </Grid>
 
               <Grid item>
 
-                <Button variant="contained" disableElevation startIcon={<SaveIcon />}
+                <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
                   onClick={atualizarModal}>
-                  Salvar Edição
+                  Salvar Alteração
                 </Button>
 
               </Grid>

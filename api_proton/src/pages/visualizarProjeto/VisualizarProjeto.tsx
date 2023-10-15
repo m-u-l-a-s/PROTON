@@ -5,7 +5,6 @@ import AddIcon from "@mui/icons-material/Add";
 import { Steps } from "../novoProjeto/Steps";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import Etapa from "../novaEtapa/etapaInterface";
 import EtapaAnexos from "../anexos/etapaAnexoInterface";
@@ -13,6 +12,7 @@ import { BarraProjeto } from "../../shared/components";
 import Swal from "sweetalert2";
 import { validarEdicao } from "../../control/validarEdicao";
 import { validarStatus } from "../../control/validarStatusEtapa";
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 
 const VisualizarProjeto = () => {
@@ -307,8 +307,8 @@ const VisualizarProjeto = () => {
                             </Grid>
 
                             <Grid item >
-                                <Button startIcon={<EditIcon />} onClick={atualizarModalUpdate}>
-                                    Editar Processo
+                                <Button startIcon={<SaveAsIcon/>} onClick={atualizarModalUpdate}>
+                                    Salvar Alteração de Processo
                                 </Button>
                             </Grid>
                         </Grid>
