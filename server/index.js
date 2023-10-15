@@ -161,27 +161,40 @@ app.get("/get_etapa_by_processo/:id", async (req, res) => {
 app.delete("/deletarEtapa/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const etapa = await pool.query("delete from etapa where etapa_id =$1", [id]);
+
+    // Excluindo os anexos associados à etapa
+    await pool.query("delete from etapa_anexo where etapa_id = $1", [id]);
+
+    // Excluindo etapa
+    const etapa = await pool.query("delete from etapa where etapa_id = $1", [id]);
 
     res.json(etapa.rows);
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
+    res.status(500).send("Erro ao excluir etapa");
   }
-}
-);
+});
 
 // deletar processo 
 app.delete("/deletarProcesso/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const processo = await pool.query("delete from processo where processo_id =$1", [id]);
+
+    // Excluindo os anexos associados à etapa
+    await pool.query("delete from etapa_anexo where etapa_id in (select etapa_id from etapa where processo_id = $1)", [id]);
+
+    // Excluindo etapa
+    const etapa = await pool.query("delete from etapa where processo_id = $1", [id]);
+
+    // Excluindo o próprio processo
+    const processo = await pool.query("DELETE FROM processo WHERE processo_id = $1", [id]);
 
     res.json(processo.rows);
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
+    res.status(500).send("Erro ao excluir processo");
   }
-}
-);
+});
 
 //puxar nome e descrição do processo pelo id do mesmo
 
@@ -320,3 +333,16 @@ app.get("/get_processos_responsavelNome", async (req, res) => {
 app.listen(5000, () => {
   console.log("Servidor Funcionando");
 });
+
+// deletar anexo 
+app.delete("/deletarAnexo/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const etapa_anexo = await pool.query("delete from etapa_anexo where etapa_anexo_id =$1", [id]);
+
+    res.json(etapa_anexo.rows);
+  } catch (err) {
+    console.log(err.message)
+  }
+}
+);
