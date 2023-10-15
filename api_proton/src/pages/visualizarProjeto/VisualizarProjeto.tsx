@@ -12,6 +12,7 @@ import EtapaAnexos from "../anexos/etapaAnexoInterface";
 import { BarraProjeto } from "../../shared/components";
 import Swal from "sweetalert2";
 import { validarEdicao } from "../../control/validarEdicao";
+import { validarStatus } from "../../control/validarStatusEtapa";
 
 
 const VisualizarProjeto = () => {
@@ -116,10 +117,10 @@ const VisualizarProjeto = () => {
     const editarProcesso = async () =>{
         //e.preventDefault();
         try {
-            const joselito = {processo};
+            const jsl = {processo};
 
-            const processo_nome = joselito.processo.processo_nome
-            const processo_descricao = joselito.processo.processo_descricao
+            const processo_nome = jsl.processo.processo_nome
+            const processo_descricao = jsl.processo.processo_descricao
             const body = {processo_nome, processo_descricao}
 
             console.log(body);
@@ -277,7 +278,7 @@ const VisualizarProjeto = () => {
                                         <Steps
                                             key={etapaItem.etapa_id}
                                             nEtapa={etapaItem.etapa_nome}
-                                            status={etapaItem.etapa_ordem}
+                                            status={validarStatus(etapaItem.etapa_status)}
                                             desc={etapaItem.etapa_descricao}
                                             contadorAnexos={contadorAnexos}
                                             etapa_id={etapaItem.etapa_id}
