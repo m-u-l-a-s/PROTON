@@ -292,7 +292,7 @@ const VisualizarProjeto = () => {
                             <Button
                                 variant="contained"
                                 startIcon={<AddIcon />}
-                                sx={{ width: "50vw" }}
+                                sx={{ width: "50vw", display: validaEdicao ? "none" : "block"}}
                                 onClick={handleNavigateToNovaEtapa}
                             >
                                 Adicionar Etapa
@@ -301,13 +301,13 @@ const VisualizarProjeto = () => {
 
                         <Grid container justifyContent="space-between">
                             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
-                                <Button startIcon={<DeleteIcon />} onClick={handleDiscard}>
+                                <Button startIcon={<DeleteIcon />} sx = {{display: validaEdicao ? "none" : "block"}} onClick={handleDiscard}>
                                     Deletar Processo
                                 </Button>
                             </Grid>
 
                             <Grid item >
-                                <Button startIcon={<SaveAsIcon/>} onClick={atualizarModalUpdate}>
+                                <Button startIcon={<SaveAsIcon/>} sx = {{display: validaEdicao ? "none" : "block"}} onClick={atualizarModalUpdate}>
                                     Salvar Alteração de Processo
                                 </Button>
                             </Grid>
