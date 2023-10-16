@@ -288,30 +288,38 @@ const VisualizarProjeto = () => {
                             </Box>
                         </Grid>
 
-                        <Grid item>
-                            <Button
-                                variant="contained"
-                                startIcon={<AddIcon />}
-                                sx={{ width: "50vw", display: validaEdicao ? "none" : "block"}}
-                                onClick={handleNavigateToNovaEtapa}
-                            >
-                                Adicionar Etapa
-                            </Button>
-                        </Grid>
+                               
+
+                        
 
                         <Grid container justifyContent="space-between">
-                            <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
-                                <Button startIcon={<DeleteIcon />} sx = {{display: validaEdicao ? "none" : "block"}} onClick={handleDiscard}>
+
+                        <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
+                                <Button startIcon={<DeleteIcon />} 
+                                // sx = {{display: validaEdicao ? "none" : "block"}} 
+                                onClick={handleDiscard}>
                                     Deletar Processo
                                 </Button>
                             </Grid>
+                        <Button
+                                variant="contained"
+                                startIcon={<AddIcon />}
+                                // sx={{ width: "50vw", display: validaEdicao ? "none" : "block"}}
+                                onClick={handleNavigateToNovaEtapa}
+                                >
+                                Adicionar Etapa
+                            </Button>
+                            
 
                             <Grid item >
-                                <Button startIcon={<SaveAsIcon/>} sx = {{display: validaEdicao ? "none" : "block"}} onClick={atualizarModalUpdate}>
-                                    Salvar Alteração de Processo
+                                <Button startIcon={<SaveAsIcon/>}
+                                //  sx = {{display: validaEdicao ? "none" : "block"}}
+                                 onClick={atualizarModalUpdate}>
+                                    Salvar Alterações
                                 </Button>
                             </Grid>
                         </Grid>
+                                
                     </Box>
                 </Box>
             </Paper>

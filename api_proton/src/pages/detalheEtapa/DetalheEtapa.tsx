@@ -289,18 +289,18 @@ export const DetalheEtapa = () => {
               <Grid item>
 
                 <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
-                  sx={{ background: "#292A2D", color: "white", display: validaEdicao ? "none" : "block" }}
+                  // sx={{ background: "#292A2D", color: "white", display: validaEdicao ? "none" : "block" }}
                   onClick={deletarModal}>
                   Deletar Etapa
                 </Button>
 
               </Grid>
 
-
+              
               <Grid item>
 
                 <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
-                  sx = {{display: validaEdicao ? "none" : "block"}}
+                  // sx = {{display: validaEdicao ? "none" : "block"}}
                   onClick={atualizarModal}>
                   Salvar Alteração
                 </Button>
