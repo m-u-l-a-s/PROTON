@@ -21,6 +21,7 @@ Nosso foco é em identificar o objetivo principal de um produto para desenvolver
 * [Alícea P. de Lima Rocha](https://github.com/alicearocha)
 * [Alita Willians da Silva Amancio](https://github.com/AlitaAmancio)
 * [Joice Araújo](https://github.com/Joice-Araujo)
+* [Vitor F. Morais](https://github.com/vmorais111)
 #### Product Owner:
 * [Jonas Alves Bueno](https://github.com/dodekafonos)
 #### Scrum Master:
