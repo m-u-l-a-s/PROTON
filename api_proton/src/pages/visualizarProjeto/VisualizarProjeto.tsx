@@ -214,7 +214,7 @@ const VisualizarProjeto = () => {
                 }}
             >
 
-                <BarraProjeto etapa_nome={processo.processo_nome} />
+                <BarraProjeto processo_nome={processo.processo_nome} />
 
                 <Box
                     display="flex"
@@ -225,9 +225,9 @@ const VisualizarProjeto = () => {
                     <Box
                         display="flex"
                         flexDirection="column"
-                        sx={{ gap: 3, marginTop: "-1.75em" }}
+                        sx={{ gap: 3, marginTop: "2em", marginLeft:"0.5rem", marginRight:"0.5rem" }}
                     >
-                        <Grid item>
+                        {/* <Grid item>
                             <TextField
                                 id="nome-projeto"
                                 label="Nome do Projeto"
@@ -241,7 +241,7 @@ const VisualizarProjeto = () => {
                                     { readOnly: validaEdicao, }
                                 }
                             />
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                             <TextField
                                 id="standard-multiline-static"
