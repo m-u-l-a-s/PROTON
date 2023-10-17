@@ -11,7 +11,7 @@ export const BarraProjeto = (prop: any) => {
           <AppBar position="static" color="secondary">
                <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                         <Grid item width={600} fontFamily={'Poppins, sans-serif'} fontSize={'bold'} marginLeft={"-1rem"}>
+                         <Grid item width={700} fontFamily={'Poppins, sans-serif'} fontSize={'bold'} marginLeft={"-0.5rem"}>
                               {prop.processo_nome}
                          </Grid>
                          
