@@ -132,6 +132,22 @@ app.put("/put_processo/:id", async(req,res)=>{
   }
 })
 
+//Update etapa
+
+app.put("/put_etapa/:id", async(req,res)=>{
+  try {
+    const {id} = req.params;
+    const {etapa} = req.body;
+
+    const updateEtapa = await pool.query(
+      "UPDATE etapa SET etapa_nome= $1, etapa_descricao= $2, etapa_responsavel_id = $3, etapa_ordem = $4, etapa_data_conclusao = $5, etapa_status = $6, etapa_comentario = $7 WHERE etapa_id = $8",
+      [etapa.etapa_nome,etapa.etapa_descricao, etapa.etapa_responsavel_id, etapa.etapa_ordem, etapa.etapa_data_conclusao, etapa.etapa_status, etapa.etapa_comentario, id]
+    );
+  } catch (error) {
+    console.error(error.message);
+  }
+})
+
 
 //selecionar etapa pelo id
 

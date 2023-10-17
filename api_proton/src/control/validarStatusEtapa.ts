@@ -6,6 +6,6 @@ export function validarStatus(status:string) {
         return 'Em andamento'
     }
     else{
-        return 'Concluido'
+        return 'Concluído'
     }
 }

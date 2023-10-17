@@ -1,4 +1,5 @@
 import { validarEdicao } from "../../control/validarEdicao";
+import { validarMudancaStatus } from "../../control/validarMudancaStatus";
 import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 import {
@@ -51,6 +52,7 @@ export const DetalheEtapa = () => {
       cancelButtonText: "Não",
     }).then((result: any) => {
       if (result.isConfirmed) {
+        updateEtapa()
         Swal.fire({
           title: "Etapa atualizada com sucesso!",
           customClass: "swalFire",
@@ -88,6 +90,24 @@ export const DetalheEtapa = () => {
       }
     });
   };
+
+  // Estabelecendo a função deletar etapa
+  const updateEtapa = async () => {
+    try {
+      const body = {
+        etapa
+      };
+      console.log(body);
+      const response = await fetch(`http://localhost:5000/put_etapa/${etapa_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      console.log(response);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }
 
   // Estabelecendo a função deletar etapa
   const DeletarEtapa = async () => {
@@ -142,7 +162,6 @@ export const DetalheEtapa = () => {
     };
     get_etapa_by_id(); // Call the function inside useEffect
     // You can now safely use the updated 'etapa' state here
-
   }, []);
 
   const [usuario, setUsuario] = useState([
@@ -281,6 +300,25 @@ export const DetalheEtapa = () => {
                   }
                 />
               </Grid>
+
+              {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
+              <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
+                <InputLabel id="status-label">Status:</InputLabel>
+                <Select
+                  labelId="status-label"
+                  id="status"
+                  value={etapa.etapa_status}
+                  name='etapa_status'
+                  onChange={handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  }
+                >
+                    <MenuItem value={'N'}>Não iniciado</MenuItem>
+                    <MenuItem value={'A'}>Em andamento</MenuItem>
+                    <MenuItem value={'C'}>Concluído</MenuItem>
+                </Select>
+                </Grid>
             </div>
 
             <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"1.5rem"}>
