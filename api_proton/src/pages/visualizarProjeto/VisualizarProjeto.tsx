@@ -80,13 +80,13 @@ const VisualizarProjeto = () => {
     //atualizar modal processo
     const atualizarModalUpdate = () => {
         Swal.fire({
-          title: "Tem certeza que deseja atualizar esse processo?",
-          customClass: "swalFire",
-          showCancelButton: true,
-          focusConfirm: false,
-          confirmButtonText: '<span style="color: black;">Sim</span>',
-          confirmButtonColor: "#b6f3f8",
-          cancelButtonText: "Não",
+            title: "Tem certeza que deseja atualizar esse processo?",
+            customClass: "swalFire",
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonColor: "#b6f3f8",
+            cancelButtonText: "Não",
         }).then((result: any) => {
             if (result.isConfirmed) {
                 editarProcesso(); // Chama a função editar processo
@@ -100,28 +100,28 @@ const VisualizarProjeto = () => {
                 })
             }
         });
-      };
+    };
 
 
     //teste etapa id
-    const localizarId = () =>{
+    const localizarId = () => {
         console.log(etapa_id)
     }
 
     //teste conteudo processo
-    const testeProcesso = () =>{
+    const testeProcesso = () => {
         console.log(processo)
     }
 
     //função para edição
-    const editarProcesso = async () =>{
+    const editarProcesso = async () => {
         //e.preventDefault();
         try {
-            const jsl = {processo};
+            const jsl = { processo };
 
             const processo_nome = jsl.processo.processo_nome
             const processo_descricao = jsl.processo.processo_descricao
-            const body = {processo_nome, processo_descricao}
+            const body = { processo_nome, processo_descricao }
 
             console.log(body);
             const response = await fetch(`http://localhost:5000/put_processo/${etapa_id}`, {
@@ -288,38 +288,38 @@ const VisualizarProjeto = () => {
                             </Box>
                         </Grid>
 
-                               
 
-                        
 
-                        <Grid container justifyContent="space-between">
 
-                        <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
-                                <Button startIcon={<DeleteIcon />} 
-                                // sx = {{display: validaEdicao ? "none" : "block"}} 
-                                onClick={handleDiscard}>
+
+                        <Grid container justifyContent="space-between" sx = {{display: validaEdicao ? "none" : "flex"}}>
+
+                            <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
+                                <Button startIcon={<DeleteIcon />}
+                                    // sx = {{display: validaEdicao ? "none" : "block"}} 
+                                    onClick={handleDiscard}>
                                     Deletar Processo
                                 </Button>
                             </Grid>
-                        <Button
+                            <Button
                                 variant="contained"
                                 startIcon={<AddIcon />}
                                 // sx={{ width: "50vw", display: validaEdicao ? "none" : "block"}}
                                 onClick={handleNavigateToNovaEtapa}
-                                >
+                            >
                                 Adicionar Etapa
                             </Button>
-                            
+
 
                             <Grid item >
-                                <Button startIcon={<SaveAsIcon/>}
-                                //  sx = {{display: validaEdicao ? "none" : "block"}}
-                                 onClick={atualizarModalUpdate}>
+                                <Button startIcon={<SaveAsIcon />}
+                                    //  sx = {{display: validaEdicao ? "none" : "block"}}
+                                    onClick={atualizarModalUpdate}>
                                     Salvar Alterações
                                 </Button>
                             </Grid>
                         </Grid>
-                                
+
                     </Box>
                 </Box>
             </Paper>
