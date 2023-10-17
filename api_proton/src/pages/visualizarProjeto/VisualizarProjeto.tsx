@@ -225,14 +225,14 @@ const VisualizarProjeto = () => {
                     <Box
                         display="flex"
                         flexDirection="column"
-                        sx={{ gap: 3, marginTop: "2em", marginLeft:"0.5rem", marginRight:"0.5rem" }}
+                        sx={{ gap: 3, marginTop: "-1.25em", marginLeft:"0.5rem", marginRight:"0.5rem" }}
                     >
-                        {/* <Grid item>
+                         <Grid item>
                             <TextField
                                 id="nome-projeto"
                                 label="Nome do Projeto"
                                 variant="standard"
-                                sx={{ width: "50vw", marginTop: "5%" }}
+                                sx={{ width: "50vw", marginTop: "5%", display: validaEdicao ? "none" : "flex" }}
                                 value={processo.processo_nome}
                                 //validação do usuário
                                 name='processo_nome'
@@ -241,7 +241,7 @@ const VisualizarProjeto = () => {
                                     { readOnly: validaEdicao, }
                                 }
                             />
-                        </Grid> */}
+                        </Grid> 
                         <Grid item>
                             <TextField
                                 id="standard-multiline-static"
