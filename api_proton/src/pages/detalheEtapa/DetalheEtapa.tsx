@@ -91,7 +91,7 @@ export const DetalheEtapa = () => {
     });
   };
 
-  // Estabelecendo a função deletar etapa
+  // Estabelecendo a função atualizar etapa
   const updateEtapa = async () => {
     try {
       const body = {
@@ -130,6 +130,7 @@ export const DetalheEtapa = () => {
   const [etapa_id, setEtapaId] = useState(location.state.id);
   const theme = useTheme();
   const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa'))
+  const [validaMudancaStatus,setValidaMudancaStatus] = useState(false)
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
     processo_id: 1,
@@ -162,6 +163,9 @@ export const DetalheEtapa = () => {
     };
     get_etapa_by_id(); // Call the function inside useEffect
     // You can now safely use the updated 'etapa' state here
+    setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status))
+    console.log('EtapaStatus: ' + etapa.etapa_status )
+    console.log('booleana: ' + validarMudancaStatus(etapa.etapa_status))
   }, []);
 
   const [usuario, setUsuario] = useState([
@@ -303,7 +307,7 @@ export const DetalheEtapa = () => {
 
               {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                <InputLabel id="status-label">Status:</InputLabel>
+                <InputLabel id="status-label">Status: </InputLabel>
                 <Select
                   labelId="status-label"
                   id="status"
@@ -311,7 +315,7 @@ export const DetalheEtapa = () => {
                   name='etapa_status'
                   onChange={handleChange}
                   inputProps={
-                    { readOnly: validaEdicao, }
+                    { readOnly: !validaMudancaStatus, }
                   }
                 >
                     <MenuItem value={'N'}>Não iniciado</MenuItem>
@@ -336,9 +340,11 @@ export const DetalheEtapa = () => {
 
               
               <Grid item>
-
+                  {/*true = invisivel
+                  focar em true = visivel
+                  qnd edicao for false ou status for true */}
                 <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
-                  sx = {{display: validaEdicao ? "none" : "flex"}}
+                  sx = {{display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex"}}
                   onClick={atualizarModal}>
                   Salvar Alteração
                 </Button>
