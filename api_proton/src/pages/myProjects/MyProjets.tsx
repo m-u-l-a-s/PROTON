@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CardProcesso } from "./CardProcesso";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import BasicSelect from "./BasicSelect";
 
 export const MyProjects = () => {
     const [processos, setProcesso] = useState([
@@ -19,7 +20,6 @@ export const MyProjects = () => {
             processo_descricao: "Concluida",
             processo_responsavel_id: 1,
             processo_responsavel_nome: "Alexandre Jonas",
-
         },
         {
             processo_id: 3,
@@ -27,7 +27,7 @@ export const MyProjects = () => {
             processo_descricao: "Pendente",
             processo_responsavel_id: 1,
             processo_responsavel_nome: "Alexandre Jonas",
-        },        
+        },
     ]);
 
     const get_processos = async () => {
@@ -48,13 +48,13 @@ export const MyProjects = () => {
         get_processos();
     }, []);
 
-
-
-//Puxando nome do responsavel
+    //Puxando nome do responsavel
 
     const get_processos_responsavelNome = async () => {
         try {
-            const response = await fetch("http://localhost:5000/get_processos_responsavelNome");
+            const response = await fetch(
+                "http://localhost:5000/get_processos_responsavelNome"
+            );
             const jsonData = await response.json();
 
             //console.log(jsonData)
@@ -69,7 +69,6 @@ export const MyProjects = () => {
     useEffect(() => {
         get_processos_responsavelNome();
     }, []);
-
 
     return (
         <Box
@@ -101,12 +100,13 @@ export const MyProjects = () => {
                     flexDirection="row"
                     sx={{ gap: 70 }}
                 >
-
                     <div className="divBox">
                         <Typography variant="h4" color="primary">
                             Seus Processos
                         </Typography>
                     </div>
+
+                    <BasicSelect></BasicSelect>
                 </Box>
 
                 <Box
@@ -137,20 +137,16 @@ export const MyProjects = () => {
                 </Box>
 
                 <Box display="flex" alignItems="center" justifyContent="center">
-            <Button
-                component={Link}
-                to="/NovoProjeto"
-                variant="contained"
-                disableElevation
-
-            >
-                + Criar Processo
-            </Button>
-            </Box>
-
+                    <Button
+                        component={Link}
+                        to="/NovoProjeto"
+                        variant="contained"
+                        disableElevation
+                    >
+                        + Criar Processo
+                    </Button>
+                </Box>
             </Paper>
-
-
         </Box>
     );
 };
