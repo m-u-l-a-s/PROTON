@@ -3,8 +3,6 @@ export function validarMudancaStatus (status: string )
     //Não iniciado && CO
     //Em Andamento && CL
     let perfil = puxaPerfil()
-    console.log('PErFILFILFIFL: ' + perfil)
-    console.log('statusTUSTUS: ' + status)
    return ((status === 'N') && (perfil === 'CO')) || ((['A','C'].includes(status)) && (perfil === 'CL') )
 }
 

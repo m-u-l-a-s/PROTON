@@ -142,9 +142,12 @@ export const DetalheEtapa = () => {
     etapa_status: "N",
     etapa_comentario: "",
   });
-
+  const [flag,setFlag] = useState(true)
+  
   //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
   useEffect(() => {
+    if (flag)
+    {
     const get_etapa_by_id = async () => {
       //Puxando ID da tela anterior
       // console.log(location.state.id)
@@ -161,13 +164,17 @@ export const DetalheEtapa = () => {
         console.log(error.message);
       }
     };
-    get_etapa_by_id(); // Call the function inside useEffect
-    // You can now safely use the updated 'etapa' state here
-    setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status))
+    
+      get_etapa_by_id(); // Call the function inside useEffect
+      // You can now safely use the updated 'etapa' state here
+      setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status))
+    }
     console.log('EtapaStatus: ' + etapa.etapa_status )
     console.log('booleana: ' + validarMudancaStatus(etapa.etapa_status))
-  }, []);
+    console.log('Flagzona: ' + flag)
+  }, [etapa.etapa_status]);
 
+  
   const [usuario, setUsuario] = useState([
     {
       usuario_id: 1,
@@ -198,12 +205,14 @@ export const DetalheEtapa = () => {
   useEffect(() => {
     get_usuario();
   }, []);
+
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setEtapa(prevEtapa => ({
       ...prevEtapa,
       [name]: value
     }));
+    setFlag(false)
   };
 
   return (
