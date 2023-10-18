@@ -77,6 +77,4 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 https://www.youtube.com/watch?v=w77srMqJYTw
 
 ## Planejamento de entregas
-![image](https://github.com/m-u-l-a-s/PROTON/assets/111988963/85d87ff5-1cc8-44e4-a0c1-f4adc63bd052)
-
-
+![image](docs/Backlog_Sprint_02_Proton.jpeg)
