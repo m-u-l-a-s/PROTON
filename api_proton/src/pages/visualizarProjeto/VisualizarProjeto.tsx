@@ -249,7 +249,7 @@ const VisualizarProjeto = () => {
                                 multiline
                                 rows={2}
                                 variant="standard"
-                                sx={{ width: "50vw" }}
+                                sx={{ width: "50vw", marginTop: "3%" }}
                                 value={processo.processo_descricao}
                                 //validação do usuário
                                 name='processo_descricao'
