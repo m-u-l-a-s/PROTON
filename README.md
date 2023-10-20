@@ -16,16 +16,15 @@ Nosso foco é em identificar o objetivo principal de um produto para desenvolver
 
 ## Integrantes:
 
-#### Devs:
-* [Alexandre Jonas de Souza Fonseca](https://github.com/AlexandreJonas)
-* [Alícea P. de Lima Rocha](https://github.com/alicearocha)
-* [Alita Willians da Silva Amancio](https://github.com/AlitaAmancio)
-* [Joice Araújo](https://github.com/Joice-Araujo)
-* [Vitor F. Morais](https://github.com/vmorais111)
-#### Product Owner:
-* [Jonas Alves Bueno](https://github.com/dodekafonos)
-#### Scrum Master:
-* [Amanda Mendes Caldeira](https://github.com/AmendoaM)
+| Função         | Nome                            | LinkedIn & GitHub                                                                                                 |
+| -------------  | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Product Owner          | Alícea P. de Lima Rocha         | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/al%C3%ADcea-paula-de-lima-rocha-bab682157/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/alicearocha) |
+| Scrum Master           | Amanda Mendes Caldeira          | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/amanda-mendes-caldeira-b24389210/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AmendoaM) |
+| Tech Lead              | Alexandre Jonas de Souza Fonseca| [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alexandre-jonas-de-souza-fonseca-989920181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlexandreJonas) |
+| Backend                | Alita Willians da Silva Amancio | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alitaamancio/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlitaAmancio) |
+| Frontend               | Joice Araújo                    | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/joice-aparecida-581226250/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/Joice-Araujo) |
+| Backend                | Jonas Alves Bueno               | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/jonas-alves) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/dodekafonos) |
+| BDA                    | Vitor F. Morais                 | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/vitor-faria-morais-330b19204/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/vmorais111) |
 
 
 ## Objetivo do Produto:
