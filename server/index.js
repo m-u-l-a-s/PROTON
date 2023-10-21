@@ -233,7 +233,8 @@ app.get("/get_processo/:id", async (req, res) => {
 app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
   const files = req.files;
   const etapa_id = req.body.etapa_id; // Obtém o etapa_id da solicitação POST
-
+  const fileName = req.body.fileName;
+  const fileType = req.body.fileType;
   try {
     // Verifique se req.files contém algum arquivo
     if (!files || files.length === 0) {
@@ -249,13 +250,12 @@ app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
       const insertedIds = [];
       for (const file of files) {
         const fileData = file.buffer;
-
         const query =
-          "INSERT INTO etapa_anexo (etapa_id, etapa_anexo_documento) VALUES ($1, $2) RETURNING etapa_anexo_id";
-        const values = [etapa_id, fileData];
+          "INSERT INTO etapa_anexo (etapa_id, etapa_anexo_documento, etapa_anexo_nome, etapa_anexo_tipo) VALUES ($1, $2, $3, $4) RETURNING etapa_anexo_id";
+        const values = [etapa_id, fileData,fileName, fileType];
         const result = await client.query(query, values);
         insertedIds.push(result.rows[0].etapa_anexo_id);
-        console.log(`Arquivo inserido com sucesso. ID do anexo: ${result.rows[0].etapa_anexo_id}`);
+        //console.log(`Arquivo inserido com sucesso. ID do anexo: ${result.rows[0].etapa_anexo_id}`);
       }
 
       // Commit da transação

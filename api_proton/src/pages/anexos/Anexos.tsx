@@ -19,10 +19,6 @@ export const Anexos = () => {
 
     const handleVoltar = () => {
         window.history.back();}
-
-    
-
-
     return (
         <Box
             display="flex"

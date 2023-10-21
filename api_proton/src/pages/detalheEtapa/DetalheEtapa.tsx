@@ -169,9 +169,6 @@ export const DetalheEtapa = () => {
       // You can now safely use the updated 'etapa' state here
       setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status))
     }
-    console.log('EtapaStatus: ' + etapa.etapa_status )
-    console.log('booleana: ' + validarMudancaStatus(etapa.etapa_status))
-    console.log('Flagzona: ' + flag)
   }, [etapa.etapa_status]);
 
   
