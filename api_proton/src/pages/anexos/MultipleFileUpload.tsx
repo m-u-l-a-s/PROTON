@@ -7,7 +7,6 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { SingleFileUploadWithProgress, UploadableFile } from "./SingleFileUploadWithProgress";
 import { UploadError } from "./UploadError";
-import { dowloadFileAtURL } from "../../control/dowsloadFIleAtURL";
 import './Anexos.css'
 
 
@@ -26,17 +25,17 @@ export function MultipleFileUpload({
     const [uploadComplete, setUploadComplete] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [hovered, setHovered] = useState(false);
-    const [etapa_anexo,setEtapa_anexo] = useState([
+    const [etapa_anexo, setEtapa_anexo] = useState([
         {
             etapa_anexo_id: 1,
             etapa_id: 1,
-            etapa_anexo_documento: null,
+            etapa_anexo_documento: [],
             etapa_anexo_nome: 'anexo_nome',
             etapa_anexo_tipo: 'anexo_tipo'
         }
     ])
 
-    
+
     // Função para lidar com a seleção de arquivos
     const onDrop = useCallback((acceptedFiles: File[], fileRejections: FileRejection[]) => {
         console.log("Arquivos na DropZone:", acceptedFiles);
@@ -47,7 +46,7 @@ export function MultipleFileUpload({
             errors: [],
             id: uuidv4(), // Gera um UUID no tipo "String"
         }));
-        
+
         // Filtra novos arquivos que não estão na lista atual
         const newFiles = mappedAcc.filter(
             (newFile) =>
@@ -58,38 +57,31 @@ export function MultipleFileUpload({
         setFiles((curr) => [...curr, ...newFiles]);
     }, [files]);
 
-    const baixarAnexo = () =>
-    {
-        //console.log(JSON.parse(etapa_anexo[0].etapa_anexo_documento))
-        //dowloadFileAtURL(etapa_anexo[0].etapa_anexo_nome,etapa_anexo[0].etapa_anexo_documento)
-    }
-    
     const get_anexo_by_id = async () => {
         //Puxando ID da tela anterior
         // console.log(location.state.id)
         const n = etapaId;
         const idPag = n.toString();
         try {
-          const response = await fetch("http://localhost:5000/get_anexos_by_etapa/" + idPag);
-          const jsonData = await response.json();
+            const response = await fetch("http://localhost:5000/get_anexos_by_etapa/" + idPag);
+            const jsonData = await response.json();
             //console.log(jsonData.anexos)
             setEtapa_anexo(jsonData.anexos)
             //console.log(etapa_anexo[1])
-          //setEtapa_anexos(jsonData);
-          //console.log(etapa_anexos)
+            //setEtapa_anexos(jsonData);
+            //console.log(etapa_anexos)
         } catch (error: any) {
-          console.log(error.message);
+            console.log(error.message);
         }
-      };
+    };
 
     useEffect(() => {
         helpers.setValue(files);
     }, [files]);
 
-    useEffect(() => 
-    {
+    useEffect(() => {
         get_anexo_by_id()
-    },[])
+    }, [])
 
     // Função para deletar um arquivo da lista
     function onDelete(file: File) {
@@ -120,8 +112,8 @@ export function MultipleFileUpload({
                     const formData = new FormData();
                     formData.append("files", fileWrapper.file);
                     formData.append("etapa_id", etapaId.toString()); // Converte etapaId para string antes de anexá-lo
-                    formData.append("fileName",fileWrapper.file.name)
-                    formData.append("fileType", fileWrapper.file.type) 
+                    formData.append("fileName", fileWrapper.file.name)
+                    formData.append("fileType", fileWrapper.file.type)
                     // Envia o arquivo para o servidor
                     const response = await axios.post(
                         "http://localhost:5000/insert_anexo",
@@ -170,6 +162,12 @@ export function MultipleFileUpload({
         maxSize: 10 * 1024 * 1024, // Tamanho máximo de 10 MB
     });
 
+    const convertToAny = (a:any) => {
+        //Por algum motivo dá erro de compilação qnd eu coloco 'etapa_anexo_documento['data']' direto no construtor
+        //anyway esses dados enviados para o construtor não serão usados para baixar o anexo ent se tiver uma forma melhor de fazer isso sou todos os ouvidos
+        return a.etapa_anexo_documento['data']
+    }
+
     return (
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12}>
@@ -190,12 +188,26 @@ export function MultipleFileUpload({
 
             <Grid item xs={12}>
                 <div className="file-list-container">
-                    {/* Renderiza a lista de arquivos */}
+                    {/* Renderiza duas listas de arquivos: uma que vem do banco (etapa_anexo.map) e outra que o usuário está atualmente fazendo upload (files.map)*/}
+                    {etapa_anexo.map((anexo_item) => (
+
+                        <SingleFileUploadWithProgress
+                            onDelete={onDelete}
+                            file={new File([convertToAny(anexo_item)], anexo_item.etapa_anexo_nome)}
+                            fileType={anexo_item.etapa_anexo_tipo}
+                            fileData = {anexo_item.etapa_anexo_documento}
+                            onAllUploadsComplete={checkAllUploadsComplete}
+                            buttonClicked={buttonClicked}
+                        />
+                    ))}
+
                     {files.map((fileWrapper) => (
                         <div key={fileWrapper.id}>
                             {fileWrapper.errors.length ? (
                                 <UploadError
                                     file={fileWrapper.file}
+                                    fileType={"UploadError"}
+                                    fileData = {""}
                                     errors={fileWrapper.errors}
                                     onDelete={onDelete}
                                 />
@@ -203,6 +215,8 @@ export function MultipleFileUpload({
                                 <SingleFileUploadWithProgress
                                     onDelete={onDelete}
                                     file={fileWrapper.file}
+                                    fileType={"UploadError"}
+                                    fileData = {""}
                                     onAllUploadsComplete={checkAllUploadsComplete}
                                     buttonClicked={buttonClicked}
                                 />
