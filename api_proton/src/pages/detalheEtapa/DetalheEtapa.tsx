@@ -26,6 +26,7 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
+import CustomTextField from "../../shared/components/mui/CustomTextField";
 
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
@@ -130,7 +131,7 @@ export const DetalheEtapa = () => {
   const [etapa_id, setEtapaId] = useState(location.state.id);
   const theme = useTheme();
   const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa'))
-  const [validaMudancaStatus,setValidaMudancaStatus] = useState(false)
+  const [validaMudancaStatus, setValidaMudancaStatus] = useState(false)
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
     processo_id: 1,
@@ -142,36 +143,35 @@ export const DetalheEtapa = () => {
     etapa_status: "N",
     etapa_comentario: "",
   });
-  const [flag,setFlag] = useState(true)
-  
+  const [flag, setFlag] = useState(true)
+
   //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
   useEffect(() => {
-    if (flag)
-    {
-    const get_etapa_by_id = async () => {
-      //Puxando ID da tela anterior
-      // console.log(location.state.id)
-      const n = location.state.id;
-      const idPag = n.toString();
-      try {
-        const response = await fetch("http://localhost:5000/get_etapa/" + idPag);
-        const jsonData = await response.json();
-        setEtapa(jsonData); // Update the state with fetched data
-        //PUXANDO DATA DO BANCO
-        const dataDoBanco = dayjs(jsonData.etapa_data_conclusao, "YYYY-MM-DD").format("DD-MM-YYYY");
-        setDataDoBanco(dataDoBanco);
-      } catch (error: any) {
-        console.log(error.message);
-      }
-    };
-    
+    if (flag) {
+      const get_etapa_by_id = async () => {
+        //Puxando ID da tela anterior
+        // console.log(location.state.id)
+        const n = location.state.id;
+        const idPag = n.toString();
+        try {
+          const response = await fetch("http://localhost:5000/get_etapa/" + idPag);
+          const jsonData = await response.json();
+          setEtapa(jsonData); // Update the state with fetched data
+          //PUXANDO DATA DO BANCO
+          const dataDoBanco = dayjs(jsonData.etapa_data_conclusao, "YYYY-MM-DD").format("DD-MM-YYYY");
+          setDataDoBanco(dataDoBanco);
+        } catch (error: any) {
+          console.log(error.message);
+        }
+      };
+
       get_etapa_by_id(); // Call the function inside useEffect
       // You can now safely use the updated 'etapa' state here
       setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status))
     }
   }, [etapa.etapa_status]);
 
-  
+
   const [usuario, setUsuario] = useState([
     {
       usuario_id: 1,
@@ -245,7 +245,7 @@ export const DetalheEtapa = () => {
           <Box display="inline-block" flexDirection="column" sx={{ gap: 3 }} textAlign={"left"}>
             <div className="div1">
               <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"30px"}>
-                <TextField
+                {/* <TextField
                   id="standard-multiline-static-responsavel"
                   label="Descrição"
                   variant="standard"
@@ -257,6 +257,18 @@ export const DetalheEtapa = () => {
                   inputProps={
                     { readOnly: validaEdicao, }
                   }
+                /> */}
+
+                <CustomTextField id={"standard-multiline-static-responsavel"} label={"Descrição"}
+                  styleProps={{ labelColor: 'white', labelFontSize: "16px", inputColor: 'white', }}
+                  sx={{ width: "24vw" }}
+                  value={etapa.etapa_descricao}
+                  //name='etapa_descricao'
+                  onChange={handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  }
+
                 />
               </Grid>
 
@@ -265,22 +277,12 @@ export const DetalheEtapa = () => {
               </Grid>
 
               <Grid item margin={"15px"}>
-                {/* <TextField
-                                    id="standard-multiline-static-responsavel"
-                                    label="Responsável:*"
-                                    variant="standard"
-                                    value={etapa.etapa_responsavel_id}
-                                    sx={{
-                                        width: "20vw",
-                                        borderBottom: "none",
-                                        marginRight: "16px",
-                                    }}
-                                /> */}
 
-                <InputLabel id="responsavel-label">Responsável</InputLabel>
+                <InputLabel id="responsavel-label" style={{ color: 'white' }}>Responsável</InputLabel>
                 <Select
                   labelId="responsavel-label"
                   id="responsavel"
+                  style={{ color: 'white' }}
                   value={etapa.etapa_responsavel_id}
                   name='etapa_responsavel_id'
                   onChange={handleChange}
@@ -289,7 +291,7 @@ export const DetalheEtapa = () => {
                   }
                 >
                   {usuario.map((usuarioItem) => (
-                    <MenuItem value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
+                    <MenuItem style={{ color: 'white' }} value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
                   ))}
                 </Select>
               </Grid>
@@ -297,7 +299,7 @@ export const DetalheEtapa = () => {
 
             <div className="div2">
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                <TextField
+                {/* <TextField
                   id="comentario"
                   label="Deixe um comentário"
                   variant="standard"
@@ -308,15 +310,26 @@ export const DetalheEtapa = () => {
                   inputProps={
                     { readOnly: validaEdicao, }
                   }
-                />
+                /> */}
+
+                <CustomTextField id={"comentario"} label={"Deixe um comentário"} 
+                 styleProps={{ labelColor: 'white' }} variant="standard"
+                 sx={{ width: "24vw" }}
+                 value={etapa.etapa_comentario}
+                 onChange={handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  } />
+
               </Grid>
 
               {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                <InputLabel id="status-label">Status: </InputLabel>
+                <InputLabel id="status-label" style={{ color: 'white' }}>Status: </InputLabel>
                 <Select
                   labelId="status-label"
                   id="status"
+                  style={{ color: 'white' }}
                   value={etapa.etapa_status}
                   name='etapa_status'
                   onChange={handleChange}
@@ -324,11 +337,11 @@ export const DetalheEtapa = () => {
                     { readOnly: !validaMudancaStatus, }
                   }
                 >
-                    <MenuItem value={'N'}>Não iniciado</MenuItem>
-                    <MenuItem value={'A'}>Em andamento</MenuItem>
-                    <MenuItem value={'C'}>Concluído</MenuItem>
+                  <MenuItem style={{ color: 'white' }} value={'N'}>Não iniciado</MenuItem>
+                  <MenuItem style={{ color: 'white' }} value={'A'}>Em andamento</MenuItem>
+                  <MenuItem style={{ color: 'white' }} value={'C'}>Concluído</MenuItem>
                 </Select>
-                </Grid>
+              </Grid>
             </div>
 
             <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"1.5rem"}>
@@ -344,13 +357,13 @@ export const DetalheEtapa = () => {
 
               </Grid>
 
-              
+
               <Grid item>
-                  {/*true = invisivel
+                {/*true = invisivel
                   focar em true = visivel
                   qnd edicao for false ou status for true */}
                 <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
-                  sx = {{display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex"}}
+                  sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex" }}
                   onClick={atualizarModal}>
                   Salvar Alteração
                 </Button>

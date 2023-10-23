@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import { validarEdicao } from "../../control/validarEdicao";
 import { validarStatus } from "../../control/validarStatusEtapa";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
+import CustomTextField from "../../shared/components/mui/CustomTextField";
 
 
 const VisualizarProjeto = () => {
@@ -225,10 +226,10 @@ const VisualizarProjeto = () => {
                     <Box
                         display="flex"
                         flexDirection="column"
-                        sx={{ gap: 3, marginTop: "-1.25em", marginLeft:"0.5rem", marginRight:"0.5rem" }}
+                        sx={{ gap: 3, marginTop: "-1.25em", marginLeft: "0.5rem", marginRight: "0.5rem" }}
                     >
-                         <Grid item>
-                            <TextField
+                        <Grid item>
+                            {/* <TextField
                                 id="nome-projeto"
                                 label="Nome do Projeto"
                                 variant="standard"
@@ -240,10 +241,18 @@ const VisualizarProjeto = () => {
                                 inputProps={
                                     { readOnly: validaEdicao, }
                                 }
-                            />
-                        </Grid> 
+                            /> */}
+                            <CustomTextField id={"nome-projeto"} label={"Nome do Projeto"} styleProps={{ labelColor: 'white' }} variant="standard"
+                                sx={{ width: "50vw", marginTop: "5%", display: validaEdicao ? "none" : "flex" }}
+                                value={processo.processo_nome}
+                                onChange={handleChange}
+                                inputProps={
+                                    { readOnly: validaEdicao, }
+                                } />
+
+                        </Grid>
                         <Grid item>
-                            <TextField
+                            {/* <TextField
                                 id="standard-multiline-static"
                                 label="Descrição do Projeto"
                                 multiline
@@ -257,7 +266,17 @@ const VisualizarProjeto = () => {
                                 inputProps={
                                     { readOnly: validaEdicao, }
                                 }
-                            />
+                            /> */}
+
+                            <CustomTextField id={"standard-multiline-static"} label={"Descrição do projeto"} multiline
+                                rows={2} styleProps={{ labelColor: 'white' }} variant="standard"
+                                sx={{ width: "50vw", marginTop: "3%" }}
+                                value={processo.processo_descricao}
+                                onChange={handleChange}
+                                inputProps={
+                                    { readOnly: validaEdicao, }
+                                } />
+
                         </Grid>
 
                         <Grid>
@@ -292,7 +311,7 @@ const VisualizarProjeto = () => {
 
 
 
-                        <Grid container justifyContent="space-between" sx = {{display: validaEdicao ? "none" : "flex"}}>
+                        <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex" }}>
 
                             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
                                 <Button startIcon={<DeleteIcon />}

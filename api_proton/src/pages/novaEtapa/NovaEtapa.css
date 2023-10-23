@@ -1,10 +1,12 @@
 .span {
   font: "";
+  
 }
 
 .descricao {
-  color: black !important;
-  font: 1rem normal black !important;
+  /* color: black !important;
+  font: 1rem normal black !important; */
+  margin-top: 1rem;
 }
 
 .meuBotao {
@@ -16,7 +18,7 @@
 }
 
 .legenda {
-  color: #000000;
+  color: #fffdfd;
   font-family: "Roboto";
 }
 

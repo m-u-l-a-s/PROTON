@@ -34,6 +34,7 @@ import { useLocation } from "react-router-dom";
 import ClearIcon from '@mui/icons-material/Clear';
 
 import SaveIcon from '@mui/icons-material/Save';
+import CustomTextField from "../../shared/components/mui/CustomTextField";
 const Swal = require('sweetalert2');
 
 export const NovaEtapa = () => {
@@ -247,14 +248,20 @@ export const NovaEtapa = () => {
         {/* <Box display="flex" alignItems="center" maxHeight="110vh" flexDirection="column"> */}
         <Box display="flex" flexDirection="column" sx={{ gap: 1 }}>
           <Grid item>
-            <TextField
+            {/* <TextField
               id="nova-etapa"
               label="Título:*"
               variant="standard"
               sx={{ width: "54.5vw" }}
               value={etapa_nome}
               onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_nome(e.target.value)}
-            />
+            /> */}
+
+            <CustomTextField id={"nova-etapa"} label={"Título:"} styleProps={{ labelColor: 'white' }} variant="standard"
+              sx={{ width: "54.5vw" }}
+              value={etapa_nome}
+              onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_nome(e.target.value)} />
+
           </Grid>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -280,15 +287,16 @@ export const NovaEtapa = () => {
                   }) => setetapa_responsavel_id(e.target.value)}
                 /> */}
 
-                <InputLabel id="responsavel-label">Responsável:</InputLabel>
+                <InputLabel id="responsavel-label" style={{ color: 'white' }}>Responsável:</InputLabel>
                 <Select
                   labelId="responsavel-label"
                   id="responsavel"
+                  style={{ color: 'white' }}
                   value={etapa_responsavel_id}
                   onChange={(e) => setetapa_responsavel_id(e.target.value)}
                 >
                   {usuario.map((usuarioItem) => (
-                    <MenuItem key={usuarioItem.usuario_id} value={usuarioItem.usuario_id}>
+                    <MenuItem key={usuarioItem.usuario_id} value={usuarioItem.usuario_id} style={{ color: 'white' }}>
                       {usuarioItem.usuario_nome}
                     </MenuItem>
                   ))}
@@ -298,9 +306,11 @@ export const NovaEtapa = () => {
 
               <span
                 style={{
+                  color: "#ffffff",
                   fontFamily: "Roboto",
                   marginRight: "3 rem ",
                   marginTop: "2rem",
+
                 }}
               >
                 Prazo de Conclusão:{" "}
@@ -322,7 +332,7 @@ export const NovaEtapa = () => {
             </Grid>
 
             <Grid item width="8rem">
-              <TextField
+              {/* <TextField
                 id="standard-multiline-static-responsavel"
                 label="Prioridade:*"
                 variant="standard"
@@ -330,12 +340,19 @@ export const NovaEtapa = () => {
                 value={etapa_ordem}
                 // onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_ordem(e.target.value)}
                 onChange={(e) => setetapa_ordem(Number(e.target.value))}
-              />
+              /> */}
+
+              <CustomTextField id={"standard-multiline-static-responsavel"} label={"Prioridade:"} styleProps={{ labelColor: 'white' }} variant="standard"
+                sx={{ width: "25vw" }}
+                value={etapa_ordem}
+                onChange={(e) => setetapa_ordem(Number(e.target.value))} />
+
+
             </Grid>
           </div>
 
-          <div className="descricao">
-            <p
+          <div className="descricao" >
+            {/* <p
               style={{
                 color: "black",
                 fontFamily: "Roboto",
@@ -343,7 +360,17 @@ export const NovaEtapa = () => {
               }}
             >
               Descrição:
-            </p>
+            </p> */}
+            <span
+              style={{
+                color: "#fffff",
+                fontFamily: "Roboto",
+                marginBottom: "10px",
+                
+              }}
+            >
+              Descrição:{" "}
+            </span>
           </div>
 
           <div
@@ -356,13 +383,21 @@ export const NovaEtapa = () => {
             }}
           >
             <Grid>
-              <TextField
+              {/* <TextField
                 id="standard-multiline-static-responsavel"
                 label=""
                 sx={{ width: "54vw" }}
                 value={etapa_descricao}
                 onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_descricao(e.target.value)}
-              />
+      
+              /> */}
+
+              <CustomTextField id={"standard-multiline-static-responsavel"} label={""} 
+                 styleProps={{ labelColor: 'white' }} 
+                sx={{ width: "54vw" }}
+                value={etapa_descricao}
+                onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_descricao(e.target.value)}
+                 />
             </Grid>
           </div>
 

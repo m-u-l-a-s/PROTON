@@ -1,38 +1,39 @@
-import { Box, Button, Grid, IconButton, Paper, TextField, Typography } from "@mui/material";
-import  SaveIcon from '@mui/icons-material/Save';
+import { Box, Button, Grid, IconButton, Paper, TextField, ThemeProvider, Typography } from "@mui/material";
+import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import React, { SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import CustomTextField from "../../shared/components/mui/CustomTextField";
+
 
 export const NovoProjeto = () => {
 
-    const navigate = useNavigate();
-    const [processo_responsavel_id, setProcesso_responsavel_id] = useState(1)
-    const [processo_nome, setProcesso_nome] = useState('')
-    const [processo_descricao, setProcesso_descricao] = useState('')
+  const navigate = useNavigate();
+  const [processo_responsavel_id, setProcesso_responsavel_id] = useState(1)
+  const [processo_nome, setProcesso_nome] = useState('')
+  const [processo_descricao, setProcesso_descricao] = useState('')
 
-    const inserirProcesso = async () => {
-        try {
+  const inserirProcesso = async () => {
+    try {
 
-            const body = {processo_responsavel_id, processo_nome, processo_descricao }
-            const response = await fetch("http://localhost:5000/insert_processo", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body)
-            });
+      const body = { processo_responsavel_id, processo_nome, processo_descricao }
+      const response = await fetch("http://localhost:5000/insert_processo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
 
-            if (response.status === 200)
-            {
-                navigate("/MyProjects");
-            }
-            
-        } catch (error: any) {
-            console.error(error.message)
-        }
+      if (response.status === 200) {
+        navigate("/MyProjects");
+      }
+
+    } catch (error: any) {
+      console.error(error.message)
     }
+  }
 
   //modal de salvar projeto
   const handleAdd = () => {
@@ -44,107 +45,131 @@ export const NovoProjeto = () => {
       confirmButtonText: '<span style="color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
       cancelButtonText: "Não",
-    }).then((result:any) => {
+    }).then((result: any) => {
       if (result.isConfirmed) {
-        inserirProcesso(); 
+        inserirProcesso();
       }
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Processo criado com sucesso!",
-            customClass: "swalFire",
-            confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
-            confirmButtonColor: "#b6f3f8",
-          })
-        }
-      });
-    };
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Processo criado com sucesso!",
+          customClass: "swalFire",
+          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+          confirmButtonColor: "#b6f3f8",
+        })
+      }
+    });
+  };
 
-    return (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          maxHeight="100vh"
-          flexDirection="column"
-          sx={{ gap: 3 }}
-        >
-          <Paper
-            sx={{
-              mt: 3,
-              padding: 7,
-              borderRadius: 5,
-              width: 'fit-content',
-              height: 'fit-content',
-              gap: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              flexWrap: 'wrap',
-              maxWidth: '70%',
-              maxHeight: '50%',
-              marginTop: '5%',
-            }}
-          >
-            <Grid container spacing={3}>
-              <Grid item xs={12} marginLeft={"-0.5rem"} marginTop={"-1.5em"}>
-                <IconButton className="meuBotao" component={Link} to="/MyProjects">
-                  <ArrowBackRoundedIcon />
-                </IconButton>
-              </Grid>
-      
-              <Grid item xs={12} marginTop={'-1em'}>
-                <Typography variant="h4" color="primary">
-                  Novo Processo
-                </Typography>
-              </Grid>
-      
-              <Grid item xs={12} marginTop={'-1em'}>
-                <TextField
+  return (
+
+
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      maxHeight="100vh"
+      flexDirection="column"
+      sx={{ gap: 3 }}
+    >
+      <Paper
+        sx={{
+          mt: 3,
+          padding: 7,
+          borderRadius: 5,
+          width: 'fit-content',
+          height: 'fit-content',
+          gap: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          flexWrap: 'wrap',
+          maxWidth: '70%',
+          maxHeight: '50%',
+          marginTop: '5%',
+        }}
+      >
+
+
+        <Grid container spacing={3}>
+          <Grid item xs={12} marginLeft={"-0.5rem"} marginTop={"-1.5em"}>
+            <IconButton className="meuBotao" component={Link} to="/MyProjects">
+              <ArrowBackRoundedIcon />
+            </IconButton>
+          </Grid>
+
+          <Grid item xs={12} marginTop={'-1em'}>
+            <Typography variant="h4" color="primary">
+              Novo Processo
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} marginTop={'-1em'}>
+
+            {/* <TextField
                   id="nome-projeto"
                   label="Nome:"
                   variant="standard"
                   sx={{ width: '100%' }}
                   value={processo_nome}
                   onChange={(e) => setProcesso_nome(e.target.value)}
-                />
-              </Grid>
-      
-              <Grid item xs={12} marginTop={'-1em'}>
-                <TextField
-                  id="standard-multiline-static"
-                  label="Descrição"
-                  multiline
-                  rows={4}
-                  variant="standard"
-                  sx={{ width: '100%' }}
-                  value={processo_descricao}
-                  onChange={(e) => setProcesso_descricao(e.target.value)}
-                />
-              </Grid>
-            </Grid>
-      
-            <Grid container justifyContent="space-between">
-              <Grid item>
-                <Button
-                  variant="contained"
-                  startIcon={<DeleteIcon />}
-                  sx={{ background: '#292A2D', color: 'white' }}
-                >
-                  Descartar
-                </Button>
-              </Grid>
-      
-              <Grid item>
-                <Button
-                  variant="contained"
-                  startIcon={< SaveIcon />}
-                  onClick={handleAdd}
-                >
-                  Salvar Processo
-                </Button>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Box>
-      );
+                
+                  
+                /> */}
+
+            <CustomTextField id={"nome-projeto"} label={"Nome:"} styleProps={{ labelColor: 'white' }} variant="standard"
+              sx={{ width: '100%' }}
+              value={processo_nome}
+              onChange={(e) => setProcesso_nome(e.target.value)} />
+
+          </Grid>
+
+          <Grid item xs={12} marginTop={'-1em'}>
+            {/* <TextField
+              id="standard-multiline-static"
+              label="Descrição"
+              multiline
+              rows={4}
+              variant="standard"
+              sx={{ width: '100%' }}
+              value={processo_descricao}
+              onChange={(e) => setProcesso_descricao(e.target.value)}
+            /> */}
+
+            <CustomTextField id={"standard-multiline-static"} label={"Descrição"} multiline
+              rows={4} styleProps={{ labelColor: 'white' }} variant="standard"
+              sx={{ width: '100%' }}
+              value={processo_descricao}
+              onChange={(e) => setProcesso_descricao(e.target.value)} />
+
+
+          </Grid>
+        </Grid>
+
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            <Button
+              variant="contained"
+              startIcon={<DeleteIcon />}
+              sx={{ background: '#292A2D', color: 'white' }}
+            >
+              Descartar
+            </Button>
+          </Grid>
+
+          <Grid item>
+            <Button
+              variant="contained"
+              startIcon={< SaveIcon />}
+              onClick={handleAdd}
+            >
+              Salvar Processo
+            </Button>
+          </Grid>
+
+        </Grid>
+
+      </Paper>
+    </Box>
+
+  );
 }
 

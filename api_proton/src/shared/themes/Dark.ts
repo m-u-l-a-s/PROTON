@@ -11,7 +11,7 @@ export const DarkTheme = createTheme({
             dark: ' #53C4CD',     //é a cor primaria um pouco mais escura, tipo pra um hover
             light: '#B6F3F8',
             contrastText: '#000000',  //faz constraste com a cor primaria
-
+            
         },
 
         secondary:{
@@ -26,8 +26,11 @@ export const DarkTheme = createTheme({
             paper: grey[700],
             
             
-        }
+        },
+
+        
     },
+
 });
 
 
