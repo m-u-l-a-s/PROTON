@@ -1,8 +1,7 @@
-import React from 'react';
 import { AppBar, Container, Toolbar, Grid, Button, IconButton, Stack } from '@mui/material';
-import { Navigate } from "react-router-dom";
 import { useTheme } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 
 export const BarraProjeto = (prop: any) => {
      const theme = useTheme();
@@ -11,22 +10,30 @@ export const BarraProjeto = (prop: any) => {
           <AppBar position="static" color="secondary">
                <Container maxWidth="xl">
                     <Toolbar disableGutters>
+
+                         <Grid item marginRight={"1rem"}>
+                              <IconButton className="meuBotao" onClick={() => prop.navigate("/MyProjects")}>
+                                   <ArrowBackRoundedIcon />
+                              </IconButton>
+
+                         </Grid>
+
                          <Grid item width={700} fontFamily={'Poppins, sans-serif'} fontSize={'bold'} marginLeft={"-0.5rem"}>
                               {prop.processo_nome}
                          </Grid>
-                         
-                              <Grid item alignItems={"right"} justifyContent={"flex-start"}>
-                                   <Stack direction="row" spacing={3}>
-                                        <Button variant="text">Histórico</Button>
-                                        <Button variant="text">Relatórios</Button>
-                                   </Stack>
-                              </Grid>
-                              <Grid item alignItems={"right"} justifyContent={"flex-start"}>
-                                   <IconButton edge="end" color="inherit" aria-label="menu">
-                                        <MoreVertIcon />
-                                   </IconButton>
-                              </Grid>
-                        
+
+                         <Grid item alignItems={"right"} justifyContent={"flex-start"}>
+                              <Stack direction="row" spacing={3}>
+                                   <Button variant="text">Histórico</Button>
+                                   <Button variant="text">Relatórios</Button>
+                              </Stack>
+                         </Grid>
+                         <Grid item alignItems={"right"} justifyContent={"flex-start"}>
+                              <IconButton edge="end" color="inherit" aria-label="menu">
+                                   <MoreVertIcon />
+                              </IconButton>
+                         </Grid>
+
                     </Toolbar>
                </Container>
           </AppBar>

@@ -215,7 +215,7 @@ const VisualizarProjeto = () => {
                 }}
             >
 
-                <BarraProjeto processo_nome={processo.processo_nome} />
+                <BarraProjeto processo_nome={processo.processo_nome} navigate={navigate}/>
 
                 <Box
                     display="flex"
