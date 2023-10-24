@@ -38,9 +38,9 @@ export const Home = () => {
         <div>
             <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
                 flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
-                <Paper sx={{ padding: 2, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary">Estimativa dos Processos de {nomePerfil()}</Typography>
-                    <Grid container spacing={2} alignItems="center" marginTop={1}>
+                <Paper sx={{ padding: 4, borderRadius: 5 }} >
+                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos de {nomePerfil()}</Typography>
+                    <Grid container spacing={4} alignItems="center" marginTop={1}>
                         <Grid item>
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
@@ -50,10 +50,10 @@ export const Home = () => {
                                         <ReportGmailerrorredIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
                                     </IconButton>
 
-                                    <Typography variant="subtitle1" component="div">
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Atrasados
                                     </Typography>
-                                    <Typography variant="h4" component="div">
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
                                         4
                                     </Typography>
 
@@ -73,10 +73,10 @@ export const Home = () => {
                                         <RunningWithErrorsIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
                                     </IconButton>
 
-                                    <Typography variant="subtitle1" component="div">
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         A vencer
                                     </Typography>
-                                    <Typography variant="h4" component="div">
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
                                         4
                                     </Typography>
 
@@ -86,7 +86,8 @@ export const Home = () => {
 
                         </Grid>
 
-                        <Grid item>
+{/* Não vamos mais assinar */}
+                        {/* <Grid item>
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
@@ -95,10 +96,10 @@ export const Home = () => {
                                         <DriveFileRenameOutlineIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
                                     </IconButton>
 
-                                    <Typography variant="subtitle1" component="div">
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Assinar
                                     </Typography>
-                                    <Typography variant="h4" component="div">
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
                                         4
                                     </Typography>
 
@@ -106,7 +107,7 @@ export const Home = () => {
 
                             </Card>
 
-                        </Grid>
+                        </Grid> */}
 
                         <Grid item>
 
@@ -118,10 +119,10 @@ export const Home = () => {
                                         <RuleIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
                                     </IconButton>
 
-                                    <Typography variant="subtitle1" component="div">
-                                        Incompletos
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                        Pendentes
                                     </Typography>
-                                    <Typography variant="h4" component="div">
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
                                         4
                                     </Typography>
 
@@ -141,10 +142,10 @@ export const Home = () => {
                                         <PlaylistAddCheckIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
                                     </IconButton>
 
-                                    <Typography variant="subtitle1" component="div">
-                                        Completo
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                        Completos
                                     </Typography>
-                                    <Typography variant="h4" component="div">
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
                                         4
                                     </Typography>
 
@@ -164,8 +165,8 @@ export const Home = () => {
 
 
 
-                <Paper sx={{ padding: 2, borderRadius: 5, }}>
-                    <Typography variant="h5" color="primary">Visão Geral</Typography>
+                <Paper sx={{ padding: 4, borderRadius: 5, }}>
+                    <Typography variant="h5" color="primary" fontFamily="poppins">Visão Geral</Typography>
 
 
                     <Grid container spacing={2} alignItems="center" marginTop={1}>
@@ -192,15 +193,15 @@ export const Home = () => {
                                         <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
 
-                                            <Typography variant="h5" component="div">
+                                            <Typography variant="h5" component="div" fontFamily="poppins">
                                                 Média de
                                             </Typography>
 
-                                            <Typography variant="h2" component="div">
+                                            <Typography variant="h2" component="div" fontFamily="poppins">
                                                 44H
                                             </Typography>
 
-                                            <Typography variant="h5" component="div">
+                                            <Typography variant="h5" component="div" fontFamily="poppins">
                                                 por projeto
                                             </Typography>
 
@@ -213,13 +214,13 @@ export const Home = () => {
 
                             <Box display="flex" flexDirection="column" gap={theme.spacing(2)} marginTop={theme.spacing(1)} padding={0}>
 
-                                <Grid item>
+                                {/* <Grid item> */}
 
 
-                                    <Card sx={{ maxWidth: 180, maxHeight: 80, background: "#B5F8FD", borderRadius: 3 }}>
+                                    {/* <Card sx={{ maxWidth: 180, maxHeight: 80, background: "#B5F8FD", borderRadius: 3 }}>
                                         <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                            <Typography variant="subtitle1" component="div"> Mais entregas </Typography>
+                                            <Typography variant="subtitle1" component="div" > Mais entregas </Typography>
                                             <Typography variant="subtitle2" component="div"> Ana </Typography>
 
 
@@ -240,7 +241,7 @@ export const Home = () => {
                                         </CardContent>
 
                                     </Card>
-                                </Grid>
+                                </Grid> */}
 
                             </Box>
 

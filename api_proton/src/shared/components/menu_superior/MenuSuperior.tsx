@@ -78,14 +78,12 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({ children }) =>
                     <Button variant="text" component={Link} to="/MyProjects">
                       Processos
                     </Button>
-                    <Button variant="text">Calendário</Button>
-                    <Button variant="text">Equipe</Button>
                     <Button variant="text">Documentos</Button>
                   </Stack>
                 </Grid>
 
                 <Grid item>
-                  <span style={{ marginRight: 10, fontFamily: "Roboto" }}>Perfil:</span>
+                  <span style={{ marginRight: 10, fontFamily: "poppins" }}>Perfil:</span>
                   <Select  style={{ color: 'white' }} value={usuarioAtual} onChange={salvaPerfil}>
                     {usuario.map((usuarioItem) => (
                       <MenuItem style={{ color: 'white' }} value={JSON.stringify(usuarioItem)}>{usuarioItem.usuario_nome}</MenuItem>
