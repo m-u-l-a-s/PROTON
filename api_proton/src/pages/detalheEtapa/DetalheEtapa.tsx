@@ -7,6 +7,7 @@ import {
   Button,
   Grid,
   IconButton,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Paper,
@@ -32,6 +33,22 @@ import CustomTextField from "../../shared/components/mui/CustomTextField";
 const Swal = require('sweetalert2');
 
 export const DetalheEtapa = () => {
+
+
+  const styles = {
+    label: {
+      fontSize: '1.6rem',
+      color: '#B6F3F8',
+      fontFamily: 'Poppins',
+    },
+    input: {
+      fontSize: '1.3rem',
+      color: 'white',
+      padding: '10px',
+      fontFamily: 'Poppins',
+    },
+  };
+
   const navigate = useNavigate();
   const location = useLocation();
   const [dataDoBanco, setDataDoBanco] = useState(""); // Inicia como string vazia
@@ -231,7 +248,7 @@ export const DetalheEtapa = () => {
           gap: 6,
         }}
       >
-        <Grid item sx={{ mt: "1em", marginLeft: "1em" }}>
+        <Grid item sx={{ mt: "-0.7em", marginLeft: "1em" }}>
           <IconButton className="meuBotao" onClick={handleNavigateToProcesso}>
             <ArrowBackRoundedIcon />
           </IconButton>
@@ -259,16 +276,26 @@ export const DetalheEtapa = () => {
                   }
                 /> */}
 
-                <CustomTextField id={"standard-multiline-static-responsavel"} label={"Descrição"}
-                  styleProps={{ labelColor: 'white', labelFontSize: "16px", inputColor: 'white', }}
+                <TextField
+                  id="standard-multiline-static"
+                  defaultValue="Default Value"
+                  label="Descrição:"
+                  variant="standard"
                   sx={{ width: "24vw" }}
+                  type='text'
                   value={etapa.etapa_descricao}
-                  //name='etapa_descricao'
+                  name='etapa_descricao'
                   onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
                   }
-
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                    style: styles.input, // Estilo para o texto digitado
+                  }}
+                  InputLabelProps={{
+                    style: styles.label, // Estilo para a label
+                  }}
                 />
               </Grid>
 
@@ -278,7 +305,7 @@ export const DetalheEtapa = () => {
 
               <Grid item margin={"15px"}>
 
-                <InputLabel id="responsavel-label" style={{ color: 'white' }}>Responsável</InputLabel>
+                {/* <InputLabel id="responsavel-label" style={{ color: 'white' }}>Responsável</InputLabel>
                 <Select
                   labelId="responsavel-label"
                   id="responsavel"
@@ -293,7 +320,40 @@ export const DetalheEtapa = () => {
                   {usuario.map((usuarioItem) => (
                     <MenuItem style={{ color: 'white' }} value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
                   ))}
+                </Select> */}
+
+
+                <InputLabel
+                  htmlFor="responsavel"
+                  style={{
+                    fontSize: '1.2rem',
+                    color: '#B6F3F8',
+                    fontFamily: 'Poppins',
+                    marginRight: "3 rem ",
+                    marginTop: "2rem",
+                  }}
+                >
+                  Responsável:
+                </InputLabel>
+                <Select
+                  labelId="responsavel-label"
+                  id="responsavel"
+                  style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem', }}
+                  value={etapa.etapa_responsavel_id}
+                  onChange={handleChange}
+                  inputProps={
+                    { readOnly: validaEdicao, }
+                  }
+                >
+                  {usuario.map((usuarioItem) => (
+                    <MenuItem
+                      style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem', }}
+                      value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}
+                    </MenuItem>
+                  ))}
                 </Select>
+
+
               </Grid>
             </div>
 
@@ -312,24 +372,36 @@ export const DetalheEtapa = () => {
                   }
                 /> */}
 
-                <CustomTextField id={"comentario"} label={"Deixe um comentário"} 
-                 styleProps={{ labelColor: 'white' }} variant="standard"
-                 sx={{ width: "24vw" }}
-                 value={etapa.etapa_comentario}
-                 onChange={handleChange}
+                <TextField
+                  label="Deixe um comentário:"
+                  id="comentario"
+                  sx={{ width: "24vw" }}
+                  value={etapa.etapa_comentario}
+                  name='etapa_comentario'
+                  onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
-                  } />
+                  }
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                    style: styles.input, // Estilo para o texto digitado
+                  }}
+                  InputLabelProps={{
+                    style: styles.label, // Estilo para a label
+                  }}
+                  variant="standard"
+                />
+
 
               </Grid>
 
               {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                <InputLabel id="status-label" style={{ color: 'white' }}>Status: </InputLabel>
+                <InputLabel id="status-label" style={{ color: '#B6F3F8', fontFamily: 'Poppins', fontSize: '1.1rem' }}>Status: </InputLabel>
                 <Select
                   labelId="status-label"
                   id="status"
-                  style={{ color: 'white' }}
+                  style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }}
                   value={etapa.etapa_status}
                   name='etapa_status'
                   onChange={handleChange}
@@ -337,9 +409,9 @@ export const DetalheEtapa = () => {
                     { readOnly: !validaMudancaStatus, }
                   }
                 >
-                  <MenuItem style={{ color: 'white' }} value={'N'}>Não iniciado</MenuItem>
-                  <MenuItem style={{ color: 'white' }} value={'A'}>Em andamento</MenuItem>
-                  <MenuItem style={{ color: 'white' }} value={'C'}>Concluído</MenuItem>
+                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'N'}>Não iniciado</MenuItem>
+                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'A'}>Em andamento</MenuItem>
+                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'C'}>Concluído</MenuItem>
                 </Select>
               </Grid>
             </div>
@@ -350,7 +422,7 @@ export const DetalheEtapa = () => {
               <Grid item>
 
                 <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
-                  sx={{ marginLeft:'1em', background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex" , fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
+                  sx={{ marginLeft: '1em', background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
                   onClick={deletarModal}>
                   Deletar Etapa
                 </Button>
@@ -363,7 +435,7 @@ export const DetalheEtapa = () => {
                   focar em true = visivel
                   qnd edicao for false ou status for true */}
                 <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
-                  sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex", fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold', marginRight:'-1em' }}
+                  sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold', marginRight: '-1em' }}
                   onClick={atualizarModal}>
                   Salvar Alteração
                 </Button>

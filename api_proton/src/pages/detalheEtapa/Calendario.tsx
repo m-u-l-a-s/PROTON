@@ -9,7 +9,9 @@ import { styled } from '@mui/system'; // Use o módulo @mui/system
 const CustomDatePicker = styled(DatePicker)({
   '& input': {
     color: 'white', // Define a cor do texto como branca
-    fontSize: '16px', // Define o tamanho da fonte do texto
+    fontSize: '1.1rem', // Define o tamanho da fonte do texto
+    fontFamily: 'Poppins', // Fonte Poppins
+    
   },
   '& .MuiSvgIcon-root': {
     fill: 'white', // Define a cor do ícone como branca

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Box, Button, Grid, IconButton, Paper, TextField } from "@mui/material";
+import { Box, Button, Grid, IconButton, InputAdornment, Paper, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Steps } from "../novoProjeto/Steps";
 import { Link } from "react-router-dom";
@@ -17,6 +17,21 @@ import CustomTextField from "../../shared/components/mui/CustomTextField";
 
 
 const VisualizarProjeto = () => {
+
+    const styles = {
+        label: {
+            fontSize: '1.6rem',
+            color: '#B6F3F8',
+        },
+        input: {
+            fontSize: '1.3rem',
+            color: 'white',
+            padding: '10px',
+        },
+    };
+
+
+
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -215,7 +230,7 @@ const VisualizarProjeto = () => {
                 }}
             >
 
-                <BarraProjeto processo_nome={processo.processo_nome} navigate={navigate}/>
+                <BarraProjeto processo_nome={processo.processo_nome} navigate={navigate} />
 
                 <Box
                     display="flex"
@@ -226,7 +241,7 @@ const VisualizarProjeto = () => {
                     <Box
                         display="flex"
                         flexDirection="column"
-                        sx={{ gap: 3, marginTop: "-1.25em", marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                        sx={{ gap: 2, marginTop: "-1.25em", marginLeft: "0.5rem", marginRight: "0.5rem" }}
                     >
                         <Grid item>
                             {/* <TextField
@@ -242,13 +257,26 @@ const VisualizarProjeto = () => {
                                     { readOnly: validaEdicao, }
                                 }
                             /> */}
-                            <CustomTextField id={"nome-projeto"} label={"Nome do Projeto:"} styleProps={{ labelColor: 'white' }} variant="standard"
+
+
+                            <TextField
+                                label="Nome do projeto:"
+                                id="standard-start-adornment"
                                 sx={{ width: "50vw", marginTop: "5%", display: validaEdicao ? "none" : "flex" }}
                                 value={processo.processo_nome}
                                 onChange={handleChange}
                                 inputProps={
                                     { readOnly: validaEdicao, }
-                                } />
+                                }
+                                InputProps={{
+                                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                                    style: styles.input, // Estilo para o texto digitado
+                                }}
+                                InputLabelProps={{
+                                    style: styles.label, // Estilo para a label
+                                }}
+                                variant="standard"
+                            />
 
                         </Grid>
                         <Grid item>
@@ -268,14 +296,29 @@ const VisualizarProjeto = () => {
                                 }
                             /> */}
 
-                            <CustomTextField id={"standard-multiline-static"} label={"Descrição do projeto:"} multiline
-                                rows={2} styleProps={{ labelColor: 'white' }} variant="standard"
+                            <TextField
+                                id="standard-multiline-static"
+                                defaultValue="Default Value"
+                                label="Descrição:"
+                                variant="standard"
+                                multiline
+                                rows={2}
                                 sx={{ width: "50vw", marginTop: "3%" }}
                                 value={processo.processo_descricao}
+                                //validação do usuário
+                                name='processo_descricao'
                                 onChange={handleChange}
                                 inputProps={
                                     { readOnly: validaEdicao, }
-                                } />
+                                }
+                                InputProps={{
+                                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                                    style: styles.input, // Estilo para o texto digitado
+                                }}
+                                InputLabelProps={{
+                                    style: styles.label, // Estilo para a label
+                                }}
+                            />
 
                         </Grid>
 
@@ -314,13 +357,13 @@ const VisualizarProjeto = () => {
                         <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex" }}>
 
                             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
-                                <Button style={{fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}} startIcon={<DeleteIcon />}
+                                <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<DeleteIcon />}
                                     // sx = {{display: validaEdicao ? "none" : "block"}} 
                                     onClick={handleDiscard}>
                                     Deletar Processo
                                 </Button>
                             </Grid>
-                            <Button style={{fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
+                            <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
                                 variant="contained"
                                 startIcon={<AddIcon />}
                                 // sx={{ width: "50vw", display: validaEdicao ? "none" : "block"}}
@@ -331,7 +374,7 @@ const VisualizarProjeto = () => {
 
 
                             <Grid item >
-                                <Button style={{fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}} startIcon={<SaveAsIcon />}
+                                <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<SaveAsIcon />}
                                     //  sx = {{display: validaEdicao ? "none" : "block"}}
                                     onClick={atualizarModalUpdate}>
                                     Salvar Alterações

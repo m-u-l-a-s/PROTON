@@ -1,4 +1,4 @@
-import { Box, Button, Grid, IconButton, Paper, TextField, ThemeProvider, Typography } from "@mui/material";
+import { Box, Button, FilledInput, Grid, IconButton, InputAdornment, InputLabel, Paper, TextField, ThemeProvider, Typography } from "@mui/material";
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,23 @@ import CustomTextField from "../../shared/components/mui/CustomTextField";
 
 
 export const NovoProjeto = () => {
+
+  const styles = {
+    label: {
+      fontSize: '1.6rem',
+      color: '#B6F3F8',
+      fontFamily: 'Poppins',
+    },
+    input: {
+      fontSize: '1.3rem',
+      color: 'white',
+      padding: '10px',
+      fontFamily: 'Poppins',
+    },
+  };
+
+
+
 
   const navigate = useNavigate();
   const [processo_responsavel_id, setProcesso_responsavel_id] = useState(1)
@@ -97,7 +114,7 @@ export const NovoProjeto = () => {
           </Grid>
 
           <Grid item xs={12} marginTop={'-1em'}>
-            <Typography variant="h4" color="primary" style={{fontFamily: 'poppins'}}>
+            <Typography variant="h4" color="primary" style={{ fontFamily: 'poppins' }}>
               Novo Processo
             </Typography>
           </Grid>
@@ -110,20 +127,34 @@ export const NovoProjeto = () => {
                   variant="standard"
                   sx={{ width: '100%' }}
                   value={processo_nome}
-                  onChange={(e) => setProcesso_nome(e.target.value)}
-                
-                  
-                /> */}
+                  onChange={(e) => setProcesso_nome(e.target.value)}/> */}
 
-            <CustomTextField id={"nome-projeto"} label={"Nome:"} styleProps={{ labelColor: 'white' }} variant="standard"
-              sx={{ width: '100%', fontFamily: 'poppins',  fontSize:'1em'}}
+
+
+            <TextField
+              label="Nome:"
+              id="standard-start-adornment"
+              sx={{ width: '100%' }}
               value={processo_nome}
-              onChange={(e) => setProcesso_nome(e.target.value)} />
+              onChange={(e) => setProcesso_nome(e.target.value)}
+              InputProps={{
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+                style: styles.input, // Estilo para o texto digitado
+              }}
+              InputLabelProps={{
+                style: styles.label, // Estilo para a label
+              }}
+              variant="standard"
+            />
+
+
+
 
           </Grid>
 
           <Grid item xs={12} marginTop={'-1em'}>
-            {/* <TextField
+{/* 
+            <TextField
               id="standard-multiline-static"
               label="Descrição"
               multiline
@@ -134,11 +165,25 @@ export const NovoProjeto = () => {
               onChange={(e) => setProcesso_descricao(e.target.value)}
             /> */}
 
-            <CustomTextField id={"standard-multiline-static"} label={"Descrição"} multiline
-              rows={4} styleProps={{ labelColor: 'white' }} variant="standard"
+
+            <TextField
+              id="standard-multiline-static"
+              defaultValue="Default Value"
+              label="Descrição:"
+              variant="standard"
+              multiline
+              rows={2}
               sx={{ width: '100%' }}
               value={processo_descricao}
-              onChange={(e) => setProcesso_descricao(e.target.value)} />
+              onChange={(e) => setProcesso_descricao(e.target.value)}
+              InputProps={{
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+                style: styles.input, // Estilo para o texto digitado
+              }}
+              InputLabelProps={{
+                style: styles.label, // Estilo para a label
+              }}
+            />
 
 
           </Grid>
@@ -149,7 +194,7 @@ export const NovoProjeto = () => {
             <Button
               variant="contained"
               startIcon={<DeleteIcon />}
-              sx={{ background: '#292A2D', color: 'white', fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
+              sx={{ background: '#292A2D', color: 'white', fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
             >
               Descartar
             </Button>
@@ -160,7 +205,7 @@ export const NovoProjeto = () => {
               variant="contained"
               startIcon={< SaveIcon />}
               onClick={handleAdd}
-              sx={{fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
+              sx={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
             >
               Salvar Processo
             </Button>
