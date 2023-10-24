@@ -1,2 +1,3 @@
 alter table etapa_anexo add column etapa_anexo_nome varchar(50);
 alter table etapa_anexo add column etapa_anexo_tipo varchar(50);
+alter table etapa_anexo add column etapa_anexo_data date;

@@ -71,11 +71,10 @@ export const NovaEtapa = () => {
 
   //função de limpar etapa
   const LimparEtapas = () => {
-    setProcessoId("");
     setetapa_nome("");
     setetapa_responsavel_id("");
     setetapa_ordem(1);
-    setetapa_data_conclusao(new Date);
+    setetapa_data_conclusao(new Date());
     setetapa_descricao("");
   };
 
