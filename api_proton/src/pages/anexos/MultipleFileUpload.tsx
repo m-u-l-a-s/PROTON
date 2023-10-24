@@ -31,7 +31,8 @@ export function MultipleFileUpload({
             etapa_id: 1,
             etapa_anexo_documento: [],
             etapa_anexo_nome: 'anexo_nome',
-            etapa_anexo_tipo: 'anexo_tipo'
+            etapa_anexo_tipo: 'anexo_tipo',
+            etapa_anexo_data: new Date()
         }
     ])
 

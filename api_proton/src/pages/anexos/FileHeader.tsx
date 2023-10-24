@@ -1,17 +1,22 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { dowloadFileAtURL } from "../../control/dowsloadFIleAtURL";
+import React from 'react';
+
 export interface FileHeaderProps {
   file: File;
   onDelete: (file: File) => void;
-  fileType:string;
-  fileData:any;
+  fileType: string;
+  fileData: any;
 }
 
 export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderProps) {
 
   const baixarAnexo = () => {
-    dowloadFileAtURL(file.name,fileData,fileType)
-}
+    dowloadFileAtURL(file.name, fileData, fileType);
+  }
+
+  const currentDate = new Date(); // Obtém a data atual
+  const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
 
   return (
     <Grid
@@ -24,16 +29,20 @@ export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderPro
       }}
     >
       <Grid item>
-        <Typography variant="body2">{file.name}</Typography>
+        <Typography variant="body2">
+          {file.name} - {formattedDate}
+        </Typography>
       </Grid>
-      <Grid item >
-        <Button sx = {{display: (fileType === "UploadError") ? "none" : "" }}
+      <Grid item>
+        <Button
+          sx={{ display: (fileType === "UploadError") ? "none" : "" }}
           size="small"
-          onClick = {baixarAnexo}
+          onClick={baixarAnexo}
         >
           Baixar
         </Button>
-        <Button sx = {{display: (fileType === "UploadError") ? "" : "none" }}
+        <Button
+          sx={{ display: (fileType === "UploadError") ? "" : "none" }}
           size="small"
           onClick={() => onDelete(file)}
         >
@@ -43,3 +52,5 @@ export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderPro
     </Grid>
   );
 }
+
+export default FileHeader;

@@ -5,6 +5,8 @@
 //"nodemon index" para deixar o servidor rodando
 //note que é necessário rodar outro terminal para rodar a aplicação com npm start e deixar os dois rodando ao mesmo tempo
 
+
+
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db");
@@ -248,11 +250,14 @@ app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
 
       // Inserir cada arquivo na tabela etapa_anexo
       const insertedIds = [];
+      const currentDate = new Date(); // Obtém a data atual
+      const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}`
+
       for (const file of files) {
         const fileData = file.buffer;
         const query =
-          "INSERT INTO etapa_anexo (etapa_id, etapa_anexo_documento, etapa_anexo_nome, etapa_anexo_tipo) VALUES ($1, $2, $3, $4) RETURNING etapa_anexo_id";
-        const values = [etapa_id, fileData,fileName, fileType];
+          "INSERT INTO etapa_anexo (etapa_id, etapa_anexo_documento, etapa_anexo_nome, etapa_anexo_tipo, etapa_anexo_data) VALUES ($1, $2, $3, $4, $5) RETURNING etapa_anexo_id";
+        const values = [etapa_id, fileData,fileName, fileType, currentDate];
         const result = await client.query(query, values);
         insertedIds.push(result.rows[0].etapa_anexo_id);
         //console.log(`Arquivo inserido com sucesso. ID do anexo: ${result.rows[0].etapa_anexo_id}`);
