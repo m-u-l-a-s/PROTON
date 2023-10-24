@@ -31,7 +31,7 @@ export const BarraEtapa = (prop: any) => {
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
 
                               <Stack direction="row" spacing={3}>
-                                   <Button variant="text" onClick={navigateToAnexos}>Anexos</Button>
+                                   <Button variant="text" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}} onClick={navigateToAnexos}>Anexos</Button>
                               </Stack>
                          </Grid>
 

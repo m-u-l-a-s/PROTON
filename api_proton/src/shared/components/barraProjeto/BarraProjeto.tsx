@@ -24,8 +24,8 @@ export const BarraProjeto = (prop: any) => {
 
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
                               <Stack direction="row" spacing={3}>
-                                   <Button variant="text">Histórico</Button>
-                                   <Button variant="text">Relatórios</Button>
+                                   <Button variant="text" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}>Histórico</Button>
+                                   <Button variant="text" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}>Relatórios</Button>
                               </Stack>
                          </Grid>
                          <Grid item alignItems={"right"} justifyContent={"flex-start"}>
