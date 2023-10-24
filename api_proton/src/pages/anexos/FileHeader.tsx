@@ -16,6 +16,7 @@ export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderPro
     dowloadFileAtURL(file.name, fileData, fileType);
   }
 
+  //data dia/mês/ano
   const formattedDate = `${insertionDate.getDate()}/${insertionDate.getMonth() + 1}/${insertionDate.getFullYear()}`;
 
   return (
