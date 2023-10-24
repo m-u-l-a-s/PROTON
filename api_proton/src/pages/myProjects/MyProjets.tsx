@@ -101,7 +101,7 @@ export const MyProjects = () => {
                     sx={{ gap: 70 }}
                 >
                     <div className="divBox">
-                        <Typography variant="h4" color="primary">
+                        <Typography variant="h4" color="primary" fontFamily="poppins" fontWeight="bold">
                             Seus Processos
                         </Typography>
                     </div>
