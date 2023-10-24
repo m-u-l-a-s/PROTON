@@ -38,9 +38,9 @@ export const Home = () => {
         <div>
             <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
                 flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
-                <Paper sx={{ padding: 4, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos de {nomePerfil()}</Typography>
-                    <Grid container spacing={4} alignItems="center" marginTop={1}>
+                <Paper sx={{ padding: 4.5, borderRadius: 5 }} >
+                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos{nomePerfil()}</Typography>
+                    <Grid container spacing={4} alignItems="center" marginTop={0}>
                         <Grid item>
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
@@ -169,7 +169,7 @@ export const Home = () => {
                     <Typography variant="h5" color="primary" fontFamily="poppins">Visão Geral</Typography>
 
 
-                    <Grid container spacing={2} alignItems="center" marginTop={1}>
+                    <Grid container spacing={1} alignItems="center" marginTop={1}>
 
                         <Box display="flex" flexDirection="row" gap={theme.spacing(14)} >
 

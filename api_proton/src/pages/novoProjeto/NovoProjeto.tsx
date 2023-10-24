@@ -97,7 +97,7 @@ export const NovoProjeto = () => {
           </Grid>
 
           <Grid item xs={12} marginTop={'-1em'}>
-            <Typography variant="h4" color="primary">
+            <Typography variant="h4" color="primary" style={{fontFamily: 'poppins'}}>
               Novo Processo
             </Typography>
           </Grid>
@@ -116,7 +116,7 @@ export const NovoProjeto = () => {
                 /> */}
 
             <CustomTextField id={"nome-projeto"} label={"Nome:"} styleProps={{ labelColor: 'white' }} variant="standard"
-              sx={{ width: '100%' }}
+              sx={{ width: '100%', fontFamily: 'poppins',  fontSize:'1em'}}
               value={processo_nome}
               onChange={(e) => setProcesso_nome(e.target.value)} />
 
@@ -149,7 +149,7 @@ export const NovoProjeto = () => {
             <Button
               variant="contained"
               startIcon={<DeleteIcon />}
-              sx={{ background: '#292A2D', color: 'white' }}
+              sx={{ background: '#292A2D', color: 'white', fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
             >
               Descartar
             </Button>
@@ -160,6 +160,7 @@ export const NovoProjeto = () => {
               variant="contained"
               startIcon={< SaveIcon />}
               onClick={handleAdd}
+              sx={{fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
             >
               Salvar Processo
             </Button>

@@ -72,13 +72,15 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({ children }) =>
 
                 <Grid item>
                   <Stack direction="row" spacing={3}>
-                    <Button variant="text" component={Link} to="/Home">
+                    <Button variant="text" component={Link} to="/Home" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}>
                       Home
                     </Button>
-                    <Button variant="text" component={Link} to="/MyProjects">
+                    <Button variant="text" component={Link} to="/MyProjects" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}>
                       Processos
                     </Button>
-                    <Button variant="text">Documentos</Button>
+                    <Button variant="text" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}>
+                      Documentos
+                    </Button >
                   </Stack>
                 </Grid>
 

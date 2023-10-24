@@ -228,7 +228,7 @@ export const DetalheEtapa = () => {
           borderRadius: 5,
           width: "1000px",
           height: "480px",
-          gap: 3,
+          gap: 6,
         }}
       >
         <Grid item sx={{ mt: "1em", marginLeft: "1em" }}>
@@ -350,7 +350,7 @@ export const DetalheEtapa = () => {
               <Grid item>
 
                 <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
-                  sx={{ background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex" }}
+                  sx={{ marginLeft:'1em', background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex" , fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold'}}
                   onClick={deletarModal}>
                   Deletar Etapa
                 </Button>
@@ -363,7 +363,7 @@ export const DetalheEtapa = () => {
                   focar em true = visivel
                   qnd edicao for false ou status for true */}
                 <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
-                  sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex" }}
+                  sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex", fontFamily: 'poppins',  fontSize:'1em', fontWeight:'bold', marginRight:'-1em' }}
                   onClick={atualizarModal}>
                   Salvar Alteração
                 </Button>

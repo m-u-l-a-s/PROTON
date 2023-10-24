@@ -101,7 +101,7 @@ export const MyProjects = () => {
                     sx={{ gap: 70 }}
                 >
                     <div className="divBox">
-                        <Typography variant="h4" color="primary" fontFamily="poppins" fontWeight="bold">
+                        <Typography color="primary" fontFamily="poppins" fontWeight="bold" fontSize="1.8rem" marginLeft='0.8em'>
                             Seus Processos
                         </Typography>
                     </div>
@@ -136,12 +136,13 @@ export const MyProjects = () => {
                     </Grid>
                 </Box>
 
-                <Box display="flex" alignItems="center" justifyContent="center">
+                <Box display="flex" alignItems="center" justifyContent="center" fontFamily="poppins">
                     <Button
                         component={Link}
                         to="/NovoProjeto"
                         variant="contained"
                         disableElevation
+                        style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}
                     >
                         + Criar Processo
                     </Button>
