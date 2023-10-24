@@ -1,6 +1,6 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { dowloadFileAtURL } from "../../control/dowsloadFIleAtURL";
-import React from 'react';
+import React, { useState } from 'react';
 
 export interface FileHeaderProps {
   file: File;
@@ -10,13 +10,13 @@ export interface FileHeaderProps {
 }
 
 export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderProps) {
+  const [insertionDate] = useState(new Date());
 
   const baixarAnexo = () => {
     dowloadFileAtURL(file.name, fileData, fileType);
   }
 
-  const currentDate = new Date(); // Obtém a data atual
-  const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+  const formattedDate = `${insertionDate.getDate()}/${insertionDate.getMonth() + 1}/${insertionDate.getFullYear()}`;
 
   return (
     <Grid
