@@ -1,45 +1,35 @@
-.cardProcesso {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 100%;
+.cardProcesso{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.cardProcesso:hover {
-  cursor: pointer;
+.cardProcesso:hover{
+    cursor: pointer;
 }
+
 
 .card {
-  width: 12rem;
-  background-color: lightgray;
-  border-radius: 1rem;
-  padding: 1rem 0.8rem 1rem 2.2rem;
-}
+    width: 12rem;
+    background-color: lightgray;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
 
-.card::before {
-  content: "";
-  background: red;
-  width: 1.4rem;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  border-radius: 12px 0px 0px 12px;
 }
 
 h2 {
-  font-family: "Poppins";
-  color: #53c4cd;
+    font-family: "Poppins";
+    color: #53c4cd;
 }
 
 p {
-  font-family: "Poppins";
-  color: #58595b;
+    font-family: "Poppins";
+    color: #58595b;
 }
 
 h3 {
-  font-family: "Poppins";
-  color: #292a2d;
+    font-family: "Poppins";
+    color: #292a2d;
 }
