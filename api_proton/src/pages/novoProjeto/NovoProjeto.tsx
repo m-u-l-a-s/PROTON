@@ -193,7 +193,7 @@ export const NovoProjeto = () => {
           <Grid item>
             <Button
               variant="contained"
-              startIcon={<DeleteIcon style={{color: "black"}}/>}
+              startIcon={<DeleteIcon />}
               sx={{ background: '#292A2D', color: 'white', fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
             >
               Descartar
@@ -203,7 +203,7 @@ export const NovoProjeto = () => {
           <Grid item>
             <Button
               variant="contained"
-              startIcon={< SaveIcon  style={{color: "black"}}/>}
+              startIcon={< SaveIcon />}
               onClick={handleAdd}
               sx={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
             >
