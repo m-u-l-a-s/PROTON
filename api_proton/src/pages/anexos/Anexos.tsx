@@ -26,6 +26,8 @@ export const Anexos = () => {
             flexDirection="column"
             sx={{ gap: 3 }}
             justifyContent="center"
+            
+            
         >
             <Paper
                 sx={{

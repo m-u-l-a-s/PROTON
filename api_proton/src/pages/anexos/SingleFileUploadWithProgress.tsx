@@ -10,6 +10,7 @@ export interface SingleFileUploadWithProgressProps {
   buttonClicked: boolean;
   fileType:string
   fileData:any
+  currentDate: Date
 }
 
 export interface UploadableFile {
@@ -26,6 +27,7 @@ export function SingleFileUploadWithProgress({
   buttonClicked,
   fileType,
   fileData,
+  currentDate
 }: SingleFileUploadWithProgressProps) {
   useEffect(() => {
     onAllUploadsComplete();
@@ -33,7 +35,7 @@ export function SingleFileUploadWithProgress({
 
   return (
     <Grid item>
-      <FileHeader file={file} onDelete={onDelete} fileType = {fileType} fileData = {fileData}/>
+      <FileHeader file={file} onDelete={onDelete} fileType = {fileType} fileData = {fileData} currentDate={currentDate}/>
       <LinearProgress variant="determinate" value={0} />
     </Grid>
   );

@@ -1,24 +1,48 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { dowloadFileAtURL } from "../../control/dowsloadFIleAtURL";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export interface FileHeaderProps {
   file: File;
   onDelete: (file: File) => void;
   fileType: string;
   fileData: any;
+  currentDate: Date;
 }
 
-export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderProps) {
-  const [insertionDate] = useState(new Date());
+export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: FileHeaderProps) {
+  const [insertionDate, setInsertiondDate] = useState(currentDate);
 
   const baixarAnexo = () => {
     dowloadFileAtURL(file.name, fileData, fileType);
+  };
+
+
+  function formatDateToBrasil(data: string) {
+    if (data.length > 10) {
+      data = formatData(new Date(data));
+    }
+
+    // função para pegar a data atual e formatar para "ano/mes/dia"
+    const year = data.split("-")[0];
+    const month = data.split("-")[1]; // getMonth() retorna um valor de 0-11 por isso o +1
+    const day = data.split("-")[2];
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
   }
 
-  //data dia/mês/ano
-  const formattedDate = `${insertionDate.getDate()}/${insertionDate.getMonth() + 1}/${insertionDate.getFullYear()}`;
+  const formatData = (today: Date) => {
+    // função para pegar a data atual e formatar para "ano/mes/dia"
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1; // getMonth() retorna um valor de 0-11 por isso o +1
+    const day = today.getDate();
+    const formattedDate = `${year}-${month < 10 ? "0" + month : month}-${day < 10 ? "0" + day : day}`;
 
+    return formattedDate;
+  };
+
+  //data dia/mês/ano
+  const formattedDate = formatDateToBrasil(insertionDate.toString());
   return (
     <Grid
       container
@@ -35,18 +59,10 @@ export function FileHeader({ file, onDelete, fileType, fileData }: FileHeaderPro
         </Typography>
       </Grid>
       <Grid item>
-        <Button
-          sx={{ display: (fileType === "UploadError") ? "none" : "" }}
-          size="small"
-          onClick={baixarAnexo}
-        >
+        <Button sx={{ display: fileType === "UploadError" ? "none" : "" }} size="small" onClick={baixarAnexo}>
           Baixar
         </Button>
-        <Button
-          sx={{ display: (fileType === "UploadError") ? "" : "none" }}
-          size="small"
-          onClick={() => onDelete(file)}
-        >
+        <Button sx={{ display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
           Deletar
         </Button>
       </Grid>

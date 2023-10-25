@@ -24,7 +24,7 @@ export function UploadError({ file, onDelete, errors, fileType, fileData }: Uplo
   return (
     <React.Fragment>
     {/* Renderiza o cabeçalho do arquivo com opção de exclusão */}
-    <FileHeader file={file} fileType={fileType} fileData = {fileData} onDelete={onDelete} />
+    <FileHeader file={file} fileType={fileType} fileData = {fileData} onDelete={onDelete} currentDate={new Date()} />
 
     {/* Renderiza uma barra de progresso linear com estilo de erro (vermelho) */}
     <ErrorLinearProgress variant="determinate" value={100} sx={{ height: 8 }} /> 
