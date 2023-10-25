@@ -8,6 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 import { SingleFileUploadWithProgress, UploadableFile } from "./SingleFileUploadWithProgress";
 import { UploadError } from "./UploadError";
 import './Anexos.css'
+import Swal from 'sweetalert2';
+
+
+
 
 
 
@@ -35,6 +39,32 @@ export function MultipleFileUpload({
             etapa_anexo_data: new Date()
         }
     ])
+
+
+    const Modal = () => {
+        Swal.fire({
+          title: "Tem certeza que deseja anexar esse arquivo?",
+          customClass: "swalFire",
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: '<span style="color: black;">Sim</span>',
+          confirmButtonColor: "#b6f3f8",
+          cancelButtonText: "Não",
+        }).then((result: any) => {
+          if (result.isConfirmed) {
+            uploadAnexo();
+          }
+        });
+      };
+
+      const showSuccessModal = () => {
+        Swal.fire({
+          title: "Anexo inserido com sucesso!",
+          customClass: "swalFire",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#b6f3f8",
+        });
+      };
 
 
     // Função para lidar com a seleção de arquivos
@@ -154,6 +184,7 @@ export function MultipleFileUpload({
         // Aguarda um segundo antes de permitir cliques no botão novamente
         setTimeout(() => {
             setIsLoading(false);
+            showSuccessModal();
         }, 1000);
     };
 
@@ -226,18 +257,18 @@ export function MultipleFileUpload({
                     ))}
                 </div>
             </Grid>
-
             <Grid item xs={12}>
                 {/* Botão "Anexar arquivos" */}
                 <Button
                     variant="contained"
                     color="primary"
                     disabled={!files.length || uploadComplete || isLoading}
-                    onClick={uploadAnexo}
+                    onClick={Modal}
                 >
                     {isLoading ? "Carregando..." : "Anexar arquivos"}
                 </Button>
             </Grid>
+            
         </Grid>
     );
 }
