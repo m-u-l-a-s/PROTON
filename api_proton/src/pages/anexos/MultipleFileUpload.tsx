@@ -202,7 +202,7 @@ export function MultipleFileUpload({
         >
           <input {...getInputProps()} />
           <CloudUploadIcon fontSize="large" color="primary" />
-          <Typography variant="inherit">Arraste o arquivo ou clique para procurar</Typography>
+          <Typography variant="inherit" style={{color:"white"}}>Arraste o arquivo ou clique para procurar</Typography>
         </div>
       </Grid>
 
