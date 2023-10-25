@@ -1,6 +1,6 @@
 import "./Steps.css"
 import { useNavigate } from 'react-router-dom'
-import { Icon } from "@mui/material";
+import { Icon, colors } from "@mui/material";
 import AttachmentIcon from "@mui/icons-material/Attachment";
 
 export const Steps = (prop: any) => {
@@ -20,7 +20,7 @@ export const Steps = (prop: any) => {
                 <div className="descricao"> {prop.desc}</div>
                 <div className="anexados">
                     <Icon>
-                        <AttachmentIcon />
+                        <AttachmentIcon  style={{color: "white"}}/>
                     </Icon>
                     {prop.contadorAnexos} doc. anexados.
                 </div>

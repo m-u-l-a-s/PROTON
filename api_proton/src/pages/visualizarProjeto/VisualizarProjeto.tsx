@@ -354,27 +354,29 @@ const VisualizarProjeto = () => {
 
 
 
-                        <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex" }}>
+                        <Grid container flexDirection="row"  justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex" }}>
 
                             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
-                                <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<DeleteIcon />}
+                                <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<DeleteIcon style={{color: "#B6F3F8"}}/>}
                                     // sx = {{display: validaEdicao ? "none" : "block"}} 
                                     onClick={handleDiscard}>
                                     Deletar Processo
                                 </Button>
                             </Grid>
+                            <Grid>
                             <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
                                 variant="contained"
-                                startIcon={<AddIcon />}
+                                startIcon={<AddIcon style={{color: "black"}} />}
                                 // sx={{ width: "50vw", display: validaEdicao ? "none" : "block"}}
                                 onClick={handleNavigateToNovaEtapa}
                             >
                                 Adicionar Etapa
                             </Button>
+                            </Grid>
 
 
                             <Grid item >
-                                <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<SaveAsIcon />}
+                                <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<SaveAsIcon  style={{color: "#B6F3F8"}}/>}
                                     //  sx = {{display: validaEdicao ? "none" : "block"}}
                                     onClick={atualizarModalUpdate}>
                                     Salvar Alterações
