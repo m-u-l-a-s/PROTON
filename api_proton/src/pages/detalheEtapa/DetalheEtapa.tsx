@@ -259,9 +259,9 @@ export const DetalheEtapa = () => {
         {/*</BarraEtapa>*/}
 
         <Box display="inline-block" alignItems="center" maxHeight="100vh" flexDirection="column">
-          <Box display="inline-block" flexDirection="column" sx={{ gap: 3 }} textAlign={"left"}>
+          <Box display="inline-block" flexDirection="column" sx={{ gap: 2 }} textAlign={"left"}>
             <div className="div1">
-              <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"30px"}>
+              <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"20px"}>
                 {/* <TextField
                   id="standard-multiline-static-responsavel"
                   label="Descrição"
@@ -281,6 +281,8 @@ export const DetalheEtapa = () => {
                   defaultValue="Default Value"
                   label="Descrição:"
                   variant="standard"
+                  multiline
+                  rows={2}
                   sx={{ width: "24vw" }}
                   type='text'
                   value={etapa.etapa_descricao}
@@ -416,10 +418,10 @@ export const DetalheEtapa = () => {
               </Grid>
             </div>
 
-            <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"1.5rem"}>
+            <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"0.8rem"}>
 
 
-              <Grid item>
+              <Grid item >
 
                 <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
                   sx={{ marginLeft: '1em', background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}

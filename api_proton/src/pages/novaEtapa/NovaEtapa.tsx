@@ -274,7 +274,7 @@ export const NovaEtapa = () => {
             /> */}
 
             <TextField
-              label="Nome do projeto:"
+              label="Nome da etapa:"
               id="standard-start-adornment"
               sx={{ width: "54.5vw" }}
               value={etapa_nome}
