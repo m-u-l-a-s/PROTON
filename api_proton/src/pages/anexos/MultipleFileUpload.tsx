@@ -257,7 +257,7 @@ export function MultipleFileUpload({
           color="primary"
           disabled={!files.length || uploadComplete || isLoading}
           onClick={Modal}
-          style={{fontFamily: 'poppins', fontWeight: 'bold'}}
+          style={{fontFamily: 'poppins', fontWeight: 'bold', marginLeft:"1.2em"}}
         >
           {isLoading ? "Carregando..." : "Anexar arquivos"}
         </Button>

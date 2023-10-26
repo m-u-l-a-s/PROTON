@@ -53,7 +53,7 @@ export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: 
         paddingBottom: "4px",
       }}
     >
-      <Grid item>
+      <Grid item marginLeft="0.7em">
         <Typography variant="body2" fontFamily={"poppins"} fontSize={"1em"} color={"white"}>
           {file.name} - {formattedDate}
         </Typography>
