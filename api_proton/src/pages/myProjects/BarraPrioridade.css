@@ -1,7 +1,7 @@
 .barra {
     position: absolute;
-    width: 20px;
+    width: 1.4rem;
     height: 100%;
     z-index: 2;
-    border-radius: 1rem 0px 0px 1rem;
+    border-radius: 12px 0px 0px 12px;
 }
