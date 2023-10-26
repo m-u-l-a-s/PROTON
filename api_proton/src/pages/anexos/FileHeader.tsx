@@ -1,6 +1,8 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { dowloadFileAtURL } from "../../control/dowsloadFIleAtURL";
 import React, { useState } from "react";
+import DownloadIcon from '@mui/icons-material/Download';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export interface FileHeaderProps {
   file: File;
@@ -60,9 +62,11 @@ export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: 
       </Grid>
       <Grid item>
         <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "none" : "" }} size="small" onClick={baixarAnexo}>
+          <DownloadIcon/>
           Baixar
         </Button>
         <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
+          <DeleteIcon/>
           Deletar
         </Button>
       </Grid>

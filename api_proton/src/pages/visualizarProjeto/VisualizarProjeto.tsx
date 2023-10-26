@@ -16,6 +16,7 @@ import SaveAsIcon from '@mui/icons-material/SaveAs';
 import CustomTextField from "../../shared/components/mui/CustomTextField";
 
 
+
 const VisualizarProjeto = () => {
 
     const styles = {
@@ -209,7 +210,7 @@ const VisualizarProjeto = () => {
             justifyContent="center"
             maxHeight="100vh"
             flexDirection="column"
-            sx={{ gap: 3, }}
+            sx={{ gap: 3, fontFamily: 'poppins'}}
         >
 
 
@@ -236,32 +237,20 @@ const VisualizarProjeto = () => {
                     alignItems="center"
                     maxHeight="100vh"
                     flexDirection="column"
+                    fontFamily='poppins'
                 >
                     <Box
                         display="flex"
                         flexDirection="column"
-                        sx={{ gap: 2, marginTop: "-1.25em", marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                        sx={{ gap: 2, marginTop: "-1.25em", marginLeft: "0.5rem", fontFamily: 'poppins', marginRight: "0.5rem" }}
                     >
-                        <Grid item>
-                            {/* <TextField
-                                id="nome-projeto"
-                                label="Nome do Projeto"
-                                variant="standard"
-                                sx={{ width: "50vw", marginTop: "5%", display: validaEdicao ? "none" : "flex" }}
-                                value={processo.processo_nome}
-                                //validação do usuário
-                                name='processo_nome'
-                                onChange={handleChange}
-                                inputProps={
-                                    { readOnly: validaEdicao, }
-                                }
-                            /> */}
-
+                        <Grid item style={{fontFamily:'poppins'}}>
 
                             <TextField
                                 label="Nome do projeto:"
                                 id="standard-start-adornment"
                                 sx={{ width: "50vw", marginTop: "5%", display: validaEdicao ? "none" : "flex" }}
+                                style={{ fontFamily: 'Poppins'}}
                                 value={processo.processo_nome}
                                 onChange={handleChange}
                                 inputProps={
@@ -302,7 +291,7 @@ const VisualizarProjeto = () => {
                                 variant="standard"
                                 multiline
                                 rows={2}
-                                sx={{ width: "50vw", marginTop: "3%" }}
+                                sx={{ width: "50vw", marginTop: "3%", fontFamily:'poppins' }}
                                 value={processo.processo_descricao}
                                 //validação do usuário
                                 name='processo_descricao'
