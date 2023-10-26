@@ -54,7 +54,7 @@ export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: 
       }}
     >
       <Grid item>
-        <Typography variant="body2">
+        <Typography variant="body2" fontFamily={"poppins"} fontSize={"1em"} color={"white"}>
           {file.name} - {formattedDate}
         </Typography>
       </Grid>
