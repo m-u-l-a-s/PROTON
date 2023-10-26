@@ -221,7 +221,6 @@ const VisualizarProjeto = () => {
                     borderRadius: 5,
                     width: "fit-content",
                     height: "fit-content",
-                    // gap: ,
                     display: "flex",
                     flexDirection: "column",
                     maxWidth: "70%",

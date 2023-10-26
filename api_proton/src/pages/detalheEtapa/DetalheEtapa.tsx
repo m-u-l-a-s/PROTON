@@ -239,14 +239,18 @@ export const DetalheEtapa = () => {
       sx={{ gap: 3 }}
     >
       <Paper
-        sx={{
-          mt: 3,
-          padding: 3,
-          borderRadius: 5,
-          width: "1000px",
-          height: "480px",
-          gap: 6,
-        }}
+      sx={{
+        mt: "-3em",
+        padding: 4,
+        borderRadius: 5,
+        width: "fit-content",
+        height: "fit-content",
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "70%",
+        maxHeight: "50%",
+        marginTop: "2%",
+    }}
       >
         <Grid item sx={{ mt: "-0.7em", marginLeft: "1em" }}>
           <IconButton className="meuBotao" onClick={handleNavigateToProcesso}>
@@ -436,7 +440,7 @@ export const DetalheEtapa = () => {
                 {/*true = invisivel
                   focar em true = visivel
                   qnd edicao for false ou status for true */}
-                <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
+                <Button variant="contained" disableElevation startIcon={<SaveAsIcon /> }
                   sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold', marginRight: '-1em' }}
                   onClick={atualizarModal}>
                   Salvar Alteração
