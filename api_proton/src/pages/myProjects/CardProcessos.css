@@ -21,7 +21,7 @@
 
 .card::before {
     content: "";
-    background: red;
+    background: '#FF7058';
     width: 1.4rem;
     height: 100%;
     position: absolute;

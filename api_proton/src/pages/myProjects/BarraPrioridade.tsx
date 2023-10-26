@@ -12,13 +12,13 @@ const BarraPrioridade = (props: { status: string }) => {
                 setBackgroundColor("transparent");
                 break;
             case "EA":
-                setBackgroundColor("yellow");
+                setBackgroundColor("#FFD15C");
                 break;
             case "AT":
-                setBackgroundColor("red");
+                setBackgroundColor("#FF7058");
                 break;
             case "CN":
-                setBackgroundColor("green");
+                setBackgroundColor("#5DC474");
                 break;
             default:
                 setBackgroundColor("transparent");
