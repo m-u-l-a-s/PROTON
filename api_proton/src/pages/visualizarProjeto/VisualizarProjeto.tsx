@@ -48,7 +48,7 @@ const VisualizarProjeto = () => {
     // Modal confirmação de deletar
     const handleDiscard = () => {
         Swal.fire({
-            title: "Tem certeza que deseja deletar todo o processo? isso excluirá todas as etapas e anexos relacionados",
+            title: "Tem certeza que deseja deletar todo o processo?",
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
