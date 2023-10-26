@@ -59,10 +59,10 @@ export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: 
         </Typography>
       </Grid>
       <Grid item>
-        <Button sx={{ display: fileType === "UploadError" ? "none" : "" }} size="small" onClick={baixarAnexo}>
+        <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "none" : "" }} size="small" onClick={baixarAnexo}>
           Baixar
         </Button>
-        <Button sx={{ display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
+        <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
           Deletar
         </Button>
       </Grid>
