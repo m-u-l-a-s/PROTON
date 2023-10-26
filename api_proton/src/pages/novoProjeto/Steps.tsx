@@ -13,12 +13,12 @@ export const Steps = (prop: any) => {
     return (
         <div onClick={handleClick} className="cardEtapa">
             <div className="top-row">
-                <div className="etapa">{prop.nEtapa}</div>
-                <div className="pendente">{prop.status}</div>
+                <div className="etapa" style={{fontSize:'1.1em'}}>{prop.nEtapa}</div>
+                <div className="pendente" style={{fontSize:'1em'}}>{prop.status}</div>
             </div>
             <div className="bottom-row">
-                <div className="descricao"> {prop.desc}</div>
-                <div className="anexados">
+                <div className="descricao" style={{fontSize:'1em'}}> {prop.desc}</div>
+                <div className="anexados" style={{fontSize:'0.9em'}}>
                     <Icon>
                         <AttachmentIcon />
                     </Icon>

@@ -302,7 +302,7 @@ const VisualizarProjeto = () => {
                                 variant="standard"
                                 multiline
                                 rows={2}
-                                sx={{ width: "50vw", marginTop: "3%" }}
+                                sx={{ width: "50vw", marginTop: "1%" }}
                                 value={processo.processo_descricao}
                                 //validação do usuário
                                 name='processo_descricao'
@@ -353,7 +353,7 @@ const VisualizarProjeto = () => {
 
 
 
-                        <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex" }}>
+                        <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex", marginTop:'0.8em', marginBottom:'0.3em'}}>
 
                             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
                                 <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<DeleteIcon />}

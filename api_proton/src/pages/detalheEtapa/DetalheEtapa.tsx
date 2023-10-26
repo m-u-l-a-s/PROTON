@@ -335,7 +335,7 @@ export const DetalheEtapa = () => {
                     fontSize: '1.2rem',
                     color: '#B6F3F8',
                     fontFamily: 'Poppins',
-                    marginRight: "3 rem ",
+                    marginRight: "3rem ",
                     marginTop: "2rem",
                   }}
                 >
@@ -344,7 +344,7 @@ export const DetalheEtapa = () => {
                 <Select
                   labelId="responsavel-label"
                   id="responsavel"
-                  style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem', }}
+                  style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem',  marginTop:'0.5em'}}
                   value={etapa.etapa_responsavel_id}
                   onChange={handleChange}
                   inputProps={
@@ -353,7 +353,7 @@ export const DetalheEtapa = () => {
                 >
                   {usuario.map((usuarioItem) => (
                     <MenuItem
-                      style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem', }}
+                      style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem' }}
                       value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}
                     </MenuItem>
                   ))}
@@ -403,11 +403,11 @@ export const DetalheEtapa = () => {
 
               {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                <InputLabel id="status-label" style={{ color: '#B6F3F8', fontFamily: 'Poppins', fontSize: '1.1rem' }}>Status: </InputLabel>
+                <InputLabel id="status-label" style={{ color: '#B6F3F8', fontFamily: 'Poppins', fontSize: '1.1rem'}}>Status: </InputLabel>
                 <Select
                   labelId="status-label"
                   id="status"
-                  style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }}
+                  style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins', marginTop:'0.5em' }}
                   value={etapa.etapa_status}
                   name='etapa_status'
                   onChange={handleChange}

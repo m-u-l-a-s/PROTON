@@ -24,7 +24,7 @@ export const BarraEtapa = (prop: any) => {
 
 
                        
-                         <Grid item width={900} fontFamily={'Poppins, sans-serif'} fontSize={'bold'}>
+                         <Grid item width={900} fontFamily={'Poppins'} fontWeight={'bold'} fontSize={'1.4em'} marginLeft={"0.9rem"}>
                               {prop.etapa_nome}
                          </Grid>
 
