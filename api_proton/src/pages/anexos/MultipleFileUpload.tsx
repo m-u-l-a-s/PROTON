@@ -57,8 +57,12 @@ export function MultipleFileUpload({
       customClass: "swalFire",
       confirmButtonText: "OK",
       confirmButtonColor: "#b6f3f8",
+    }).then(() => {
+      // Recarrega a página após o modal ser fechado
+      window.location.reload();
     });
   };
+  
 
   // Função para lidar com a seleção de arquivos
   const onDrop = useCallback(
