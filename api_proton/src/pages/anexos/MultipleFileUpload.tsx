@@ -191,10 +191,10 @@ export function MultipleFileUpload({
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" spacing={2}>
+    <Grid container justifyContent="center" alignItems="center" spacing={2} alignContent='center'>
       <Grid item xs={12}>
         {/* Área de drop dos arquivos */}
-        <div
+        <div style={{marginLeft:'1em', marginTop:'1em'}}
           {...getRootProps()}
           className={`dropzone ${hovered ? "hovered" : ""}`}
           onMouseEnter={() => setHovered(true)}
