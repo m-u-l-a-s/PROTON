@@ -15,10 +15,11 @@ export const Anexos = () => {
 
     const location = useLocation();
     const etapa_id = location.state.etapa_id; // Obtem o etapa_id da localização
-  
+
 
     const handleVoltar = () => {
-        window.history.back();}
+        window.history.back();
+    }
     return (
         <Box
             display="flex"
@@ -26,17 +27,22 @@ export const Anexos = () => {
             flexDirection="column"
             sx={{ gap: 3 }}
             justifyContent="center"
-            
-            
+
+
         >
             <Paper
                 sx={{
-                    mt: 3,
+                    mt: "-3em",
                     padding: 3,
                     borderRadius: 5,
-                    width: "1000px",
-                    height: "480px",
-                    gap: 3,
+                    width: "fit-content",
+                    height: "fit-content",
+                    // gap: ,
+                    display: "flex",
+                    flexDirection: "column",
+                    maxWidth: "70%",
+                    maxHeight: "50%",
+                    marginTop: "2%",
                 }}
             >
                 <Grid item sx={{ mt: "1em", marginLeft: "0.5em" }}>
@@ -64,7 +70,7 @@ export const Anexos = () => {
                         >
                             <Form>
                                 <Grid container spacing={2} direction="column">
-                                    <MultipleFileUpload name="files" buttonClicked={buttonClicked} etapaId={etapa_id}/>
+                                    <MultipleFileUpload name="files" buttonClicked={buttonClicked} etapaId={etapa_id} />
                                 </Grid>
                             </Form>
                         </Formik>
