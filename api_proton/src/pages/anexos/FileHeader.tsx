@@ -53,16 +53,16 @@ export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: 
         paddingBottom: "4px",
       }}
     >
-      <Grid item>
-        <Typography variant="body2">
+      <Grid item marginLeft="0.7em">
+        <Typography variant="body2" fontFamily={"poppins"} fontSize={"1em"} color={"white"}>
           {file.name} - {formattedDate}
         </Typography>
       </Grid>
       <Grid item>
-        <Button sx={{ display: fileType === "UploadError" ? "none" : "" }} size="small" onClick={baixarAnexo}>
+        <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "none" : "" }} size="small" onClick={baixarAnexo}>
           Baixar
         </Button>
-        <Button sx={{ display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
+        <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
           Deletar
         </Button>
       </Grid>

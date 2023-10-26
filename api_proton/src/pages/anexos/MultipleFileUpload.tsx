@@ -202,7 +202,7 @@ export function MultipleFileUpload({
         >
           <input {...getInputProps()} />
           <CloudUploadIcon fontSize="large" color="primary" />
-          <Typography variant="inherit" style={{color:"white"}}>Arraste o arquivo ou clique para procurar</Typography>
+          <Typography variant="inherit" style={{color:"white", fontFamily:'poppins'}}>Arraste o arquivo ou clique para procurar</Typography>
         </div>
       </Grid>
 
@@ -257,6 +257,7 @@ export function MultipleFileUpload({
           color="primary"
           disabled={!files.length || uploadComplete || isLoading}
           onClick={Modal}
+          style={{fontFamily: 'poppins', fontWeight: 'bold', marginLeft:"1.2em"}}
         >
           {isLoading ? "Carregando..." : "Anexar arquivos"}
         </Button>
