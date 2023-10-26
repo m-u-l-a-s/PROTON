@@ -90,7 +90,7 @@ export const MyProjects = () => {
                     flexDirection: "column",
                     maxWidth: "70%",
                     maxHeight: "50%",
-                    marginTop: "5%",
+                    marginTop: "4%",
                 }}
             >
                 <Box
