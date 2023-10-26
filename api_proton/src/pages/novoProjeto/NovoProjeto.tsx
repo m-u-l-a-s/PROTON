@@ -119,17 +119,7 @@ export const NovoProjeto = () => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} marginTop={'-1em'}>
-
-            <TextField
-                  id="nome-projeto"
-                  label="Nome:"
-                  variant="standard"
-                  sx={{ width: '100%' }}
-                  value={processo_nome}
-                  onChange={(e) => setProcesso_nome(e.target.value)}/>
-
-
+          <Grid item xs={12} marginTop={'-1em'}> 
 
             <TextField
               label="Nome:"
