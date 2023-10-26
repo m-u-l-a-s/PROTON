@@ -171,8 +171,7 @@ export const NovaEtapa = () => {
       console.log("Erro ao inserir etapa:", error.message);
 
       Swal.fire({
-        title: "Erro",
-        html: '<span style="font-size: 20px; color: black;">Ocorreu um erro ao inserir etapa. Tente novamente.</span>',
+        title: "Erro<br>Ocorreu um erro ao inserir etapa. Tente novamente.",
         customClass: "swalFire",
         confirmButtonText: '<span style="color: black;">OK</span>',
         confirmButtonColor: "#b6f3f8",
