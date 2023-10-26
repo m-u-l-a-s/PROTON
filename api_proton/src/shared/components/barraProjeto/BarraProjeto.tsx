@@ -18,7 +18,7 @@ export const BarraProjeto = (prop: any) => {
 
                          </Grid>
 
-                         <Grid item width={700} fontFamily={'Poppins, sans-serif'} fontSize={'bold'} marginLeft={"-0.5rem"}>
+                         <Grid item width={700} fontFamily={'Poppins'} fontWeight={'bold'} fontSize={'1.8em'} marginLeft={"0.9rem"} >
                               {prop.processo_nome}
                          </Grid>
 
