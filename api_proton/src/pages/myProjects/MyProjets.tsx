@@ -101,7 +101,7 @@ export const MyProjects = () => {
                     sx={{ gap: 70 }}
                 >
                     <div className="divBox">
-                        <Typography color="primary" fontFamily="poppins" fontWeight="bold" fontSize="1.8rem" marginLeft='0.8em'>
+                        <Typography color="primary" fontFamily="poppins" fontWeight="bold" fontSize="1.8rem" marginLeft='0.8em' marginBottom='0.2em'>
                             Seus Processos
                         </Typography>
                     </div>
@@ -142,7 +142,7 @@ export const MyProjects = () => {
                         to="/NovoProjeto"
                         variant="contained"
                         disableElevation
-                        style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}
+                        style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em', marginTop:'0.7em'}}
                     >
                         + Criar Processo
                     </Button>
