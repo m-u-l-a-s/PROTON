@@ -23,11 +23,13 @@ const VisualizarProjeto = () => {
         label: {
             fontSize: '1.6rem',
             color: '#B6F3F8',
+            fontFamily: 'Poppins',
         },
         input: {
             fontSize: '1.3rem',
             color: 'white',
             padding: '10px',
+            fontFamily: 'Poppins',
         },
     };
 

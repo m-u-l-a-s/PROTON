@@ -16,7 +16,7 @@ export default function BasicSelect() {
     return (
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Ordenação</InputLabel>
+                <InputLabel id="demo-simple-select-label" style={{fontFamily:"'Poppins'"}}>Ordenação</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -24,9 +24,9 @@ export default function BasicSelect() {
                     label="Ordenação"
                     onChange={handleChange}
                 >
-                    <MenuItem value={10}>Nome</MenuItem>
-                    <MenuItem value={20}>Completude</MenuItem>
-                    <MenuItem value={30}>Data</MenuItem>
+                    <MenuItem  style={{fontFamily:"'Poppins'"}} value={10}>Nome</MenuItem>
+                    <MenuItem  style={{fontFamily:"'Poppins'"}} value={20}>Completude</MenuItem>
+                    <MenuItem  style={{fontFamily:"'Poppins'"}} value={30}>Data</MenuItem>
                 </Select>
             </FormControl>
         </Box>
