@@ -3,10 +3,10 @@ delete from etapa;
 delete from processo;
 
 
-insert into processo values (default, 'nMonitor', 1, 'Monitora em tempo real todos os equipamentos de engenharia clínica');
+insert into processo values (default, 'nMonitor',(select usuario_id from usuario where usuario_nome like '%Alexandre Jonas%') , 'Monitora em tempo real todos os equipamentos de engenharia clínica');
 
 insert into etapa values (default, (select processo_id from processo where processo_nome = 'nMonitor'), 'Preparar documentação',
-							2,1, '2023-09-07', 'Preparar documentos relacionados','N', 'Favor enviar em formato .pdf');
-						  
+                            2,1, '2023-09-07', 'Preparar documentos relacionados','P', 'Favor enviar em formato .pdf');
+
 insert into etapa values (default, (select processo_id from processo where processo_nome = 'nMonitor'), 'Análise de requisitos',
-						  2,2, '2023-09-07', 'Análise e validação de requisitos relacionados','N', 'Nenhum formato em específico');
+                          2,2, '2023-09-07', 'Análise e validação de requisitos relacionados','P', 'Nenhum formato em específico');

@@ -1,9 +1,9 @@
 export function validarStatus(status:string) {
     switch (status) {
-        case 'N':
-            return 'Não iniciado';
+        case 'P':
+            return 'Pendente';
         case 'A':
-            return 'Em andamento';
+            return 'Em aprovação';
         case 'C':
             return 'Concluído';
         default:

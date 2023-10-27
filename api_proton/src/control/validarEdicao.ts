@@ -3,10 +3,10 @@ export function validarEdicao (pagina: string)
     let perfil = puxaPerfil()
     switch(pagina) {
         case 'DetalheEtapa':
-            return !(perfil === 'CL')
+            return !(perfil === 'LE')
 
        case 'VisualizarProjeto':
-            return !(perfil === 'CL')
+            return !(perfil === 'LE')
         default:
       }
 }

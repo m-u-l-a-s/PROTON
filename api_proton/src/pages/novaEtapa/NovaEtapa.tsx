@@ -141,7 +141,7 @@ export const NovaEtapa = () => {
         etapa_responsavel_id,
         etapa_ordem,
         etapa_data_conclusao,
-        etapa_status: "N", // Define o status como "N", pendente, na criação da etapa
+        etapa_status: "P", // Define o status como "P", pendente, na criação da etapa
         etapa_descricao,
       };
       console.log(body);

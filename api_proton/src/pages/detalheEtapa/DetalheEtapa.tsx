@@ -415,8 +415,8 @@ export const DetalheEtapa = () => {
                     { readOnly: !validaMudancaStatus, }
                   }
                 >
-                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'N'}>Não iniciado</MenuItem>
-                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'A'}>Em andamento</MenuItem>
+                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'P'}>Pendente</MenuItem>
+                  <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'A'}>Em aprovação</MenuItem>
                   <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'C'}>Concluído</MenuItem>
                 </Select>
               </Grid>
