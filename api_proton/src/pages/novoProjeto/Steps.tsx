@@ -7,7 +7,7 @@ export const Steps = (prop: any) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/DetalheEtapa', { state: { id: prop.etapa_id } });
+        navigate('/DetalheEtapa', { state: { id: prop.etapa_id, responsavel: prop.processo_responsavel_id } });
     }
 
     return (

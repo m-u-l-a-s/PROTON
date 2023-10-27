@@ -43,10 +43,11 @@ const VisualizarProjeto = () => {
     const [processo, setProcesso] = useState({
         processo_nome: "",
         processo_descricao: "",
+        processo_responsavel_id:0
     });
 
     //Função para validar usuário - libera a edição do texto
-    const [validaEdicao, setValidaEdicao] = useState(validarEdicao('VisualizarProjeto'))
+    const [validaEdicao, setValidaEdicao] = useState(validarEdicao('VisualizarProjeto',processo.processo_responsavel_id))
 
     // Modal confirmação de deletar
     const handleDiscard = () => {
@@ -122,16 +123,6 @@ const VisualizarProjeto = () => {
     };
 
 
-    //teste etapa id
-    const localizarId = () => {
-        console.log(etapa_id)
-    }
-
-    //teste conteudo processo
-    const testeProcesso = () => {
-        console.log(processo)
-    }
-
     //função para edição
     const editarProcesso = async () => {
         //e.preventDefault();
@@ -188,9 +179,13 @@ const VisualizarProjeto = () => {
                 console.log(error.message);
             }
         };
-
+        
         fetchData();
     }, [location.state.id]);
+
+    useEffect(() => {
+        setValidaEdicao(validarEdicao('VisualizarProjeto',processo.processo_responsavel_id))
+    }, [processo.processo_responsavel_id])
 
     const handleNavigateToNovaEtapa = () => {
         navigate("/NovaEtapa", { state: { id: location.state.id } });
@@ -254,6 +249,7 @@ const VisualizarProjeto = () => {
                                 sx={{ width: "50vw", marginTop: "5%", display: validaEdicao ? "none" : "flex" }}
                                 style={{ fontFamily: 'Poppins'}}
                                 value={processo.processo_nome}
+                                name='processo_nome'
                                 onChange={handleChange}
                                 inputProps={
                                     { readOnly: validaEdicao, }
@@ -329,6 +325,7 @@ const VisualizarProjeto = () => {
                                     return (
                                         <Steps
                                             key={etapaItem.etapa_id}
+                                            processo_responsavel_id = {processo.processo_responsavel_id}
                                             nEtapa={etapaItem.etapa_nome}
                                             status={validarStatus(etapaItem.etapa_status)}
                                             desc={etapaItem.etapa_descricao}

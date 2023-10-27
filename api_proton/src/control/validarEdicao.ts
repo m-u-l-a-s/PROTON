@@ -1,21 +1,21 @@
-export function validarEdicao (pagina: string)
+export function validarEdicao (pagina: string, id:number)
 {
-    let perfil = puxaPerfil()
+    let UsuarioID = puxaID()
     switch(pagina) {
         case 'DetalheEtapa':
-            return !(perfil === 'LE')
+            return !(UsuarioID === id)
 
        case 'VisualizarProjeto':
-            return !(perfil === 'LE')
+            return !(UsuarioID === id)
         default:
       }
 }
 
-const puxaPerfil = () =>
+const puxaID = () =>
 {
     try {
         const perfilJSON: any = sessionStorage.getItem('perfil')
-        return JSON.parse(JSON.parse(perfilJSON)).usuario_nivel
+        return JSON.parse(JSON.parse(perfilJSON)).usuario_id
     } catch (error) {
         return 'ER'
     }

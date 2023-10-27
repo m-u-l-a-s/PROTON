@@ -76,7 +76,11 @@ export const DetalheEtapa = () => {
           customClass: "swalFire",
           confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
           confirmButtonColor: "#b6f3f8",
+        }).then(() => {
+          // Recarrega a página após o modal ser fechado
+          window.location.reload();
         });
+        
       }
     });
   };
@@ -147,7 +151,7 @@ export const DetalheEtapa = () => {
 
   const [etapa_id, setEtapaId] = useState(location.state.id);
   const theme = useTheme();
-  const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa'))
+  const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa',location.state.responsavel))
   const [validaMudancaStatus, setValidaMudancaStatus] = useState(false)
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
@@ -184,7 +188,7 @@ export const DetalheEtapa = () => {
 
       get_etapa_by_id(); // Call the function inside useEffect
       // You can now safely use the updated 'etapa' state here
-      setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status))
+      setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status,location.state.responsavel,etapa.etapa_responsavel_id))
     }
   }, [etapa.etapa_status]);
 
@@ -217,7 +221,8 @@ export const DetalheEtapa = () => {
     }
   };
   useEffect(() => {
-    get_usuario();
+      get_usuario();
+      setValidaEdicao(validarEdicao('DetalheEtapa',location.state.responsavel))
   }, []);
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -346,6 +351,7 @@ export const DetalheEtapa = () => {
                   id="responsavel"
                   style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem',  marginTop:'0.5em'}}
                   value={etapa.etapa_responsavel_id}
+                  name = 'etapa_responsavel_id'
                   onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
