@@ -23,7 +23,42 @@ const upload = multer({ storage: storage });
 
 //Rotas
 
-// ------- ROTAS POST ------- //
+//Select All
+app.get("/get_usuario", async (req, res) => {
+  try {
+    const selectAll = await pool.query("select * from usuario");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/get_processos", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/get_etapa", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.etapa ORDER BY etapa_id ASC ");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/get_usuario", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.usuario ORDER BY usuario_nome");
+    res.json(selectAll.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 //Insert dados (Post)
 app.post("/insert_etapa", async (req, res) => {
@@ -78,144 +113,6 @@ app.post("/insert_processo", async (req, res) => {
   }
 });
 
-//Criar usuário 
-app.post("/insert_usuario", async (req, res) => {
-  try {
-    console.log(req.body);
-
-    const { usuario_nome } = req.body;
-    const { usuario_senha } = req.body;
-    const { usuario_data_cadastro } = req.body;
-    const { usuario_nivel } = req.body;
-    const { usuario_email } = req.body;
-
-    const novoUsuario = await pool.query("insert into usuario values (default,$1, $2, $3, $4, $5) returning *", [
-      usuario_nome,
-      usuario_senha,
-      usuario_data_cadastro,
-      usuario_nivel,
-      usuario_email,
-    ]);
-
-    res.json(novoUsuario.rows[0]);
-  } catch (error) {
-    console.log(error.message);
-  }
-});
-
-
-// ------- ROTAS GET ------- //
-
-//Select All
-app.get("/get_usuario", async (req, res) => {
-  try {
-    const selectAll = await pool.query("select * from usuario");
-    res.json(selectAll.rows);
-  } catch (error) {
-    console.log(error.message);
-  }
-});
-
-app.get("/get_processos", async (req, res) => {
-  try {
-    const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
-    res.json(selectAll.rows);
-  } catch (error) {
-    console.log(error.message);
-  }
-});
-
-app.get("/get_etapa", async (req, res) => {
-  try {
-    const selectAll = await pool.query("SELECT * FROM public.etapa ORDER BY etapa_id ASC ");
-    res.json(selectAll.rows);
-  } catch (error) {
-    console.log(error.message);
-  }
-});
-
-app.get("/get_usuario", async (req, res) => {
-  try {
-    const selectAll = await pool.query("SELECT * FROM public.usuario ORDER BY usuario_nome");
-    res.json(selectAll.rows);
-  } catch (error) {
-    console.log(error.message);
-  }
-});
-
-//Puxando nome do responsável do projeto pelo id
-
-app.get("/get_processos_responsavelNome", async (req, res) => {
-  try {
-    const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
-    
-
-    const processosComNomes = await Promise.all(selectAll.rows.map(async (processo) => {
-      const responsavel = await pool.query("SELECT usuario_nome FROM public.usuario WHERE usuario_id = $1", [processo.processo_responsavel_id]);
-      return {
-        ...processo,
-        processo_responsavel_nome: responsavel.rows[0].usuario_nome,
-      };
-    }));
-
-    res.json(processosComNomes);
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).json({ error: 'Erro ao obter processos' });
-  }
-});
-
-//selecionar etapa pelo id
-
-app.get("/get_etapa/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const etapa = await pool.query("select * from etapa where etapa_id=$1", [id]);
-
-    res.json(etapa.rows[0]);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
-
-app.get("/get_etapa_by_processo/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const etapa = await pool.query("select * from etapa where processo_id=$1 order by etapa_ordem", [id]);
-
-    res.json(etapa.rows);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
-
-//puxar nome e descrição do processo pelo id do mesmo
-
-app.get("/get_processo/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const etapa = await pool.query("select processo_nome,processo_descricao, processo_responsavel_id from processo where processo_id=$1", [id]);
-
-    res.json(etapa.rows[0]);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
-
-//Rota puxar dados do usuário pelo email
-app.get("/get_usuario/:email", async (req, res) => {
-  try {
-    const { email } = req.params;
-    const etapa = await pool.query("select  usuario_nome, usuario_senha, usuario_email from usuario where usuario_email=$1", [email]);
-
-    res.json(etapa.rows[0]);
-  } catch (err) {
-    console.log(err.message);
-  }
-});
-
-// ------- ROTAS UPDATE ------- //
-
 //Update processo
 
 app.put("/put_processo/:id", async(req,res)=>{
@@ -253,7 +150,30 @@ app.put("/put_etapa/:id", async(req,res)=>{
   }
 })
 
-// ------- ROTAS DELETE ------- //
+
+//selecionar etapa pelo id
+
+app.get("/get_etapa/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const etapa = await pool.query("select * from etapa where etapa_id=$1", [id]);
+
+    res.json(etapa.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+app.get("/get_etapa_by_processo/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const etapa = await pool.query("select * from etapa where processo_id=$1 order by etapa_ordem", [id]);
+
+    res.json(etapa.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 
 // deletar etapa
 app.delete("/deletarEtapa/:id", async (req, res) => {
@@ -294,6 +214,18 @@ app.delete("/deletarProcesso/:id", async (req, res) => {
   }
 });
 
+//puxar nome e descrição do processo pelo id do mesmo
+
+app.get("/get_processo/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const etapa = await pool.query("select processo_nome,processo_descricao, processo_responsavel_id from processo where processo_id=$1", [id]);
+
+    res.json(etapa.rows[0]);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 
 // ------- ROTAS ANEXOS ------- //
 
@@ -396,7 +328,32 @@ app.get("/get_anexos_by_etapa/:etapaId", async (req, res) => {
 
 // -------------------- //
 
-// ------- ROTAS DELETE ------- //
+//Puxando nome do responsável do projeto pelo id
+
+app.get("/get_processos_responsavelNome", async (req, res) => {
+  try {
+    const selectAll = await pool.query("SELECT * FROM public.processo ORDER BY processo_id ASC ");
+    
+
+    const processosComNomes = await Promise.all(selectAll.rows.map(async (processo) => {
+      const responsavel = await pool.query("SELECT usuario_nome FROM public.usuario WHERE usuario_id = $1", [processo.processo_responsavel_id]);
+      return {
+        ...processo,
+        processo_responsavel_nome: responsavel.rows[0].usuario_nome,
+      };
+    }));
+
+    res.json(processosComNomes);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Erro ao obter processos' });
+  }
+});
+
+
+app.listen(5000, () => {
+  console.log("Servidor Funcionando");
+});
 
 // deletar anexo 
 app.delete("/deletarAnexo/:id", async (req, res) => {
@@ -410,9 +367,3 @@ app.delete("/deletarAnexo/:id", async (req, res) => {
   }
 }
 );
-
-// -------------------- //
-
-app.listen(5000, () => {
-  console.log("Servidor Funcionando");
-});
