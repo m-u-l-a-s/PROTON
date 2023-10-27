@@ -55,9 +55,6 @@ export const DetalheEtapa = () => {
   const handleNavigateToProcesso = () => {
     navigate("/visualizarProjeto", { state: { id: etapa.processo_id } });
   };
-  const handleNavigateToAnexos = () => {
-    navigate('/Anexos', { state: { etapa_id: etapa.etapa_id } });
-  };
 
   const atualizarModal = () => {
     Swal.fire({
@@ -263,7 +260,7 @@ export const DetalheEtapa = () => {
           </IconButton>
         </Grid>
 
-        <BarraEtapa etapa_nome={etapa.etapa_nome} etapa_id={etapa.etapa_id} />
+        <BarraEtapa etapa_nome={etapa.etapa_nome} etapa_id={etapa.etapa_id} etapa_responsavel_id = {etapa.etapa_responsavel_id}/>
 
         {/*</BarraEtapa>*/}
 

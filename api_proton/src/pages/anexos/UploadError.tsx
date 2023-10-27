@@ -11,6 +11,7 @@ export interface UploadErrorProps {
   errors: FileError[];
   fileType:string
   fileData:any
+  validaEdicao:any
 }
 
 // Estilização customizada para a barra de progresso de erro
@@ -20,11 +21,11 @@ const ErrorLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-export function UploadError({ file, onDelete, errors, fileType, fileData }: UploadErrorProps) {
+export function UploadError({ file, onDelete, errors, fileType, fileData, validaEdicao }: UploadErrorProps) {
   return (
     <React.Fragment>
     {/* Renderiza o cabeçalho do arquivo com opção de exclusão */}
-    <FileHeader file={file} fileType={fileType} fileData = {fileData} onDelete={onDelete} currentDate={new Date()} />
+    <FileHeader file={file} fileType={fileType} fileData = {fileData} validaEdicao = {validaEdicao} onDelete={onDelete} currentDate={new Date()} />
 
     {/* Renderiza uma barra de progresso linear com estilo de erro (vermelho) */}
     <ErrorLinearProgress variant="determinate" value={100} sx={{ height: 8 }} /> 

@@ -16,7 +16,6 @@ export const Anexos = () => {
     const location = useLocation();
     const etapa_id = location.state.etapa_id; // Obtem o etapa_id da localização
 
-
     const handleVoltar = () => {
         window.history.back();
     }
@@ -70,7 +69,7 @@ export const Anexos = () => {
                         >
                             <Form>
                                 <Grid container spacing={2} direction="column">
-                                    <MultipleFileUpload name="files" buttonClicked={buttonClicked} etapaId={etapa_id} />
+                                    <MultipleFileUpload name="files" buttonClicked={buttonClicked} etapaId={etapa_id} etapa_responsavel_id = {location.state.etapa_responsavel_id}/>
                                 </Grid>
                             </Form>
                         </Formik>

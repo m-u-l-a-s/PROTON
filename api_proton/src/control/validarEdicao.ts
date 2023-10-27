@@ -1,18 +1,19 @@
-export function validarEdicao (pagina: string, id:number)
-{
+export function validarEdicao(pagina: string, id: number) {
     let UsuarioID = puxaID()
-    switch(pagina) {
+    switch (pagina) {
         case 'DetalheEtapa':
             return !(UsuarioID === id)
 
-       case 'VisualizarProjeto':
+        case 'VisualizarProjeto':
+            return !(UsuarioID === id)
+
+        case 'Anexos':
             return !(UsuarioID === id)
         default:
-      }
+    }
 }
 
-const puxaID = () =>
-{
+const puxaID = () => {
     try {
         const perfilJSON: any = sessionStorage.getItem('perfil')
         return JSON.parse(JSON.parse(perfilJSON)).usuario_id

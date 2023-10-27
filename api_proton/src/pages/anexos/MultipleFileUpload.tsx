@@ -9,21 +9,25 @@ import { SingleFileUploadWithProgress, UploadableFile } from "./SingleFileUpload
 import { UploadError } from "./UploadError";
 import "./Anexos.css";
 import Swal from "sweetalert2";
+import { validarEdicao } from "../../control/validarEdicao";
 
 export function MultipleFileUpload({
   name,
   buttonClicked,
   etapaId,
+  etapa_responsavel_id
 }: {
   name: string;
   buttonClicked: boolean;
   etapaId: number;
+  etapa_responsavel_id:number;
 }) {
   const [_, __, helpers] = useField(name);
   const [files, setFiles] = useState<UploadableFile[]>([]);
   const [uploadComplete, setUploadComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [validaEdicao, setValidaEdicao] = useState(validarEdicao('Anexos',etapa_responsavel_id))
   const [etapa_anexo, setEtapa_anexo] = useState([
     {
       etapa_anexo_id: 1,
@@ -221,6 +225,7 @@ export function MultipleFileUpload({
                   file={new File([convertToAny(anexo_item)], anexo_item.etapa_anexo_nome)}
                   fileType={anexo_item.etapa_anexo_tipo}
                   fileData={anexo_item.etapa_anexo_documento}
+                  validaEdicao = {validaEdicao}
                   onAllUploadsComplete={checkAllUploadsComplete}
                   buttonClicked={buttonClicked}
                   currentDate={anexo_item.etapa_anexo_data }
@@ -236,6 +241,7 @@ export function MultipleFileUpload({
                   file={fileWrapper.file}
                   fileType={"UploadError"}
                   fileData={""}
+                  validaEdicao = {validaEdicao}
                   errors={fileWrapper.errors}
                   onDelete={onDelete}
                 />
@@ -245,6 +251,7 @@ export function MultipleFileUpload({
                   file={fileWrapper.file}
                   fileType={"UploadError"}
                   fileData={""}
+                  validaEdicao = {validaEdicao}
                   onAllUploadsComplete={checkAllUploadsComplete}
                   buttonClicked={buttonClicked}
                   currentDate={new Date()}
@@ -254,7 +261,7 @@ export function MultipleFileUpload({
           ))}
         </div>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sx = {{display: validaEdicao ? "none" : ""}}>
         {/* Botão "Anexar arquivos" */}
         <Button
           variant="contained"

@@ -14,7 +14,7 @@ export const BarraEtapa = (prop: any) => {
      const navigate = useNavigate();
 
      const navigateToAnexos = () => {
-          navigate("/Anexos", { state: { etapa_id: prop.etapa_id } });
+          navigate("/Anexos", { state: { etapa_id: prop.etapa_id, etapa_responsavel_id: prop.etapa_responsavel_id } });
         };
 
      return (

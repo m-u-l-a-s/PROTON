@@ -10,9 +10,10 @@ export interface FileHeaderProps {
   fileType: string;
   fileData: any;
   currentDate: Date;
+  validaEdicao:any;
 }
 
-export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: FileHeaderProps) {
+export function FileHeader({ file, onDelete, fileType, fileData, validaEdicao, currentDate }: FileHeaderProps) {
   const [insertionDate, setInsertiondDate] = useState(currentDate);
 
   const baixarAnexo = () => {
@@ -65,9 +66,15 @@ export function FileHeader({ file, onDelete, fileType, fileData, currentDate }: 
           <DownloadIcon/>
           Baixar
         </Button>
+
+        <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: (fileType === "UploadError") || validaEdicao ? "none" : "" }} size="small">
+        <DeleteIcon />
+          Deletar
+        </Button>
+        
         <Button sx={{ fontFamily:'poppins', fontWeight:'bold', fontSize:'0.9em', display: fileType === "UploadError" ? "" : "none" }} size="small" onClick={() => onDelete(file)}>
           <DeleteIcon/>
-          Deletar
+          Remover
         </Button>
       </Grid>
     </Grid>
