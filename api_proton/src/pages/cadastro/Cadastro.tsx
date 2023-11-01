@@ -99,7 +99,7 @@ export const Cadastro = () => {
     const validaCadastro = () =>{
         if (values.username === '' &&  values.email === '' && values.password === '' && values.userLevel==='' && values.confirmPassword===''){
             Swal.fire({
-                title: "Por favor insira todos os dados corretamente!",
+                title: "Por favor, insira todos os dados corretamente!",
                 customClass: "swalFire",
                 confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
@@ -143,7 +143,7 @@ export const Cadastro = () => {
                     <option value="CO">Colaborador</option>
                 </select>
 
-                <button type="submit" className="button-cadastro" onClick={validaCadastro}>
+                <button type="submit" className="button-cadastro" onClick={validaCadastro} formNoValidate>
                     Cadastrar
                 </button>
             </form>
