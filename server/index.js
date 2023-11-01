@@ -355,6 +355,21 @@ app.delete("/deletarProcesso/:id", async (req, res) => {
     }
 });
 
+//deletar anexo
+app.delete("/deletarAnexo/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Excluindo os anexos associados à etapa
+        await pool.query("delete from etapa_anexo where etapa_anexo_id = $1", [id]);
+
+        res.json(etapa.rows);
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Erro ao excluir anexo");
+    }
+});
+
 // ------- ROTAS ANEXOS ------- //
 
 // ------- ROTAS POST ------- //
