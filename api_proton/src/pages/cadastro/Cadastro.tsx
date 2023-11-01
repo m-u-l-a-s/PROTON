@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Cadastro.css";
 import FormInput from "./FormInput";
+import Swal from "sweetalert2";
 
 export const Cadastro = () => {
     const [values, setValues] = useState({
@@ -94,6 +95,24 @@ export const Cadastro = () => {
             });
     };
 
+
+    const validaCadastro = () =>{
+        if (values.username === '' &&  values.email === '' && values.password === '' && values.userLevel==='' && values.confirmPassword===''){
+            Swal.fire({
+                title: "Por favor insira todos os dados corretamente!",
+                customClass: "swalFire",
+                confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                confirmButtonColor: "#b6f3f8",
+        })}
+        else{
+            Swal.fire({
+                title: "Processo cadastrado com sucesso!",
+                customClass: "swalFire",
+                confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                confirmButtonColor: "#b6f3f8",
+        })}
+    }    
+
     const onChange = (e: any) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
@@ -124,7 +143,7 @@ export const Cadastro = () => {
                     <option value="CO">Colaborador</option>
                 </select>
 
-                <button type="submit" className="button-cadastro">
+                <button type="submit" className="button-cadastro" onClick={validaCadastro}>
                     Cadastrar
                 </button>
             </form>
