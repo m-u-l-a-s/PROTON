@@ -82,16 +82,15 @@ export const CardProcesso = (prop: any) => {
         verificaStatus(prop.processoID).then((result) => {
             setStatus(result);
         });
+        ContarEtapas();
     }, [prop.processoID]);
 
     //Contando etapas
     const [ContarEtapasP, setContarEtapa] = useState(0); 
     const ContarEtapas = async () => {
         try {
-            console.log(prop.processoID)
-            const processo_id = prop.processoID;
             const contarEtapas = await fetch(
-                `http://localhost:5000/get_numeroEtapa/${processo_id}`
+                `http://localhost:5000/get_numeroEtapa/${prop.processoID}`
             );
             const contarEtapasP = await contarEtapas.json();
             setContarEtapa(contarEtapasP);
@@ -99,17 +98,13 @@ export const CardProcesso = (prop: any) => {
             console.error("Erro ao buscar o número de etapas:", error);
         }
     };
-
-    useEffect(() => {
-        ContarEtapas();
-    }, []);
     
     return(
     <div onClick={handleClick} className="cardProcesso">
     <BarraPrioridade status={status} />
     <div className="card">
         <h2>{prop.name}</h2>
-        {ContarEtapasP}
+        <h3>Número de etapas: {ContarEtapasP}</h3>
         <h3>{prop.resp}</h3>
     </div>
     </div>
