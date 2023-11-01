@@ -39,7 +39,7 @@ export const Home = () => {
             <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
                 flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
                 <Paper sx={{ padding: 4.5, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa das Etapas - {nomePerfil()}</Typography>
+                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos{nomePerfil()}</Typography>
                     <Grid container spacing={4} alignItems="center" marginTop={0}>
                         <Grid item>
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
@@ -85,6 +85,29 @@ export const Home = () => {
                             </Card>
 
                         </Grid>
+
+{/* Não vamos mais assinar */}
+                        {/* <Grid item>
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
+                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+
+
+                                    <IconButton aria-label="atrasados">
+                                        <DriveFileRenameOutlineIcon sx={{ width: 38, height: 38, alignItems: "center", color: "black" }} />
+                                    </IconButton>
+
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                        Assinar
+                                    </Typography>
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                        4
+                                    </Typography>
+
+                                </CardContent>
+
+                            </Card>
+
+                        </Grid> */}
 
                         <Grid item>
 
