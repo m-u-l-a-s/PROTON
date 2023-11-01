@@ -129,7 +129,6 @@ export const MyProjects = () => {
                             <CardProcesso
                                 processoID={processos.processo_id}
                                 name={processos.processo_nome}
-                                // anexo={processo.anexo}
                                 resp={processos.processo_responsavel_nome}
                             />
                         ))}
