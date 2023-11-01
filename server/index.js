@@ -148,6 +148,22 @@ app.get("/get_usuario", async (req, res) => {
     }
 });
 
+// contando etapas
+app.get("/get_numeroEtapa/:processo_id", async (req, res) => {
+    try {
+        const processo_id = req.params.processo_id;
+        const result = await pool.query(
+            "SELECT COUNT(*) FROM etapa where processo_id = $1",
+            [processo_id]
+        );
+
+        res.json(result.rows[0].count);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: "Erro ao buscar o número de etapas" });
+    }
+});
+
 //Puxando nome do responsável do projeto pelo id
 
 app.get("/get_processos_responsavelNome", async (req, res) => {
