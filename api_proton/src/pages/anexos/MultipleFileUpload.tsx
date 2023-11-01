@@ -200,7 +200,7 @@ export function MultipleFileUpload({
 
   return (
     <Grid container justifyContent="center" alignItems="center" spacing={2} alignContent='center'>
-      <Grid item xs={12}>
+      <Grid item xs={12} sx = {{display: validaEdicao ? "none" : ""}}>
         {/* Área de drop dos arquivos */}
         <div style={{marginLeft:'1em', marginTop:'1em'}}
           {...getRootProps()}
@@ -228,7 +228,8 @@ export function MultipleFileUpload({
                   validaEdicao = {validaEdicao}
                   onAllUploadsComplete={checkAllUploadsComplete}
                   buttonClicked={buttonClicked}
-                  currentDate={anexo_item.etapa_anexo_data }
+                  currentDate={anexo_item.etapa_anexo_data}
+                  etapa_anexo_id = {anexo_item.etapa_anexo_id}
                 />
               );
             
@@ -255,6 +256,7 @@ export function MultipleFileUpload({
                   onAllUploadsComplete={checkAllUploadsComplete}
                   buttonClicked={buttonClicked}
                   currentDate={new Date()}
+                  etapa_anexo_id = {0}
                 />
               )}
             </div>
