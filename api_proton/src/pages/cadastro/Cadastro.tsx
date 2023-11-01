@@ -97,7 +97,7 @@ export const Cadastro = () => {
 
 
     const validaCadastro = () =>{
-        if (values.username === '' &&  values.email === '' && values.password === '' && values.userLevel==='' && values.confirmPassword===''){
+        if (values.username === '' ||  values.email === '' || values.password === '' || values.userLevel==='' || values.confirmPassword===''){
             Swal.fire({
                 title: "Por favor, insira todos os dados corretamente!",
                 customClass: "swalFire",
