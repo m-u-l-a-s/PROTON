@@ -578,10 +578,41 @@ app.get('/contarEtapasConcluidas/:responsavelId/:nivel', async (req, res) => {
         
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Erro ao contar as etapas pendentes' });
+        res.status(500).json({ error: 'Erro ao contar as etapas concluídas' });
     }
 });
 
+//Contador de etapas em aprovação
+
+app.get('/contarEtapasEmAprovacao/:responsavelId/:nivel', async (req, res) => {
+
+    try {
+        console.log(req.body)
+        const responsavelId = req.params.responsavelId;
+        const nivel =  req.params.nivel 
+
+        if (nivel ==='CL') {
+            const etapa_status = await pool.query(
+                "SELECT Count(*) FROM etapa WHERE etapa_status ='A' "
+            )
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        } 
+        
+        else {
+            const etapa_status = await pool.query(
+                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'A' ",
+                [responsavelId]
+            ) 
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        };
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erro ao contar as etapas em aprovação' });
+    }
+});
 
 
 

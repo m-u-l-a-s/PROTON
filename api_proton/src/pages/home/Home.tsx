@@ -34,6 +34,7 @@ export const Home = () => {
         //console.log(JSON.parse(perfil))
         ContarPendentes()
         ContarConcluidos()
+        ContarAprovacao()
     }, [])
 
     // chamando contador de número de etapas pendentes
@@ -80,6 +81,29 @@ export const Home = () => {
             console.error("Erro ao buscar o número de etapas:", error);
         }};
 
+        //contador de etapas em aprovação
+
+        const [nEtapasEmAprocaçao, setContarAprovacao] = useState(0);
+        const ContarAprovacao = async () => {
+            try {
+                const nivel = {
+                    usuario_nivel: 'CL'
+                };
+    
+                const response = await fetch(
+                    `http://localhost:5000/contarEtapasEmAprovacao/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
+    
+                );
+                if (response.ok) {
+                    const data = await response.json();
+                    setContarAprovacao(data.count);
+                } else {
+                    console.error("Erro na resposta da solicitação:", response);
+                }
+            } catch (error) {
+                console.error("Erro ao buscar o número de etapas:", error);
+            }};
+
         return (
 
             <div>
@@ -124,7 +148,7 @@ export const Home = () => {
                                             Etapas em Aprovação
                                         </Typography>
                                         <Typography variant="h4" component="div" fontFamily="poppins">
-                                            4
+                                            {nEtapasEmAprocaçao}
                                         </Typography>
 
                                     </CardContent>
