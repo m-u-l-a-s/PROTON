@@ -310,7 +310,7 @@ export const NovaEtapa = () => {
                                     }
                                 >
                                     {usuario.map((usuarioItem) => {
-                                        if (usuarioItem.usuario_nivel === 'CL' || usuarioItem.usuario_nivel === 'CB') //verificando se usuário é colab ou líder 
+                                        if (usuarioItem.usuario_nivel === 'LE' || usuarioItem.usuario_nivel === 'CB') //verificando se usuário é colab ou líder 
                                         {
                                             return (
                                                 <MenuItem
