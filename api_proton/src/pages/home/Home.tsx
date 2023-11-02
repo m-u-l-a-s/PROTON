@@ -39,7 +39,7 @@ export const Home = () => {
             <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
                 flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
                 <Paper sx={{ padding: 4.5, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos{nomePerfil()}</Typography>
+                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos - {nomePerfil()}</Typography>
                     <Grid container spacing={4} alignItems="center" marginTop={0}>
                         <Grid item>
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>

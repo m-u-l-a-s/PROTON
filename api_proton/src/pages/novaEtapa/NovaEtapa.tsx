@@ -55,7 +55,6 @@ export const NovaEtapa = () => {
         },
     };
 
-    const theme = useTheme();
     const location = useLocation();
 
     //modal de limpar etapa
@@ -216,7 +215,7 @@ export const NovaEtapa = () => {
     }, []);
 
     return (
-        // // <><Grid display="flex" alignItems="center" justifyContent="center" maxHeight="100vh" sx={{gap:3}}>
+
         <Box
             display="flex"
             alignItems="center"
@@ -232,7 +231,6 @@ export const NovaEtapa = () => {
                     borderRadius: 5,
                     width: "fit-content",
                     height: "fit-content",
-                    // gap: ,
                     display: "flex",
                     flexDirection: "column",
                     maxWidth: "70%",
@@ -248,17 +246,8 @@ export const NovaEtapa = () => {
                     Nova Etapa
                 </Typography>
 
-                {/* <Box display="flex" alignItems="center" maxHeight="110vh" flexDirection="column"> */}
                 <Box display="flex" flexDirection="column" sx={{ gap: 1 }}>
                     <Grid item>
-                        {/* <TextField
-              id="nova-etapa"
-              label="Título:*"
-              variant="standard"
-              sx={{ width: "54.5vw" }}
-              value={etapa_nome}
-              onChange={(e: { target: { value: SetStateAction<string> } }) => setetapa_nome(e.target.value)}
-            /> */}
 
                         <TextField
                             label="Nome da etapa:"
@@ -291,33 +280,6 @@ export const NovaEtapa = () => {
                             }}
                         >
                             <Grid xs={12}>
-                                {/* <TextField
-                  id="standard-multiline-static-responsavel"
-                  label="Responsável:*"
-                  variant="standard"
-                  sx={{ width: "20vw" }}
-                  value={etapa_responsavel_id}
-                  onChange={(e: {
-                    target: {
-                      value: SetStateAction<string>;
-                    };
-                  }) => setetapa_responsavel_id(e.target.value)}
-                /> */}
-
-                                {/* <InputLabel id="responsavel-label" style={{ color: 'white' }}>Responsável:</InputLabel>
-                <Select
-                  labelId="responsavel-label"
-                  id="responsavel"
-                  style={{ color: 'white' }}
-                  value={etapa_responsavel_id}
-                  onChange={(e) => setetapa_responsavel_id(e.target.value)}
-                >
-                  {usuario.map((usuarioItem) => (
-                    <MenuItem key={usuarioItem.usuario_id} value={usuarioItem.usuario_id} style={{ color: 'white' }}>
-                      {usuarioItem.usuario_nome}
-                    </MenuItem>
-                  ))}
-                </Select> */}
 
                                 <InputLabel
                                     htmlFor="responsavel"
@@ -332,6 +294,7 @@ export const NovaEtapa = () => {
                                     Responsável:
                                 </InputLabel>
                             </Grid>
+
                             <Grid item xs={12} sm={6} marginTop="1rem">
                                 <Select
                                     labelId="responsavel-label"
@@ -346,19 +309,25 @@ export const NovaEtapa = () => {
                                         setetapa_responsavel_id(e.target.value)
                                     }
                                 >
-                                    {usuario.map((usuarioItem) => (
-                                        <MenuItem
-                                            style={{
-                                                color: "white",
-                                                fontFamily: "Poppins",
-                                                fontSize: "1.2rem",
-                                            }}
-                                            key={usuarioItem.usuario_id}
-                                            value={usuarioItem.usuario_id}
-                                        >
-                                            {usuarioItem.usuario_nome}
-                                        </MenuItem>
-                                    ))}
+                                    {usuario.map((usuarioItem) => {
+                                        if (usuarioItem.usuario_nivel === 'CL' || usuarioItem.usuario_nivel === 'CB') //verificando se usuário é colab ou líder 
+                                        {
+                                            return (
+                                                <MenuItem
+                                                    style={{
+                                                        color: "white",
+                                                        fontFamily: "Poppins",
+                                                        fontSize: "1.2rem",
+                                                    }}
+                                                    key={usuarioItem.usuario_id}
+                                                    value={usuarioItem.usuario_id}
+                                                >
+                                                    {usuarioItem.usuario_nome}
+                                                </MenuItem>
+                                            );
+                                        }
+                                        return null; // Retorne null para ignorar usuários que não atendem ao critério
+                                    })}
                                 </Select>
                             </Grid>
 

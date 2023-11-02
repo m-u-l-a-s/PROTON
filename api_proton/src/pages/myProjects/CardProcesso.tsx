@@ -102,9 +102,9 @@ export const CardProcesso = (prop: any) => {
     return(
     <div onClick={handleClick} className="cardProcesso">
     <BarraPrioridade status={status} />
-    <div className="card">
+    <div className="card" style={{fontFamily: 'poppins', fontSize:'0.8em'}}>
         <h2>{prop.name}</h2>
-        <h3>Número de etapas: {ContarEtapasP}</h3>
+        {ContarEtapasP} etapas
         <h3>{prop.resp}</h3>
     </div>
     </div>
