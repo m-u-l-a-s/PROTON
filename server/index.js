@@ -238,7 +238,7 @@ app.get("/get_processo/:id", async (req, res) => {
     }
 });
 
-//Rota puxar dados do usuário pelo email
+//Rota puxar dados do usuario p/ login
 app.get("/get_usuario_login", async (req, res) => {
     try {
         const { email } = req.body;
@@ -246,6 +246,23 @@ app.get("/get_usuario_login", async (req, res) => {
         const etapa = await pool.query(
             "select * from usuario where usuario_email=$1 and usuario_senha = $2",
             [email, senha]
+        );
+
+        res.json(etapa.rows[0]);
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+
+//Rota para puxar processos que o usuário criou ou processos com etapas das quais ele é responsável
+
+app.get("/get_processos_responsavel/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const etapa = await pool.query(
+            "select * from processo where processo_id in (select processo_id from etapa where etapa_responsavel_id = $1)"
+             + "or processo_responsavel_id = $1",
+            [id]
         );
 
         res.json(etapa.rows[0]);

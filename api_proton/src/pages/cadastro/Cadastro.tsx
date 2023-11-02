@@ -95,7 +95,6 @@ export const Cadastro = () => {
             });
     };
 
-
     const validaCadastro = () =>{
         if (values.username === '' ||  values.email === '' || values.password === '' || values.userLevel==='' || values.confirmPassword===''){
             Swal.fire({
@@ -127,6 +126,7 @@ export const Cadastro = () => {
                         {...input}
                         // value={values[input.name]}
                         onChange={onChange}
+                        
                     />
                 ))}
                 <select
@@ -143,7 +143,7 @@ export const Cadastro = () => {
                     <option value="CO">Colaborador</option>
                 </select>
 
-                <button type="submit" className="button-cadastro" onClick={validaCadastro} formNoValidate>
+                <button type="submit" className="button-cadastro" onClick={validaCadastro} >
                     Cadastrar
                 </button>
             </form>
