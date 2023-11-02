@@ -516,7 +516,7 @@ app.delete("/deletarAnexo/:id", async (req, res) => {
 // -------------------- //
 
 
-//contar etapas pendentes
+//contador de etapas pendentes
 app.get('/contarEtapasPendentes/:responsavelId/:nivel', async (req, res) => {
     console.log("ola")
     try {
@@ -551,9 +551,47 @@ app.get('/contarEtapasPendentes/:responsavelId/:nivel', async (req, res) => {
 });
 
 
+// Contador de etapas concluídas 
+app.get('/contarEtapasConcluidas/:responsavelId/:nivel', async (req, res) => {
+
+    try {
+        console.log(req.body)
+        const responsavelId = req.params.responsavelId;
+        const nivel =  req.params.nivel 
+
+        if (nivel ==='CL') {
+            const etapa_status = await pool.query(
+                "SELECT Count(*) FROM etapa WHERE etapa_status ='C' "
+            )
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        } 
+        
+        else {
+            const etapa_status = await pool.query(
+                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'C' ",
+                [responsavelId]
+            ) 
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        };
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erro ao contar as etapas pendentes' });
+    }
+});
+
+
+
+
 app.listen(5000, () => {
     console.log("Servidor Funcionando");
 });
+
+
+
+
 
 
 
