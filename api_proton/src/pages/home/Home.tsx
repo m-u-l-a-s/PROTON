@@ -32,7 +32,39 @@ export const Home = () => {
         setPerfil(!perfilJSON ? usuario : JSON.parse(perfilJSON))
         //console.log(perfil)
         //console.log(JSON.parse(perfil))
+        ContarPendentes()
     }, [])
+
+    const [nEtapasPendentes, setContarPendentes] = useState(0);
+
+    const ContarPendentes = async () => {
+    try {
+       // const responsavelId = prop.usuario_id; // Obtenha o ID do usuário de alguma forma
+
+        const nivel = {
+        usuario_nivel :'CL'
+       };
+
+        const response = await fetch(
+            `http://localhost:5000/contarEtapasPendentes/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
+          
+        );
+        if (response.ok) {
+            const data = await response.json();
+            setContarPendentes(data.count);
+        } else {
+            console.error("Erro na resposta da solicitação:", response);
+        }
+    } catch (error) {
+        console.error("Erro ao buscar o número de etapas:", error);
+    }
+  
+
+};
+
+
+
+
     return (
 
         <div>
@@ -123,7 +155,7 @@ export const Home = () => {
                                         Pendentes
                                     </Typography>
                                     <Typography variant="h4" component="div" fontFamily="poppins">
-                                        4
+                                    {nEtapasPendentes}
                                     </Typography>
 
                                 </CardContent>

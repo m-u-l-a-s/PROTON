@@ -261,7 +261,7 @@ app.get("/get_processos_responsavel/:id", async (req, res) => {
         const { id } = req.params;
         const etapa = await pool.query(
             "select * from processo where processo_id in (select processo_id from etapa where etapa_responsavel_id = $1)"
-             + "or processo_responsavel_id = $1",
+            + "or processo_responsavel_id = $1",
             [id]
         );
 
@@ -411,9 +411,8 @@ app.post("/insert_anexo", upload.array("files", 10), async (req, res) => {
             // Inserir cada arquivo na tabela etapa_anexo
             const insertedIds = [];
             const currentDate = new Date(); // Obtém a data atual
-            const formattedDate = `${currentDate.getDate()}/${
-                currentDate.getMonth() + 1
-            }`;
+            const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1
+                }`;
 
             for (const file of files) {
                 const fileData = file.buffer;
@@ -516,6 +515,55 @@ app.delete("/deletarAnexo/:id", async (req, res) => {
 
 // -------------------- //
 
+
+//contar etapas pendentes
+app.get('/contarEtapasPendentes/:responsavelId/:nivel', async (req, res) => {
+    console.log("ola")
+    try {
+        console.log(req.body)
+        const responsavelId = req.params.responsavelId;
+        const nivel =  req.params.nivel 
+        if (nivel ==='CL') {
+              const etapa_status = await pool.query(
+                " SELECT Count(*) FROM etapa WHERE etapa_status ='P' "
+
+             
+            )
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        } else {
+              const etapa_status = await pool.query(
+
+                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'P' ",
+
+                [responsavelId]
+            ) 
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        };
+
+
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erro ao contar as etapas pendentes' });
+    }
+});
+
+
 app.listen(5000, () => {
     console.log("Servidor Funcionando");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
