@@ -619,6 +619,41 @@ app.get('/contarEtapasEmAprovacao/:responsavelId/:nivel', async (req, res) => {
 });
 
 
+//Contador de etapas atrasadas
+
+// Contando etapas atrasadas 
+app.get('/contarEtapasAtrasadas/:responsavelId/:nivel', async (req, res) => {
+    try {
+        console.log(req.body)
+        const responsavelId = req.params.responsavelId;
+        const nivel = req.params.nivel
+
+        const dataAtual = new Date();
+
+        let query = '';
+        let queryParams = [];
+
+        if (nivel === 'CL') {
+            query = "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao < $1";
+            queryParams = [dataAtual];
+        } else {
+            query = "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status IN ('P', 'A') AND etapa_data_conclusao < $2";
+            queryParams = [responsavelId, dataAtual];
+        }
+
+        const etapa_status = await pool.query(query, queryParams);
+        const count = etapa_status.rows[0].count;
+        res.status(200).json({ count: count });
+    } 
+
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao contar etapas atrasadas.' });
+    }
+});
+
+
+// Isso é tudo pessoal 
 
 app.listen(5000, () => {
     console.log("Servidor Funcionando");
