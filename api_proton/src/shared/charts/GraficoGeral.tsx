@@ -14,7 +14,7 @@ type GraficoValores = {
 
 const GraficoGeral: React.FC<{ valores: GraficoValores }> = ({ valores }) => {
   return (
-    <Grid sx={{ alignItems: 'center', background: "#B5F8FD", borderRadius: 3, marginLeft:30}}>
+    <Grid sx={{ alignItems: 'center', background: "#B5F8FD", borderRadius: 3, marginLeft:27}}>
     <PieChart
       series={[
         {

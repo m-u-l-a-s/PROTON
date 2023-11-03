@@ -307,7 +307,7 @@ export const Home = () => {
                 </Paper>
                 
 
-                <Paper sx={{ padding: 3, borderRadius: 5, width:"68em" }}>
+                <Paper sx={{ padding: 4, borderRadius: 5, width:"67em" }}>
                     <Typography variant="h5" color="primary" fontFamily="poppins" marginLeft={2}>Visão Geral</Typography>
 
                     <Grid container  alignItems="center" marginTop={1} flexDirection={"row"}>

@@ -1,6 +1,6 @@
 
 .cardEtapa {
-    width: 9 rem;
+    width: 49em;
     background-color: black;
     border-color: white;
     padding: 16px;
@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 3px;
+    border-radius: 0.7em;
   
 }
 
