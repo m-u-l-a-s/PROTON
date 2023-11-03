@@ -19,6 +19,7 @@ type GraficoValores = {
     concluidas: any;
     emAprovacao: any;
     atrasadas: any;
+    aVencer: any;
   };
 
 
@@ -49,6 +50,7 @@ export const Home = () => {
         ContarConcluidos()
         ContarAprovacao()
         ContarAtrasados()
+        ContarAVencer()
     }, [])
 
     // chamando contador de número de etapas pendentes
@@ -145,28 +147,52 @@ export const Home = () => {
         }
     };
 
+    // Etapas a Vencer
+    const [nEtapasAVencer, setContarAVencer] = useState(0);
+    const ContarAVencer = async () => {
+        try {
+            const nivel = {
+                usuario_nivel: 'CL'
+            };
+
+            const response = await fetch(
+                `http://localhost:5000/contarEtapasAVencer/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
+
+            );
+            if (response.ok) {
+                const data = await response.json();
+                setContarAVencer(data.count);
+            } else {
+                console.error("Erro na resposta da solicitação:", response);
+            }
+        } catch (error) {
+            console.error("Erro ao buscar o número de etapas:", error);
+        }
+    };
 
 
-    //gráfico
-
+    //Gráfico
     const atualizarValoresGrafico = () => {
         setValoresParaGrafico({
           pendentes: nEtapasPendentes,
           concluidas: nEtapasConcluidas,
           emAprovacao: nEtapasEmAprocaçao,
           atrasadas: nEtapasAtrasadas,
+          aVencer: nEtapasAVencer,
+          
         });
       };
 
       useEffect(() => {
         atualizarValoresGrafico(); // Atualizar valores do gráfico quando as contagens mudarem
-      }, [nEtapasPendentes, nEtapasConcluidas, nEtapasEmAprocaçao, nEtapasAtrasadas]);
+      }, [nEtapasPendentes, nEtapasConcluidas, nEtapasEmAprocaçao, nEtapasAtrasadas, nEtapasAVencer]);
 
       const [valoresParaGrafico, setValoresParaGrafico] = useState<GraficoValores>({
         pendentes: nEtapasAtrasadas,
         concluidas: nEtapasConcluidas,
         emAprovacao: nEtapasEmAprocaçao,
         atrasadas: nEtapasAtrasadas,
+        aVencer: nEtapasAVencer,
       });
 
     return (
@@ -206,7 +232,7 @@ export const Home = () => {
                                         Etapas A Vencer
                                     </Typography>
                                     <Typography variant="h4" component="div" fontFamily="poppins">
-                                            2
+                                        {nEtapasAVencer}
                                     </Typography>
 
                                 </CardContent>

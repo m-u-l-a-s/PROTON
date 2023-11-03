@@ -7,6 +7,7 @@ type GraficoValores = {
   concluidas: number;
   emAprovacao: number;
   atrasadas: number;
+  aVencer: number;
 };
 
 
@@ -21,8 +22,9 @@ const GraficoGeral: React.FC<{ valores: GraficoValores }> = ({ valores }) => {
           data: [
             { id: 0, value: valores.concluidas, label: 'Completas' },
             { id: 1, value: valores.pendentes, label: 'Pendentes' },
-            { id: 2, value: valores.emAprovacao, label: 'A vencer' },
+            { id: 2, value: valores.emAprovacao, label: 'Em aprovação' },
             { id: 3, value: valores.atrasadas, label: 'Atrasadas' },
+            { id: 4, value: valores.aVencer, label: 'A Vencer'}
           ],
         },
       ]}

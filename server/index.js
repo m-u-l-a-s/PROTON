@@ -652,6 +652,38 @@ app.get('/contarEtapasAtrasadas/:responsavelId/:nivel', async (req, res) => {
     }
 });
 
+// Contando etapas que irão vencer
+app.get('/contarEtapasAVencer/:responsavelId/:nivel', async (req, res) => {
+    try {
+        const responsavelId = req.params.responsavelId;
+        const nivel = req.params.nivel;
+
+        // Obtendo a data atual
+        const dataAtual = new Date();
+
+        // Obtendo a data de uma semana antes de vencer
+        const seteDiasAntes = new Date(dataAtual);
+        seteDiasAntes.setDate(dataAtual.getDate() - 7);
+
+        let query = '';
+        let queryParams = [];
+
+        if (nivel === 'CL') {
+            query = "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao >= $1 AND etapa_data_conclusao < $2";
+            queryParams = [seteDiasAntes, dataAtual];
+        } else {
+            query = "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status IN ('P', 'A') AND etapa_data_conclusao >= $2 AND etapa_data_conclusao < $3";
+            queryParams = [responsavelId, seteDiasAntes, dataAtual];
+        }
+
+        const etapa_status = await pool.query(query, queryParams);
+        const count = etapa_status.rows[0].count;
+        res.status(200).json({ count: count });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao contar etapas próximas.' });
+    }
+});
 
 // Isso é tudo pessoal 
 
