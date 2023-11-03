@@ -20,7 +20,7 @@ type GraficoValores = {
     emAprovacao: any;
     atrasadas: any;
     aVencer: any;
-  };
+};
 
 
 export const Home = () => {
@@ -174,26 +174,26 @@ export const Home = () => {
     //Gráfico
     const atualizarValoresGrafico = () => {
         setValoresParaGrafico({
-          pendentes: nEtapasPendentes,
-          concluidas: nEtapasConcluidas,
-          emAprovacao: nEtapasEmAprocaçao,
-          atrasadas: nEtapasAtrasadas,
-          aVencer: nEtapasAVencer,
-          
+            pendentes: nEtapasPendentes,
+            concluidas: nEtapasConcluidas,
+            emAprovacao: nEtapasEmAprocaçao,
+            atrasadas: nEtapasAtrasadas,
+            aVencer: nEtapasAVencer,
+
         });
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         atualizarValoresGrafico(); // Atualizar valores do gráfico quando as contagens mudarem
-      }, [nEtapasPendentes, nEtapasConcluidas, nEtapasEmAprocaçao, nEtapasAtrasadas, nEtapasAVencer]);
+    }, [nEtapasPendentes, nEtapasConcluidas, nEtapasEmAprocaçao, nEtapasAtrasadas, nEtapasAVencer]);
 
-      const [valoresParaGrafico, setValoresParaGrafico] = useState<GraficoValores>({
+    const [valoresParaGrafico, setValoresParaGrafico] = useState<GraficoValores>({
         pendentes: nEtapasAtrasadas,
         concluidas: nEtapasConcluidas,
         emAprovacao: nEtapasEmAprocaçao,
         atrasadas: nEtapasAtrasadas,
         aVencer: nEtapasAVencer,
-      });
+    });
 
     return (
 
@@ -207,13 +207,13 @@ export const Home = () => {
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        <ReportGmailerrorredIcon sx={{ width: 45, height: 45, alignItems: "center", color: "black" }} />
-                                
+                                    <ReportGmailerrorredIcon sx={{ width: 45, height: 45, alignItems: "center", color: "black" }} />
+
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Etapas Atrasadas
                                     </Typography>
                                     <Typography variant="h4" component="div" fontFamily="poppins">
-                                    {nEtapasAtrasadas}
+                                        {nEtapasAtrasadas}
                                     </Typography>
 
                                 </CardContent>
@@ -226,7 +226,7 @@ export const Home = () => {
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                <RunningWithErrorsIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
+                                    <RunningWithErrorsIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
 
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Etapas A Vencer
@@ -246,7 +246,7 @@ export const Home = () => {
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                     <SettingsBackupRestoreIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
+                                    <SettingsBackupRestoreIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
 
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Etapas Em Aprovação
@@ -266,8 +266,8 @@ export const Home = () => {
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        <RuleIcon sx={{ width: 45, height: 45, alignItems: "center", color: "black" }} />
-                                  
+                                    <RuleIcon sx={{ width: 45, height: 45, alignItems: "center", color: "black" }} />
+
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Etapas Pendentes
                                     </Typography>
@@ -286,7 +286,7 @@ export const Home = () => {
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        <PlaylistAddCheckIcon sx={{ width: 48, height: 48, alignItems: "center", color: "black" }} />
+                                    <PlaylistAddCheckIcon sx={{ width: 48, height: 48, alignItems: "center", color: "black" }} />
 
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Etapas Concluídas
@@ -305,55 +305,53 @@ export const Home = () => {
                     </Grid>
 
                 </Paper>
+                
 
-                <Paper sx={{ padding: 4, borderRadius: 5, }}>
+                <Paper sx={{ padding: 3, borderRadius: 5 }}>
                     <Typography variant="h5" color="primary" fontFamily="poppins">Visão Geral</Typography>
 
-                    <Grid container spacing={1} alignItems="center" marginTop={1}>
+                    <Grid container gap={"12.3em"}  alignItems="center" marginTop={1} flexDirection={"row"}>
 
-                        <Box display="flex" flexDirection="row" gap={theme.spacing(14)} >
+                        <Grid>
 
-                            <Box display="flex" flexDirection="row" gap={theme.spacing(13)} padding={1}>
+                            <Grid item>
 
-                                <Grid item>
+                                <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3, fontFamily: "poppins" }}>
 
-                                    <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3, fontFamily:"poppins" }}>
- 
-                                        <GraficoGeral valores={valoresParaGrafico} />
+                                    <GraficoGeral valores={valoresParaGrafico} />
 
-                                    </Paper>
-                                </Grid>
+                                </Paper>
+                            </Grid>
 
-                                <Grid item>
+                        </Grid>
 
-                                    <Card sx={{ minWidth: 200, background: "#B5F8FD", borderRadius: 3 }}>
-                                        <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                        <Grid>
+
+                            <Grid item paddingRight={"5.6em"} >
+
+                                <Card sx={{ minWidth: 200, background: "#B5F8FD", borderRadius: 3 }}>
+                                    <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
 
-                                            <Typography variant="h5" component="div" fontFamily="poppins">
-                                                Média de
-                                            </Typography>
+                                        <Typography variant="h5" component="div" fontFamily="poppins">
+                                            Média de
+                                        </Typography>
 
-                                            <Typography variant="h2" component="div" fontFamily="poppins">
-                                                44H
-                                            </Typography>
+                                        <Typography variant="h2" component="div" fontFamily="poppins">
+                                            44H
+                                        </Typography>
 
-                                            <Typography variant="h5" component="div" fontFamily="poppins">
-                                                por projeto
-                                            </Typography>
+                                        <Typography variant="h5" component="div" fontFamily="poppins">
+                                            por projeto
+                                        </Typography>
 
-                                        </CardContent>
+                                    </CardContent>
 
-                                    </Card>
-                                </Grid>
+                                </Card>
+                            </Grid>
+                        </Grid>
 
-                            </Box>
 
-                            <Box display="flex" flexDirection="column" gap={theme.spacing(2)} marginTop={theme.spacing(1)} padding={0}>
-
-                            </Box>
-
-                        </Box>
 
                     </Grid>
 
