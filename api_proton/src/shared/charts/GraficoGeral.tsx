@@ -1,5 +1,6 @@
 import React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
+import { Grid } from '@mui/material';
 
 
 type GraficoValores = {
@@ -13,6 +14,7 @@ type GraficoValores = {
 
 const GraficoGeral: React.FC<{ valores: GraficoValores }> = ({ valores }) => {
   return (
+    <Grid sx={{ alignItems: 'center', background: "#B5F8FD", borderRadius: 3, marginLeft:30}}>
     <PieChart
       series={[
         {
@@ -25,10 +27,21 @@ const GraficoGeral: React.FC<{ valores: GraficoValores }> = ({ valores }) => {
           ],
         },
       ]}
-      width={600}
+      width={650}
       height={220}
-      sx={{ marginLeft: -35, marginTop: 1.5, marginBottom:1.5, padding: "0", alignItems:'flex-end'}}
+      sx={{
+        marginLeft: -26,
+        marginTop: 3,
+        marginBottom: 4, // Reduz a margem inferior
+        padding: 0,
+        alignItems:'flex-end', 
+        '& text': {
+          fontSize: '1.3em',
+          fontFamily: 'Poppins',
+        },
+      }}
     />
+     </Grid>
   
   );
 };

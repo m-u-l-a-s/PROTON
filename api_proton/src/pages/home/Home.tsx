@@ -307,25 +307,20 @@ export const Home = () => {
                 </Paper>
                 
 
-                <Paper sx={{ padding: 3, borderRadius: 5 }}>
-                    <Typography variant="h5" color="primary" fontFamily="poppins">Visão Geral</Typography>
+                <Paper sx={{ padding: 3, borderRadius: 5, width:"68em" }}>
+                    <Typography variant="h5" color="primary" fontFamily="poppins" marginLeft={2}>Visão Geral</Typography>
 
-                    <Grid container gap={"12.3em"}  alignItems="center" marginTop={1} flexDirection={"row"}>
+                    <Grid container  alignItems="center" marginTop={1} flexDirection={"row"}>
 
-                        <Grid>
+                        {/* <Grid  sx={{margin: 0, padding: 0, alignItems: 'center'}}> */}
 
-                            <Grid item>
-
-                                <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3, fontFamily: "poppins" }}>
-
+                                
                                     <GraficoGeral valores={valoresParaGrafico} />
 
-                                </Paper>
-                            </Grid>
 
-                        </Grid>
+                        {/* </Grid> */}
 
-                        <Grid>
+                        {/* <Grid>
 
                             <Grid item paddingRight={"5.6em"} >
 
@@ -350,7 +345,7 @@ export const Home = () => {
                                 </Card>
                             </Grid>
                         </Grid>
-
+ */}
 
 
                     </Grid>
