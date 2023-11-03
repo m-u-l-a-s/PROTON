@@ -249,7 +249,7 @@ export const Home = () => {
                                      <SettingsBackupRestoreIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
 
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
-                                        Etapas em Aprovação
+                                        Etapas Em Aprovação
                                     </Typography>
                                     <Typography variant="h4" component="div" fontFamily="poppins">
                                         {nEtapasEmAprocaçao}
@@ -289,7 +289,7 @@ export const Home = () => {
                                         <PlaylistAddCheckIcon sx={{ width: 48, height: 48, alignItems: "center", color: "black" }} />
 
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
-                                        Etapas Concluidas
+                                        Etapas Concluídas
                                     </Typography>
                                     <Typography variant="h4" component="div" fontFamily="poppins">
                                         {nEtapasConcluidas}
@@ -306,14 +306,8 @@ export const Home = () => {
 
                 </Paper>
 
-
-
-
-
-
                 <Paper sx={{ padding: 4, borderRadius: 5, }}>
                     <Typography variant="h5" color="primary" fontFamily="poppins">Visão Geral</Typography>
-
 
                     <Grid container spacing={1} alignItems="center" marginTop={1}>
 
@@ -324,11 +318,8 @@ export const Home = () => {
                                 <Grid item>
 
                                     <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3, fontFamily:"poppins" }}>
-                                        {/* <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}> */}
-
+ 
                                         <GraficoGeral valores={valoresParaGrafico} />
-
-                                        {/* </CardContent> */}
 
                                     </Paper>
                                 </Grid>
