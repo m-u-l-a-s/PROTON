@@ -522,7 +522,7 @@ app.delete("/deletarAnexo/:id", async (req, res) => {
 
 //contador de etapas pendentes
 app.get('/contarEtapasPendentes/:responsavelId/:nivel', async (req, res) => {
-    console.log("ola")
+   // console.log("ola")
     try {
         console.log(req.body)
         const responsavelId = req.params.responsavelId;

@@ -2,11 +2,24 @@ import { Box, Card, CardContent, Grid, IconButton, Paper, Stack, Typography, use
 import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import RuleIcon from '@mui/icons-material/Rule';
+import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import GraficoGeral from ".././../shared/charts/GraficoGeral";
 import { useEffectSession, useSessionStorageOrDefault } from "../../control/useSessionStorage";
 import { useEffect, useState } from "react";
+
+
+
+
+
+
+type GraficoValores = {
+    pendentes: any;
+    concluidas: any;
+    emAprovacao: any;
+    atrasadas: any;
+  };
 
 
 export const Home = () => {
@@ -134,6 +147,28 @@ export const Home = () => {
 
 
 
+    //gráfico
+
+    const atualizarValoresGrafico = () => {
+        setValoresParaGrafico({
+          pendentes: nEtapasPendentes,
+          concluidas: nEtapasConcluidas,
+          emAprovacao: nEtapasEmAprocaçao,
+          atrasadas: nEtapasAtrasadas,
+        });
+      };
+
+      useEffect(() => {
+        atualizarValoresGrafico(); // Atualizar valores do gráfico quando as contagens mudarem
+      }, [nEtapasPendentes, nEtapasConcluidas, nEtapasEmAprocaçao, nEtapasAtrasadas]);
+
+      const [valoresParaGrafico, setValoresParaGrafico] = useState<GraficoValores>({
+        pendentes: nEtapasAtrasadas,
+        concluidas: nEtapasConcluidas,
+        emAprovacao: nEtapasEmAprocaçao,
+        atrasadas: nEtapasAtrasadas,
+      });
+
     return (
 
         <div>
@@ -162,11 +197,30 @@ export const Home = () => {
                         </Grid>
 
                         <Grid item>
+                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
+                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+
+                                <RunningWithErrorsIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
+
+                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                        Etapas A Vencer
+                                    </Typography>
+                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                            2
+                                    </Typography>
+
+                                </CardContent>
+
+                            </Card>
+
+                        </Grid>
+
+                        <Grid item>
 
                             <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
                                 <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
 
-                                        <RunningWithErrorsIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
+                                     <SettingsBackupRestoreIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
 
                                     <Typography variant="subtitle1" component="div" fontFamily="poppins">
                                         Etapas em Aprovação
@@ -243,10 +297,10 @@ export const Home = () => {
 
                                 <Grid item>
 
-                                    <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3 }}>
+                                    <Paper sx={{ marginBottom: 1, background: "#B5F8FD", borderRadius: 3, fontFamily:"poppins" }}>
                                         {/* <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}> */}
 
-                                        <GraficoGeral />
+                                        <GraficoGeral valores={valoresParaGrafico} />
 
                                         {/* </CardContent> */}
 
