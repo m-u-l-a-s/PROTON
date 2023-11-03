@@ -31,13 +31,16 @@ export const MyProjects = () => {
     ]);
 
     const get_processos = async () => {
+        const perfilJSON: any = sessionStorage.getItem('perfil')
+        const id = JSON.parse(JSON.parse(perfilJSON)).usuario_id
         try {
-            const response = await fetch("http://localhost:5000/get_processos");
+            const response = await fetch (`http://localhost:5000/get_processos_responsavel/${id}`);
+            //const response = await fetch("http://localhost:5000/get_processos");
             const jsonData = await response.json();
 
-            //console.log(jsonData)
+            // console.log(jsonData)
             setProcesso(jsonData);
-            //console.log(processos)
+            // console.log(processos)
         } catch (error: any) {
             console.log(error.message);
         }
@@ -51,15 +54,17 @@ export const MyProjects = () => {
     //Puxando nome do responsavel
 
     const get_processos_responsavelNome = async () => {
+        const perfilJSON: any = sessionStorage.getItem('perfil');
+        const id = JSON.parse(JSON.parse(perfilJSON)).usuario_id;
         try {
             const response = await fetch(
-                "http://localhost:5000/get_processos_responsavelNome"
+                `http://localhost:5000/get_processos_responsavelNome/${id}`
             );
             const jsonData = await response.json();
 
-            //console.log(jsonData)
+            // console.log(jsonData)
             setProcesso(jsonData);
-            //console.log(processos)
+            // console.log(processos)
         } catch (error: any) {
             console.log(error.message);
         }

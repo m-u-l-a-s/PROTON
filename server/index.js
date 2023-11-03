@@ -166,12 +166,16 @@ app.get("/get_numeroEtapa/:processo_id", async (req, res) => {
 
 //Puxando nome do responsável do projeto pelo id
 
-app.get("/get_processos_responsavelNome", async (req, res) => {
+
+app.get("/get_processos_responsavelNome/:id", async (req, res) => {
     try {
+        const { id } = req.params;
         const selectAll = await pool.query(
-            "SELECT * FROM public.processo ORDER BY processo_id ASC "
+            "SELECT * FROM public.processo where processo_responsavel_id=$1 or processo_id in (select processo_id from etapa where etapa_responsavel_id = $1) ORDER BY processo_id ASC" ,
+            [id]
         );
 
+        // console.log(selectAll)
         const processosComNomes = await Promise.all(
             selectAll.rows.map(async (processo) => {
                 const responsavel = await pool.query(
@@ -184,7 +188,7 @@ app.get("/get_processos_responsavelNome", async (req, res) => {
                 };
             })
         );
-
+        // console.log(processosComNomes)
         res.json(processosComNomes);
     } catch (error) {
         console.log(error.message);
@@ -259,13 +263,13 @@ app.get("/get_usuario_login", async (req, res) => {
 app.get("/get_processos_responsavel/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const etapa = await pool.query(
+        const processo = await pool.query(
             "select * from processo where processo_id in (select processo_id from etapa where etapa_responsavel_id = $1)"
-            + "or processo_responsavel_id = $1",
+             + "or processo_responsavel_id = $1",
             [id]
         );
 
-        res.json(etapa.rows[0]);
+        res.json(processo.rows);
     } catch (err) {
         console.log(err.message);
     }
