@@ -207,7 +207,7 @@ const VisualizarProjeto = () => {
             justifyContent="center"
             maxHeight="100vh"
             flexDirection="column"
-            sx={{ gap: 3, fontFamily: 'poppins'}}
+            sx={{ gap: 3, fontFamily: 'poppins', mt:"-1em"}}
         >
 
 
@@ -341,7 +341,7 @@ const VisualizarProjeto = () => {
 
 
 
-                        <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex", marginTop:'0em', marginBottom:'0.3em'}}>
+                        <Grid container justifyContent="space-between" sx={{ display: validaEdicao ? "none" : "flex", marginTop:'-1em', marginBottom:'0.3em'}}>
 
                             <Grid item display="flex" flexDirection="row" alignItems="flex-end" sx={{ gap: 80, marginTop: 0 }}>
                                 <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }} startIcon={<DeleteIcon />}
