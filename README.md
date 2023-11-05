@@ -88,7 +88,7 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 
 <br>
 
-#### :busts_in_silhouette: Apresentação da Equipe:
+## :busts_in_silhouette: Apresentação da Equipe:
 
 Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
 Nosso foco é em identificar o objetivo principal de um produto para desenvolver soluções de maneira gradual e modular em torno deste objetivo, de forma que cada passo possa ser validado pelo(a) cliente e/ou usuários e o produto evolua organicamente.
