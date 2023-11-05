@@ -1,6 +1,6 @@
 <img src = "https://github.com/m-u-l-a-s/PROTON/blob/main/docs/Movimento%20Universit%C3%A1rio%20de%20L%C3%B3gica%20Aplicada%20%C3%A0%20Softwares.png" alt="newLogo"/>
 
-### Proton - Project Tracker, Organizer and Notifier
+# Proton - Project Tracker, Organizer and Notifier
 ## :bookmark_tabs: Objetivo do Produto:
 
 O objetivo do projeto é desenvolver uma plataforma web que auxilie na organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde.
@@ -60,11 +60,11 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 ```
 <br>
 
-### :dart: Backlogs & User Stories:
+## :dart: Backlogs & User Stories:
 
 ![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
 
-### 🏁 Entregas de Sprints
+## 🏁 Entregas de Sprints
 
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
