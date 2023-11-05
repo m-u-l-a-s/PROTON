@@ -9,6 +9,7 @@ import {
 } from "../pages";
 import VisualizarProjeto from "../pages/visualizarProjeto/VisualizarProjeto";
 import { Cadastro } from "../pages/cadastro/Cadastro";
+import { Login } from "../pages/login/Login";
 export const AppRoutes = () => {
     return (
         <Routes>
@@ -29,6 +30,8 @@ export const AppRoutes = () => {
             <Route path="/DetalheEtapa" element={<DetalheEtapa />} />
 
             <Route path="/Cadastro" element={<Cadastro />} />
+
+            <Route path="/Login" element={<Login />}/>
         </Routes>
     );
 };

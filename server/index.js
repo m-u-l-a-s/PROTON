@@ -243,12 +243,12 @@ app.get("/get_processo/:id", async (req, res) => {
 });
 
 //Rota puxar dados do usuario p/ login
-app.get("/get_usuario_login", async (req, res) => {
+app.get("/get_usuario_login/:email/:senha", async (req, res) => {
     try {
-        const { email } = req.body;
-        const { senha } = req.body;
+        const { email } = req.params;
+        const { senha } = req.params;
         const etapa = await pool.query(
-            "select * from usuario where usuario_email=$1 and usuario_senha = $2",
+            "select * from usuario where usuario_email=$1 and usuario_senha=$2",
             [email, senha]
         );
 
