@@ -1,14 +1,5 @@
 <img src="https://user-images.githubusercontent.com/89790349/194731178-f02b3b24-e3dd-4ef2-a7f9-52c83dc8cfc1.png" alt="Logo"/>
 
-## Sumário:
-
--   [Objetivo](#objetivo-do-produto)
--   [Protótipo](#protótipo)
--   [Tecnologias](#tecnologias-e-ferramentas-utilizadas)
--   [Estrutura geral do projeto](#estrutura-geral-do-projeto)
--   [Backlog](#backlog-do-produto)
--   [Planejamento de Entregas](#planejamento-de-entregas)
--   [Preview da Plataforma](#plataforma)
 
 ## :bookmark_tabs: Objetivo do Produto:
 
@@ -31,6 +22,7 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 -   Figma: Prototipagem.
 -   GitHub: Controle de versionamento, documentação e colaboração.
 -   MySQL: Banco de Dados utilizado.
+
 <div style-"display=inline_block">
 <img width="40px" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/typescript/typescript-original.svg" title = "TypeScript"/>
 <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title = "JavaScript"/>
@@ -87,7 +79,6 @@ https://www.youtube.com/watch?v=w77srMqJYTw
 Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
 Nosso foco é em identificar o objetivo principal de um produto para desenvolver soluções de maneira gradual e modular em torno deste objetivo, de forma que cada passo possa ser validado pelo(a) cliente e/ou usuários e o produto evolua organicamente.
 
-## Integrantes:
 
 | Função        | Nome                             | LinkedIn & GitHub                                                                                                                                                                                                                                                                                                           |
 | ------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
