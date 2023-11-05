@@ -71,7 +71,7 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 ### 🏁 Entregas de Sprints
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
-|:--:|:----------:|:----------------|:-------------------------------------------------:|
+
 | 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
 | 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    |  |
 | 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
