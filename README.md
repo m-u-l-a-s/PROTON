@@ -87,6 +87,7 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 ![image](docs/s3.4.png)
 
 <br>
+
 #### :busts_in_silhouette: Apresentação da Equipe:
 
 Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
