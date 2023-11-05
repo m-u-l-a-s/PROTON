@@ -62,7 +62,10 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 ### :dart: Backlogs & User Stories:
 
-![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
+![image](m-u-l-a-s/PROTON/docs/s3.1.png)
+![image](m-u-l-a-s/PROTON/docs/s3.2.png)
+![image](m-u-l-a-s/PROTON/docs/s3.3.png)
+![image](docs/s3.4.png)
 
 ### 🏁 Entregas de Sprints
 
