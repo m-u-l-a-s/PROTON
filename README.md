@@ -59,27 +59,27 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 ```
 <br>
-## :dart: Backlogs & User Stories
 
-### User Stories:
+### :dart: Backlogs & User Stories:
 
 ![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
 
 ### Proton - Project Tracker, Organizer and Notifier
-]
+
 <br>
 ### 🏁 Entregas de Sprints
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
 
 | 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
+<br>
 | 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    |  |
+<br>
 | 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
+<br>
 | 04 | 06/11/2023 - 26/11/2023 | - Não iniciada   |  |
 
-### Link - apresentação da 1ª Sprint
-
-https://www.youtube.com/watch?v=w77srMqJYTw
+<br>
 
 ## Planejamento de entregas
 
