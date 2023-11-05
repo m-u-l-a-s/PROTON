@@ -62,10 +62,7 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 ### :dart: Backlogs & User Stories:
 
-![image](m-u-l-a-s/PROTON/docs/s3.1.png)
-![image](m-u-l-a-s/PROTON/docs/s3.2.png)
-![image](m-u-l-a-s/PROTON/docs/s3.3.png)
-![image](docs/s3.4.png)
+![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
 
 ### 🏁 Entregas de Sprints
 
@@ -82,9 +79,12 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 
 
 
-## Planejamento de entregas
+## Planejamento de entregas Sprint 3
 
-![image](docs/Backlog_Sprint_02_Proton.jpeg)
+![image](docs/s3.1.png)
+![image](docs/s3.2.png)
+![image](docs/s3.3.png)
+![image](docs/s3.4.png)
 
 <br>
 #### :busts_in_silhouette: Apresentação da Equipe:
