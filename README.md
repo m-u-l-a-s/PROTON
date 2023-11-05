@@ -4,6 +4,7 @@
 ## :bookmark_tabs: Objetivo do Produto:
 
 O objetivo do projeto é desenvolver uma plataforma web que auxilie na organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde.
+<br>
 
 :pushpin: Status do Projeto: Em andamento.
 
@@ -11,6 +12,7 @@ O objetivo do projeto é desenvolver uma plataforma web que auxilie na organiza�
 
 O protótipo da plataforma foi feito com o auxílio da ferramenta "Figma" e pode ser conferido interativamente através do link:
 https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=design&node-id=1-3&mode=design
+<br>
 
 ## 🛠️ Tecnologias e ferramentas utilizadas:
 
@@ -56,7 +58,7 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 
 ```
-
+<br>
 ## :dart: Backlogs & User Stories
 
 ### User Stories:
@@ -64,6 +66,16 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 ![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
 
 ### Proton - Project Tracker, Organizer and Notifier
+]
+<br>
+### 🏁 Entregas de Sprints
+Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
+
+|:--:|:----------:|:----------------|:-------------------------------------------------:|
+| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
+| 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    |  |
+| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
+| 04 | 06/11/2023 - 26/11/2023 | - Não iniciada   |  |
 
 ### Link - apresentação da 1ª Sprint
 
@@ -73,7 +85,7 @@ https://www.youtube.com/watch?v=w77srMqJYTw
 
 ![image](docs/Backlog_Sprint_02_Proton.jpeg)
 
-
+<br>
 #### :busts_in_silhouette: Apresentação da Equipe:
 
 Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
