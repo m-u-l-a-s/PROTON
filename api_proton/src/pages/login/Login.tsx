@@ -2,22 +2,26 @@ import { useState } from "react";
 import "./Login.css";
 import FormInput from "./FormInput";
 import Swal from "sweetalert2";
-import { date } from "yup";
+import { useEffectSession, useSessionStorageOrDefault } from "../../control/useSessionStorage";
 
 export const Login = () => {
-    const [user, setUser] = useState({
-        usuario_id: 0,
+    const [user, setUser] = useState(
+    {
+        usuario_id: 1,
         usuario_nome: "",
         usuario_senha: "",
-        usuario_data_cadastro: date,
+        usuario_data_cadastro: new Date(),
         usuario_nivel: "",
         usuario_email: "",
-    })
+    },
+    )
 
     const [login,setLogin] = useState({
         email:"",
         password:"",
     })
+
+    const [usuarioAtual, setUsuarioAtual] = useState(useSessionStorageOrDefault("perfil", user));
 
     const inputs = [
         {
@@ -52,8 +56,11 @@ export const Login = () => {
             email: login.email,
             senha: login.password,
         };
-        console.log(login.email)
-        console.log(login.password)
+
+        // Testes de login e senha
+        // console.log(login.email)
+        // console.log(login.password)
+
         // Make an HTTP GET request to the server
         await fetch(`http://localhost:5000/get_usuario_login/${userData.email}/${userData.senha}`, {
             method: "GET",
@@ -63,9 +70,15 @@ export const Login = () => {
         })
             .then(async (response) => {
             const joselito:any = await response.json();
-            //console.log(joselito)
             setUser(joselito);
-            //console.log(user);
+            setUsuarioAtual(user);
+
+            //TESTES
+            console.log(joselito)
+            console.log(user);
+            console.log(usuarioAtual)
+            
+            //Efeito();
             })
             .then((data) => {
                 // Handle the response from the server if needed
@@ -75,6 +88,10 @@ export const Login = () => {
                 console.error("Error:", error);
             });
     };
+
+    const Efeito = () =>{
+        useEffectSession("perfil", usuarioAtual);
+    }
 
     // validação do cadastro c/ uso do SweetAlert2
     const validaCadastro = () =>{
@@ -91,7 +108,8 @@ export const Login = () => {
                 customClass: "swalFire",
                 confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
-        })}
+        })
+        }
     }    
 
     const onChange = (e: any) => {
