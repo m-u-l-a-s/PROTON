@@ -2,7 +2,6 @@
 
 ## Sumário:
 
--   [Apresentação da Equipe](#apresentação-da-equipe)
 -   [Objetivo](#objetivo-do-produto)
 -   [Protótipo](#protótipo)
 -   [Tecnologias](#tecnologias-e-ferramentas-utilizadas)
@@ -11,33 +10,18 @@
 -   [Planejamento de Entregas](#planejamento-de-entregas)
 -   [Preview da Plataforma](#plataforma)
 
-## Apresentação da Equipe:
-
-Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
-Nosso foco é em identificar o objetivo principal de um produto para desenvolver soluções de maneira gradual e modular em torno deste objetivo, de forma que cada passo possa ser validado pelo(a) cliente e/ou usuários e o produto evolua organicamente.
-
-## Integrantes:
-
-| Função        | Nome                             | LinkedIn & GitHub                                                                                                                                                                                                                                                                                                           |
-| ------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Product Owner | Alícea P. de Lima Rocha          | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/al%C3%ADcea-paula-de-lima-rocha-bab682157/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/alicearocha)     |
-| Scrum Master  | Amanda Mendes Caldeira           | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/amanda-mendes-caldeira-b24389210/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AmendoaM)                 |
-| Tech Lead     | Alexandre Jonas de Souza Fonseca | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alexandre-jonas-de-souza-fonseca-989920181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlexandreJonas) |
-| Backend       | Alita Willians da Silva Amancio  | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alitaamancio/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlitaAmancio)                                 |
-| Frontend      | Joice Araújo                     | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/joice-aparecida-581226250/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/Joice-Araujo)                    |
-| Backend       | Jonas Alves Bueno                | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/jonas-alves) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/dodekafonos)                                    |
-| BDA           | Vitor F. Morais                  | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/vitor-faria-morais-330b19204/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/vmorais111)                   |
-
-## Objetivo do Produto:
+## :bookmark_tabs: Objetivo do Produto:
 
 O objetivo do projeto é desenvolver uma plataforma web que auxilie na organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde.
 
-## Protótipo:
+:pushpin: Status do Projeto: Em andamento.
+
+## :desktop_computer: Protótipo:
 
 O protótipo da plataforma foi feito com o auxílio da ferramenta "Figma" e pode ser conferido interativamente através do link:
 https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=design&node-id=1-3&mode=design
 
-## Tecnologias e ferramentas utilizadas:
+## 🛠️ Tecnologias e ferramentas utilizadas:
 
 -   HTML: Estrutura das páginas.
 -   CSS: Estilização.
@@ -81,7 +65,7 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 ```
 
-## Backlog do produto
+## :dart: Backlogs & User Stories
 
 ### User Stories:
 
@@ -96,3 +80,21 @@ https://www.youtube.com/watch?v=w77srMqJYTw
 ## Planejamento de entregas
 
 ![image](docs/Backlog_Sprint_02_Proton.jpeg)
+
+
+#### :busts_in_silhouette: Apresentação da Equipe:
+
+Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
+Nosso foco é em identificar o objetivo principal de um produto para desenvolver soluções de maneira gradual e modular em torno deste objetivo, de forma que cada passo possa ser validado pelo(a) cliente e/ou usuários e o produto evolua organicamente.
+
+## Integrantes:
+
+| Função        | Nome                             | LinkedIn & GitHub                                                                                                                                                                                                                                                                                                           |
+| ------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Product Owner | Alícea P. de Lima Rocha          | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/al%C3%ADcea-paula-de-lima-rocha-bab682157/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/alicearocha)     |
+| Scrum Master  | Amanda Mendes Caldeira           | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/amanda-mendes-caldeira-b24389210/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AmendoaM)                 |
+| Tech Lead     | Alexandre Jonas de Souza Fonseca | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alexandre-jonas-de-souza-fonseca-989920181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlexandreJonas) |
+| Backend       | Alita Willians da Silva Amancio  | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alitaamancio/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlitaAmancio)                                 |
+| Frontend      | Joice Araújo                     | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/joice-aparecida-581226250/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/Joice-Araujo)                    |
+| Backend       | Jonas Alves Bueno                | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/jonas-alves) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/dodekafonos)                                    |
+| BDA           | Vitor F. Morais                  | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/vitor-faria-morais-330b19204/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/vmorais111)                   |
