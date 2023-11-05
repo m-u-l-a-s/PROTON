@@ -1,3 +1,5 @@
+<img src = "https://github.com/m-u-l-a-s/PROTON/blob/main/docs/Movimento%20Universit%C3%A1rio%20de%20L%C3%B3gica%20Aplicada%20%C3%A0%20Softwares.png" alt="newLogo"/>
+
 <img src="https://user-images.githubusercontent.com/89790349/194731178-f02b3b24-e3dd-4ef2-a7f9-52c83dc8cfc1.png" alt="Logo"/>
 
 ### Proton - Project Tracker, Organizer and Notifier
