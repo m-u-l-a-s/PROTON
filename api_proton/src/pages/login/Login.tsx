@@ -44,7 +44,7 @@ export const Login = () => {
             required: true,
         }
     ];
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
 
         // Prepare the data to be sent to the server
@@ -55,17 +55,17 @@ export const Login = () => {
         console.log(login.email)
         console.log(login.password)
         // Make an HTTP GET request to the server
-        fetch(`http://localhost:5000/get_usuario_login/${userData.email}/${userData.senha}`, {
+        await fetch(`http://localhost:5000/get_usuario_login/${userData.email}/${userData.senha}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             }
         })
-            .then((response) => {
-            const joselito:any = response.json();
-            console.log(joselito)
+            .then(async (response) => {
+            const joselito:any = await response.json();
+            //console.log(joselito)
             setUser(joselito);
-            console.log(user);
+            //console.log(user);
             })
             .then((data) => {
                 // Handle the response from the server if needed
