@@ -9,6 +9,7 @@
     justify-content: space-between;
     margin-bottom: 3px;
     border-radius: 0.7em;
+    position: relative;
   
 }
 
@@ -17,6 +18,8 @@
 }
 
  .top-row {
+    position: relative;
+    margin-left: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,6 +40,8 @@
 }
 
 .bottom-row {
+    position: relative;
+    margin-left: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
