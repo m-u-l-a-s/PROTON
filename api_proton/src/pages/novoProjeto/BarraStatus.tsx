@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./BarraStatus.css";
 
-const BarraPrioridade = (props: { status: string }) => {
+const BarraStatus = (props: { status: string }) => {
     const navigate = useNavigate();
     const [backgroundColor, setBackgroundColor] = useState<string>("");
 
@@ -30,4 +30,4 @@ const BarraPrioridade = (props: { status: string }) => {
     return <div className="barraStatus" style={{ backgroundColor }}></div>;
 };
 
-export default BarraPrioridade;
+export default BarraStatus;
