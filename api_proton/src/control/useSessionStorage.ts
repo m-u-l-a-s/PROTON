@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 export function useSessionStorageOrDefault(key:string, defaultValue:any)
 {
     let value: any
-    const stored = sessionStorage.getItem(key)
+    let stored = sessionStorage.getItem(key)
     value = (!stored ? defaultValue : JSON.parse(stored))
     return value
 }

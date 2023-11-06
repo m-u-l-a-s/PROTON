@@ -86,7 +86,7 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({ children }) =>
 
                 <Grid item>
                   <span style={{ marginRight: 10, fontFamily: "poppins" }}>Perfil:</span>
-                  <Select  style={{ color: 'white', fontFamily:'poppins' }} value={usuarioAtual} onChange={salvaPerfil}>
+                  <Select  style={{ color: 'white', fontFamily:'poppins' }} value={(usuarioAtual)} onChange={salvaPerfil} >
                     {usuario.map((usuarioItem) => (
                       <MenuItem style={{ color: 'white', fontFamily:'poppins'}} value={JSON.stringify(usuarioItem)}>{usuarioItem.usuario_nome}</MenuItem>
                     ))}

@@ -1,27 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Login.css";
 import FormInput from "./FormInput";
 import Swal from "sweetalert2";
 import { useEffectSession, useSessionStorageOrDefault } from "../../control/useSessionStorage";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
     const [user, setUser] = useState(
-    {
-        usuario_id: 1,
-        usuario_nome: "",
-        usuario_senha: "",
-        usuario_data_cadastro: new Date(),
-        usuario_nivel: "",
-        usuario_email: "",
-    },
+        {
+            usuario_id: 1,
+            usuario_nome: "",
+            usuario_senha: "",
+            usuario_data_cadastro: new Date(),
+            usuario_nivel: "",
+            usuario_email: "",
+        },
     )
 
-    const [login,setLogin] = useState({
-        email:"",
-        password:"",
+    const [login, setLogin] = useState({
+        email: "",
+        password: "",
     })
 
-    const [usuarioAtual, setUsuarioAtual] = useState(useSessionStorageOrDefault("perfil", user));
+    const navigate = useNavigate();
+    const [usuarioAtual, setUsuarioAtual] = useState(user);
+    //useEffectSession("perfil", usuarioAtual);
 
     const inputs = [
         {
@@ -43,8 +46,8 @@ export const Login = () => {
 
             // Padrão que detecta todas as condições:
             // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
-            // Padrão que detecta apenas se tem entre 6 e 20 caracteres:
-            pattern: `^.{6,20}$`,
+            // Padrão que detecta apenas se tem entre 5 e 20 caracteres:
+            pattern: `^.{5,20}$`,
             required: true,
         }
     ];
@@ -52,68 +55,68 @@ export const Login = () => {
         e.preventDefault();
 
         // Prepare the data to be sent to the server
-        const userData = {
-            email: login.email,
-            senha: login.password,
-        };
-
-        // Testes de login e senha
-        // console.log(login.email)
-        // console.log(login.password)
-
-        // Make an HTTP GET request to the server
-        await fetch(`http://localhost:5000/get_usuario_login/${userData.email}/${userData.senha}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-            .then(async (response) => {
-            const joselito:any = await response.json();
-            setUser(joselito);
-            setUsuarioAtual(user);
-
-            //TESTES
-            console.log(joselito)
-            console.log(user);
-            console.log(usuarioAtual)
-            
-            //Efeito();
-            })
-            .then((data) => {
-                // Handle the response from the server if needed
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        const email = login.email
+        const senha = login.password
+        try {
+            // Make an HTTP GET request to the server
+            const response = await fetch(`http://localhost:5000/get_usuario_login/${email}/${senha}`)
+            const jsonData = await response.json()
+            setUser(jsonData)
+            setUsuarioAtual(jsonData)
+        }
+        catch (error: any) {
+            console.log(error.message)
+        }
     };
 
-    const Efeito = () =>{
-        useEffectSession("perfil", usuarioAtual);
+    useEffect(() => {
+        //"{\"usuario_id\":2,\"usuario_nome\":\"Samuel Henrique (CB)\",\"usuario_senha\":\"fatec123\",\"usuario_data_cadastro\":\"2023-09-08T03:00:00.000Z\",\"usuario_nivel\":\"CB\",\"usuario_email\":\"samuel.henrique@fatec.com\"}"
+
+        //"{\"usuario_id\":1,\"usuario_nome\":\"Alexandre Jonas (LE)\",\"usuario_senha\":\"fatec\",\"usuario_data_cadastro\":\"2023-09-07T03:\00:\00.000Z\",\"usuario_nivel\":\"LE\",\"usuario_email\":\"alexandre.jonas@fatec.com"}"
+
+        sessionStorage.setItem('perfil', JSON.stringify(usuarioAtual).replaceAll('{',`"{\\`).replace('"}',`\\"}"`).replaceAll('usuario_id','usuario_id\\').replaceAll(',',',\\').replaceAll('usuario_nome','usuario_nome\\').replaceAll('usuario_senha','usuario_senha\\').replaceAll('usuario_data_cadastro','usuario_data_cadastro\\').replaceAll('usuario_nivel','usuario_nivel\\').replaceAll('usuario_email','usuario_email\\').replaceAll(':',':\\').replace(':\\',':').replaceAll(`",`,`\\",`).replaceAll(':\\00:\\00.000Z',':00:00.000Z'))
+    }, [usuarioAtual]);
+
+    const Efeito = async () => {
+        
+        navigate("/home")
+        window.location.reload();
     }
 
     // validação do cadastro c/ uso do SweetAlert2
-    const validaCadastro = () =>{
-        if (login.email==="" || login.password === ""){
+    const validaCadastro = () => {
+        if (login.email === "" || login.password === "") {
             Swal.fire({
                 title: "Por favor, insira todos os dados corretamente!",
                 customClass: "swalFire",
                 confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
-        })}
-        else{
+            })
+        }
+        else {
             Swal.fire({
                 title: "Login efetuado com sucesso!",
                 customClass: "swalFire",
                 confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
-        })
-        }
-    }    
+            }).then(() => {
+                // Redirecionar para a página anterior após a confirmação
+                Efeito()
 
-    const onChange = (e: any) => {
-        setLogin({ ...login, [e.target.name]: e.target.value });
+            });
+        }
+    }
+
+    // const onChange = (e: any) => {
+    //     setLogin({ ...login, [e.target.name]: e.target.value });
+    // };
+
+    const onChange = (e: { target: { name: any; value: any; }; }) => {
+        const { name, value } = e.target;
+        setLogin(prevLogin => ({
+      ...prevLogin,
+      [name]: value
+    }));
     };
 
     return (
@@ -125,7 +128,7 @@ export const Login = () => {
                         key={input.id}
                         {...input}
                         // value={values[input.name]}
-                        onChange={onChange}     
+                        onChange={onChange}
                     />
                 ))}
 
