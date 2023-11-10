@@ -105,7 +105,7 @@ export const Cadastro = () => {
         })}
         else{
             Swal.fire({
-                title: "Processo cadastrado com sucesso!",
+                title: "Cadastro efetuado com sucesso!",
                 customClass: "swalFire",
                 confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
