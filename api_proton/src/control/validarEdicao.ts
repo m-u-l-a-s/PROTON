@@ -1,5 +1,5 @@
 export function validarEdicao(pagina: string, id: number) {
-    let UsuarioID = puxaID()
+    let UsuarioID = puxaID().usuario_id
     switch (pagina) {
         case 'DetalheEtapa':
             return !(UsuarioID === id)
@@ -9,6 +9,9 @@ export function validarEdicao(pagina: string, id: number) {
 
         case 'Anexos':
             return !(UsuarioID === id)
+
+        case 'MyProjects':
+            return !(puxaID().usuario_nivel === 'LE')
         default:
     }
 }
@@ -16,7 +19,7 @@ export function validarEdicao(pagina: string, id: number) {
 const puxaID = () => {
     try {
         const perfilJSON: any = sessionStorage.getItem('perfil')
-        return JSON.parse(JSON.parse(perfilJSON)).usuario_id
+        return JSON.parse(JSON.parse(perfilJSON))
     } catch (error) {
         return 'ER'
     }
