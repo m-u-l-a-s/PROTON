@@ -12,17 +12,20 @@
     /* ); */
     background-size: cover;
     background-position: center;
+    border-radius: 10px;
 }
 
 .form-cadastro {
     background-color: #58595b;
     padding: 0px 60px;
-    border-radius: 10px;
+    border-radius: 0px;
+    margin-right: 0%;
 }
 
 .h1-cadastro {
     color: #a8fcff;
     text-align: center;
+    padding-top: 20px;
 }
 
 .select-cadastro {
@@ -36,6 +39,9 @@
     font-size: 1rem;
     cursor: pointer;
     margin: 10px 0px;
+    margin-right: 0px;
+    
+    
 
     color: black;
 }

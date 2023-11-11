@@ -19,10 +19,10 @@ import {
     useEffectSession,
     useSessionStorageOrDefault,
 } from "../../../control/useSessionStorage";
+import { findAllByAltText } from "@testing-library/react";
 
-export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
-    children,
-}) => {
+export const MenuSuperior: React.FC<{ children: ReactNode; hideHome: boolean; hideProcesses: boolean; hideDocuments: boolean; showCombo: boolean }> = ({
+    children, hideHome, hideProcesses, hideDocuments, showCombo }) => {
     const theme = useTheme();
     const [usuario, setUsuario] = useState([
         {
@@ -68,7 +68,7 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
     }, []);
     return (
         <>
-            <Box width="100vw" height={theme.spacing(8)}>
+            <Box width="100%" height={theme.spacing(8)}>
                 <AppBar position="fixed" color="secondary">
                     <Toolbar>
                         <Container maxWidth="xl">
@@ -77,6 +77,7 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
                                 direction="row"
                                 justifyContent="space-between"
                                 alignItems="center"
+                                
                             >
                                 <Grid item>
                                     <img src={Logo} width={120} />
@@ -84,6 +85,8 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
 
                                 <Grid item>
                                     <Stack direction="row" spacing={3}>
+                                    {!hideHome && (
+                                        
                                         <Button
                                             variant="text"
                                             component={Link}
@@ -92,10 +95,15 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
                                                 fontFamily: "poppins",
                                                 fontWeight: "bold",
                                                 fontSize: "1em",
+                                                justifyContent: "center",
+                                                marginLeft: "400px"
                                             }}
                                         >
                                             Home
                                         </Button>
+                                    )}
+
+                                        {!hideProcesses && (
                                         <Button
                                             variant="text"
                                             component={Link}
@@ -108,6 +116,9 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
                                         >
                                             Processos
                                         </Button>
+                                        )}
+
+                                        {!hideDocuments && (
                                         <Button
                                             variant="text"
                                             style={{
@@ -118,22 +129,23 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
                                         >
                                             Documentos
                                         </Button>
+                                        )}
                                     </Stack>
                                 </Grid>
 
-                                <Grid item>
-                                    <span
-                                        style={{
-                                            marginRight: 10,
-                                            fontFamily: "poppins",
+                                <Grid item style={{ marginLeft: 'auto' }}>
+                                    {showCombo && (
+                                    <span style={{
+                                            marginRight: "20px",
+                                            fontFamily: "poppins",        
                                         }}
                                     >
                                         Perfil:
-                                    </span>
                                     <Select
                                         style={{
                                             color: "white",
                                             fontFamily: "poppins",
+                                            marginLeft: "8px"
                                         }}
                                         value={usuarioAtual}
                                         onChange={salvaPerfil}
@@ -153,6 +165,8 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
                                             </MenuItem>
                                         ))}
                                     </Select>
+                                    </span>
+                                    )}
                                 </Grid>
                             </Grid>
                         </Container>

@@ -4,6 +4,7 @@ import FormInput from "./FormInput";
 import Swal from "sweetalert2";
 import { useEffectSession, useSessionStorageOrDefault } from "../../control/useSessionStorage";
 import { useNavigate } from "react-router-dom";
+import { MenuSuperior } from "../../shared/components/menu_superior/MenuSuperior";
 
 export const Login = () => {
     const [user, setUser] = useState(
@@ -121,6 +122,7 @@ export const Login = () => {
 
     return (
         <div className="container">
+            <MenuSuperior hideHome={true} hideProcesses={true} hideDocuments={true} showCombo={false}>
             <form className="form-cadastro" onSubmit={handleSubmit}>
                 <h1 className="h1-cadastro">Login</h1>
                 {inputs.map((input) => (
@@ -130,12 +132,14 @@ export const Login = () => {
                         // value={values[input.name]}
                         onChange={onChange}
                     />
+                   
                 ))}
 
                 <button type="submit" className="button-cadastro" onClick={validaCadastro} >
                     Login
                 </button>
             </form>
+            </MenuSuperior>
         </div>
     );
 };
