@@ -35,12 +35,6 @@ export const BarraEtapa = (prop: any) => {
                               </Stack>
                          </Grid>
 
-                         <Grid item alignItems={"right"} justifyContent={"flex-start"}>
-                              <IconButton edge="end" color="inherit" aria-label="menu">
-                                   <MoreVertIcon />
-                              </IconButton>
-                         </Grid>
-
                     </Toolbar>
                </Container>
           </AppBar>

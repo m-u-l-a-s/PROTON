@@ -28,12 +28,6 @@ export const BarraProjeto = (prop: any) => {
                                    <Button variant="text" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}}>Relatórios</Button>
                               </Stack>
                          </Grid>
-                         <Grid item alignItems={"right"} justifyContent={"flex-start"}>
-                              <IconButton edge="end" color="inherit" aria-label="menu">
-                                   <MoreVertIcon />
-                              </IconButton>
-                         </Grid>
-
                     </Toolbar>
                </Container>
           </AppBar>
