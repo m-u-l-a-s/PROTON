@@ -4,6 +4,7 @@ import { CardProcesso } from "./CardProcesso";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import BasicSelect from "./BasicSelect";
+import { validarEdicao } from "../../control/validarEdicao";
 
 export const MyProjects = () => {
     const [processos, setProcesso] = useState([
@@ -74,6 +75,9 @@ export const MyProjects = () => {
     useEffect(() => {
         get_processos_responsavelNome();
     }, []);
+
+    //desabilitar botão para CB
+    const [validaEdicao, setValidaEdicao] = useState(validarEdicao('MyProjects',0))
 
     return (
         <Box
@@ -148,6 +152,7 @@ export const MyProjects = () => {
                         variant="contained"
                         disableElevation
                         style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em', marginTop:'0.7em'}}
+                        sx={{display: validaEdicao ? "none" : "flex"}}
                     >
                         + Criar Processo
                     </Button>
