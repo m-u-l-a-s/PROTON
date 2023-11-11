@@ -108,16 +108,6 @@ export const MenuSuperior: React.FC<{ children: ReactNode }> = ({
                                         >
                                             Processos
                                         </Button>
-                                        <Button
-                                            variant="text"
-                                            style={{
-                                                fontFamily: "poppins",
-                                                fontWeight: "bold",
-                                                fontSize: "1em",
-                                            }}
-                                        >
-                                            Documentos
-                                        </Button>
                                     </Stack>
                                 </Grid>
 
