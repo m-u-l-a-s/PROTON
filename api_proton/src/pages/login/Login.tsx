@@ -122,7 +122,7 @@ export const Login = () => {
 
     return (
         <div className="container">
-            <MenuSuperior hideHome={true} hideProcesses={true} hideDocuments={true} showCombo={false}>
+            <MenuSuperior hideHome={true} hideProcesses={true} showCombo={false}>
             <form className="form-cadastro" onSubmit={handleSubmit}>
                 <h1 className="h1-cadastro">Login</h1>
                 {inputs.map((input) => (
