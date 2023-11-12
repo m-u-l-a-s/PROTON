@@ -29,7 +29,7 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
     <BrowserRouter>
     
     {isLoginPage && (
-    <MenuSuperior hideHome={true} hideProcesses={true}  showCombo={false}>
+    <MenuSuperior hideHome={true} hideProcesses={true} hideDocuments={true} showCombo={false}>
 
 
     <AppRoutes/>
@@ -39,7 +39,7 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
     )}
 
 {isResto && (
-    <MenuSuperior hideHome={false} hideProcesses={false}  showCombo={true}>
+    <MenuSuperior hideHome={false} hideProcesses={false} hideDocuments={false} showCombo={true}>
 
 
     <AppRoutes/>
@@ -50,7 +50,7 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
 
     {isCadastroPage && (
       <MenuSuperior
-      hideHome={true} hideProcesses={true}  showCombo={true}>
+      hideHome={true} hideProcesses={true} hideDocuments={true} showCombo={true}>
 
       <AppRoutes />
 

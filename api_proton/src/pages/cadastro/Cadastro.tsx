@@ -120,7 +120,7 @@ export const Cadastro = () => {
 
     return (
         <div className="container">
-             <MenuSuperior hideHome={true} hideProcesses={true} showCombo={true}>
+             <MenuSuperior hideHome={true} hideProcesses={true} hideDocuments={true} showCombo={true}>
             <form className="form-cadastro" onSubmit={handleSubmit}>
                 <h1 className="h1-cadastro">Novo usuário</h1>
                 {inputs.map((input) => (

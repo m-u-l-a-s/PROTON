@@ -21,8 +21,8 @@ import {
 } from "../../../control/useSessionStorage";
 import { findAllByAltText } from "@testing-library/react";
 
-export const MenuSuperior: React.FC<{ children: ReactNode; hideHome: boolean; hideProcesses: boolean; showCombo: boolean }> = ({
-    children, hideHome, hideProcesses, showCombo }) => {
+export const MenuSuperior: React.FC<{ children: ReactNode; hideHome: boolean; hideProcesses: boolean; hideDocuments: boolean; showCombo: boolean }> = ({
+    children, hideHome, hideProcesses, hideDocuments, showCombo }) => {
     const theme = useTheme();
     const [usuario, setUsuario] = useState([
         {
@@ -118,7 +118,18 @@ export const MenuSuperior: React.FC<{ children: ReactNode; hideHome: boolean; hi
                                         </Button>
                                         )}
 
-                                    
+                                        {!hideDocuments && (
+                                        <Button
+                                            variant="text"
+                                            style={{
+                                                fontFamily: "poppins",
+                                                fontWeight: "bold",
+                                                fontSize: "1em",
+                                            }}
+                                        >
+                                            Documentos
+                                        </Button>
+                                        )}
                                     </Stack>
                                 </Grid>
 
