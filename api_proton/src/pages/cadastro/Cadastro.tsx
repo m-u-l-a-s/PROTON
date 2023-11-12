@@ -95,7 +95,21 @@ export const Cadastro = () => {
             .catch((error) => {
                 console.error("Error:", error);
             });
+        
+        // funç. p/ limpar os dados (values) após a inserção deles no banco    
+        limparDados();
     };
+
+    //função para limpar dados após o submit
+    const limparDados = () =>{
+        setValues({
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            userLevel: "",
+        })
+    }
 
     const validaCadastro = () =>{
         if (values.username === '' ||  values.email === '' || values.password === '' || values.userLevel==='' || values.confirmPassword===''){
