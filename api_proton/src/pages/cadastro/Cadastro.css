@@ -1,23 +1,18 @@
-.container {
+.container-cadastro {
+    margin: auto !important;
     font-family: "Poppins";
-    margin-top: -60px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    /* background: linear-gradient(
-        rgba(83, 196, 205, 1),
-        rgba(168, 252, 255, 1), */
-    /* url("https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500") */
-    /* ); */
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
 }
 
 .form-cadastro {
+    margin: auto !important;
     background-color: #58595b;
-    padding: 0px 60px;
+    padding: 0px 4rem;
     border-radius: 0px;
     margin-right: 0%;
 }
@@ -29,7 +24,7 @@
 }
 
 .select-cadastro {
-    width: 100%;
+    width: 22rem;
     height: 50px;
     padding: 10px;
     border: none;
@@ -40,14 +35,12 @@
     cursor: pointer;
     margin: 10px 0px;
     margin-right: 0px;
-    
-    
 
     color: black;
 }
 
 .button-cadastro {
-    width: 100%;
+    width: 22rem;
     height: 50px;
     padding: 10px;
     border: none;

@@ -21,13 +21,9 @@ import {
 } from "../../../control/useSessionStorage";
 import { findAllByAltText } from "@testing-library/react";
 
-export const MenuSuperior: React.FC<{
+export const MenuSuperiorCadastro: React.FC<{
     children: ReactNode;
-    hideHome: boolean;
-    hideProcesses: boolean;
-    hideDocuments: boolean;
-    showCombo: boolean;
-}> = ({ children, hideHome, hideProcesses, hideDocuments, showCombo }) => {
+}> = ({ children }) => {
     const theme = useTheme();
     const [usuario, setUsuario] = useState([
         {
@@ -37,14 +33,6 @@ export const MenuSuperior: React.FC<{
             usuario_data_cadastro: new Date(),
             usuario_nivel: "CL",
             usuario_email: "betrano@gmail.com",
-        },
-        {
-            usuario_id: 2,
-            usuario_nome: "Fulano",
-            usuario_senha: "senha456",
-            usuario_data_cadastro: new Date(),
-            usuario_nivel: "LE",
-            usuario_email: "fulano@gmail.com",
         },
     ]);
 
@@ -87,48 +75,6 @@ export const MenuSuperior: React.FC<{
                                     <img src={Logo} width={120} alt="logo" />
                                 </Grid>
 
-                                <Grid item>
-                                    <Stack direction="row" spacing={3}>
-                                        <Button
-                                            variant="text"
-                                            component={Link}
-                                            to="/Home"
-                                            style={{
-                                                fontFamily: "poppins",
-                                                fontWeight: "bold",
-                                                fontSize: "1em",
-                                                justifyContent: "center",
-                                                marginLeft: "400px",
-                                            }}
-                                        >
-                                            Home
-                                        </Button>
-
-                                        <Button
-                                            variant="text"
-                                            component={Link}
-                                            to="/MyProjects"
-                                            style={{
-                                                fontFamily: "poppins",
-                                                fontWeight: "bold",
-                                                fontSize: "1em",
-                                            }}
-                                        >
-                                            Processos
-                                        </Button>
-                                        <Button
-                                            variant="text"
-                                            style={{
-                                                fontFamily: "poppins",
-                                                fontWeight: "bold",
-                                                fontSize: "1em",
-                                            }}
-                                        >
-                                            Documentos
-                                        </Button>
-                                    </Stack>
-                                </Grid>
-
                                 <Grid item style={{ marginLeft: "auto" }}>
                                     <span
                                         style={{
@@ -169,7 +115,7 @@ export const MenuSuperior: React.FC<{
                 </AppBar>
             </Box>
 
-            <Box width="100vw" marginTop={theme.spacing(8)}>
+            <Box width="100vw" marginTop={theme.spacing(0)}>
                 {children}
             </Box>
         </>

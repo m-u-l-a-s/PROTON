@@ -1,18 +1,27 @@
-import { Box, Card, CardContent, Grid, IconButton, Paper, Stack, Typography, useTheme, } from "@mui/material"
-import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import RuleIcon from '@mui/icons-material/Rule';
-import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
+import {
+    Box,
+    Card,
+    CardContent,
+    Grid,
+    Hidden,
+    IconButton,
+    Paper,
+    Stack,
+    Typography,
+    useTheme,
+} from "@mui/material";
+import RunningWithErrorsIcon from "@mui/icons-material/RunningWithErrors";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
+import RuleIcon from "@mui/icons-material/Rule";
+import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import GraficoGeral from ".././../shared/charts/GraficoGeral";
-import { useEffectSession, useSessionStorageOrDefault } from "../../control/useSessionStorage";
+import {
+    useEffectSession,
+    useSessionStorageOrDefault,
+} from "../../control/useSessionStorage";
 import { useEffect, useState } from "react";
-
-
-
-
-
 
 type GraficoValores = {
     pendentes: any;
@@ -22,48 +31,52 @@ type GraficoValores = {
     aVencer: any;
 };
 
-
 export const Home = () => {
     const theme = useTheme();
-    const usuario = [{
-        usuario_id: 2,
-        usuario_nome: "Fulano",
-        usuario_senha: "senha456",
-        usuario_data_cadastro: new Date(),
-        usuario_nivel: 'LE',
-        usuario_email: "fulano@gmail.com"
-    }]
-    const [perfil, setPerfil] = useState(useSessionStorageOrDefault('perfil', usuario[0]))
+    const usuario = [
+        {
+            usuario_id: 2,
+            usuario_nome: "Fulano",
+            usuario_senha: "senha456",
+            usuario_data_cadastro: new Date(),
+            usuario_nivel: "LE",
+            usuario_email: "fulano@gmail.com",
+        },
+    ];
+    const [perfil, setPerfil] = useState(
+        useSessionStorageOrDefault("perfil", usuario[0])
+    );
     const nomePerfil = () => {
         try {
-            return JSON.parse(perfil).usuario_nome
+            return JSON.parse(perfil).usuario_nome;
         } catch (error: any) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
     useEffect(() => {
-        const perfilJSON: any = sessionStorage.getItem('perfil')
-        setPerfil(!perfilJSON ? usuario : JSON.parse(perfilJSON))
+        const perfilJSON: any = sessionStorage.getItem("perfil");
+        setPerfil(!perfilJSON ? usuario : JSON.parse(perfilJSON));
         //console.log(perfil)
         //console.log(JSON.parse(perfil))
-        ContarPendentes()
-        ContarConcluidos()
-        ContarAprovacao()
-        ContarAtrasados()
-        ContarAVencer()
-    }, [])
+        ContarPendentes();
+        ContarConcluidos();
+        ContarAprovacao();
+        ContarAtrasados();
+        ContarAVencer();
+    }, []);
 
     // chamando contador de número de etapas pendentes
     const [nEtapasPendentes, setContarPendentes] = useState(0);
     const ContarPendentes = async () => {
         try {
             const nivel = {
-                usuario_nivel: 'CL'
+                usuario_nivel: "CL",
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasPendentes/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
-
+                `http://localhost:5000/contarEtapasPendentes/${
+                    JSON.parse(perfil).usuario_id
+                }/${JSON.parse(perfil).usuario_nivel}`
             );
             if (response.ok) {
                 const data = await response.json();
@@ -73,20 +86,21 @@ export const Home = () => {
             }
         } catch (error) {
             console.error("Erro ao buscar o número de etapas:", error);
-        };
-    }
+        }
+    };
 
     // Chamando contador de número de etapas concluídas
     const [nEtapasConcluidas, setContarConcluidos] = useState(0);
     const ContarConcluidos = async () => {
         try {
             const nivel = {
-                usuario_nivel: 'CL'
+                usuario_nivel: "CL",
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasConcluidas/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
-
+                `http://localhost:5000/contarEtapasConcluidas/${
+                    JSON.parse(perfil).usuario_id
+                }/${JSON.parse(perfil).usuario_nivel}`
             );
             if (response.ok) {
                 const data = await response.json();
@@ -99,18 +113,18 @@ export const Home = () => {
         }
     };
 
-
     //contador de etapas em aprovação
     const [nEtapasEmAprocaçao, setContarAprovacao] = useState(0);
     const ContarAprovacao = async () => {
         try {
             const nivel = {
-                usuario_nivel: 'CL'
+                usuario_nivel: "CL",
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasEmAprovacao/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
-
+                `http://localhost:5000/contarEtapasEmAprovacao/${
+                    JSON.parse(perfil).usuario_id
+                }/${JSON.parse(perfil).usuario_nivel}`
             );
             if (response.ok) {
                 const data = await response.json();
@@ -123,18 +137,18 @@ export const Home = () => {
         }
     };
 
-
     // Chamando o contador de etapas atrasadas
     const [nEtapasAtrasadas, setContarAtrasados] = useState(0);
     const ContarAtrasados = async () => {
         try {
             const nivel = {
-                usuario_nivel: 'CL'
+                usuario_nivel: "CL",
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasAtrasadas/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
-
+                `http://localhost:5000/contarEtapasAtrasadas/${
+                    JSON.parse(perfil).usuario_id
+                }/${JSON.parse(perfil).usuario_nivel}`
             );
             if (response.ok) {
                 const data = await response.json();
@@ -152,12 +166,13 @@ export const Home = () => {
     const ContarAVencer = async () => {
         try {
             const nivel = {
-                usuario_nivel: 'CL'
+                usuario_nivel: "CL",
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasAVencer/${JSON.parse(perfil).usuario_id}/${JSON.parse(perfil).usuario_nivel}`
-
+                `http://localhost:5000/contarEtapasAVencer/${
+                    JSON.parse(perfil).usuario_id
+                }/${JSON.parse(perfil).usuario_nivel}`
             );
             if (response.ok) {
                 const data = await response.json();
@@ -170,8 +185,8 @@ export const Home = () => {
         }
     };
 
-
     //Gráfico
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const atualizarValoresGrafico = () => {
         setValoresParaGrafico({
             pendentes: nEtapasPendentes,
@@ -179,144 +194,285 @@ export const Home = () => {
             emAprovacao: nEtapasEmAprocaçao,
             atrasadas: nEtapasAtrasadas,
             aVencer: nEtapasAVencer,
-
         });
     };
 
     useEffect(() => {
         atualizarValoresGrafico(); // Atualizar valores do gráfico quando as contagens mudarem
-    }, [nEtapasPendentes, nEtapasConcluidas, nEtapasEmAprocaçao, nEtapasAtrasadas, nEtapasAVencer]);
+    }, [
+        nEtapasPendentes,
+        nEtapasConcluidas,
+        nEtapasEmAprocaçao,
+        nEtapasAtrasadas,
+        nEtapasAVencer,
+        atualizarValoresGrafico,
+    ]);
 
-    const [valoresParaGrafico, setValoresParaGrafico] = useState<GraficoValores>({
-        pendentes: nEtapasAtrasadas,
-        concluidas: nEtapasConcluidas,
-        emAprovacao: nEtapasEmAprocaçao,
-        atrasadas: nEtapasAtrasadas,
-        aVencer: nEtapasAVencer,
-    });
+    const [valoresParaGrafico, setValoresParaGrafico] =
+        useState<GraficoValores>({
+            pendentes: nEtapasAtrasadas,
+            concluidas: nEtapasConcluidas,
+            emAprovacao: nEtapasEmAprocaçao,
+            atrasadas: nEtapasAtrasadas,
+            aVencer: nEtapasAVencer,
+        });
 
     return (
-
         <div>
-            <Box display="flex" alignItems="center" justifyContent="center" maxHeight="100vh"
-                flexDirection="column" gap={theme.spacing(1)} marginTop={theme.spacing(3)}>
-                <Paper sx={{ padding: 4.5, borderRadius: 5 }} >
-                    <Typography variant="h5" color="primary" fontFamily="poppins">Estimativa dos Processos - {nomePerfil()}</Typography>
-                    <Grid container spacing={4} alignItems="center" marginTop={0}>
+            <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                maxHeight="100vh"
+                flexDirection="column"
+                gap={theme.spacing(1)}
+                marginTop={theme.spacing(3)}
+            >
+                <Paper sx={{ padding: 4.5, borderRadius: 5, marginTop: 8 }}>
+                    <Typography
+                        variant="h5"
+                        color="primary"
+                        fontFamily="poppins"
+                    >
+                        Estimativa dos Processos - {nomePerfil()}
+                    </Typography>
+                    <Grid
+                        container
+                        spacing={4}
+                        alignItems="center"
+                        marginTop={0}
+                    >
                         <Grid item>
-                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
-                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                            <Card
+                                sx={{
+                                    minWidth: 180,
+                                    background: "#B5F8FD",
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <CardContent
+                                    sx={{
+                                        alignItems: "center",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <ReportGmailerrorredIcon
+                                        sx={{
+                                            width: 45,
+                                            height: 45,
+                                            alignItems: "center",
+                                            color: "black",
+                                        }}
+                                    />
 
-                                    <ReportGmailerrorredIcon sx={{ width: 45, height: 45, alignItems: "center", color: "black" }} />
-
-                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="subtitle1"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         Etapas Atrasadas
                                     </Typography>
-                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="h4"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         {nEtapasAtrasadas}
                                     </Typography>
-
                                 </CardContent>
-
                             </Card>
-
                         </Grid>
 
                         <Grid item>
-                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
-                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
+                            <Card
+                                sx={{
+                                    minWidth: 180,
+                                    background: "#B5F8FD",
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <CardContent
+                                    sx={{
+                                        alignItems: "center",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <RunningWithErrorsIcon
+                                        sx={{
+                                            width: 40,
+                                            height: 40,
+                                            alignItems: "center",
+                                            color: "black",
+                                        }}
+                                    />
 
-                                    <RunningWithErrorsIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
-
-                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="subtitle1"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         Etapas A Vencer
                                     </Typography>
-                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="h4"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         {nEtapasAVencer}
                                     </Typography>
-
                                 </CardContent>
-
                             </Card>
-
                         </Grid>
 
                         <Grid item>
+                            <Card
+                                sx={{
+                                    minWidth: 180,
+                                    background: "#B5F8FD",
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <CardContent
+                                    sx={{
+                                        alignItems: "center",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <SettingsBackupRestoreIcon
+                                        sx={{
+                                            width: 40,
+                                            height: 40,
+                                            alignItems: "center",
+                                            color: "black",
+                                        }}
+                                    />
 
-                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
-                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
-
-                                    <SettingsBackupRestoreIcon sx={{ width: 40, height: 40, alignItems: "center", color: "black" }} />
-
-                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="subtitle1"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         Etapas Em Aprovação
                                     </Typography>
-                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="h4"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         {nEtapasEmAprocaçao}
                                     </Typography>
-
                                 </CardContent>
-
                             </Card>
-
                         </Grid>
 
                         <Grid item>
+                            <Card
+                                sx={{
+                                    minWidth: 180,
+                                    background: "#B5F8FD",
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <CardContent
+                                    sx={{
+                                        alignItems: "center",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <RuleIcon
+                                        sx={{
+                                            width: 45,
+                                            height: 45,
+                                            alignItems: "center",
+                                            color: "black",
+                                        }}
+                                    />
 
-                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
-                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
-
-                                    <RuleIcon sx={{ width: 45, height: 45, alignItems: "center", color: "black" }} />
-
-                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="subtitle1"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         Etapas Pendentes
                                     </Typography>
-                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="h4"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         {nEtapasPendentes}
                                     </Typography>
-
                                 </CardContent>
-
                             </Card>
-
                         </Grid>
 
                         <Grid item>
+                            <Card
+                                sx={{
+                                    minWidth: 180,
+                                    background: "#B5F8FD",
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <CardContent
+                                    sx={{
+                                        alignItems: "center",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <PlaylistAddCheckIcon
+                                        sx={{
+                                            width: 48,
+                                            height: 48,
+                                            alignItems: "center",
+                                            color: "black",
+                                        }}
+                                    />
 
-                            <Card sx={{ minWidth: 180, background: "#B5F8FD", borderRadius: 3 }}>
-                                <CardContent sx={{ alignItems: "center", display: "flex", flexDirection: "column" }}>
-
-                                    <PlaylistAddCheckIcon sx={{ width: 48, height: 48, alignItems: "center", color: "black" }} />
-
-                                    <Typography variant="subtitle1" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="subtitle1"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         Etapas Concluídas
                                     </Typography>
-                                    <Typography variant="h4" component="div" fontFamily="poppins">
+                                    <Typography
+                                        variant="h4"
+                                        component="div"
+                                        fontFamily="poppins"
+                                    >
                                         {nEtapasConcluidas}
                                     </Typography>
-
                                 </CardContent>
-
                             </Card>
-
                         </Grid>
-
-
                     </Grid>
-
                 </Paper>
-                
 
-                <Paper sx={{ padding: 4, borderRadius: 5, width:"67em" }}>
-                    <Typography variant="h5" color="primary" fontFamily="poppins" marginLeft={2}>Visão Geral</Typography>
+                <Paper sx={{ padding: 4, borderRadius: 5, width: "67em" }}>
+                    <Typography
+                        variant="h5"
+                        color="primary"
+                        fontFamily="poppins"
+                        marginLeft={2}
+                    >
+                        Visão Geral
+                    </Typography>
 
-                    <Grid container  alignItems="center" marginTop={1} flexDirection={"row"}>
-
+                    <Grid
+                        container
+                        alignItems="center"
+                        marginTop={1}
+                        flexDirection={"row"}
+                    >
                         {/* <Grid  sx={{margin: 0, padding: 0, alignItems: 'center'}}> */}
 
-                                
-                                    <GraficoGeral valores={valoresParaGrafico} />
-
+                        <GraficoGeral valores={valoresParaGrafico} />
 
                         {/* </Grid> */}
 
@@ -346,15 +502,9 @@ export const Home = () => {
                             </Grid>
                         </Grid>
  */}
-
-
                     </Grid>
-
                 </Paper>
-
-
             </Box>
-
         </div>
-    )
-}
+    );
+};

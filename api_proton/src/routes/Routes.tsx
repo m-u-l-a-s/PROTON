@@ -13,10 +13,13 @@ import { Login } from "../pages/login/Login";
 export const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={
-            <Login />
-            // <Navigate to= "/Login" />
-            }/>
+            <Route
+                path="/"
+                element={
+                    <Login />
+                    // <Navigate to= "/Login" />
+                }
+            />
 
             <Route path="/home" element={<Home />} />
 
@@ -28,14 +31,13 @@ export const AppRoutes = () => {
 
             <Route path="/Anexos" element={<Anexos />} />
 
-            {/* <Route path="/Login" element={<Login />} /> */}
+            <Route path="/Login" element={<Login />} />
 
             <Route path="/NovaEtapa" element={<NovaEtapa />} />
 
             <Route path="/DetalheEtapa" element={<DetalheEtapa />} />
 
             <Route path="/Cadastro" element={<Cadastro />} />
-
         </Routes>
     );
 };

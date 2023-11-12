@@ -1,9 +1,10 @@
 .formInput {
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 100%;
 }
 .form-input {
+    width: 22rem;
     padding: 15px;
     margin: 10px 0px;
     border-radius: 5px;

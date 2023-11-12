@@ -2,8 +2,7 @@ import { useState } from "react";
 import "./Cadastro.css";
 import FormInput from "./FormInput";
 import Swal from "sweetalert2";
-import { MenuSuperior } from "../../shared/components/menu_superior/MenuSuperior"
-
+import { MenuSuperiorCadastro } from "../../shared/components/menu_superior/MenuSuperiorCadastro";
 
 export const Cadastro = () => {
     const [values, setValues] = useState({
@@ -95,77 +94,89 @@ export const Cadastro = () => {
             .catch((error) => {
                 console.error("Error:", error);
             });
-        
-        // funç. p/ limpar os dados (values) após a inserção deles no banco    
+
+        // funç. p/ limpar os dados (values) após a inserção deles no banco
         limparDados();
     };
 
     //função para limpar dados após o submit
-    const limparDados = () =>{
+    const limparDados = () => {
         setValues({
             username: "",
             email: "",
             password: "",
             confirmPassword: "",
             userLevel: "",
-        })
-    }
+        });
+    };
 
-    const validaCadastro = () =>{
-        if (values.username === '' ||  values.email === '' || values.password === '' || values.userLevel==='' || values.confirmPassword===''){
+    const validaCadastro = () => {
+        if (
+            values.username === "" ||
+            values.email === "" ||
+            values.password === "" ||
+            values.userLevel === "" ||
+            values.confirmPassword === ""
+        ) {
             Swal.fire({
                 title: "Por favor, insira todos os dados corretamente!",
                 customClass: "swalFire",
-                confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                confirmButtonText:
+                    '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
-        })}
-        else{
+            });
+        } else {
             Swal.fire({
                 title: "Cadastro efetuado com sucesso!",
                 customClass: "swalFire",
-                confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                confirmButtonText:
+                    '<span style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
-        })}
-    }    
+            });
+        }
+    };
 
     const onChange = (e: any) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     return (
-        <div className="container">
-             <MenuSuperior hideHome={true} hideProcesses={true} hideDocuments={true} showCombo={true}>
-            <form className="form-cadastro" onSubmit={handleSubmit}>
-                <h1 className="h1-cadastro">Novo usuário</h1>
-                {inputs.map((input) => (
-                    <FormInput
-                        key={input.id}
-                        {...input}
-                        // value={values[input.name]}
-                        onChange={onChange}
-                        
-                    />
-                ))}           
-                  {/* salvaPerfil */}
-                <select
-                    name="userLevel"
-                    className="select-cadastro"
-                    onChange={onChange} // Add onChange event handler
-                    value={values.userLevel} // Set the value from state
-                >
-                    <option value="" disabled selected hidden>
-                        Nível de Usuário
-                    </option>
-                    <option value="CL">C-Level</option>
-                    <option value="LE">Líder</option>
-                    <option value="CO">Colaborador</option>
-                </select>
+        <MenuSuperiorCadastro>
+            <div className="container-cadastro">
+                <form className="form-cadastro" onSubmit={handleSubmit}>
+                    <h1 className="h1-cadastro">Novo usuário</h1>
+                    {inputs.map((input) => (
+                        <FormInput
+                            key={input.id}
+                            {...input}
+                            // value={values[input.name]}
+                            onChange={onChange}
+                        />
+                    ))}
+                    {/* salvaPerfil */}
+                    <select
+                        name="userLevel"
+                        className="select-cadastro"
+                        onChange={onChange} // Add onChange event handler
+                        value={values.userLevel} // Set the value from state
+                    >
+                        <option value="" disabled selected hidden>
+                            Nível de Usuário
+                        </option>
+                        <option value="CL">C-Level</option>
+                        <option value="LE">Líder</option>
+                        <option value="CO">Colaborador</option>
+                    </select>
 
-                <button type="submit" className="button-cadastro" onClick={validaCadastro} >
-                    Cadastrar
-                </button>
-            </form>
-        </MenuSuperior>
-        </div>
+                    <button
+                        type="submit"
+                        className="button-cadastro"
+                        onClick={validaCadastro}
+                    >
+                        Cadastrar
+                    </button>
+                </form>
+            </div>
+        </MenuSuperiorCadastro>
     );
 };

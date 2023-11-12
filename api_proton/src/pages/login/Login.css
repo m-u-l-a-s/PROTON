@@ -1,59 +1,56 @@
-.container {
-  font-family: "Poppins";
-  margin-top: -60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding-right: 480px;
-  /* background: linear-gradient(
-        rgba(83, 196, 205, 1),
-        rgba(168, 252, 255, 1), */
-  /* url("https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500") */
-  /* ); */
-  background-size: cover;
-  background-position: center;
+html {
+    overflow: hidden;
+}
+
+.container-login {
+    /* margin-top: -2rem; */
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
 }
 
 .form-cadastro {
-  background-color: #58595b;
-  padding: 0px 60px;
-  border-radius: 10px;
-  margin-left: 80px;
+    margin: auto;
+    background-color: #58595b;
+    border-radius: 10px;
 }
 
 .h1-cadastro {
-  color: #a8fcff;
-  text-align: center;
+    color: #a8fcff;
+    text-align: center;
 }
 
 .select-cadastro {
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  border: none;
-  background-color: #fff;
-  color: white;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 10px 0px;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: #fff;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px 0px;
 
-  color: black;
+    color: black;
 }
 
 .button-cadastro {
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  border: none;
-  background-color: #a8fcff;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 30px;
-  color: black;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: #a8fcff;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    color: black;
 }
