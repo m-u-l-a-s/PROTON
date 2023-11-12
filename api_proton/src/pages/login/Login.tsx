@@ -112,16 +112,7 @@ export const Login = () => {
                 confirmButtonColor: "#b6f3f8",
             });
         } else {
-            Swal.fire({
-                title: "Login efetuado com sucesso!",
-                customClass: "swalFire",
-                confirmButtonText:
-                    '<span style="font-size: 15px; color: black;">OK</span>',
-                confirmButtonColor: "#b6f3f8",
-            }).then(() => {
-                // Redirecionar para a página anterior após a confirmação
-                Efeito();
-            });
+            Efeito();
         }
     };
 

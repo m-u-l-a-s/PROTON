@@ -137,6 +137,31 @@ app.get("/get_usuario_id/:nome", async (req, res) => {
     }
 });
 
+// Select id by email
+app.get("/get_usuario_id_by_email/:email", async (req, res) => {
+    try {
+        const email = req.params.email;
+        console.log("=========================================");
+        console.log("email recebido: ", email);
+
+        const selectAll = await pool.query(
+            "SELECT * FROM usuario WHERE usuario_email = $1",
+            [email]
+        );
+
+        // Check if any rows were returned
+        if (selectAll.rows.length > 0) {
+            const usuarioId = selectAll.rows[0].usuario_id;
+            res.json(usuarioId);
+        } else {
+            res.status(404).json({ error: "Usuário não encontrado" });
+        }
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 app.get("/get_processos", async (req, res) => {
     try {
         const selectAll = await pool.query(

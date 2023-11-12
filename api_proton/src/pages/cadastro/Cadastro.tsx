@@ -5,7 +5,16 @@ import Swal from "sweetalert2";
 import { MenuSuperiorCadastro } from "../../shared/components/menu_superior/MenuSuperiorCadastro";
 
 export const Cadastro = () => {
-    const [values, setValues] = useState({
+    type FormValues = {
+        username: string;
+        email: string;
+        password: string;
+        confirmPassword: string;
+        userLevel: string;
+        [key: string]: string;
+    };
+
+    const [values, setValues] = useState<FormValues>({
         username: "",
         email: "",
         password: "",
@@ -13,16 +22,32 @@ export const Cadastro = () => {
         userLevel: "",
     });
 
+    const limparDados = () => {
+        setValues({
+            username: " ",
+            email: " ",
+            password: "",
+            confirmPassword: "",
+            userLevel: "",
+        });
+
+        // Clear the text content of input fields
+        inputs.forEach((input) => {
+            const inputElement = document.getElementById(input.name);
+            if (inputElement) {
+                inputElement.textContent = "";
+            }
+        });
+    };
+
     const inputs = [
         {
             id: 1,
             name: "username",
             type: "text",
             placeholder: "Nome",
-            errorMessage:
-                "Seu nome deve ter de 4 a 40 caracteres e não pode incluir nenhum caractere especial!",
-            // label: "Nome",
-            pattern: "^[A-Za-z0-9 ]{4,40}$",
+            errorMessage: "Mínimo 4 caracteres e nenhum caractere especial.",
+            pattern: "^\\s*[A-Za-z0-9]+\\s*$|^$| ", // Allow empty or 4-40 alphanumeric characters with optional space
             required: true,
         },
         {
@@ -30,23 +55,17 @@ export const Cadastro = () => {
             name: "email",
             type: "email",
             placeholder: "Email",
-            errorMessage: "Por favor insira um email válido.",
-            // label: "Email",
+            // errorMessage: "Por favor insira um email válido.",
+            pattern: "^$|^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$| ",
             required: true,
         },
-
         {
             id: 4,
             name: "password",
             type: "password",
             placeholder: "Senha",
-            errorMessage: "Sua senha deve ter de 6 a 20 caracteres",
-            // "Sua senha deve ter de 6 a 20 caracteres e incluir pelo menos uma letra, um número e um caractere especial.",
-
-            // Padrão que detecta todas as condições:
-            // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$`,
-            // Padrão que detecta apenas se tem entre 6 e 20 caracteres:
-            pattern: `^.{6,20}$`,
+            // errorMessage: "Sua senha deve ter de 6 a 20 caracteres",
+            pattern: `^.{0,20}$|^$| `,
             required: true,
         },
         {
@@ -54,60 +73,104 @@ export const Cadastro = () => {
             name: "confirmPassword",
             type: "password",
             placeholder: "Confirmar Senha",
-            errorMessage: "Senhas não correspondem.",
-            // label: "Confirm Password",
-            pattern: values.password,
+            // errorMessage: "Senhas não correspondem.",
+            pattern: `^${values.password}.*$|^$| `, // Allow empty or match the password
             required: true,
         },
     ];
-    const handleSubmit = (e: any) => {
+
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
 
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, "0"); // January is 0!
-        const dd = String(today.getDate()).padStart(2, "0");
-        const usuario_data_cadastro = `${yyyy}-${mm}-${dd}`;
+        try {
+            // Check if email is already registered
+            const response = await fetch(
+                `http://localhost:5000/get_usuario_id_by_email/${values.email}`
+            );
 
-        // Prepare the data to be sent to the server
-        const userData = {
-            usuario_nome: values.username,
-            usuario_email: values.email,
-            usuario_senha: values.password,
-            usuario_data_cadastro,
-            usuario_nivel: values.userLevel,
-        };
+            if (response.status === 200) {
+                Swal.fire({
+                    title: "Este email já foi cadastrado.",
+                    customClass: "swalFire",
+                    icon: "error",
+                    confirmButtonText:
+                        '<span style="font-size: 15px; color: black;">OK</span>',
+                    confirmButtonColor: "#b6f3f8",
+                });
+                limparDados();
+            } else if (response.status === 404) {
+                // Email is not registered, proceed with registration
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, "0");
+                const dd = String(today.getDate()).padStart(2, "0");
+                const usuario_data_cadastro = `${yyyy}-${mm}-${dd}`;
 
-        // Make an HTTP POST request to the server
-        fetch("http://localhost:5000/insert_usuario", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Handle the response from the server if needed
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+                // Prepare the data to be sent to the server
+                const userData = {
+                    usuario_nome: values.username,
+                    usuario_email: values.email,
+                    usuario_senha: values.password,
+                    usuario_data_cadastro,
+                    usuario_nivel: values.userLevel,
+                };
 
-        // funç. p/ limpar os dados (values) após a inserção deles no banco
-        limparDados();
-    };
+                // Make an HTTP POST request to the server
+                const registerResponse = await fetch(
+                    "http://localhost:5000/insert_usuario",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(userData),
+                    }
+                );
+                limparDados();
 
-    //função para limpar dados após o submit
-    const limparDados = () => {
-        setValues({
-            username: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-            userLevel: "",
-        });
+                if (registerResponse.status === 200) {
+                    limparDados();
+
+                    Swal.fire({
+                        title: "Cadastro realizado com sucesso!",
+                        customClass: "swalFire",
+                        icon: "success",
+                        confirmButtonText:
+                            '<span style="font-size: 15px; color: black;">OK</span>',
+                        confirmButtonColor: "#b6f3f8",
+                    }).then((result) => {
+                        // Check if the user clicked the "OK" button
+                        if (
+                            result.isDismissed ||
+                            result.isConfirmed ||
+                            result.isDenied
+                        ) {
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: "O cadastro falhou.",
+                        customClass: "swalFire",
+                        icon: "error",
+                        confirmButtonText:
+                            '<span style="font-size: 15px; color: black;">OK</span>',
+                        confirmButtonColor: "#b6f3f8",
+                    }).then((result) => {
+                        // Check if the user clicked the "OK" button
+                        if (
+                            result.isDismissed ||
+                            result.isConfirmed ||
+                            result.isDenied
+                        ) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     const validaCadastro = () => {
@@ -149,7 +212,7 @@ export const Cadastro = () => {
                         <FormInput
                             key={input.id}
                             {...input}
-                            // value={values[input.name]}
+                            value={values[input.name]}
                             onChange={onChange}
                         />
                     ))}
