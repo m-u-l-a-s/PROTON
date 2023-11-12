@@ -13,6 +13,11 @@ import { Login } from "../pages/login/Login";
 export const AppRoutes = () => {
     return (
         <Routes>
+            <Route path="/" element={
+            <Login />
+            // <Navigate to= "/Login" />
+            }/>
+
             <Route path="/home" element={<Home />} />
 
             <Route path="/novoProjeto" element={<NovoProjeto />} />
@@ -23,7 +28,7 @@ export const AppRoutes = () => {
 
             <Route path="/Anexos" element={<Anexos />} />
 
-            <Route path="*" element={<Navigate to="/home" />} />
+            {/* <Route path="/Login" element={<Login />} /> */}
 
             <Route path="/NovaEtapa" element={<NovaEtapa />} />
 
@@ -31,7 +36,6 @@ export const AppRoutes = () => {
 
             <Route path="/Cadastro" element={<Cadastro />} />
 
-            <Route path="/Login" element={<Login />}/>
         </Routes>
     );
 };
