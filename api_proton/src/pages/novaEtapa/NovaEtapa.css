@@ -26,6 +26,10 @@
   font-size: 0.85rem;
 }
 
+.swalFire, .poppins-text {
+  font-family:  "Poppins";
+}
+
 .swal2-confirm {
   border: none !important;
   outline: none !important;

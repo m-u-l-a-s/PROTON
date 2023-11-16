@@ -60,13 +60,14 @@ export const NovaEtapa = () => {
     //modal de limpar etapa
     const handleClean = () => {
         Swal.fire({
-            title: "Tem certeza que deseja limpar a etapa?",
+            // title: "Tem certeza que deseja limpar a etapa?",
+            title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja limpar a etapa?</span>',
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
-            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonText:  '<span class="poppins-text" style=" color: black;">Sim</span>',
             confirmButtonColor: "#b6f3f8",
-            cancelButtonText: "Não",
+            cancelButtonText: '<span class="poppins-text" style=" color: white;">Não</span>',
         }).then((result: any) => {
             if (result.isConfirmed) {
                 LimparEtapas();
@@ -74,7 +75,7 @@ export const NovaEtapa = () => {
                     title: '<span style="font-size: 20px;">Etapa limpa com sucesso!</span>',
                     customClass: "swalFire",
                     confirmButtonText:
-                        '<span style="font-size: 15px; color: black;">OK</span>',
+                    '<span style=" color: black; fontFamily: Poppins">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 });
             }
@@ -93,13 +94,13 @@ export const NovaEtapa = () => {
     //modal de salvar etapa
     const handleAdd = () => {
         Swal.fire({
-            title: "Tem certeza que deseja salvar etapa?",
+            title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja salvar etapa?</span>',
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
-            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
             confirmButtonColor: "#b6f3f8",
-            cancelButtonText: "Não",
+            cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
         }).then((result: any) => {
             if (result.isConfirmed) {
                 InserirEtapa();
@@ -146,10 +147,10 @@ export const NovaEtapa = () => {
             if (response.ok) {
                 console.log("Etapa criada com sucesso!");
                 Swal.fire({
-                    title: '<span style="font-size: 25px;" >Etapa criada com sucesso!</span',
+                    title: '<span  class="poppins-text" style="font-size: 25px;" >Etapa criada com sucesso!</span',
                     customClass: "swalFire",
                     confirmButtonText:
-                        '<span style="font-size: 15px; color: black;">OK</span>',
+                    '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 }).then(() => {
                     // Redirecionar para a página anterior após a confirmação
@@ -162,9 +163,9 @@ export const NovaEtapa = () => {
             console.log("Erro ao inserir etapa:", error.message);
 
             Swal.fire({
-                title: "<br>Ocorreu um erro ao inserir etapa. Tente novamente.",
+                title: '<br><span  class="poppins-text" style="font-size: 25px;">Ocorreu um erro ao inserir etapa. Tente novamente.</span>',
                 customClass: "swalFire",
-                confirmButtonText: '<span style="color: black;">OK</span>',
+                confirmButtonText: '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
             });
         }
@@ -242,7 +243,7 @@ export const NovaEtapa = () => {
                     <VoltarButton />
                 </Grid>
 
-                <Typography variant="h4" color="primary" borderTop={0}>
+                <Typography variant="h4" color="primary" borderTop={0} style={{fontFamily:"Poppins"}}>
                     Nova Etapa
                 </Typography>
 
