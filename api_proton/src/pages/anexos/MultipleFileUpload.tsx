@@ -41,13 +41,13 @@ export function MultipleFileUpload({
 
   const Modal = () => {
     Swal.fire({
-      title: "Tem certeza que deseja anexar esse arquivo?",
+      title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja anexar esse arquivo?</span>',
       customClass: "swalFire",
       showCancelButton: true,
       focusConfirm: false,
-      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
-      cancelButtonText: "Não",
+      cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
     }).then((result: any) => {
       if (result.isConfirmed) {
         uploadAnexo();
@@ -57,9 +57,9 @@ export function MultipleFileUpload({
 
   const showSuccessModal = () => {
     Swal.fire({
-      title: "Anexo inserido com sucesso!",
+      title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Anexo inserido com sucesso!</span>',
       customClass: "swalFire",
-      confirmButtonText: "OK",
+      confirmButtonText: '<span style=" color: black; fontFamily: Poppins">OK</span>',
       confirmButtonColor: "#b6f3f8",
     }).then(() => {
       // Recarrega a página após o modal ser fechado

@@ -56,18 +56,18 @@ const VisualizarProjeto = () => {
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
-            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
             confirmButtonColor: "#b6f3f8",
-            cancelButtonText: "Não",
+            cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
         }).then((result: any) => {
             if (result.isConfirmed) {
                 DeletarProcesso(); // Chama a função deletar processo sem argumentos
             }
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Processo deletado com sucesso!",
+                    title: '<span style="font-size: 20px;">Processo deletado com sucesso!</span>',
                     customClass: "swalFire",
-                    confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                    confirmButtonText: '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 }).then(() => {
                     // Redirecionar para a página anterior após a confirmação
@@ -100,13 +100,13 @@ const VisualizarProjeto = () => {
     //atualizar modal processo
     const atualizarModalUpdate = () => {
         Swal.fire({
-            title: "Tem certeza que deseja atualizar esse processo?",
+            title: '<span class="poppins-text" style="font-size: 25px;" >Tem certeza que deseja atualizar esse processo?</span>',
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
-            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
             confirmButtonColor: "#b6f3f8",
-            cancelButtonText: "Não",
+            cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
         }).then((result: any) => {
             if (result.isConfirmed) {
                 editarProcesso(); // Chama a função editar processo
@@ -115,7 +115,7 @@ const VisualizarProjeto = () => {
                 Swal.fire({
                     title: "Processo editado com sucesso!",
                     customClass: "swalFire",
-                    confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+                    confirmButtonText: '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 })
             }

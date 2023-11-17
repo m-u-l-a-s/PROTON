@@ -72,10 +72,9 @@ export const NovaEtapa = () => {
             if (result.isConfirmed) {
                 LimparEtapas();
                 Swal.fire({
-                    title: '<span style="font-size: 20px;">Etapa limpa com sucesso!</span>',
+                    title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Etapa limpa com sucesso!</span>',
                     customClass: "swalFire",
-                    confirmButtonText:
-                    '<span style=" color: black; fontFamily: Poppins">OK</span>',
+                    confirmButtonText: '<span style=" color: black; fontFamily: Poppins">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 });
             }
@@ -474,7 +473,7 @@ export const NovaEtapa = () => {
                             alignItems="flex-end"
                             sx={{ gap: 80, marginTop: 0 }}
                         >
-                            <Button
+                            <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
                                 variant="contained"
                                 startIcon={<ClearIcon />}
                                 sx={{ background: "#292A2D", color: "white" }}
@@ -485,7 +484,7 @@ export const NovaEtapa = () => {
                         </Grid>
 
                         <Grid item>
-                            <Button
+                            <Button style={{ fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
                                 variant="contained"
                                 startIcon={<SaveIcon />}
                                 onClick={handleAdd}

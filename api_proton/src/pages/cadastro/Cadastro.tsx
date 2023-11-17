@@ -94,7 +94,7 @@ export const Cadastro = () => {
                     customClass: "swalFire",
                     icon: "error",
                     confirmButtonText:
-                        '<span style="font-size: 15px; color: black;">OK</span>',
+                        '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 });
                 limparDados();
@@ -136,7 +136,7 @@ export const Cadastro = () => {
                         customClass: "swalFire",
                         icon: "success",
                         confirmButtonText:
-                            '<span style="font-size: 15px; color: black;">OK</span>',
+                            '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                         confirmButtonColor: "#b6f3f8",
                     }).then((result) => {
                         // Check if the user clicked the "OK" button
@@ -154,7 +154,7 @@ export const Cadastro = () => {
                         customClass: "swalFire",
                         icon: "error",
                         confirmButtonText:
-                            '<span style="font-size: 15px; color: black;">OK</span>',
+                            '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                         confirmButtonColor: "#b6f3f8",
                     }).then((result) => {
                         // Check if the user clicked the "OK" button
@@ -185,15 +185,15 @@ export const Cadastro = () => {
                 title: "Por favor, insira todos os dados corretamente!",
                 customClass: "swalFire",
                 confirmButtonText:
-                    '<span style="font-size: 15px; color: black;">OK</span>',
+                    '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
             });
         } else {
             Swal.fire({
-                title: "Cadastro efetuado com sucesso!",
+                title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Cadastro efetuado com sucesso!</span>',
                 customClass: "swalFire",
                 confirmButtonText:
-                    '<span style="font-size: 15px; color: black;">OK</span>',
+                    '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                 confirmButtonColor: "#b6f3f8",
             });
         }

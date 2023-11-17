@@ -26,13 +26,13 @@ export function FileHeader({ file, onDelete, fileType, fileData, validaEdicao, c
   // Modal confirmação de deletar
   const deletarModal = () => {
     Swal.fire({
-      title: "Tem certeza que deseja deletar este anexo?",
+      title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja deletar este anexo?</span>',
       customClass: "swalFire",
       showCancelButton: true,
       focusConfirm: false,
-      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
-      cancelButtonText: "Não",
+      cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
     }).then((result: any) => {
       if (result.isConfirmed) {
         DeletarAnexo();
@@ -43,9 +43,9 @@ export function FileHeader({ file, onDelete, fileType, fileData, validaEdicao, c
 
   const showSuccessModal = () => {
     Swal.fire({
-      title: "Anexo deletado com sucesso!",
+      title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Anexo deletado com sucesso!</span>',
       customClass: "swalFire",
-      confirmButtonText: "OK",
+      confirmButtonText: '<span style=" color: black; fontFamily: Poppins">OK</span>',
       confirmButtonColor: "#b6f3f8",
     }).then(() => {
       // Recarrega a página após o modal ser fechado

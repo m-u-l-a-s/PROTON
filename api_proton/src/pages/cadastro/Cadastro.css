@@ -54,3 +54,7 @@
     margin-bottom: 30px;
     color: black;
 }
+
+.swalFire, .poppins-text {
+    font-family:  "Poppins";
+  }

@@ -93,23 +93,22 @@ export const NovoProjeto = () => {
     //modal de salvar projeto
     const handleAdd = () => {
         Swal.fire({
-            title: "Tem certeza que deseja criar esse projeto?",
+            title: '<span class="poppins-text" style="font-size: 25px;">Tem certeza que deseja criar esse projeto?</span>',
             customClass: "swalFire",
             showCancelButton: true,
             focusConfirm: false,
-            confirmButtonText: '<span style="color: black;">Sim</span>',
+            confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
             confirmButtonColor: "#b6f3f8",
-            cancelButtonText: "Não",
+            cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
         }).then((result: any) => {
             if (result.isConfirmed) {
                 inserirProcesso();
             }
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Processo criado com sucesso!",
+                    title: '<span class="poppins-text" style="font-size: 25px;">Processo criado com sucesso!</span>',
                     customClass: "swalFire",
-                    confirmButtonText:
-                        '<span style="font-size: 15px; color: black;">OK</span>',
+                    confirmButtonText: '<span class="poppins-text" style="font-size: 15px; color: black;">OK</span>',
                     confirmButtonColor: "#b6f3f8",
                 });
             }

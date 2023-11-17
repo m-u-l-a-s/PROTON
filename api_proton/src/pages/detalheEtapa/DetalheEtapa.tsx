@@ -58,20 +58,20 @@ export const DetalheEtapa = () => {
 
   const atualizarModal = () => {
     Swal.fire({
-      title: "Tem certeza que deseja atualizar esta etapa?",
+      title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja atualizar esta etapa?</span>',
       customClass: "swalFire",
       showCancelButton: true,
       focusConfirm: false,
-      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
-      cancelButtonText: "Não",
+      cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
     }).then((result: any) => {
       if (result.isConfirmed) {
         updateEtapa()
         Swal.fire({
-          title: "Etapa atualizada com sucesso!",
+          title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Etapa atualizada com sucesso!</span>',
           customClass: "swalFire",
-          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+          confirmButtonText: '<span style=" color: black; fontFamily: Poppins">OK</span>',
           confirmButtonColor: "#b6f3f8",
         }).then(() => {
           // Recarrega a página após o modal ser fechado
@@ -85,22 +85,22 @@ export const DetalheEtapa = () => {
   // Modal confirmação de deletar
   const deletarModal = () => {
     Swal.fire({
-      title: "Tem certeza que deseja deletar esta etapa?",
+      title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja deletar esta etapa?</span>',
       customClass: "swalFire",
       showCancelButton: true,
       focusConfirm: false,
-      confirmButtonText: '<span style="color: black;">Sim</span>',
+      confirmButtonText: '<span class="poppins-text" style=" color: black;">Sim</span>',
       confirmButtonColor: "#b6f3f8",
-      cancelButtonText: "Não",
+      cancelButtonText: '<span class="poppins-text" style=" color: white">Não</span>',
     }).then((result: any) => {
       if (result.isConfirmed) {
         DeletarEtapa(); // Chama a função deletar etapa sem argumentos
       }
       if (result.isConfirmed) {
         Swal.fire({
-          title: "Etapa deletada com sucesso!",
+          title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Etapa deletada com sucesso!</span>',
           customClass: "swalFire",
-          confirmButtonText: '<span style="font-size: 15px; color: black;">OK</span>',
+          confirmButtonText: '<span style=" color: black; fontFamily: Poppins">OK</span>',
           confirmButtonColor: "#b6f3f8",
         }).then(() => {
           // Redirecionar para a página anterior após a confirmação
