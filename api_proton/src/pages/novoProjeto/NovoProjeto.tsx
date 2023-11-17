@@ -12,7 +12,7 @@ import {
     Typography,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
-import DeleteIcon from "@mui/icons-material/Delete";
+import ClearIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import React, { SetStateAction, useEffect, useState } from "react";
@@ -20,7 +20,44 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import CustomTextField from "../../shared/components/mui/CustomTextField";
 
+
+
 export const NovoProjeto = () => {
+
+
+        //modal de limpar etapa
+        const handleClean = () => {
+            Swal.fire({
+                // title: "Tem certeza que deseja limpar esse processo?",
+                title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">Tem certeza que deseja limpar esse processo?</span>',
+                customClass: "swalFire",
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:  '<span class="poppins-text" style=" color: black;">Sim</span>',
+                confirmButtonColor: "#b6f3f8",
+                cancelButtonText: '<span class="poppins-text" style=" color: white;">Não</span>',
+            }).then((result: any) => {
+                if (result.isConfirmed) {
+                    LimparEtapas();
+                    Swal.fire({
+                        title: '<span class="poppins-text" style="font-size: 25px; color:#616161;">EProcesso limpa com sucesso!</span>',
+                        customClass: "swalFire",
+                        confirmButtonText: '<span style=" color: black; fontFamily: Poppins">OK</span>',
+                        confirmButtonColor: "#b6f3f8",
+                    });
+                }
+            });
+        };
+    
+        //função de limpar etapa
+        const LimparEtapas = () => {
+            setProcesso_nome("");
+            setProcesso_descricao("");
+        };
+
+
+
+
     const styles = {
         label: {
             fontSize: "1.6rem",
@@ -228,7 +265,8 @@ export const NovoProjeto = () => {
                     <Grid item>
                         <Button
                             variant="contained"
-                            startIcon={<DeleteIcon />}
+                            startIcon={<ClearIcon />}
+                            onClick={handleClean}
                             sx={{
                                 background: "#292A2D",
                                 color: "white",
@@ -237,7 +275,7 @@ export const NovoProjeto = () => {
                                 fontWeight: "bold",
                             }}
                         >
-                            Descartar
+                            Limpar Processo
                         </Button>
                     </Grid>
 

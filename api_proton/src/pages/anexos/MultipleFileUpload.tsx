@@ -210,7 +210,8 @@ export function MultipleFileUpload({
         >
           <input {...getInputProps()} />
           <CloudUploadIcon fontSize="large" color="primary" />
-          <Typography variant="inherit" style={{color:"white", fontFamily:'poppins'}}>Arraste o arquivo ou clique para procurar</Typography>
+          <Typography variant="inherit" style={{color:"white", fontFamily:'poppins', fontSize: '1.1em'}}>Arraste o arquivo ou clique para procurar</Typography>
+          <Typography variant="inherit" style={{color:"white", fontFamily:'poppins', fontSize: '0.8em'}}>Extensões permitidas: .pdf, .doc, .docx, .xlsx, .jpeg, .ods, .txt, .png </Typography>
         </div>
       </Grid>
 
