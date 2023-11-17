@@ -10,8 +10,10 @@ import {
     InputLabel,
     MenuItem,
     Select,
+    IconButton,
+    Menu,
 } from "@mui/material";
-import { ReactNode } from "react";
+import { MouseEvent, ReactNode } from "react";
 import Logo from "../img/Proton.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -20,6 +22,7 @@ import {
     useSessionStorageOrDefault,
 } from "../../../control/useSessionStorage";
 import { findAllByAltText } from "@testing-library/react";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export const MenuSuperior: React.FC<{
     children: ReactNode;
@@ -71,6 +74,18 @@ export const MenuSuperior: React.FC<{
     useEffect(() => {
         get_usuario();
     }, []);
+
+    // funções para menu ao lado do perfil
+
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <>
             <Box width="100%" height="0">
@@ -87,8 +102,8 @@ export const MenuSuperior: React.FC<{
                                     <img src={Logo} width={120} alt="logo" />
                                 </Grid>
 
-                                <Grid item>
-                                    <Stack direction="row" spacing={3}>
+                                <Grid item style={{marginLeft:"2.8rem"}}>
+                                    <Stack direction="row" spacing={4}>
                                         <Button
                                             variant="text"
                                             component={Link}
@@ -116,16 +131,6 @@ export const MenuSuperior: React.FC<{
                                         >
                                             Processos
                                         </Button>
-                                        <Button
-                                            variant="text"
-                                            style={{
-                                                fontFamily: "poppins",
-                                                fontWeight: "bold",
-                                                fontSize: "1em",
-                                            }}
-                                        >
-                                            Documentos
-                                        </Button>
                                     </Stack>
                                 </Grid>
 
@@ -136,16 +141,18 @@ export const MenuSuperior: React.FC<{
                                             fontFamily: "poppins",
                                         }}
                                     >
-                                        Perfil:
+                                        Olá
                                         <Select
                                             style={{
                                                 color: "white",
                                                 fontFamily: "poppins",
                                                 marginLeft: "8px",
+
                                             }}
                                             value={usuarioAtual}
                                             onChange={salvaPerfil}
                                             id="SelectPerfil"
+
                                         >
                                             {usuario.map((usuarioItem) => (
                                                 <MenuItem
@@ -160,8 +167,30 @@ export const MenuSuperior: React.FC<{
                                                     {usuarioItem.usuario_nome}
                                                 </MenuItem>
                                             ))}
+
                                         </Select>
                                     </span>
+                
+                                    <IconButton
+                                        aria-label="more"
+                                        id="long-button"
+                                        style={{ color: "white" }}
+                                        onClick={handleClick}
+                                    >
+                                        <MoreVertIcon />
+                                    </IconButton>
+
+                                    <Menu
+                                        id="long-menu"
+                                        anchorEl={anchorEl}
+                                        open={Boolean(anchorEl)}
+                                        onClose={handleClose}
+                                    >
+                                        <MenuItem style={{ color: "white", fontFamily: "poppins" }}>
+                                            Logout
+                                        </MenuItem>
+                                    </Menu>
+
                                 </Grid>
                             </Grid>
                         </Container>
