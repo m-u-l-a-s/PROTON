@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers';
@@ -20,16 +20,27 @@ const CustomDatePicker = styled(DatePicker)({
 
 interface CalendarioEtapaProps {
   dataBanco: string;
+  callback: Function;
 }
 
-export function CalendarioEtapa({ dataBanco }: CalendarioEtapaProps) {
+export function CalendarioEtapa({ dataBanco, callback }: CalendarioEtapaProps) {
   const value = dayjs(dataBanco, "DD-MM-YYYY");
+
+  //função que repassa o valor da data para o DetalheEtapa
+
+  const handleCallback = (valor:string) =>{
+    const valueCallback = new Date(valor);
+    //console.log(valor);
+    //console.log(valueCallback)
+    callback(valueCallback)
+  }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
       <CustomDatePicker
-        value={value}
+        value={value} onChange={(value) => handleCallback(String(value))}
       />
     </LocalizationProvider>
   );
+  
 }

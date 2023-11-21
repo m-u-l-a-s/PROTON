@@ -28,6 +28,7 @@ import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import CustomTextField from "../../shared/components/mui/CustomTextField";
+import { date } from "yup";
 
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
@@ -231,6 +232,16 @@ export const DetalheEtapa = () => {
     setFlag(false)
   };
 
+  const handleCallback =(valor:Date)=>{
+    console.log(valor)
+    const nameDate =  'etapa_data_conclusao';
+    setEtapa(prevEtapa => ({
+      ...prevEtapa,
+      [nameDate]: valor
+    }));
+    setFlag(false)
+  }
+
   return (
     <Box
       display="flex"
@@ -308,7 +319,7 @@ export const DetalheEtapa = () => {
               </Grid>
 
               <Grid margin={"15px"}>
-                <CalendarioEtapa dataBanco={dataDoBanco} />
+                <CalendarioEtapa dataBanco={dataDoBanco} callback={handleCallback} />
               </Grid>
 
               <Grid item margin={"15px"}>
