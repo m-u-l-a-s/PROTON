@@ -98,7 +98,10 @@ export const NovoProjeto = () => {
             }
         }
 
-        let nome = document.getElementById("SelectPerfil")?.textContent;
+        let nome = document.getElementById("currentUserText")?.textContent;
+        if (nome !== undefined && nome !== null) {
+            nome = nome.substring(5)
+        }
         console.log(nome);
         fetchUserId(nome);
     }, []);

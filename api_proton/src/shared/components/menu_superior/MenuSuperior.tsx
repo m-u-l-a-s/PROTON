@@ -144,7 +144,7 @@ export const MenuSuperior: React.FC<{
                                 </Grid>
 
                                 <Grid item style={{ marginLeft: "auto" }}>
-                                    <span
+                                    <span id="currentUserText"
                                         style={{
                                             marginRight: "20px",
                                             fontFamily: "poppins",
