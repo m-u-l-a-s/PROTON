@@ -581,7 +581,16 @@ app.get("/contarEtapasPendentes/:responsavelId/:nivel", async (req, res) => {
             );
             const count = etapa_status.rows[0].count;
             res.status(200).json({ count: count });
-        } else {
+        } 
+        else if (nivel === "LE") {
+            const etapa_status = await pool.query(
+                "SELECT COUNT(*) FROM processo p JOIN etapa e ON p.processo_id = e.processo_id WHERE p.processo_responsavel_id = $1 AND e.etapa_status = 'P'",
+                [responsavelId]
+            );
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        }
+        else {
             const etapa_status = await pool.query(
                 "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'P' ",
 
@@ -605,13 +614,22 @@ app.get("/contarEtapasConcluidas/:responsavelId/:nivel", async (req, res) => {
 
         if (nivel === "CL") {
             const etapa_status = await pool.query(
-                "SELECT Count(*) FROM etapa WHERE etapa_status ='C' "
+                "SELECT Count(*) FROM etapa WHERE etapa_status ='C'"
             );
             const count = etapa_status.rows[0].count;
             res.status(200).json({ count: count });
-        } else {
+        } 
+        else if (nivel === "LE") {
             const etapa_status = await pool.query(
-                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'C' ",
+                "SELECT COUNT(*) FROM processo p JOIN etapa e ON p.processo_id = e.processo_id WHERE p.processo_responsavel_id = $1 AND e.etapa_status = 'C'",
+                [responsavelId]
+            );
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        }
+        else {
+            const etapa_status = await pool.query(
+                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'C'",
                 [responsavelId]
             );
             const count = etapa_status.rows[0].count;
@@ -637,7 +655,16 @@ app.get("/contarEtapasEmAprovacao/:responsavelId/:nivel", async (req, res) => {
             );
             const count = etapa_status.rows[0].count;
             res.status(200).json({ count: count });
-        } else {
+        } 
+        else if (nivel === "LE") {
+            const etapa_status = await pool.query(
+                "SELECT COUNT(*) FROM processo p JOIN etapa e ON p.processo_id = e.processo_id WHERE p.processo_responsavel_id = $1 AND e.etapa_status = 'A'",
+                [responsavelId]
+            );
+            const count = etapa_status.rows[0].count;
+            res.status(200).json({ count: count });
+        }
+        else {
             const etapa_status = await pool.query(
                 "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status = 'A' ",
                 [responsavelId]
@@ -671,9 +698,15 @@ app.get("/contarEtapasAtrasadas/:responsavelId/:nivel", async (req, res) => {
             query =
                 "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao < $1";
             queryParams = [dataAtual];
-        } else {
+        }
+        else if (nivel === "LE") {
             query =
-                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status IN ('P', 'A') AND etapa_data_conclusao < $2";
+                "SELECT COUNT(*) FROM processo p JOIN etapa e ON p.processo_id = e.processo_id WHERE p.processo_responsavel_id = $1 AND e.etapa_status IN ('P', 'A') AND e.etapa_data_conclusao < $2";
+            queryParams = [responsavelId, dataAtual];
+        } 
+        else {
+            query =
+                "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status IN ('P', 'A') AND etapa_data_conclusao < $2 OR etapa_status = 'A'";
             queryParams = [responsavelId, dataAtual];
         }
 
@@ -696,20 +729,23 @@ app.get("/contarEtapasAVencer/:responsavelId/:nivel", async (req, res) => {
         const dataAtual = new Date();
 
         // Obtendo a data de uma semana antes de vencer
-        const seteDiasAntes = new Date(dataAtual);
-        seteDiasAntes.setDate(dataAtual.getDate() - 7);
+        const seteDiasDepois = new Date(dataAtual);
+        seteDiasDepois.setDate(dataAtual.getDate() + 7);
 
         let query = "";
-        let queryParams = [];
+        let queryParams = [responsavelId, dataAtual, seteDiasDepois]; 
 
         if (nivel === "CL") {
             query =
-                "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao >= $1 AND etapa_data_conclusao < $2";
-            queryParams = [seteDiasAntes, dataAtual];
-        } else {
+                "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao >= $2 AND etapa_data_conclusao < $3";
+        } 
+        else if (nivel === "LE") {
+            query =
+                "SELECT COUNT(*) FROM processo p JOIN etapa e ON p.processo_id = e.processo_id WHERE p.processo_responsavel_id = $1 AND e.etapa_status IN ('P', 'A') AND e.etapa_data_conclusao >= $2 AND e.etapa_data_conclusao < $3";
+        } 
+        else {
             query =
                 "SELECT COUNT(*) FROM etapa WHERE etapa_responsavel_id = $1 AND etapa_status IN ('P', 'A') AND etapa_data_conclusao >= $2 AND etapa_data_conclusao < $3";
-            queryParams = [responsavelId, seteDiasAntes, dataAtual];
         }
 
         const etapa_status = await pool.query(query, queryParams);
