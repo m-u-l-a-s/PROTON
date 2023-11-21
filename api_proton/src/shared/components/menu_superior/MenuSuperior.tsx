@@ -86,6 +86,16 @@ export const MenuSuperior: React.FC<{
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    let user
+
+    try {
+        user = JSON.parse(usuarioAtual)
+    } catch (error) {
+        console.log(error)
+    }
+
+
     return (
         <>
             <Box width="100%" height="0">
@@ -141,8 +151,11 @@ export const MenuSuperior: React.FC<{
                                             fontFamily: "poppins",
                                         }}
                                     >
-                                        Olá
-                                        <Select
+                                        {user && (
+                                            <>Olá, {user.usuario_nome}</>
+                                        )}
+                                        
+                                        {/* <Select
                                             style={{
                                                 color: "white",
                                                 fontFamily: "poppins",
@@ -168,7 +181,7 @@ export const MenuSuperior: React.FC<{
                                                 </MenuItem>
                                             ))}
 
-                                        </Select>
+                                        </Select> */}
                                     </span>
                 
                                     <IconButton

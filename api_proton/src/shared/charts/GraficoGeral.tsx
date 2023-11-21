@@ -19,11 +19,11 @@ const GraficoGeral: React.FC<{ valores: GraficoValores }> = ({ valores }) => {
       series={[
         {
           data: [
-            { id: 0, value: valores.concluidas, label: 'Concluídas' },
-            { id: 1, value: valores.pendentes, label: 'Pendentes' },
-            { id: 2, value: valores.emAprovacao, label: 'Em aprovação' },
-            { id: 3, value: valores.atrasadas, label: 'Atrasadas' },
-            { id: 4, value: valores.aVencer, label: 'A Vencer'}
+            { id: 0, value: valores.concluidas, label: 'Concluídas', color:"#5DC474" }, 
+            { id: 1, value: valores.pendentes, label: 'Pendentes', color:"#FFD15C" },
+            { id: 2, value: valores.emAprovacao, label: 'Em aprovação', color:"#00C1EA" },
+            { id: 3, value: valores.atrasadas, label: 'Atrasadas', color:"#FF7058" },
+            { id: 4, value: valores.aVencer, label: 'A Vencer', color:"#9747FF"}
           ],
         },
       ]}
