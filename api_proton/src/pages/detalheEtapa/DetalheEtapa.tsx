@@ -393,7 +393,7 @@ export const DetalheEtapa = () => {
                 /> */}
 
                 <TextField
-                  label="Deixe um comentário:"
+                  label="Observações:"
                   id="comentario"
                   sx={{ width: "24vw" }}
                   value={etapa.etapa_comentario}
