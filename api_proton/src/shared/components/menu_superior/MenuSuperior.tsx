@@ -88,7 +88,6 @@ export const MenuSuperior: React.FC<{
     };
 
     let user
-
     try {
         user = JSON.parse(usuarioAtual)
     } catch (error) {
@@ -112,7 +111,7 @@ export const MenuSuperior: React.FC<{
                                     <img src={Logo} width={120} alt="logo" />
                                 </Grid>
 
-                                <Grid item style={{marginLeft:"2.8rem"}}>
+                                <Grid item style={{}}>
                                     <Stack direction="row" spacing={4}>
                                         <Button
                                             variant="text"
@@ -149,6 +148,7 @@ export const MenuSuperior: React.FC<{
                                         style={{
                                             marginRight: "20px",
                                             fontFamily: "poppins",
+                                            fontSize: "1.1em"
                                         }}
                                     >
                                         {user && (

@@ -109,7 +109,7 @@ export function FileHeader({ file, onDelete, fileType, fileData, validaEdicao, c
     >
       <Grid item marginLeft="0.7em">
         <Typography variant="body2" fontFamily={"poppins"} fontSize={"1em"} color={"white"}>
-          {file.name} - {formattedDate}
+          Arquivo: {file.name} - Enviado em: {formattedDate}
         </Typography>
       </Grid>
       <Grid item>
