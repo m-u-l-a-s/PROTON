@@ -1,2 +1,0 @@
-INSERT INTO usuario (usuario_nome, usuario_nivel, usuario_senha, usuario_data_cadastro, usuario_email) values 
-('Administrador', 'AD', 'adm@adm', '21-11-2023', 'alexandre.fonseca01@fatec.sp.gov.br')
