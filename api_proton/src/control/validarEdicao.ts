@@ -23,11 +23,36 @@ export function validarEdicao(pagina: string, id: number) {
 
 }
 
+// const puxaID = () => {
+//     try {
+//         const perfilJSON: any = sessionStorage.getItem('perfil')
+//         return JSON.parse(JSON.parse(perfilJSON))
+//     } catch (error) {
+//         return 'ER'
+//     }
+// }
+
+
 const puxaID = () => {
     try {
-        const perfilJSON: any = sessionStorage.getItem('perfil')
-        return JSON.parse(JSON.parse(perfilJSON))
+        const perfilJSON: string | null = sessionStorage.getItem('perfil');
+
+        if (perfilJSON !== null) {
+            const parsedPerfil = JSON.parse(perfilJSON);
+
+            if (parsedPerfil && typeof parsedPerfil === 'object' && 'usuario_id' in parsedPerfil) {
+                return parsedPerfil;
+            } else {
+                // Se 'perfil' ou 'usuario_id' não existirem
+                return { usuario_id: null, };
+            }
+        } 
     } catch (error) {
-        return 'ER'
+        console.error("Erro ao analisar o perfil JSON:", error);
+        return { usuario_id: null, /* outras propriedades */ };
     }
-}
+};
+
+
+
+
