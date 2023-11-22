@@ -69,8 +69,9 @@ export const Home = () => {
     const [nEtapasPendentes, setContarPendentes] = useState(0);
     const ContarPendentes = async () => {
         try {
+            const usuario_nivel = "CL" || "AD";
             const nivel = {
-                usuario_nivel: "CL",
+            usuario_nivel: usuario_nivel
             };
 
             const response = await fetch(
@@ -93,8 +94,9 @@ export const Home = () => {
     const [nEtapasConcluidas, setContarConcluidos] = useState(0);
     const ContarConcluidos = async () => {
         try {
+            const usuario_nivel = "CL" || "AD";
             const nivel = {
-                usuario_nivel: "CL",
+            usuario_nivel: usuario_nivel
             };
 
             const response = await fetch(
@@ -117,8 +119,9 @@ export const Home = () => {
     const [nEtapasEmAprocaçao, setContarAprovacao] = useState(0);
     const ContarAprovacao = async () => {
         try {
+            const usuario_nivel = "CL" || "AD";
             const nivel = {
-                usuario_nivel: "CL",
+            usuario_nivel: usuario_nivel
             };
 
             const response = await fetch(
@@ -141,8 +144,9 @@ export const Home = () => {
     const [nEtapasAtrasadas, setContarAtrasados] = useState(0);
     const ContarAtrasados = async () => {
         try {
+            const usuario_nivel = "CL" || "AD";
             const nivel = {
-                usuario_nivel: "CL",
+            usuario_nivel: usuario_nivel
             };
 
             const response = await fetch(
@@ -162,28 +166,32 @@ export const Home = () => {
     };
 
     // Etapas a Vencer
-    const [nEtapasAVencer, setContarAVencer] = useState(0);
-    const ContarAVencer = async () => {
-        try {
-            const nivel = {
-                usuario_nivel: "CL",
-            };
+const [nEtapasAVencer, setContarAVencer] = useState(0);
 
-            const response = await fetch(
-                `http://localhost:5000/contarEtapasAVencer/${
-                    JSON.parse(perfil).usuario_id
-                }/${JSON.parse(perfil).usuario_nivel}`
-            );
-            if (response.ok) {
-                const data = await response.json();
-                setContarAVencer(data.count);
-            } else {
-                console.error("Erro na resposta da solicitação:", response);
-            }
-        } catch (error) {
-            console.error("Erro ao buscar o número de etapas:", error);
+const ContarAVencer = async () => {
+    try {
+        const usuario_nivel = "CL" || "AD";
+        const nivel = {
+            usuario_nivel: usuario_nivel
+        };
+
+        const response = await fetch(
+            `http://localhost:5000/contarEtapasAVencer/${
+                JSON.parse(perfil).usuario_id
+            }/${nivel.usuario_nivel}`
+        );
+
+        if (response.ok) {
+            const data = await response.json();
+            setContarAVencer(data.count);
+        } else {
+            console.error("Erro na resposta da solicitação:", response);
         }
-    };
+    } catch (error) {
+        console.error("Erro ao buscar o número de etapas:", error);
+    }
+};
+
 
     //Gráfico
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -575,7 +575,7 @@ app.get("/contarEtapasPendentes/:responsavelId/:nivel", async (req, res) => {
         console.log(req.body);
         const responsavelId = req.params.responsavelId;
         const nivel = req.params.nivel;
-        if (nivel === "CL") {
+        if (nivel === "CL" || nivel === "AD") {
             const etapa_status = await pool.query(
                 " SELECT Count(*) FROM etapa WHERE etapa_status ='P' "
             );
@@ -612,7 +612,7 @@ app.get("/contarEtapasConcluidas/:responsavelId/:nivel", async (req, res) => {
         const responsavelId = req.params.responsavelId;
         const nivel = req.params.nivel;
 
-        if (nivel === "CL") {
+        if (nivel === "CL" || nivel === "AD") {
             const etapa_status = await pool.query(
                 "SELECT Count(*) FROM etapa WHERE etapa_status ='C'"
             );
@@ -649,7 +649,7 @@ app.get("/contarEtapasEmAprovacao/:responsavelId/:nivel", async (req, res) => {
         const responsavelId = req.params.responsavelId;
         const nivel = req.params.nivel;
 
-        if (nivel === "CL") {
+        if (nivel === "CL" || nivel === "AD") {
             const etapa_status = await pool.query(
                 "SELECT Count(*) FROM etapa WHERE etapa_status ='A' "
             );
@@ -694,7 +694,7 @@ app.get("/contarEtapasAtrasadas/:responsavelId/:nivel", async (req, res) => {
         let query = "";
         let queryParams = [];
 
-        if (nivel === "CL") {
+        if (nivel === "CL" || nivel === "AD") {
             query =
                 "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao < $1";
             queryParams = [dataAtual];
@@ -735,7 +735,7 @@ app.get("/contarEtapasAVencer/:responsavelId/:nivel", async (req, res) => {
         let query = "";
         let queryParams = [responsavelId, dataAtual, seteDiasDepois]; 
 
-        if (nivel === "CL") {
+        if (nivel === "CL" || nivel === "AD") {
             query =
                 "SELECT COUNT(*) FROM etapa WHERE etapa_status IN ('P', 'A') AND etapa_data_conclusao >= $2 AND etapa_data_conclusao < $3";
         } 
