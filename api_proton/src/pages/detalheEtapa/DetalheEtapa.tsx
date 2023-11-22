@@ -233,7 +233,7 @@ export const DetalheEtapa = () => {
   };
 
   const handleCallback =(valor:Date)=>{
-    console.log(valor)
+   // console.log(valor)
     const nameDate =  'etapa_data_conclusao';
     setEtapa(prevEtapa => ({
       ...prevEtapa,

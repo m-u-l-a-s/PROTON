@@ -13,7 +13,8 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
 
 
  export const  App = () => {
-  const isLoginPage = window.location.pathname === "/login";
+  //const isLoginPage = window.location.pathname === "/login";
+  const isLoginPage = (window.location.pathname === "/login") || (window.location.pathname === "/");
   const isCadastroPage = window.location.pathname === "/cadastro";
   const isResto = !(isLoginPage || isCadastroPage)
 
