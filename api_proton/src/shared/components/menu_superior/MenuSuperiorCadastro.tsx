@@ -20,6 +20,7 @@ import {
     useSessionStorageOrDefault,
 } from "../../../control/useSessionStorage";
 import { findAllByAltText } from "@testing-library/react";
+import { validarEdicao } from "../../../control/validarEdicao";
 
 export const MenuSuperiorCadastro: React.FC<{
     children: ReactNode;
@@ -59,6 +60,9 @@ export const MenuSuperiorCadastro: React.FC<{
     useEffect(() => {
         get_usuario();
     }, []);
+
+    const [validaEdicao, setValidaEdicao] = useState(validarEdicao('MenuSuperior',0));
+
     return (
         <>
             <Box width="100%" height="0">
@@ -74,6 +78,53 @@ export const MenuSuperiorCadastro: React.FC<{
                                 <Grid item>
                                     <img src={Logo} width={120} alt="logo" />
                                 </Grid>
+
+                                <Button
+                                            variant="text"
+                                            component={Link}
+                                            to="/Home"
+                                            style={{
+                                                fontFamily: "poppins",
+                                                fontWeight: "bold",
+                                                fontSize: "1em",
+                                                justifyContent: "center",
+                                                marginLeft: "400px",
+                                            }}
+                                            //função que esconde o botão para o CL
+                                            sx={{display: validaEdicao ? "none" : "flex"}}
+                                        >
+                                            Home
+                                        </Button>
+
+                                        <Button
+                                            variant="text"
+                                            component={Link}
+                                            to="/MyProjects"
+                                            style={{
+                                                fontFamily: "poppins",
+                                                fontWeight: "bold",
+                                                fontSize: "1em",
+                                            }}
+                                            //função que esconde o botão para o CL
+                                            sx={{display: validaEdicao ? "none" : "flex"}}
+                                        >
+                                            Processos
+                                        </Button>
+
+                                        <Button
+                                            variant="text"
+                                            component={Link}
+                                            to="/Cadastro"
+                                            style={{
+                                                fontFamily: "poppins",
+                                                fontWeight: "bold",
+                                                fontSize: "1em",
+                                            }}
+                                            //função que esconde o botão para o CL
+                                            sx={{display: validaEdicao ? "none" : "flex"}}
+                                        >
+                                             <span style={{padding:"10px"}}>Cadastrar</span>  usuário
+                                        </Button>
 
                                 <Grid item style={{ marginLeft: "auto" }}>
                                     <span
