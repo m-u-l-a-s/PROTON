@@ -1,37 +1,32 @@
 export function validarEdicao(pagina: string, id: number) {
-    let UsuarioID = puxaID().usuario_id
-    switch (pagina) {
-        case 'DetalheEtapa':
-            return !(UsuarioID === id)
+    const usuarioData = puxaID();
 
-        case 'VisualizarProjeto':
-            return !(UsuarioID === id)
+    // Verifica se puxaID() retornou um valor válido
+    if (usuarioData && usuarioData.usuario_id !== null) {
+        const UsuarioID = usuarioData.usuario_id;
 
-        case 'Anexos':
-            return !(UsuarioID === id)
+        switch (pagina) {
+            case 'DetalheEtapa':
+            case 'VisualizarProjeto':
+            case 'Anexos':
+                return !(UsuarioID === id);
 
-        case 'MyProjects':
-            return !(puxaID().usuario_nivel === 'LE')
+            case 'MyProjects':
+                return !(usuarioData.usuario_nivel === 'LE');
 
-        case 'MenuSuperior':
-            const isLoginPage = (window.location.pathname === "/login") || (window.location.pathname === "/");
-            return (isLoginPage ? false : (puxaID().usuario_nivel === 'CL'))
+            case 'MenuSuperior':
+                const isLoginPage = (window.location.pathname === "/login") || (window.location.pathname === "/");
+                return (isLoginPage ? false : (usuarioData.usuario_nivel === 'CL'));
 
-        default:
+            default:
+                // Lógica padrão, caso a página não corresponda a nenhum dos casos
+                return false;
+        }
+    } else {
+        // Tratamento para caso puxaID() retorne null ou usuário_id seja null
+        return false;
     }
-
-
 }
-
-// const puxaID = () => {
-//     try {
-//         const perfilJSON: any = sessionStorage.getItem('perfil')
-//         return JSON.parse(JSON.parse(perfilJSON))
-//     } catch (error) {
-//         return 'ER'
-//     }
-// }
-
 
 const puxaID = () => {
     try {
@@ -44,15 +39,14 @@ const puxaID = () => {
                 return parsedPerfil;
             } else {
                 // Se 'perfil' ou 'usuario_id' não existirem
-                return { usuario_id: null, };
+                return { usuario_id: null };
             }
-        } 
+        } else {
+            // Se 'perfil' for nulo
+            return { usuario_id: null };
+        }
     } catch (error) {
         console.error("Erro ao analisar o perfil JSON:", error);
-        return { usuario_id: null, /* outras propriedades */ };
+        return { usuario_id: null };
     }
 };
-
-
-
-
