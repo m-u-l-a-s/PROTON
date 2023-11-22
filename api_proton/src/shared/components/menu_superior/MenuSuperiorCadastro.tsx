@@ -93,7 +93,7 @@ export const MenuSuperiorCadastro: React.FC<{
                                                 justifyContent: "center",
                                                 marginLeft: "400px",
                                             }}
-                                            //função que esconde o botão para o CL ou AD
+                                            //função que esconde o botão para o CL
                                             //sx={{display: validaEdicao ? "none" : "flex"}}
                                         >
                                             Home
@@ -122,11 +122,12 @@ export const MenuSuperiorCadastro: React.FC<{
                                                 fontFamily: "poppins",
                                                 fontWeight: "bold",
                                                 fontSize: "1em",
+                                               
                                             }}
                                             //função que esconde o botão para o CL
                                            // sx={{display: validaEdicao ? "none" : "flex"}}
                                         >
-                                            Cadastrar usuário
+                                           <span style={{padding:"10px"}}> Cadastrar </span> usuário
                                         </Button>
                                     </Stack>
                                 </Grid>
