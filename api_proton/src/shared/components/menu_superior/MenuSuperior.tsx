@@ -23,7 +23,6 @@ import {
 } from "../../../control/useSessionStorage";
 import { findAllByAltText } from "@testing-library/react";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { validarEdicao } from "../../../control/validarEdicao";
 
 export const MenuSuperior: React.FC<{
     children: ReactNode;
@@ -95,8 +94,6 @@ export const MenuSuperior: React.FC<{
         console.log(error)
     }
 
-    // função para verificar se o perfil é CL -> não aparecer botões de home e processo
-    const [validaEdicao, setValidaEdicao] = useState(validarEdicao('MenuSuperior',0));
 
     return (
         <>
@@ -127,8 +124,6 @@ export const MenuSuperior: React.FC<{
                                                 justifyContent: "center",
                                                 marginLeft: "400px",
                                             }}
-                                            //função que esconde o botão para o CL
-                                            sx={{display: validaEdicao ? "none" : "flex"}}
                                         >
                                             Home
                                         </Button>
@@ -142,8 +137,6 @@ export const MenuSuperior: React.FC<{
                                                 fontWeight: "bold",
                                                 fontSize: "1em",
                                             }}
-                                            //função que esconde o botão para o CL
-                                            sx={{display: validaEdicao ? "none" : "flex"}}
                                         >
                                             Processos
                                         </Button>

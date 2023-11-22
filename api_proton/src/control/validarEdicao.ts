@@ -12,11 +12,6 @@ export function validarEdicao(pagina: string, id: number) {
 
         case 'MyProjects':
             return !(puxaID().usuario_nivel === 'LE')
-
-        case 'MenuSuperior':
-            const isLoginPage = (window.location.pathname === "/login") || (window.location.pathname === "/");
-            return (isLoginPage ? false : (puxaID().usuario_nivel === 'CL') )
-            
         default:
     }
 }
