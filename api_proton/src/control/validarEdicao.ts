@@ -1,15 +1,14 @@
 export function validarEdicao(pagina: string, id: number) {
-    const usuarioData = puxaID();
+    let UsuarioID = puxaID().usuario_id
+    switch (pagina) {
+        case 'DetalheEtapa':
+            return !(UsuarioID === id)
 
-    // Verifica se puxaID() retornou um valor válido
-    if (usuarioData && usuarioData.usuario_id !== null) {
-        const UsuarioID = usuarioData.usuario_id;
+        case 'VisualizarProjeto':
+            return !(UsuarioID === id)
 
-        switch (pagina) {
-            case 'DetalheEtapa':
-            case 'VisualizarProjeto':
-            case 'Anexos':
-                return !(UsuarioID === id);
+        case 'Anexos':
+            return !(UsuarioID === id)
 
             case 'MyProjects':
                 return !(usuarioData.usuario_nivel === 'LE');
@@ -50,3 +49,7 @@ const puxaID = () => {
         return { usuario_id: null };
     }
 };
+
+
+
+
