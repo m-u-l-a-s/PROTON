@@ -6,6 +6,8 @@ import { Login } from "./pages/login/Login";
 // import { DarkTheme} from "./shared/themes/Dark";
 // import { ThemeProvider } from "@emotion/react";
 import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
+import { useState } from "react";
+import { validarEdicao } from "./control/validarEdicao";
 
 
 
@@ -13,10 +15,9 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContexts";
 
 
  export const  App = () => {
-  const isLoginPage = window.location.pathname === "/login";
+  const isLoginPage = (window.location.pathname === "/login") || (window.location.pathname === "/");
   const isCadastroPage = window.location.pathname === "/cadastro";
   const isResto = !(isLoginPage || isCadastroPage)
-
 
   return (
 
