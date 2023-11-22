@@ -148,23 +148,6 @@ export const MenuSuperior: React.FC<{
                                         >
                                             Processos
                                         </Button>
-
-
-                                        <Button
-                                            variant="text"
-                                            component={Link}
-                                            to="/Cadastro"
-                                            style={{
-                                                fontFamily: "poppins",
-                                                fontWeight: "bold",
-                                                fontSize: "1em",
-                                            }}
-                                            //função que esconde o botão para o CL
-                                            sx={{display: validaEdicao ? "none" : "flex"}}
-                                        >
-                                           <span style={{padding:"10px"}}>Cadastrar</span>  usuário
-                                        </Button>
-                                        
                                     </Stack>
                                 </Grid>
 
