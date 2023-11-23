@@ -11,10 +11,10 @@ export function validarEdicao(pagina: string, id: number) {
     case "DetalheEtapa":
     case "VisualizarProjeto":
     case "Anexos":
-      return !(UsuarioID === id);
+      return !( (UsuarioID === id) || (puxaID().usuario_nivel === "AD"));
 
     case "MyProjects":
-      return !(puxaID().usuario_nivel === "LE" || "AD");
+      return !(puxaID().usuario_nivel === "LE" || (puxaID().usuario_nivel === "AD"));
 
     case "MenuSuperior":
       return isLoginPage ? false : puxaID().usuario_nivel === "CL";
