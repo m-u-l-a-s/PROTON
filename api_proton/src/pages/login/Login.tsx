@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 // } from "../../control/useSessionStorage";
 import { useNavigate } from "react-router-dom";
 import { MenuSuperiorLogin } from "../../shared/components/menu_superior/MenuSuperiorLogin";
+import { BaseURL } from "../../control/BaseURL";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -77,7 +78,7 @@ export const Login = () => {
       const senha = login.password;
       try {
         // Make an HTTP GET request to the server
-        const response = await fetch(`http://localhost:5000/get_usuario_login/${email}/${senha}`);
+        const response = await fetch(`${BaseURL()}/get_usuario_login/${email}/${senha}`);
         const jsonData = await response.json();
         setUser(jsonData);
         setUsuarioAtual(jsonData);

@@ -14,7 +14,7 @@ import { validarEdicao } from "../../control/validarEdicao";
 import { validarStatus } from "../../control/validarStatusEtapa";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import CustomTextField from "../../shared/components/mui/CustomTextField";
-
+import { BaseURL } from "../../control/BaseURL";
 
 
 const VisualizarProjeto = () => {
@@ -84,7 +84,7 @@ const VisualizarProjeto = () => {
                 processo,
             };
             console.log(body);
-            const response = await fetch(`http://localhost:5000/deletarProcesso/${etapa_id}`, {
+            const response = await fetch(`${BaseURL()}/deletarProcesso/${etapa_id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
@@ -134,7 +134,7 @@ const VisualizarProjeto = () => {
             const body = { processo_nome, processo_descricao }
 
             console.log(body);
-            const response = await fetch(`http://localhost:5000/put_processo/${etapa_id}`, {
+            const response = await fetch(`${BaseURL()}/put_processo/${etapa_id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
@@ -150,7 +150,7 @@ const VisualizarProjeto = () => {
         const fetchData = async () => {
             try {
                 const etapaResponse = await fetch(
-                    `http://localhost:5000/get_etapa_by_processo/${location.state.id.toString()}`
+                    `${BaseURL()}/get_etapa_by_processo/${location.state.id.toString()}`
                 );
                 const etapaData = await etapaResponse.json();
                 setEtapa(etapaData);
@@ -158,7 +158,7 @@ const VisualizarProjeto = () => {
                 // Busca os anexos e seus contadores para cada etapa
                 const etapaAnexosData = await Promise.all(etapaData.map(async (etapaItem: EtapaAnexos) => {
                     const anexosResponse = await fetch(
-                        `http://localhost:5000/get_anexos_by_etapa/${etapaItem.etapa_id}`
+                        `${BaseURL()}/get_anexos_by_etapa/${etapaItem.etapa_id}`
                     );
                     const anexosData = await anexosResponse.json();
                     return {
@@ -170,7 +170,7 @@ const VisualizarProjeto = () => {
 
                 const idProc = location.state.id.toString();
                 const processoResponse = await fetch(
-                    `http://localhost:5000/get_processo/${idProc}`
+                    `${BaseURL()}/get_processo/${idProc}`
                 );
                 const processoData = await processoResponse.json();
                 setProcesso(processoData);

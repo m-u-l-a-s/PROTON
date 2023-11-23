@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./CardProcessos.css";
 import { useNavigate } from "react-router-dom";
 import BarraPrioridade from "./BarraPrioridade";
-
+import { BaseURL } from "../../control/BaseURL";
 
 
 const verificaStatus = async (processId: any) => {
     try {
         // Buscar todas as etapas do processo:
         const etapasResponse = await fetch(
-            `http://localhost:5000/get_etapa_by_processo/${processId}`
+            `${BaseURL()}/get_etapa_by_processo/${processId}`
         );
         if (!etapasResponse.ok) {
             throw new Error("Não foi possível buscar etapas.");
@@ -25,7 +25,7 @@ const verificaStatus = async (processId: any) => {
 
         for (const etapa of etapas) {
             const anexosResponse = await fetch(
-                `http://localhost:5000/get_anexos_by_etapa/${etapa.etapa_id}`
+                `${BaseURL()}/get_anexos_by_etapa/${etapa.etapa_id}`
             );
             if (!anexosResponse.ok) {
                 throw new Error("Erro ao buscar anexos.");
@@ -90,7 +90,7 @@ export const CardProcesso = (prop: any) => {
     const ContarEtapas = async () => {
         try {
             const contarEtapas = await fetch(
-                `http://localhost:5000/get_numeroEtapa/${prop.processoID}`
+                `${BaseURL()}/get_numeroEtapa/${prop.processoID}`
             );
             const contarEtapasP = await contarEtapas.json();
             setContarEtapa(contarEtapasP);

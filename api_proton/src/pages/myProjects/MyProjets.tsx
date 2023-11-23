@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import BasicSelect from "./BasicSelect";
 import { validarEdicao } from "../../control/validarEdicao";
+import { BaseURL } from "../../control/BaseURL";
 
 export const MyProjects = () => {
     const [processos, setProcesso] = useState([
@@ -35,8 +36,8 @@ export const MyProjects = () => {
         const perfilJSON: any = sessionStorage.getItem('perfil')
         const id = JSON.parse(JSON.parse(perfilJSON)).usuario_id
         try {
-            const response = await fetch (`http://localhost:5000/get_processos_responsavel/${id}`);
-            //const response = await fetch("http://localhost:5000/get_processos");
+            const response = await fetch (`${BaseURL()}/get_processos_responsavel/${id}`);
+            //const response = await fetch("${BaseURL()}/get_processos");
             const jsonData = await response.json();
 
             // console.log(jsonData)
@@ -59,7 +60,7 @@ export const MyProjects = () => {
         const id = JSON.parse(JSON.parse(perfilJSON)).usuario_id;
         try {
             const response = await fetch(
-                `http://localhost:5000/get_processos_responsavelNome/${id}`
+                `${BaseURL()}/get_processos_responsavelNome/${id}`
             );
             const jsonData = await response.json();
 

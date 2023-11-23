@@ -19,7 +19,7 @@ import React, { SetStateAction, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import CustomTextField from "../../shared/components/mui/CustomTextField";
-
+import { BaseURL } from "../../control/BaseURL";
 
 
 export const NovoProjeto = () => {
@@ -81,7 +81,7 @@ export const NovoProjeto = () => {
         async function fetchUserId(nome: any) {
             try {
                 const response = await fetch(
-                    `http://localhost:5000/get_usuario_id/${nome}`,
+                    `${BaseURL()}/get_usuario_id/${nome}`,
                     {
                         method: "GET",
                     }
@@ -114,7 +114,7 @@ export const NovoProjeto = () => {
                 processo_descricao,
             };
             const response = await fetch(
-                "http://localhost:5000/insert_processo",
+                `${BaseURL()}/insert_processo`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

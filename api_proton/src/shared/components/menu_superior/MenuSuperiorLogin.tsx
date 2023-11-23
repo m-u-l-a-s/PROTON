@@ -20,6 +20,7 @@ import {
     useSessionStorageOrDefault,
 } from "../../../control/useSessionStorage";
 import { findAllByAltText } from "@testing-library/react";
+import { BaseURL } from "../../../control/BaseURL";
 
 export const MenuSuperiorLogin: React.FC<{
     children: ReactNode;
@@ -48,7 +49,7 @@ export const MenuSuperiorLogin: React.FC<{
 
     const get_usuario = async () => {
         try {
-            const response = await fetch("http://localhost:5000/get_usuario/");
+            const response = await fetch(`${BaseURL()}/get_usuario/`);
             const jsonData = await response.json();
             setUsuario(jsonData); // Update the state with fetched data
         } catch (error: any) {

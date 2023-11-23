@@ -22,6 +22,7 @@ import {
     useSessionStorageOrDefault,
 } from "../../control/useSessionStorage";
 import { useEffect, useState } from "react";
+import { BaseURL } from "../../control/BaseURL";
 
 type GraficoValores = {
     pendentes: any;
@@ -75,7 +76,7 @@ export const Home = () => {
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasPendentes/${
+                `${BaseURL()}/contarEtapasPendentes/${
                     JSON.parse(perfil).usuario_id
                 }/${JSON.parse(perfil).usuario_nivel}`
             );
@@ -100,7 +101,7 @@ export const Home = () => {
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasConcluidas/${
+                `${BaseURL()}/contarEtapasConcluidas/${
                     JSON.parse(perfil).usuario_id
                 }/${JSON.parse(perfil).usuario_nivel}`
             );
@@ -125,7 +126,7 @@ export const Home = () => {
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasEmAprovacao/${
+                `${BaseURL()}/contarEtapasEmAprovacao/${
                     JSON.parse(perfil).usuario_id
                 }/${JSON.parse(perfil).usuario_nivel}`
             );
@@ -150,7 +151,7 @@ export const Home = () => {
             };
 
             const response = await fetch(
-                `http://localhost:5000/contarEtapasAtrasadas/${
+                `${BaseURL()}/contarEtapasAtrasadas/${
                     JSON.parse(perfil).usuario_id
                 }/${JSON.parse(perfil).usuario_nivel}`
             );
@@ -176,7 +177,7 @@ const ContarAVencer = async () => {
         };
 
         const response = await fetch(
-            `http://localhost:5000/contarEtapasAVencer/${
+            `${BaseURL()}/contarEtapasAVencer/${
                 JSON.parse(perfil).usuario_id
             }/${nivel.usuario_nivel}`
         );

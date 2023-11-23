@@ -29,6 +29,7 @@ import dayjs from "dayjs";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import CustomTextField from "../../shared/components/mui/CustomTextField";
 import { date } from "yup";
+import { BaseURL } from "../../control/BaseURL";
 
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
@@ -118,7 +119,7 @@ export const DetalheEtapa = () => {
         etapa
       };
       console.log(body);
-      const response = await fetch(`http://localhost:5000/put_etapa/${etapa_id}`, {
+      const response = await fetch(`${BaseURL()}/put_etapa/${etapa_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -136,7 +137,7 @@ export const DetalheEtapa = () => {
         etapa_id,
       };
       console.log(body);
-      const response = await fetch(`http://localhost:5000/deletarEtapa/${etapa_id}`, {
+      const response = await fetch(`${BaseURL()}/deletarEtapa/${etapa_id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -173,7 +174,7 @@ export const DetalheEtapa = () => {
         const n = location.state.id;
         const idPag = n.toString();
         try {
-          const response = await fetch("http://localhost:5000/get_etapa/" + idPag);
+          const response = await fetch(`${BaseURL()}/get_etapa/` + idPag);
           const jsonData = await response.json();
           setEtapa(jsonData); // Update the state with fetched data
           //PUXANDO DATA DO BANCO
@@ -211,7 +212,7 @@ export const DetalheEtapa = () => {
   ]);
   const get_usuario = async () => {
     try {
-      const response = await fetch("http://localhost:5000/get_usuario/");
+      const response = await fetch(`${BaseURL()}/get_usuario/`);
       const jsonData = await response.json();
       setUsuario(jsonData); // Update the state with fetched data
     } catch (error: any) {

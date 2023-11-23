@@ -10,6 +10,7 @@ import { UploadError } from "./UploadError";
 import "./Anexos.css";
 import Swal from "sweetalert2";
 import { validarEdicao } from "../../control/validarEdicao";
+import { BaseURL } from "../../control/BaseURL";
 
 export function MultipleFileUpload({
   name,
@@ -95,7 +96,7 @@ export function MultipleFileUpload({
     const n = etapaId;
     const idPag = n.toString();
     try {
-      const response = await fetch("http://localhost:5000/get_anexos_by_etapa/" + idPag);
+      const response = await fetch(`${BaseURL()}/get_anexos_by_etapa/` + idPag);
       const jsonData = await response.json();
       //console.log(jsonData.anexos)
       setEtapa_anexo(jsonData.anexos);
@@ -147,7 +148,7 @@ export function MultipleFileUpload({
           formData.append("fileName", fileWrapper.file.name);
           formData.append("fileType", fileWrapper.file.type);
           // Envia o arquivo para o servidor
-          const response = await axios.post("http://localhost:5000/insert_anexo", formData);
+          const response = await axios.post(`${BaseURL()}/insert_anexo`, formData);
           const fileUrl = response.data.url;
 
           // Adiciona o arquivo enviado à lista de arquivos enviados com sucesso

@@ -37,6 +37,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import SaveIcon from "@mui/icons-material/Save";
 import CustomTextField from "../../shared/components/mui/CustomTextField";
 import ComboPrioridade from "./ComboPrioridade";
+import { BaseURL } from "../../control/BaseURL";
 
 const Swal = require("sweetalert2");
 
@@ -136,7 +137,7 @@ export const NovaEtapa = () => {
                 etapa_descricao,
             };
             console.log(body);
-            const response = await fetch("http://localhost:5000/insert_etapa", {
+            const response = await fetch(`${BaseURL()}/insert_etapa`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
@@ -202,7 +203,7 @@ export const NovaEtapa = () => {
 
     const get_usuario = async () => {
         try {
-            const response = await fetch("http://localhost:5000/get_usuario/");
+            const response = await fetch(`${BaseURL()}/get_usuario/`);
             const jsonData = await response.json();
             setUsuario(jsonData); // Update the state with fetched data
         } catch (error: any) {

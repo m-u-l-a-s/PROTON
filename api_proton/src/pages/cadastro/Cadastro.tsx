@@ -3,6 +3,7 @@ import "./Cadastro.css";
 import FormInput from "./FormInput";
 import Swal from "sweetalert2";
 import { MenuSuperiorCadastro } from "../../shared/components/menu_superior/MenuSuperiorCadastro";
+import { BaseURL } from "../../control/BaseURL";
 
 export const Cadastro = () => {
     type FormValues = {
@@ -85,7 +86,7 @@ export const Cadastro = () => {
         try {
             // Check if email is already registered
             const response = await fetch(
-                `http://localhost:5000/get_usuario_id_by_email/${values.email}`
+                `${BaseURL()}/get_usuario_id_by_email/${values.email}`
             );
 
             if (response.status === 200) {
@@ -117,7 +118,7 @@ export const Cadastro = () => {
 
                 // Make an HTTP POST request to the server
                 const registerResponse = await fetch(
-                    "http://localhost:5000/insert_usuario",
+                    `${BaseURL()}/insert_usuario`,
                     {
                         method: "POST",
                         headers: {

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import DownloadIcon from '@mui/icons-material/Download';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ClearIcon from '@mui/icons-material/Clear';
+import { BaseURL } from "../../control/BaseURL";
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
 export interface FileHeaderProps {
@@ -59,7 +60,7 @@ export function FileHeader({ file, onDelete, fileType, fileData, validaEdicao, c
         etapa_anexo_id,
       };
       console.log(body);
-      const response = await fetch(`http://localhost:5000/deletarAnexo/${etapa_anexo_id}`, {
+      const response = await fetch(`${BaseURL()}/deletarAnexo/${etapa_anexo_id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
