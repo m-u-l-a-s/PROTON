@@ -14,7 +14,7 @@ export function validarEdicao(pagina: string, id: number) {
       return !(UsuarioID === id);
 
     case "MyProjects":
-      return !(puxaID().usuario_nivel === "LE");
+      return !(puxaID().usuario_nivel === "LE" || "AD");
 
     case "MenuSuperior":
       return isLoginPage ? false : puxaID().usuario_nivel === "CL";

@@ -35,17 +35,33 @@ export const MyProjects = () => {
     const get_processos = async () => {
         const perfilJSON: any = sessionStorage.getItem('perfil')
         const id = JSON.parse(JSON.parse(perfilJSON)).usuario_id
-        try {
-            const response = await fetch (`${BaseURL()}/get_processos_responsavel/${id}`);
-            //const response = await fetch("${BaseURL()}/get_processos");
-            const jsonData = await response.json();
-
-            // console.log(jsonData)
-            setProcesso(jsonData);
-            // console.log(processos)
-        } catch (error: any) {
-            console.log(error.message);
+        const nivel = JSON.parse(JSON.parse(perfilJSON)).usuario_nivel
+        if (nivel === 'AD'){
+            try {
+                //const response = await fetch (`${BaseURL()}/get_processos_responsavel/${id}`);
+                const response = await fetch(`${BaseURL()}/get_processos`);
+                const jsonData = await response.json();
+    
+                // console.log(jsonData)
+                setProcesso(jsonData);
+                // console.log(processos)
+            } catch (error: any) {
+                console.log(error.message);
+            }
         }
+        else{
+            try {
+                const response = await fetch (`${BaseURL()}/get_processos_responsavel/${id}`);
+                //const response = await fetch("${BaseURL()}/get_processos");
+                const jsonData = await response.json();
+
+                // console.log(jsonData)
+                setProcesso(jsonData);
+                // console.log(processos)
+            } catch (error: any) {
+                console.log(error.message);
+            }
+        }  
     };
 
     //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
@@ -58,17 +74,34 @@ export const MyProjects = () => {
     const get_processos_responsavelNome = async () => {
         const perfilJSON: any = sessionStorage.getItem('perfil');
         const id = JSON.parse(JSON.parse(perfilJSON)).usuario_id;
-        try {
-            const response = await fetch(
-                `${BaseURL()}/get_processos_responsavelNome/${id}`
-            );
-            const jsonData = await response.json();
+        const nivel = JSON.parse(JSON.parse(perfilJSON)).usuario_nivel;
+        if (nivel==='AD'){
+            try {
+                const response = await fetch(
+                    `${BaseURL()}/get_processos_responsavelNome`
+                );
+                const jsonData = await response.json();
+    
+                // console.log(jsonData)
+                setProcesso(jsonData);
+                // console.log(processos)
+            } catch (error: any) {
+                console.log(error.message);
+            } 
+        }
+        else{
+            try {
+                const response = await fetch(
+                    `${BaseURL()}/get_processos_responsavelNome/${id}`
+                );
+                const jsonData = await response.json();
 
-            // console.log(jsonData)
-            setProcesso(jsonData);
-            // console.log(processos)
-        } catch (error: any) {
-            console.log(error.message);
+                // console.log(jsonData)
+                setProcesso(jsonData);
+                // console.log(processos)
+            } catch (error: any) {
+                console.log(error.message);
+            }
         }
     };
 
