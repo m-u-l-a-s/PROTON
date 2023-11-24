@@ -59,7 +59,7 @@ const verificaStatus = async (processId: any) => {
         if (temAnexosEmAtraso) {
             return "AT";
         }
-        if (temAnexos) {
+        if (etapas.length > 0) {
             return "EA";
         }
         return "NI";
