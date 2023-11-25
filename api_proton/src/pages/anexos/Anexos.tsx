@@ -1,60 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Paper, Typography, Grid, Card, CardContent, IconButton } from "@mui/material";
-import { BarraEtapa } from "../../shared/components";
+import {Typography, Grid, Card, CardContent, IconButton } from "@mui/material";
 import { Formik, Form } from 'formik';
 import { MultipleFileUpload } from "./MultipleFileUpload";
 import { UploadableFile } from "./SingleFileUploadWithProgress";
 import * as Yup from 'yup';
-import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import { useLocation } from "react-router-dom";
+import dayjs from 'dayjs';
+import { BaseURL } from '../../control/BaseURL';
 
 
 export const Anexos = () => {
     const initialValues: { files: UploadableFile[] } = { files: [] };
     const [buttonClicked, setButtonClicked] = useState(false);
-
     const location = useLocation();
-    const etapa_id = location.state.etapa_id; // Obtem o etapa_id da localização
+    const [etapa_id, setEtapaId] = useState(location.state.id);
+    const [flag, setFlag] = useState(true)
+    
+    // const etapa_id = location.state.etapa_id; // Obtem o etapa_id da localização
+    const [dataDoBanco, setDataDoBanco] = useState(""); //
+  //[] como segundo argumento impede de fazer request 24/7, fazendo apenas uma request
+    useEffect(() => {
+    if (flag) {
+      const get_etapa_by_id = async () => {
+        //Puxando ID da tela anterior
+        // console.log(location.state.id)
+        const n = location.state.id;
+        const idPag = n.toString();
+        try {
+          const response = await fetch(`${BaseURL()}/get_etapa/` + idPag);
+          const jsonData = await response.json();
+          setEtapaId(jsonData); // Update the state with fetched data
+          //PUXANDO DATA DO BANCO
+          const dataDoBanco = dayjs(jsonData.etapa_data_conclusao, "YYYY-MM-DD").format("DD-MM-YYYY");
+          setDataDoBanco(dataDoBanco);
+        } catch (error: any) {
+          console.log(error.message);
+        }
+      };
 
-    const handleVoltar = () => {
-        window.history.back();
+      get_etapa_by_id(); // Call the function inside useEffect
+      // You can now safely use the updated 'etapa' state here
     }
+  }, );
+
     return (
-        <Box
-            display="flex"
-            alignItems="center"
-            flexDirection="column"
-            sx={{ gap: 3 }}
-            justifyContent="center"
-
-
-        >
-            <Paper
-                sx={{
-                    mt: "-3em",
-                    padding: 3,
-                    borderRadius: 5,
-                    width: "fit-content",
-                    height: "fit-content",
-                    // gap: ,
-                    display: "flex",
-                    flexDirection: "column",
-                    maxWidth: "70%",
-                    maxHeight: "50%",
-                    marginTop: "2%",
-                }}
-            >
-                <Grid item sx={{ mt: "1em", marginLeft: "0.5em" }}>
-                    <IconButton
-                        className="meuBotao"
-                        onClick={handleVoltar}
-                    >
-                        <ArrowBackRoundedIcon />
-                    </IconButton>
-                </Grid>
-
-                <BarraEtapa etapa_nome={location.state.id} />
-
                 <Card>
                     <CardContent>
                         <Formik
@@ -75,7 +64,5 @@ export const Anexos = () => {
                         </Formik>
                     </CardContent>
                 </Card>
-            </Paper>
-        </Box>
     );
 };

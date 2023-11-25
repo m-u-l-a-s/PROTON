@@ -397,7 +397,7 @@ export const DetalheEtapa = () => {
                 </Select>
                 <hr style={{width:'28vw', marginTop:'1.5em'}}></hr>
 
-
+                <Anexos/>
 
               </Grid>
 
