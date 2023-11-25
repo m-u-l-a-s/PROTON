@@ -150,6 +150,7 @@ export const DetalheEtapa = () => {
   }
 
   const [etapa_id, setEtapaId] = useState(location.state.id);
+  const [etapa_responsavel_id, setEtapa_responsavel_id] = useState(location.state.etapa_responsavel_id)
   const theme = useTheme();
   const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa',location.state.responsavel))
   const [validaMudancaStatus, setValidaMudancaStatus] = useState(false)
@@ -396,8 +397,8 @@ export const DetalheEtapa = () => {
                   <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'C'}>Concluído</MenuItem>
                 </Select>
                 <hr style={{width:'28vw', marginTop:'1.5em'}}></hr>
-
-                <Anexos/>
+                
+                <Anexos etapa_id={etapa_id} etapa_responsavel_id = {etapa_responsavel_id}/>
 
               </Grid>
 

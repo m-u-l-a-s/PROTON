@@ -331,6 +331,7 @@ const VisualizarProjeto = () => {
                                             desc={etapaItem.etapa_descricao}
                                             contadorAnexos={contadorAnexos}
                                             etapa_id={etapaItem.etapa_id}
+                                            etapa_responsavel_id = {etapaItem.etapa_responsavel_id}
                                         />
                                     );
                                 })}

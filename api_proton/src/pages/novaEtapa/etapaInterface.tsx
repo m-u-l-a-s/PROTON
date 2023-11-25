@@ -6,6 +6,7 @@ interface Etapa {
     etapa_ordem: string;
     etapa_descricao: string;
     etapa_status: string;
+    etapa_responsavel_id: number;
 }
 
 export default Etapa;
