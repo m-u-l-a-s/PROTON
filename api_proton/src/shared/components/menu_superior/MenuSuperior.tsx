@@ -22,6 +22,8 @@ import { findAllByAltText } from "@testing-library/react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { validarEdicao } from "../../../control/validarEdicao";
 import { BaseURL } from "../../../control/BaseURL";
+import { useNavigate } from "react-router-dom";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const MenuSuperior: React.FC<{
   children: ReactNode;
@@ -53,10 +55,18 @@ export const MenuSuperior: React.FC<{
   const [usuarioAtual, setUsuarioAtual] = useState(useSessionStorageOrDefault("perfil", usuario[0]));
   useEffectSession("perfil", usuarioAtual);
 
+    const navigate = useNavigate(); 
+
   const salvaPerfil = (event: { target: { value: any } }) => {
     setUsuarioAtual(event.target.value);
     window.location.reload();
   };
+
+
+    const logOut = () => {
+        navigate("/");
+    }
+
 
   const get_usuario = async () => {
     try {
@@ -194,21 +204,35 @@ export const MenuSuperior: React.FC<{
                                             ))}
 
                                         </Select> */}
-                  </span>
+                                    </span>
 
-                  <IconButton aria-label="more" id="long-button" style={{ color: "white" }} onClick={handleClick}>
-                    <MoreVertIcon />
-                  </IconButton>
+                                    <IconButton
+                                        aria-label="more"
+                                        id="long-button"
+                                        style={{ color: "white" }}
+                                        onClick={handleClick}
+                                    >
+                                        <LogoutIcon />
+                                    </IconButton>
 
-                  <Menu id="long-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-                    <MenuItem style={{ color: "white", fontFamily: "poppins" }}>Logout</MenuItem>
-                  </Menu>
-                </Grid>
-              </Grid>
-            </Container>
-          </Toolbar>
-        </AppBar>
-      </Box>
+                                    <Menu
+                                        id="long-menu"
+                                        anchorEl={anchorEl}
+                                        open={Boolean(anchorEl)}
+                                        onClose={handleClose}
+                                        onClick={logOut}
+                                    >
+                                        <MenuItem style={{ color: "white", fontFamily: "poppins" }}>
+                                            Logout
+                                        </MenuItem>
+                                    </Menu>
+
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    </Toolbar>
+                </AppBar>
+            </Box>
 
       <Box width="100vw" marginTop={theme.spacing(8)}>
         {children}

@@ -187,11 +187,26 @@ export function MultipleFileUpload({
     }, 1000);
   };
 
+  type Accept = Record<string, string[]>;
+
+const acceptedFileTypes: Accept = {
+  'application/pdf': ['.pdf'],
+  'application/msword': ['.doc'],
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
+  'application/vnd.ms-excel': ['.xlsx'],
+  'image/jpeg': ['.jpeg'],
+  'application/vnd.oasis.opendocument.spreadsheet': ['.ods'],
+  'text/plain': ['.txt'],
+  'image/png': ['.png'],
+};
+
   // Configurações para a área de drop dos arquivos
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     maxSize: 10 * 1024 * 1024, // Tamanho máximo de 10 MB
+    accept: acceptedFileTypes,
   });
+  
 
   const convertToAny = (a: any) => {
     //Por algum motivo dá erro de compilação qnd eu coloco 'etapa_anexo_documento['data']' direto no construtor
@@ -212,7 +227,7 @@ export function MultipleFileUpload({
           <input {...getInputProps()} />
           <CloudUploadIcon fontSize="large" color="primary" />
           <Typography variant="inherit" style={{color:"white", fontFamily:'poppins', fontSize: '1.1em'}}>Arraste o arquivo ou clique para procurar</Typography>
-          <Typography variant="inherit" style={{color:"white", fontFamily:'poppins', fontSize: '0.8em'}}>Extensões permitidas: .pdf, .doc, .docx, .xlsx, .jpeg, .ods, .txt, .png </Typography>
+          <Typography variant="inherit" style={{color:"white", fontFamily:'poppins', fontSize: '0.8em'}}>Extensões permitidas: .pdf, .doc, .docx, .xlsx, .jpeg, .ods, .txt, .png. Tamanho máximo permitido: 10MB. </Typography>
         </div>
       </Grid>
 
