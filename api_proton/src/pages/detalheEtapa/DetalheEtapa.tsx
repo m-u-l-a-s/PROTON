@@ -30,6 +30,7 @@ import SaveAsIcon from '@mui/icons-material/SaveAs';
 import CustomTextField from "../../shared/components/mui/CustomTextField";
 import { date } from "yup";
 import { BaseURL } from "../../control/BaseURL";
+import { Anexos } from "../anexos/Anexos";
 
 // import Swal from "sweetalert2";
 const Swal = require('sweetalert2');
@@ -248,7 +249,7 @@ export const DetalheEtapa = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      maxHeight="100vh"
+      maxHeight="150%"
       flexDirection="column"
       sx={{ gap: 3 }}
     >
@@ -261,8 +262,8 @@ export const DetalheEtapa = () => {
         height: "fit-content",
         display: "flex",
         flexDirection: "column",
-        maxWidth: "70%",
-        maxHeight: "50%",
+        maxWidth: "90%",
+        maxHeight: "70%",
         marginTop: "2%",
     }}
       >
@@ -278,22 +279,9 @@ export const DetalheEtapa = () => {
 
         <Box display="inline-block" alignItems="center" maxHeight="100vh" flexDirection="column">
           <Box display="inline-block" flexDirection="column" sx={{ gap: 2 }} textAlign={"left"}>
+            
             <div className="div1">
               <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"20px"}>
-                {/* <TextField
-                  id="standard-multiline-static-responsavel"
-                  label="Descrição"
-                  variant="standard"
-                  sx={{ width: "24vw" }}
-                  type='text'
-                  value={etapa.etapa_descricao}
-                  name='etapa_descricao'
-                  onChange={handleChange}
-                  inputProps={
-                    { readOnly: validaEdicao, }
-                  }
-                /> */}
-
                 <TextField
                   id="standard-multiline-static"
                   defaultValue="Default Value"
@@ -319,30 +307,19 @@ export const DetalheEtapa = () => {
                 />
               </Grid>
 
-              <Grid margin={"15px"}>
+              <Grid margin={"15px"} style={{
+                    fontSize: '1.2rem',
+                    color: '#B6F3F8',
+                    fontFamily: 'Poppins',
+                    marginRight: "3rem ",
+                    marginTop: "-1rem",
+                  }}>
+                Data:
+                <br></br>
                 <CalendarioEtapa dataBanco={dataDoBanco} callback={handleCallback} />
               </Grid>
 
               <Grid item margin={"15px"}>
-
-                {/* <InputLabel id="responsavel-label" style={{ color: 'white' }}>Responsável</InputLabel>
-                <Select
-                  labelId="responsavel-label"
-                  id="responsavel"
-                  style={{ color: 'white' }}
-                  value={etapa.etapa_responsavel_id}
-                  name='etapa_responsavel_id'
-                  onChange={handleChange}
-                  inputProps={
-                    { readOnly: validaEdicao, }
-                  }
-                >
-                  {usuario.map((usuarioItem) => (
-                    <MenuItem style={{ color: 'white' }} value={usuarioItem.usuario_id}>{usuarioItem.usuario_nome}</MenuItem>
-                  ))}
-                </Select> */}
-
-
                 <InputLabel
                   htmlFor="responsavel"
                   style={{
@@ -374,25 +351,11 @@ export const DetalheEtapa = () => {
                   ))}
                 </Select>
 
-
               </Grid>
             </div>
 
             <div className="div2">
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                {/* <TextField
-                  id="comentario"
-                  label="Deixe um comentário"
-                  variant="standard"
-                  sx={{ width: "24vw" }}
-                  value={etapa.etapa_comentario}
-                  name='etapa_comentario'
-                  onChange={handleChange}
-                  inputProps={
-                    { readOnly: validaEdicao, }
-                  }
-                /> */}
-
                 <TextField
                   label="Observações:"
                   id="comentario"
@@ -412,8 +375,6 @@ export const DetalheEtapa = () => {
                   }}
                   variant="standard"
                 />
-
-
               </Grid>
 
               {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
@@ -434,12 +395,16 @@ export const DetalheEtapa = () => {
                   <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'A'}>Em aprovação</MenuItem>
                   <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'C'}>Concluído</MenuItem>
                 </Select>
+                <hr style={{width:'28vw', marginTop:'1.5em'}}></hr>
+
+
+
               </Grid>
+
+              
             </div>
 
             <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"0.8rem"}>
-
-
               <Grid item >
 
                 <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
