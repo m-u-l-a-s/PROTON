@@ -1,6 +1,6 @@
 <h2 align="center"> <span id="topo"></h2>
 
-<h2 align="center"> Sprint 2: 25/09/2023 a 15/10/2023</h2>
+<h2 align="center"> Sprint 3: 16/10/2023 a 05/11/2023</h2>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
@@ -28,7 +28,7 @@ Os requisitos (tanto do cliente como da instituição de ensino) abrangidos por 
 
 Este requisito se trata da criação e divisão dos níveis de acesso, representadas pelas personas, que o programa terá, sendo esses: - colaborador; - líder; -C-levels e o - usuário administrador. 
 
-### Requisito Funcional 05: Acompanhamento em Tempo Real
+### Requisito Funcional 08: Acompanhamento em Tempo Real
 
 Este requisito se trata de tornar a tela home funcional de acordo com o nível de usuário logado: - um colaborador verá em sua dashboard as informações sobre os projetos e etapas os quais ele é atribuido como responsável; - o líder verá em sua dashboard as informações sobre todos os processos e etapas que ele criou; - os C-levels e administrador terá acesso as informações de todos os processos e etapas da empresa em suas dashboards. 
 
@@ -39,7 +39,8 @@ Este requisito se trata de tornar a tela home funcional de acordo com o nível d
 ### Planejamento de entregas
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprint3.png)
 
-Além dos épicos, essa sprint foi formada por algumas Tasks adicionais: 
+Além dos épicos, essa sprint foi formada por algumas Tasks adicionais (A sua maioria melhorias solicitadas pelo cliente):
+<br> 
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.1.png)
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.2.png)
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.3.png)
