@@ -1,6 +1,6 @@
 <h2 align="center"> <span id="topo"></h2>
 
-<h2 align="center"> Sprint 1: 25/03/2022 a 14/04/2022</h2>
+<h2 align="center"> Sprint 1: 04/09/2023 a 24/09/2029</h2>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
