@@ -65,7 +65,7 @@ Abra a imagem abaixo para ver detalhadamente:
 <span id="metricas">
     
 ## :chart_with_upwards_trend: Métricas do time
-Em prol de um melhor aproveitamento das habilidades de cada integrante, o time foi separado em duas frentes: frontend e backend, onde, na primeira sprint, o time de frontend ficou responsável pela confecção do protótipo, projeto frontend enquanto o time de backend ficou responsável pela criação das lógicas e integração de funcionalidades. 
+Em prol de um melhor aproveitamento das habilidades de cada integrante, o time foi separado em duas frentes: frontend e backend. Onde, na primeira sprint, o time de frontend ficou responsável pela confecção do protótipo, projeto frontend enquanto o time de backend ficou responsável pela criação das lógicas e integração de funcionalidades. 
 - O acompanhamento de atividades, de responsabilidade da Scrum Master, se encontra na imagem adiante, que contém o gráfico Burndown gerado pela equipe (onde o eixo X são os dias trabalhados na sprint e os valores do eixo Y representam as entregas e esforços realizados com o passar do tempo), incluindo as atividades desenvolvidas e seus responsáveis.
     
 <div align="center">
