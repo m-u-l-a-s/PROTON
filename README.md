@@ -39,7 +39,7 @@ Este requisito se trata de tornar a tela home funcional de acordo com o nível d
 ### Planejamento de entregas
 Abra a imagem abaixo para ver detalhadamente:
 <details>
-   <summary>Tasks</summary>
+   <summary>Planejamento Sprint 3</summary>
     <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprint3.png">
     <br>
 </details>
