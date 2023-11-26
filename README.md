@@ -17,13 +17,13 @@ A aplicação foi projetada para organizar e armazenar evidências desses proces
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
 <br>
-| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01">Veja o Relatório</a>
+| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01"> [Veja o Relatório]</a> |
 <br>
-| 02 | 25/10/2023 - 15/10/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md |
+| 02 | 25/10/2023 - 15/10/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md"> [Veja o Relatório]</a> |
 <br>
-| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/tree/Sprint_03 |
+| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_03"> [Veja o Relatório]</a> |
 <br>
-| 04 | 06/11/2023 - 26/11/2023 | ✔️ Concluída   | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/tree/Sprint_04 |
+| 04 | 06/11/2023 - 26/11/2023 | ✔️ Concluída   | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_04"> [Veja o Relatório]</a> |
 <br>
 
 ## :dart: User Stories 
