@@ -1,4 +1,72 @@
-<img src="https://user-images.githubusercontent.com/89790349/194731178-f02b3b24-e3dd-4ef2-a7f9-52c83dc8cfc1.png" alt="Logo"/>
+<h1 align="center"> <span id="topo">
+
+<h1 align="center"> Sprint 1: 25/03/2022 a 14/04/2022</h1>
+
+<p align="center">
+    <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
+    <a href="#entregas">Entregas</a> &nbsp |&nbsp &nbsp
+    <a href="#metricas">Métricas do time</a> &nbsp |&nbsp &nbsp
+    <a href="#links">Links úteis</a>
+</p>
+
+O projeto se baseia no desenvolvimento de um site para organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. Tendo em mente o MVP, a primeira sprint se deu com a criação de um fluxo básico de criação projetos e a anexação de documentos. Para isso, foram levantados e validados os requisitos e o protótipo, construindo os serviços e interfaces visando uma entrega de grande valor condizente com a dor do cliente.
+
+<span id="objetivos">
+    
+## :dart: Objetivos da Sprint
+Os requisitos (tanto do cliente como da instituição de ensino) abrangidos por essa sprint são:
+- **Requisito Funcional 01:** Criação de Processos
+- **Requisito Funcional 02:** Anexação de Evidências
+- **Requisito funcional 03:** Suporte a Anexação de Diferentes Arquivos e Extensões
+- **Requisito Não Funcional:** Utilizar Java e TypeScript
+- **Requisito Não Funcional** Utilizar banco de dados SQL
+
+<span id="entregas">
+        
+## :heavy_check_mark: Entregas
+Para entregas da sprint, tivemos os artefatos SCRUM validados: o Protótipo do Produto, o Backlog do Produto, o Backlog das Sprints, através de comunicação direta entre o P.O. e o cliente. 
+O protótipo da plataforma foi feito com o auxílio da ferramenta "Figma" e pode ser conferido interativamente através do link:
+https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=design&node-id=1-3&mode=design
+<br>
+
+<details>
+   <summary>User Stories & Backlog Do Produto:</summary>
+  ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/US.png)
+  <br>
+  ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/%C3%A9picos.png)
+  <br>
+</details>
+
+### Requisito Funcional 01: Criação de Processos
+
+Este requisito se trata do cadastro processos e de etapas que compõe os processos, passando pelas fases de: atibuir nome do processo e uma descrição para esse processo para a criação deste processo; atribuição de nome, descrição, data para conclusão e responsável.
+
+### Requisito Funcional 02: Anexação de Evidências
+
+Este requisito se trata de tornar o sistema hábil para anexar os documentos (evidências) a uma etapa designada. Ele deveria suportar diferentes extensões e ter uma limitação de tamanho de 10MB. 
+    
+→ [Voltar ao topo](#topo)
+
+### Proton - Project Tracker, Organizer and Notifier
+
+### Link - apresentação da 1ª Sprint
+https://www.youtube.com/watch?v=w77srMqJYTw
+
+## Planejamento de entregas
+![image](docs/Backlog_Sprint_02_Proton.jpeg)
+
+<span id="metricas">
+    
+## :chart_with_upwards_trend: Métricas do time
+Em prol de um melhor aproveitamento das habilidades de cada integrante, o time foi separado em duas frentes: frontend e backend, onde, na primeira sprint, o time de frontend ficou responsável pela confecção do protótipo, projeto frontend enquanto o time de backend ficou responsável pela criação das lógicas e integração de funcionalidades. 
+- O acompanhamento de atividades, de responsabilidade da Scrum Master, se encontra na imagem adiante, que contém o gráfico Burndown gerado pela equipe (onde o eixo X são os dias trabalhados na sprint e os valores do eixo Y representam as entregas e esforços realizados com o passar do tempo), incluindo as atividades desenvolvidas e seus responsáveis.
+    
+<div align="center">
+    
+![Burndown Chart](https://user-images.githubusercontent.com/69374340/163472803-4912e725-f05c-4cdc-84bc-29ae2953f401.png)
+</div>
+    
+<span id="links">
 
 ## Sumário:
 * [Apresentação da Equipe](#apresentação-da-equipe)
@@ -27,54 +95,4 @@ Nosso foco é em identificar o objetivo principal de um produto para desenvolver
 #### Scrum Master:
 * [Amanda Mendes Caldeira](https://github.com/AmendoaM)
 
-
-## Objetivo do Produto:
-O objetivo do projeto é desenvolver uma plataforma web que auxilie na organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde.
-
-## Protótipo:
-
-O protótipo da plataforma foi feito com o auxílio da ferramenta "Figma" e pode ser conferido interativamente através do link:
-https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=design&node-id=1-3&mode=design
-
-## Tecnologias e ferramentas utilizadas:
-* HTML: Estrutura das páginas.
-* CSS: Estilização.
-* React e Typescript: Manipulação de input.
-* Pyhton/Flask: Backend do produto.
-* Bootstrap: Estilização.
-* Figma: Prototipagem.
-* GitHub: Controle de versionamento, documentação e colaboração.
-* MySQL: Banco de Dados utilizado.
-<div style-"display=inline_block">
-<img width="40px" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/typescript/typescript-original.svg" title = "TypeScript"/>
-<img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title = "JavaScript"/>
-<img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" title = "HTML5"/>
-<img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" title = "CSS3"/>
-<img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" title = "React"/>
-<img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" title = "Figma"/>
-<img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" title = "PostgreSQL"/>
-</div> <br>
-
-## Estrutura geral do projeto:
-```
- 📁 Proton
-   |
-   |-  📁 src
-   |    |- 📁 pages
-   |    |- 📁 routes
-   |    |- 📁 shared
-   |        |- 📁 components
-
-```
-
-## Backlog do produto
-### User Stories:
-![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
-
-### Proton - Project Tracker, Organizer and Notifier
-
-### Link - apresentação da 1ª Sprint
-https://www.youtube.com/watch?v=w77srMqJYTw
-
-## Planejamento de entregas
-![image](docs/Backlog_Sprint_02_Proton.jpeg)
+<img src = "https://github.com/m-u-l-a-s/PROTON/blob/main/docs/Movimento%20Universit%C3%A1rio%20de%20L%C3%B3gica%20Aplicada%20%C3%A0%20Softwares.png" alt="newLogo"/>
