@@ -17,7 +17,7 @@ A aplicação foi projetada para organizar e armazenar evidências desses proces
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
 <br>
-| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | [Veja o relatório](https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01) |
+| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01">Veja o Relatório</a>
 <br>
 | 02 | 25/10/2023 - 15/10/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md |
 <br>
