@@ -1,12 +1,11 @@
 <h2 align="center"> <span id="topo"></h2>
 
-<h2 align="center"> Sprint 1: 04/09/2023 a 24/09/2029</h2>
+<h2 align="center"> Sprint 1: 04/09/2023 a 24/09/2023</h2>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
     <a href="#entregas">Entregas</a> &nbsp |&nbsp &nbsp
     <a href="#metricas">Métricas do time</a> &nbsp |&nbsp &nbsp
-    <a href="#links">Links úteis</a>
 </p>
 
 # Proton - Project Tracker, Organizer and Notifier
@@ -55,7 +54,13 @@ Este requisito se trata de tornar o sistema hábil para anexar os documentos (ev
 https://www.youtube.com/watch?v=w77srMqJYTw
 
 ### Planejamento de entregas
-![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprin1.png)
+Abra a imagem abaixo para ver detalhadamente:
+<br>
+<details>
+   <summary>Planejamento Sprint 3</summary>
+    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprin1.png">
+    <br>
+</details>
 
 <span id="metricas">
     
