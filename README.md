@@ -35,11 +35,6 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/%C3%A9picos.png)
 <br>
 
-## :desktop_computer: Protótipo:
-
-O protótipo da plataforma foi feito com o auxílio da ferramenta "Figma" e pode ser conferido interativamente através do link:
-https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=design&node-id=1-3&mode=design
-<br>
 
 ## 🛠️ Tecnologias e ferramentas utilizadas:
 
@@ -86,6 +81,12 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 ```
 <br>
+
+## :actix: Passo a Passo de Execução em Sua Máquina:
+- 1º
+- 2º
+- 3º
+- 4º
 
 
 ## :busts_in_silhouette: Apresentação da Equipe:
