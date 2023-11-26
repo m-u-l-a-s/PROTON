@@ -103,7 +103,7 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 <br>
 <br>
 - 7º Abra um novo terminal e encaminhe para a pasta 'api_proton' com o comando "cd .\api_proton\", depois passe os parâmetros: 1. "npm install", 2. "npm start". 
-
+<br>
 
 
 ## :busts_in_silhouette: Apresentação da Equipe:
