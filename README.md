@@ -1,6 +1,6 @@
-<h2 align="center"> <span id="topo">
+<h2 align="center"> <span id="topo"></h2>
 
-<h2 align="center"> Sprint 1: 25/03/2022 a 14/04/2022</h1>
+<h2 align="center"> Sprint 1: 25/03/2022 a 14/04/2022</h2>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
@@ -65,7 +65,7 @@ Em prol de um melhor aproveitamento das habilidades de cada integrante, o time f
     
 <div align="center">
     
-![Burndown Chart](https://user-images.githubusercontent.com/69374340/163472803-4912e725-f05c-4cdc-84bc-29ae2953f401.png)
+![Burndown Chart](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/borndown%20sprint1.png)
 </div>
     
 <span id="links">
@@ -86,15 +86,15 @@ Nosso foco é em identificar o objetivo principal de um produto para desenvolver
 
 ## Integrantes:
 
-#### Devs:
-* [Alexandre Jonas de Souza Fonseca](https://github.com/AlexandreJonas)
-* [Alícea P. de Lima Rocha](https://github.com/alicearocha)
-* [Alita Willians da Silva Amancio](https://github.com/AlitaAmancio)
-* [Joice Araújo](https://github.com/Joice-Araujo)
-* [Vitor F. Morais](https://github.com/vmorais111)
-#### Product Owner:
-* [Jonas Alves Bueno](https://github.com/dodekafonos)
-#### Scrum Master:
-* [Amanda Mendes Caldeira](https://github.com/AmendoaM)
+
+| Função        | Nome                             | LinkedIn & GitHub                                                                                                                                                                                                                                                                                                           |
+| ------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Product Owner | Alícea P. de Lima Rocha          | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/al%C3%ADcea-paula-de-lima-rocha-bab682157/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/alicearocha)     |
+| Scrum Master  | Amanda Mendes Caldeira           | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/amanda-mendes-caldeira-b24389210/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AmendoaM)                 |
+| Tech Lead     | Alexandre Jonas de Souza Fonseca | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alexandre-jonas-de-souza-fonseca-989920181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlexandreJonas) |
+| Backend       | Alita Willians da Silva Amancio  | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alitaamancio/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/AlitaAmancio)                                 |
+| Frontend      | Joice Araújo                     | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/joice-aparecida-581226250/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/Joice-Araujo)                    |
+| Backend       | Jonas Alves Bueno                | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/jonas-alves) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/dodekafonos)                                    |
+| BDA           | Vitor F. Morais                  | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/vitor-faria-morais-330b19204/) [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/vmorais111)                   |
 
 <img src = "https://github.com/m-u-l-a-s/PROTON/blob/main/docs/Movimento%20Universit%C3%A1rio%20de%20L%C3%B3gica%20Aplicada%20%C3%A0%20Softwares.png" alt="newLogo"/>
