@@ -82,11 +82,16 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 ```
 <br>
 
-## :actix: Passo a Passo de Execução em Sua Máquina:
-- 1º
-- 2º
-- 3º
-- 4º
+## :high_brightness: Passo a Passo de Execução em Sua Máquina:
+<br>
+- 1º Tenha o banco de dados PostgreSQL instalado em sua máquina (verifique os passo a passo da instalação deste na documentação oficial no site 'https://www.postgresql.org/'). 
+- 2º Crie uma nova DataBase para hospedar os dados da aplicação.
+- 3º Abra os scrips localizados na pasta 'docs', copie-os e os use para criar corretamente as tabelas e colunas necessários para a aplicação.
+- 4º Abra o código em seu editor de código-fonte.
+- 5º Conecte a aplicação ao seu Banco de Dados: na aplicação, entre manualmente na pasta 'serve' abra o arquivo 'db.js' mude os parametros 'host', 'user', 'port', 'password', 'database' para os valores corretos da database usado.
+- 6º Abra um terminal em seu editor de código fonte, encaminhe o terminal para a pasta 'serve' com comando "cd .\server\" e depois passe os parâmetros: 1. "npm init", 2."npm install", 3."npm install -g nodemon", 4. "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser", 5. "nodemon index" para deixar o servidor.
+- 7º Abra um novo terminal e encaminhe para a pasta 'api_proton' com o comando "cd .\api_proton\", depois passe os parâmetros: 1. "npm install", 2. "npm start". 
+
 
 
 ## :busts_in_silhouette: Apresentação da Equipe:
