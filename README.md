@@ -37,15 +37,26 @@ Este requisito se trata de tornar a tela home funcional de acordo com o nível d
 
 
 ### Planejamento de entregas
-![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprint3.png)
+Abra a imagem abaixo para ver detalhadamente:
+<details>
+   <summary>Tasks</summary>
+    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprint3.png">
+    <br>
+</details>
 
 Além dos épicos, essa sprint foi formada por algumas Tasks adicionais (A sua maioria melhorias solicitadas pelo cliente):
 <br> 
-![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.1.png)
-![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.2.png)
-![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.3.png)
-![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.4.png)
-
+<details>
+   <summary>Tasks</summary>
+    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.1.png">
+    <br>
+    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.2.png">
+    <br>
+    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.3.png">
+    <br>
+    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s3.4.png">
+    <br>
+</details>
 
 <span id="metricas">
     
