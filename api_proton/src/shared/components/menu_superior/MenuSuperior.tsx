@@ -57,41 +57,9 @@ export const MenuSuperior: React.FC<{
 
     const navigate = useNavigate(); 
 
-  const salvaPerfil = (event: { target: { value: any } }) => {
-    setUsuarioAtual(event.target.value);
-    window.location.reload();
-  };
-
-
-    const logOut = () => {
-        navigate("/");
-    }
-
-
-  const get_usuario = async () => {
-    try {
-      const response = await fetch(`${BaseURL()}/get_usuario/`);
-      const jsonData = await response.json();
-      setUsuario(jsonData); // Update the state with fetched data
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
-
-  useEffect(() => {
-    get_usuario();
-  }, []);
-
   // funções para menu ao lado do perfil
-
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+    navigate("/Login");
   };
 
   let user;
@@ -215,17 +183,17 @@ export const MenuSuperior: React.FC<{
                                         <LogoutIcon />
                                     </IconButton>
 
-                                    <Menu
+                                    {/* <Menu
                                         id="long-menu"
-                                        anchorEl={anchorEl}
-                                        open={Boolean(anchorEl)}
+                                        // anchorEl={anchorEl}
+                                        open={true}
                                         onClose={handleClose}
                                         onClick={logOut}
                                     >
                                         <MenuItem style={{ color: "white", fontFamily: "poppins" }}>
                                             Logout
                                         </MenuItem>
-                                    </Menu>
+                                    </Menu> */}
 
                                 </Grid>
                             </Grid>

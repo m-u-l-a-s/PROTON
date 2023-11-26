@@ -21,8 +21,6 @@ export const Login = () => {
   });
 
   const Efeito = async () => {
-    console.log("user: " + JSON.stringify(user));
-    console.log("user: " + JSON.stringify(usuarioAtual));
     navigate("/home");
     window.location.reload();
   };

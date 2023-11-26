@@ -5,7 +5,6 @@ export function useSessionStorageOrDefault(key: string, defaultValue: any) {
   let stored = sessionStorage.getItem(key);
 
   value = !stored ? defaultValue : JSON.parse(stored);
-  console.log("Stored: " + JSON.stringify(value));
   return value;
 }
 

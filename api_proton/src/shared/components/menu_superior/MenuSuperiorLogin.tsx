@@ -37,29 +37,6 @@ export const MenuSuperiorLogin: React.FC<{
         },
     ]);
 
-    const [usuarioAtual, setUsuarioAtual] = useState(
-        useSessionStorageOrDefault("perfil", usuario[0])
-    );
-    useEffectSession("perfil", usuarioAtual);
-
-    const salvaPerfil = (event: { target: { value: any } }) => {
-        setUsuarioAtual(event.target.value);
-        window.location.reload();
-    };
-
-    const get_usuario = async () => {
-        try {
-            const response = await fetch(`${BaseURL()}/get_usuario/`);
-            const jsonData = await response.json();
-            setUsuario(jsonData); // Update the state with fetched data
-        } catch (error: any) {
-            console.log(error.message);
-        }
-    };
-
-    useEffect(() => {
-        get_usuario();
-    }, []);
     return (
         <>
             <Box width="100%" height="0">
