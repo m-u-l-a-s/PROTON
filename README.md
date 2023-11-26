@@ -19,7 +19,7 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 <br>
 | 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
 <br>
-| 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    | [ver relatório](https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md) |
+| 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    | [ver relatório](./Sprint_02/README.md)|
 <br>
 | 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
 <br>
