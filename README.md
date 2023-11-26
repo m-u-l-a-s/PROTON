@@ -17,13 +17,13 @@ A aplicação foi projetada para organizar e armazenar evidências desses proces
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
 <br>
-| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
+| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01 |
 <br>
-| 02 | 15/05/2022 | ✔️ Concluída    | [ver relatório] (https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md) |
+| 02 | 15/05/2022 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md |
 <br>
-| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
+| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/tree/Sprint_03 |
 <br>
-| 04 | 06/11/2023 - 26/11/2023 | - Não iniciada   |  |
+| 04 | 06/11/2023 - 26/11/2023 | ✔️ Concluída   | Veja o relatório pelo link: |
 <br>
 
 ## :dart: Backlogs & User Stories:
