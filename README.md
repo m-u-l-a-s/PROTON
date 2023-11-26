@@ -3,7 +3,7 @@
 # Proton - Project Tracker, Organizer and Notifier
 ## :bookmark_tabs: Objetivo do Produto:
 
-A empresa parceira Ionic Health apresentou o desafio real enfrentado por eles na ambito de organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. A solução desenvolvida se configura uma plataforma web que auxilie, que consiste em um sistema com 4 frentes: a do colaborador comum, que pode anexar pendencias e evidências de um processo ao qual foi designado como responsável e acompanhar seu ciclo de vida; a do líderes de equipem que podem criar processos e designar etapas desses possíveis aos colaboradores ou outros líderes; a dos C-levels que poderão acompanhar como estão essas atividades através de dashboard; e a do usuário Administrador que terá acesso a todos esses recursos, além de poder cadastrar novos usuários. 
+A empresa parceira Ionic Health apresentou o desafio real enfrentado por eles na âmbito de organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. A solução desenvolvida se configura uma plataforma web de auxílio. Essa consiste em um sistema com 4 frentes: colaborador comum, que pode anexar pendências e evidências de um processo ao qual foi designado como responsável e acompanhar seu ciclo de vida; líderes de equipe que podem criar processos e designar etapas desses processos aos colaboradores ou outros líderes; C-levels, que poderão acompanhar como estão essas atividades através do dashboard e usuário Administrador que terá acesso a todos esses recursos, além de poder cadastrar novos usuários. 
 <br>
 A aplicação foi projetada para organizar e armazenar evidências desses processos e operar por meio de navegadores como o Google Chrome, Internet Explorer e Firefox, dependendo da conexão com a internet e do banco de dados em nuvem.
 <br>
@@ -17,13 +17,13 @@ A aplicação foi projetada para organizar e armazenar evidências desses proces
 Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
 
 <br>
-| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01 |
+| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_01"> [Veja o Relatório]</a> |
 <br>
-| 02 | 15/05/2022 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md |
+| 02 | 25/10/2023 - 15/10/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/blob/Sprint_02/README.md"> [Veja o Relatório]</a> |
 <br>
-| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    | Veja o relatório pelo link: https://github.com/m-u-l-a-s/PROTON/tree/Sprint_03 |
+| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_03"> [Veja o Relatório]</a> |
 <br>
-| 04 | 06/11/2023 - 26/11/2023 | ✔️ Concluída   | Veja o relatório pelo link: |
+| 04 | 06/11/2023 - 26/11/2023 | ✔️ Concluída   | <a href="https://github.com/m-u-l-a-s/PROTON/tree/Sprint_04"> [Veja o Relatório]</a> |
 <br>
 
 ## :dart: User Stories 
@@ -35,11 +35,6 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/%C3%A9picos.png)
 <br>
 
-## :desktop_computer: Protótipo:
-
-O protótipo da plataforma foi feito com o auxílio da ferramenta "Figma" e pode ser conferido interativamente através do link:
-https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=design&node-id=1-3&mode=design
-<br>
 
 ## 🛠️ Tecnologias e ferramentas utilizadas:
 
@@ -86,6 +81,12 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 ```
 <br>
+
+## :actix: Passo a Passo de Execução em Sua Máquina:
+- 1º
+- 2º
+- 3º
+- 4º
 
 
 ## :busts_in_silhouette: Apresentação da Equipe:
