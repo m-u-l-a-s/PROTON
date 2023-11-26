@@ -250,7 +250,7 @@ export const DetalheEtapa = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      maxHeight="150%"
+      maxHeight="500em"
       flexDirection="column"
       sx={{ gap: 3 }}
     >
@@ -263,9 +263,9 @@ export const DetalheEtapa = () => {
         height: "fit-content",
         display: "flex",
         flexDirection: "column",
-        maxWidth: "90%",
-        maxHeight: "70%",
-        marginTop: "2%",
+        maxWidth: "80%",
+        maxHeight: "80%",
+        marginTop: "1.5%",
     }}
       >
         <Grid item sx={{ mt: "-0.7em", marginLeft: "1em" }}>
@@ -314,8 +314,9 @@ export const DetalheEtapa = () => {
                     fontFamily: 'Poppins',
                     marginRight: "3rem ",
                     marginTop: "-1rem",
+                    
                   }}>
-                Data:
+                  Data:
                 <br></br>
                 <CalendarioEtapa dataBanco={dataDoBanco} callback={handleCallback} />
               </Grid>
@@ -396,13 +397,20 @@ export const DetalheEtapa = () => {
                   <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'A'}>Em aprovação</MenuItem>
                   <MenuItem style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins' }} value={'C'}>Concluído</MenuItem>
                 </Select>
-                <hr style={{width:'28vw', marginTop:'1.5em'}}></hr>
-                
-                <Anexos etapa_id={etapa_id} etapa_responsavel_id = {etapa_responsavel_id}/>
-
               </Grid>
+            </div>
 
-              
+            <div>
+              <Grid margin={"15px"} style={{
+                    fontSize: '1.2rem',
+                    color: '#B6F3F8',
+                    fontFamily: 'Poppins',
+                    marginRight: "3rem ",
+                    marginTop: "0.5rem",
+                  }}>
+                Anexos:           
+              <Anexos etapa_id={etapa_id} etapa_responsavel_id = {etapa_responsavel_id}/>
+              </Grid> 
             </div>
 
             <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"0.8rem"}>

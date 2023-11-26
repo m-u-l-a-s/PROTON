@@ -1,8 +1,9 @@
 .div1, .div2 {
-     width: 40%; /* Define a largura desejada para cada div */
+     width: 15%, 80%; /* Define a largura desejada para cada div */
      display: inline-block; /* Define as divs como elementos inline-block */
      box-sizing: border-box; /* Inclui padding e borda na largura total */
      vertical-align: top; /* Alinha as divs verticalmente ao topo */
+     overflow: auto;
    }
 
 hr {
@@ -10,4 +11,21 @@ hr {
     background-color: #292A2D;
     height: 0.1em; 
     border: none; 
+}
+
+/* :::::::::::::::::: Estilização barra de rolagem ::::::::::::::::::::: */
+
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Cor da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background-color: #58595B; /* Cor da barra de rolagem */
+  border-radius: 6px; /* Borda arredondada da barra de rolagem */
+}
+
+/* Cor da área da barra de rolagem que não está coberta pela barra de rolagem */
+::-webkit-scrollbar-track {
+  background-color: #888; /* Cor da área de fundo da barra de rolagem */
 }

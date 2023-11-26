@@ -232,12 +232,12 @@ const ContarAVencer = async () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                maxHeight="100vh"
+                maxHeight="150vh"
                 flexDirection="column"
                 gap={theme.spacing(1)}
                 marginTop={theme.spacing(3)}
             >
-                <Paper sx={{ padding: 4.5, borderRadius: 5, marginTop: 8 }}>
+                <Paper sx={{ padding: 4.5, borderRadius: 5, marginTop: 3 }}>
                     <Typography
                         variant="h5"
                         color="primary"

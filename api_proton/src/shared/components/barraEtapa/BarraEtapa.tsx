@@ -28,12 +28,12 @@ export const BarraEtapa = (prop: any) => {
                               {prop.etapa_nome}
                          </Grid>
 
-                         <Grid item alignItems={"right"} justifyContent={"flex-start"}>
+                         {/* <Grid item alignItems={"right"} justifyContent={"flex-start"}>
 
                               <Stack direction="row" spacing={3}>
                                    <Button variant="text" style={{fontFamily: 'poppins', fontWeight:'bold', fontSize:'1em'}} onClick={navigateToAnexos}>Anexos</Button>
                               </Stack>
-                         </Grid>
+                         </Grid> */}
 
                     </Toolbar>
                </Container>

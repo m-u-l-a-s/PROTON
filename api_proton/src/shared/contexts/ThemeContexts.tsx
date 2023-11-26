@@ -11,7 +11,7 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({ children }
   return (
     <ThemeContext.Provider value={{ themeName }}>
       <ThemeProvider theme={DarkTheme}>
-        <Box width="100vw" height="100vh" bgcolor={"#292A2D"}>
+        <Box width="101%" height="61em" bgcolor={"#292A2D"}>
           {children}
         </Box>
       </ThemeProvider>
