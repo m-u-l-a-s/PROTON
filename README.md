@@ -1,12 +1,11 @@
 <h2 align="center"> <span id="topo"></h2>
 
-<h2 align="center"> Sprint 3: 16/10/2023 a 05/11/2023</h2>
+<h2 align="center"> Sprint 3: 06/11/2023 a 26/11/2023</h2>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
     <a href="#entregas">Entregas</a> &nbsp |&nbsp &nbsp
     <a href="#metricas">Métricas do time</a> &nbsp |&nbsp &nbsp
-    <a href="#links">Links úteis</a>
 </p>
 
 # Proton - Project Tracker, Organizer and Notifier
