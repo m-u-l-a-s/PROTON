@@ -1,6 +1,6 @@
-<h1 align="center"> <span id="topo">
+<h2 align="center"> <span id="topo">
 
-<h1 align="center"> Sprint 1: 25/03/2022 a 14/04/2022</h1>
+<h2 align="center"> Sprint 1: 25/03/2022 a 14/04/2022</h1>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
@@ -9,7 +9,7 @@
     <a href="#links">Links úteis</a>
 </p>
 
-O projeto se baseia no desenvolvimento de um site para organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. Tendo em mente o MVP, a primeira sprint se deu com a criação de um fluxo básico de criação projetos e a anexação de documentos. Para isso, foram levantados e validados os requisitos e o protótipo, construindo os serviços e interfaces visando uma entrega de grande valor condizente com a dor do cliente.
+<p>O projeto se baseia no desenvolvimento de um site para organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. Tendo em mente o MVP, a primeira sprint se deu com a criação de um fluxo básico de criação projetos e a anexação de documentos. Para isso, foram levantados e validados os requisitos e o protótipo, construindo os serviços e interfaces visando uma entrega de grande valor condizente com a dor do cliente.
 
 <span id="objetivos">
     
@@ -31,9 +31,11 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 
 <details>
    <summary>User Stories & Backlog Do Produto:</summary>
-  ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/US.png)
+
+  <<img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/US.png">
   <br>
-  ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/%C3%A9picos.png)
+
+  <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/%C3%A9picos.png">
   <br>
 </details>
 
@@ -53,7 +55,7 @@ Este requisito se trata de tornar o sistema hábil para anexar os documentos (ev
 https://www.youtube.com/watch?v=w77srMqJYTw
 
 ## Planejamento de entregas
-![image](docs/Backlog_Sprint_02_Proton.jpeg)
+![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprin1.png)
 
 <span id="metricas">
     
