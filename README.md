@@ -3,10 +3,33 @@
 # Proton - Project Tracker, Organizer and Notifier
 ## :bookmark_tabs: Objetivo do Produto:
 
-O objetivo do projeto é desenvolver uma plataforma web que auxilie na organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde.
+A empresa parceira Ionic Health apresentou o desafio real enfrentado por eles na ambito de organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. A solução desenvolvida se configura uma plataforma web que auxilie, que consiste em um sistema com 4 frentes: a do colaborador comum, que pode anexar pendencias e evidências de um processo ao qual foi designado como responsável e acompanhar seu ciclo de vida; a do líderes de equipem que podem criar processos e designar etapas desses possíveis aos colaboradores ou outros líderes; a dos C-levels que poderão acompanhar como estão essas atividades através de dashboard; e a do usuário Administrador que terá acesso a todos esses recursos, além de poder cadastrar novos usuários. 
+<br>
+A aplicação foi projetada para organizar e armazenar evidências desses processos e operar por meio de navegadores como o Google Chrome, Internet Explorer e Firefox, dependendo da conexão com a internet e do banco de dados em nuvem.
+<br>
+> _Projeto baseado na metodologia ágil SCRUM, procurando desenvolver a Proatividade, Autonomia, Colaboração e Entrega de Resultados dos estudantes envolvidos_
 <br>
 
 :pushpin: Status do Projeto: Em andamento.
+
+## 🏁 Entregas de Sprints
+
+Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
+
+<br>
+| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
+<br>
+| 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    |  |
+<br>
+| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
+<br>
+| 04 | 06/11/2023 - 26/11/2023 | - Não iniciada   |  |
+<br>
+
+## :dart: Backlogs & User Stories:
+
+![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
+<br>
 
 ## :desktop_computer: Protótipo:
 
@@ -60,33 +83,6 @@ https://www.figma.com/file/MqZujqscYKOsjmD4UmxLQW/A.P.I.-Ionic-Health?type=desig
 ```
 <br>
 
-## :dart: Backlogs & User Stories:
-
-![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
-
-## 🏁 Entregas de Sprints
-
-Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o backlog. 
-
-<br>
-| 01 | 04/09/2023 - 24/09/2023 | ✔️ Concluída    | ### Link - apresentação da 1ª Sprint: https://www.youtube.com/watch?v=w77srMqJYTw |
-<br>
-| 02 | 25/09/2023 - 15/10/2023 | ✔️ Concluída    |  |
-<br>
-| 03 | 16/10/2023 - 05/11/2023 | ✔️ Concluída    |  |
-<br>
-| 04 | 06/11/2023 - 26/11/2023 | - Não iniciada   |  |
-
-
-
-## Planejamento de entregas Sprint 3
-
-![image](docs/s3.1.png)
-![image](docs/s3.2.png)
-![image](docs/s3.3.png)
-![image](docs/s3.4.png)
-
-<br>
 
 ## :busts_in_silhouette: Apresentação da Equipe:
 
