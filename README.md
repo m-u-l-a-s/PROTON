@@ -26,9 +26,10 @@ Cada entrega foi realizada a partir do desenvolvimento priorizado seguindo o bac
 | 04 | 06/11/2023 - 26/11/2023 | ✔️ Concluída   | Veja o relatório pelo link: |
 <br>
 
-## :dart: Backlogs & User Stories:
+## :dart: User Stories & Backlogs:
 
-![image](https://github.com/m-u-l-a-s/PROTON/assets/64814482/01172e70-2c88-417a-a22c-23863fc3a4d3)
+![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/US.png)
+![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/%C3%A9picos.png)
 <br>
 
 ## :desktop_computer: Protótipo:
