@@ -9,6 +9,8 @@
     <a href="#links">Links úteis</a>
 </p>
 
+# Proton - Project Tracker, Organizer and Notifier
+
 <p>O projeto se baseia no desenvolvimento de um site para organização e documentação dos processos que são desenvolvidos em uma empresa de tecnologia voltada à saúde. Tendo em mente o MVP, a primeira sprint se deu com a criação de um fluxo básico de criação projetos e a anexação de documentos. Para isso, foram levantados e validados os requisitos e o protótipo, construindo os serviços e interfaces visando uma entrega de grande valor condizente com a dor do cliente.
 
 <span id="objetivos">
@@ -49,12 +51,10 @@ Este requisito se trata de tornar o sistema hábil para anexar os documentos (ev
     
 → [Voltar ao topo](#topo)
 
-### Proton - Project Tracker, Organizer and Notifier
-
 ### Link - apresentação da 1ª Sprint
 https://www.youtube.com/watch?v=w77srMqJYTw
 
-## Planejamento de entregas
+### Planejamento de entregas
 ![image](https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprin1.png)
 
 <span id="metricas">
@@ -70,21 +70,9 @@ Em prol de um melhor aproveitamento das habilidades de cada integrante, o time f
     
 <span id="links">
 
-## Sumário:
-* [Apresentação da Equipe](#apresentação-da-equipe)
-* [Objetivo](#objetivo-do-produto)
-* [Protótipo](#protótipo)
-* [Tecnologias](#tecnologias-e-ferramentas-utilizadas)
-* [Estrutura geral do projeto](#estrutura-geral-do-projeto)
-* [Backlog](#backlog-do-produto)
-* [Planejamento de Entregas](#planejamento-de-entregas)
-* [Preview da Plataforma](#plataforma)
-
-## Apresentação da Equipe:
+## Integrantes da Equipe:
 Somos uma equipe de jovens programadores interessados em criar soluções simples para problemas complexos e em aprender o máximo possível no processo.
 Nosso foco é em identificar o objetivo principal de um produto para desenvolver soluções de maneira gradual e modular em torno deste objetivo, de forma que cada passo possa ser validado pelo(a) cliente e/ou usuários e o produto evolua organicamente.
-
-## Integrantes:
 
 
 | Função        | Nome                             | LinkedIn & GitHub                                                                                                                                                                                                                                                                                                           |
