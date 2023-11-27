@@ -80,7 +80,7 @@ export const DetalheEtapa = () => {
           // Recarrega a página após o modal ser fechado
           window.location.reload();
         });
-        
+
       }
     });
   };
@@ -152,7 +152,7 @@ export const DetalheEtapa = () => {
   const [etapa_id, setEtapaId] = useState(location.state.id);
   const [etapa_responsavel_id, setEtapa_responsavel_id] = useState(location.state.etapa_responsavel_id)
   const theme = useTheme();
-  const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa',location.state.responsavel))
+  const [validaEdicao, setValidaEdicao] = useState(validarEdicao('DetalheEtapa', location.state.responsavel))
   const [validaMudancaStatus, setValidaMudancaStatus] = useState(false)
   const [etapa, setEtapa] = useState({
     etapa_id: 1,
@@ -189,7 +189,7 @@ export const DetalheEtapa = () => {
 
       get_etapa_by_id(); // Call the function inside useEffect
       // You can now safely use the updated 'etapa' state here
-      setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status,location.state.responsavel,etapa.etapa_responsavel_id))
+      setValidaMudancaStatus(validarMudancaStatus(etapa.etapa_status, location.state.responsavel, etapa.etapa_responsavel_id))
     }
   }, [etapa.etapa_status]);
 
@@ -222,8 +222,8 @@ export const DetalheEtapa = () => {
     }
   };
   useEffect(() => {
-      get_usuario();
-      setValidaEdicao(validarEdicao('DetalheEtapa',location.state.responsavel))
+    get_usuario();
+    setValidaEdicao(validarEdicao('DetalheEtapa', location.state.responsavel))
   }, []);
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -235,9 +235,9 @@ export const DetalheEtapa = () => {
     setFlag(false)
   };
 
-  const handleCallback =(valor:Date)=>{
-   // console.log(valor)
-    const nameDate =  'etapa_data_conclusao';
+  const handleCallback = (valor: Date) => {
+    // console.log(valor)
+    const nameDate = 'etapa_data_conclusao';
     setEtapa(prevEtapa => ({
       ...prevEtapa,
       [nameDate]: valor
@@ -255,18 +255,19 @@ export const DetalheEtapa = () => {
       sx={{ gap: 3 }}
     >
       <Paper
-      sx={{
-        mt: "-3em",
-        padding: 4,
-        borderRadius: 5,
-        width: "fit-content",
-        height: "fit-content",
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "80%",
-        maxHeight: "80%",
-        marginTop: "1.5%",
-    }}
+        sx={{
+          mt: "-3em",
+          padding: 4,
+          borderRadius: 5,
+          width: "fit-content",
+          height: "fit-content",
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "80%",
+          maxHeight: "100vh",
+          marginTop: "1.5%",
+          overflow: "auto"
+        }}
       >
         <Grid item sx={{ mt: "-0.7em", marginLeft: "1em" }}>
           <IconButton className="meuBotao" onClick={handleNavigateToProcesso}>
@@ -274,13 +275,13 @@ export const DetalheEtapa = () => {
           </IconButton>
         </Grid>
 
-        <BarraEtapa etapa_nome={etapa.etapa_nome} etapa_id={etapa.etapa_id} etapa_responsavel_id = {etapa.etapa_responsavel_id}/>
+        <BarraEtapa etapa_nome={etapa.etapa_nome} etapa_id={etapa.etapa_id} etapa_responsavel_id={etapa.etapa_responsavel_id} />
 
         {/*</BarraEtapa>*/}
 
         <Box display="inline-block" alignItems="center" maxHeight="100vh" flexDirection="column">
           <Box display="inline-block" flexDirection="column" sx={{ gap: 2 }} textAlign={"left"}>
-            
+
             <div className="div1">
               <Grid item margin={"15px"} marginBottom={"40px"} marginTop={"20px"}>
                 <TextField
@@ -309,14 +310,14 @@ export const DetalheEtapa = () => {
               </Grid>
 
               <Grid margin={"15px"} style={{
-                    fontSize: '1.2rem',
-                    color: '#B6F3F8',
-                    fontFamily: 'Poppins',
-                    marginRight: "3rem ",
-                    marginTop: "-1rem",
-                    
-                  }}>
-                  Data:
+                fontSize: '1.2rem',
+                color: '#B6F3F8',
+                fontFamily: 'Poppins',
+                marginRight: "3rem ",
+                marginTop: "-1rem",
+
+              }}>
+                Data:
                 <br></br>
                 <CalendarioEtapa dataBanco={dataDoBanco} callback={handleCallback} />
               </Grid>
@@ -337,9 +338,9 @@ export const DetalheEtapa = () => {
                 <Select
                   labelId="responsavel-label"
                   id="responsavel"
-                  style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem',  marginTop:'0.5em'}}
+                  style={{ color: 'white', fontFamily: 'Poppins', fontSize: '1.2rem', marginTop: '0.5em' }}
                   value={etapa.etapa_responsavel_id}
-                  name = 'etapa_responsavel_id'
+                  name='etapa_responsavel_id'
                   onChange={handleChange}
                   inputProps={
                     { readOnly: validaEdicao, }
@@ -381,11 +382,11 @@ export const DetalheEtapa = () => {
 
               {/*Alexandre: Combo dos status que ainda não sei se vou usar depois então deixa aqui */}
               <Grid item margin={"15px"} marginLeft={"100px"} marginTop={"30px"}>
-                <InputLabel id="status-label" style={{ color: '#B6F3F8', fontFamily: 'Poppins', fontSize: '1.1rem'}}>Status: </InputLabel>
+                <InputLabel id="status-label" style={{ color: '#B6F3F8', fontFamily: 'Poppins', fontSize: '1.1rem' }}>Status: </InputLabel>
                 <Select
                   labelId="status-label"
                   id="status"
-                  style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins', marginTop:'0.5em' }}
+                  style={{ color: 'white', fontSize: '1.1rem', fontFamily: 'Poppins', marginTop: '0.5em' }}
                   value={etapa.etapa_status}
                   name='etapa_status'
                   onChange={handleChange}
@@ -400,44 +401,47 @@ export const DetalheEtapa = () => {
               </Grid>
             </div>
 
-            <div>
-              <Grid margin={"15px"} style={{
-                    fontSize: '1.2rem',
-                    color: '#B6F3F8',
-                    fontFamily: 'Poppins',
-                    marginRight: "3rem ",
-                    marginTop: "0.5rem",
-                  }}>
-                Anexos:           
-              <Anexos etapa_id={etapa_id} etapa_responsavel_id = {etapa_responsavel_id}/>
-              </Grid> 
-            </div>
-
-            <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"0.8rem"}>
-              <Grid item >
-
-                <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
-                  sx={{ marginLeft: '1em', background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
-                  onClick={deletarModal}>
-                  Deletar Etapa
-                </Button>
-
+            <Grid container sx={{ width: "fit-content", height: "fit-content" }}>
+              <Grid>
+                <Grid margin={"15px"} style={{
+                  fontSize: '1.2rem',
+                  color: '#B6F3F8',
+                  fontFamily: 'Poppins',
+                  marginRight: "3rem ",
+                  marginTop: "0.5rem",
+                }}>
+                  Anexos:
+                  <Anexos etapa_id={etapa_id} etapa_responsavel_id={etapa_responsavel_id} />
+                </Grid>
               </Grid>
 
+              <Grid container display="flex" alignItems="center" justifyContent="space-between" mt={"0.8rem"} padding={"0.8rem"}>
+                <Grid item >
 
-              <Grid item>
-                {/*true = invisivel
+                  <Button variant="contained" disableElevation startIcon={<DeleteIcon />}
+                    sx={{ marginLeft: '1em', background: "#292A2D", color: "white", display: validaEdicao ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold' }}
+                    onClick={deletarModal}>
+                    Deletar Etapa
+                  </Button>
+
+                </Grid>
+
+
+                <Grid item>
+                  {/*true = invisivel
                   focar em true = visivel
                   qnd edicao for false ou status for true */}
-                <Button variant="contained" disableElevation startIcon={<SaveAsIcon /> }
-                  sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold', marginRight: '-1em' }}
-                  onClick={atualizarModal}>
-                  Salvar Alteração
-                </Button>
+                  <Button variant="contained" disableElevation startIcon={<SaveAsIcon />}
+                    sx={{ display: !(!validaEdicao || validaMudancaStatus) ? "none" : "flex", fontFamily: 'poppins', fontSize: '1em', fontWeight: 'bold', marginRight: '-1em' }}
+                    onClick={atualizarModal}>
+                    Salvar Alteração
+                  </Button>
+
+                </Grid>
+
+
 
               </Grid>
-
-
 
             </Grid>
           </Box>
