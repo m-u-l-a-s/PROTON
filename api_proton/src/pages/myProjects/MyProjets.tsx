@@ -10,26 +10,12 @@ import { BaseURL } from "../../control/BaseURL";
 export const MyProjects = () => {
     const [processos, setProcesso] = useState([
         {
-            processo_id: 1,
-            processo_nome: "Etapa 1",
-            processo_descricao: "Pendente",
-            processo_responsavel_id: 1,
-            processo_responsavel_nome: "Alexandre Jonas",
-        },
-        {
-            processo_id: 2,
-            processo_nome: "Etapa 2",
-            processo_descricao: "Concluida",
-            processo_responsavel_id: 1,
-            processo_responsavel_nome: "Alexandre Jonas",
-        },
-        {
-            processo_id: 3,
-            processo_nome: "Etapa 3",
-            processo_descricao: "Pendente",
-            processo_responsavel_id: 1,
-            processo_responsavel_nome: "Alexandre Jonas",
-        },
+            processo_id: 0,
+            processo_nome: "",
+            processo_descricao: "",
+            processo_responsavel_id: 0,
+            processo_responsavel_nome: "",
+        }
     ]);
 
     const get_processos = async () => {

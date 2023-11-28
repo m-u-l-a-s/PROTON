@@ -18,12 +18,16 @@ const verificaStatus = async (processId: any) => {
         // Converter resposta em JSON:
         const etapas = await etapasResponse.json();
 
+        // console.log("Todas as Etapas: ")
+        // console.log(etapas)
+
         let temAnexos = false;
-        let temAnexosEmAtraso = false;
+        let temEtapasEmAtraso = false;
         let todasEtapasValidadas = false;
         let etapasValidadas = 0;
 
         for (const etapa of etapas) {
+            // console.log(etapa)
             const anexosResponse = await fetch(
                 `${BaseURL()}/get_anexos_by_etapa/${etapa.etapa_id}`
             );
@@ -37,10 +41,12 @@ const verificaStatus = async (processId: any) => {
             }
 
             const etapaDataConclusao = new Date(etapa.etapa_data_conclusao);
+            // console.log("Data de conclusão: " + etapa.etapa_nome)
+            // console.log(etapaDataConclusao)
             const hoje = new Date();
 
             if (etapaDataConclusao < hoje) {
-                temAnexosEmAtraso = true;
+                temEtapasEmAtraso = true;
             } else {
             }
 
@@ -53,10 +59,14 @@ const verificaStatus = async (processId: any) => {
             }
         }
 
+        if (etapas.length == 0 ) {
+            return "NI"
+        }
+
         if (todasEtapasValidadas) {
             return "CN";
         }
-        if (temAnexosEmAtraso) {
+        if (temEtapasEmAtraso) {
             return "AT";
         }
         if (etapas.length > 0) {
