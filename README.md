@@ -1,6 +1,6 @@
 <h2 align="center"> <span id="topo"></h2>
 
-<h2 align="center"> Sprint 3: 06/11/2023 a 26/11/2023</h2>
+<h2 align="center"> Sprint 4: 06/11/2023 a 26/11/2023</h2>
 
 <p align="center">
     <a href="#objetivos">Objetivos da sprint</a> &nbsp |&nbsp &nbsp
@@ -16,30 +16,21 @@
     
 ## :dart: Objetivos da Sprint
 Os requisitos (tanto do cliente como da instituição de ensino) abrangidos por essa sprint são:
-- **Requisito Funcional 09:** Alertas Automáticos via E-mail
-- **Requisito Funcional 10:** Sistema de Autenticação em Duas Etapas
-- **Requisito Funcional 11:** Sistema de Filtragem
-- **Requisito Funcional 12:** Geração de Relatórios
+- **Requisito Funcional 09:** Criação do Perfil Administrador
+- **Requisito Funcional 10:** Mudança da tela de Anexos para a tela de 'detalheEtapa'
 
 <span id="entregas">
         
 ## :heavy_check_mark: Entregas
 
-### Requisito Funcional 09: Alertas Automáticos via E-mail
+### Requisito Funcional 09: Criação do Perfil Administrador
 
-Este requisito se trata da criação de um sistema que emitirá um alerta via e-mail sempre que uma etapa do processo for de alguma forma alterada ou estiver passando por um evento importante, como data de entrega. Estes alertas serão emitidos ao colaborador responsável e ao líder criador da etapa. 
+Este requisito se trata da criação de um perfil que tem a capacidade de solicitar a um administrador do programa correções e alterações que podem não estar prontamente disponíveis para o meu perfil, como uma medida adicional de segurança.
 
-### Requisito Funcional 10: Sistema de Autenticação em Duas Etapas
+### Requisito Funcional 10: Mudança da tela de Anexos para a tela de 'detalheEtapa'
 
-Este requisito se trata de tornar o login mais seguro, fazendo com que chegue uma chave no e-mail para verdadeiramente autenticar que quem está tentando acessar a plataforma seja verdadeiramente o usuário autorizado.
+Este ajuste consiste em uma modificação no design do projeto, solicitado pelo cliente, transferindo a tela de Anexos para a tela de Detalhes da Etapa.
 
-### Requisito Funcional 11: Sistema de Filtragem
-
-Este requisito se trata da criação de um sistema que emitirá que exista um filtro para que se possa acessar o processo/etapa desejado de forma mais rápida e eficiente. 
-
-### Requisito Funcional 12: Geração de Relatórios
-
-Este requisito se trata da criação de um botão que gerará um relatório sobre uma determinada etapa, relatório de fácil visualização das informações contidas nesta. Opção disponível apenas para o líder.
 
 → [Voltar ao topo](#topo)
 
@@ -47,7 +38,7 @@ Este requisito se trata da criação de um botão que gerará um relatório sobr
 ### Planejamento de entregas
 Abra a imagem abaixo para ver detalhadamente:
 <details>
-   <summary>Planejamento Sprint 3</summary>
+   <summary>Planejamento Sprint 4</summary>
     <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/sprint4.png">
     <br>
 </details>
@@ -61,8 +52,6 @@ Além dos épicos, essa sprint foi formada por algumas Tasks adicionais (A sua m
     <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s4.2.png">
     <br>
     <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s4.3.png">
-    <br>
-    <img src="https://github.com/m-u-l-a-s/PROTON/blob/main/docs/s4.4.png">
     <br>
 </details>
 
